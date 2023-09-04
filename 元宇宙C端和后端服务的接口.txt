@@ -1,0 +1,62 @@
+资源管理
+    提交表单数据
+    {
+        "exhibition_id": "xxx",
+            # 展区id
+        "exhibition_movie_url": ["xxx","xxx","xxx","xxx","xxx","xxx"],
+            # 展区影片始终要给最新,给啥用啥
+        "DM_id": "xxx",
+            # 产品DM的id
+        "DM_image_url": [{"url":"xxx","download":false/true},
+                        {"url":"xxx","download":false/true},
+                        {"url":"xxx","download":false/true},
+                        {"url":"xxx","download":false/true},
+                        ],
+            # DM图片始终要给最新,给啥用啥, download代表是否需要从数据库下载,false就直接加载本地
+        "product_movie_url": ["xxx","xxx","xxx","xxx","xxx","xxx"],
+            # 产品影片始终要给最新,给啥用啥
+    }
+
+当管理员更新了产品图片或者影片资源后, 后端会把展区影片/产品DM/产品影片下修改后的最新列表发给前端,只给最终结果,过程全都在后端处理
+
+
+数据管理
+    客户完成调查问卷后,从客户端发送到后端
+    {
+        "userid":"xxx", # 客户id
+        "duration_sec": 600,  #回答时长,多少秒钟
+        "questions":[
+            {"ques_id":"xxx", "answer":"",
+                "choice":[
+                    {"choice_id":"","selected":true/false},
+                    {"choice_id":"","selected":true/false},
+                    {"choice_id":"","selected":true/false},
+                    {"choice_id":"","selected":true/false},
+                    ]},
+            {"ques_id":"xxx", "answer":"",
+                "choice":[
+                    {"choice_id":"","selected":true/false},
+                    {"choice_id":"","selected":true/false},
+                    {"choice_id":"","selected":true/false},
+                    {"choice_id":"","selected":true/false},
+                    ]},
+            {"ques_id":"xxx", 
+                "answer":"xxxxxxxx",
+                "choice":[]}            
+        ],
+    }
+    answer用于填空题, 填写内容
+    choice用于单选题和多选题, choice_id是选择题的选项id,selected代表是否勾选
+    如果一道题只有填空, choice可以是空列表,如果一道题没有填空,answer可以是空列表
+
+
+    客户在参观展厅的时候,每一次进入展厅超过5秒钟,都要向后端发送记录
+    {
+        "userid":"xxx",
+        "exhibition_id":"xxx",  # 展区id
+        "enter":true/false,  # true代表进入, false代表走出
+        "trigger_time":" 1693829695",  # 触发的时间戳
+    }
+
+
+
