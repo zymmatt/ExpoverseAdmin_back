@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.admin.mapper.UserMapper">
+    <!-- 定义一个resultMap，用于将数据库表的列映射到User实体类的字段 -->
+    <resultMap id="UserResultMap" type="com.example.admin.entity.User">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="company" property="company"/>
+        <result column="job" property="job"/>
+        <result column="mail" property="mail"/>
+        <result column="phone" property="phone"/>
+        <result column="approval_date" property="approval_date"/>
+        <result column="approver_id" property="approver_id"/>
+        <!-- 其他字段 -->
+    </resultMap>
+
+
+    <!-- 查询所有用户 DATE_FORMAT(approval_date, '%Y-%m-%d %H:%i:%s') AS approval_date -->
+    <select id="findAll"  resultType="com.example.admin.entity.User">
+        SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id from expoverse.user ORDER BY approval_date DESC;
+    </select>
+
+    <!-- 一页20行查询用户 -->
+    <select id="findbyNamePage" resultMap="UserResultMap">
+        SELECT * from expoverse.user LIMIT #{limit} OFFSET #{offset};
+    </select>
+
+    <!-- 根据ID查询用户 -->
+    <select id="findById" parameterType="java.lang.Long" resultMap="UserResultMap">
+        SELECT * FROM expoverse.user WHERE id = #{id}
+    </select>
+
+    <!-- 插入新用户 -->
+    <insert id="insert" parameterType="com.example.admin.entity.User">
+        INSERT INTO expoverse.user (name, company, job, mail, phone, approval_date, approver_id)
+        VALUES (#{name}, #{company}, #{job}, #{mail}, #{phone}, #{approval_date}, #{approver_id})
+    </insert>
+
+    <!-- 更新用户信息 -->
+    <update id="update" parameterType="com.example.admin.entity.User">
+        UPDATE expoverse.user
+        SET name = #{name}, company = #{company} , job = #{job}, mail= #{mail}, phone= #{phone}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据ID删除用户 -->
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM expoverse.user WHERE id = #{id}
+    </delete>
+
+</mapper>

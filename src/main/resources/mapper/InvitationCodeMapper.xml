@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.admin.mapper.InvitationCodeMapper">
+
+    <insert id="insertInvitationCode" parameterType="com.example.admin.entity.InvitationCode">
+        INSERT INTO invitation_codes (codeId, start_date, end_date, start_time, userid, approver_id)
+        VALUES (#{codeId}, #{startDate}, #{endDate}, #{startTime}, #{inviteeId}, #{approverId})
+    </insert>
+
+</mapper>
