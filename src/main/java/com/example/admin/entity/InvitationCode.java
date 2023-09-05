@@ -9,9 +9,13 @@ public class InvitationCode {
     private String codeId; // 使用UUID作为邀请码ID
     
     private LocalDate startDate;
-    
+
+    private String startDateStr;
+
     private LocalDate endDate;
-    
+
+    private String endDateStr;
+
     private LocalTime startTime;
     
     private Long userid;
