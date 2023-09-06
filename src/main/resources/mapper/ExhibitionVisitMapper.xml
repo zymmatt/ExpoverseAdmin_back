@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.admin.mapper.ExhibitionVisitMapper">
+
+    <insert id="insertExhibitionVisit" parameterType="com.example.admin.entity.ExhibitionVisit">
+        INSERT INTO expoverse.exhibition_visit
+        (userid, trigger_time, exhibition_id, enter)
+        VALUES (#{userid}, #{trigger_time}, #{exhibition_id}, #{enter})
+    </insert>
+
+
+    <resultMap id="ExhibitionVisitMap" type="com.example.admin.entity.ExhibitionVisit">
+        <id column="id" property="id"/>
+        <result column="userid" property="userid"/>
+        <result column="trigger_time" property="trigger_time"/>
+        <result column="exhibition_id" property="exhibition_id"/>
+    </resultMap>
+
+    <select id="getDatabyDate" resultMap="ExhibitionVisitMap">
+        SELECT * FROM expoverse.exhibition_visit WHERE trigger_time
+        BETWEEN #{startTime} AND #{endTime};
+    </select>
+
+
+</mapper>

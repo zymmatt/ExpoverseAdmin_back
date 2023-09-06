@@ -5,6 +5,7 @@ import java.util.UUID;
 
 
 public class InvitationCode {
+    private int id; //邀请记录id
     
     private String codeId; // 使用UUID作为邀请码ID
     
@@ -18,15 +19,13 @@ public class InvitationCode {
 
     private LocalTime startTime;
     
-    private Long userid;
+    private int userid;
     
-    private Long approver_id;
+    private String approver_id;
 
-    public InvitationCode() {
-        this.codeId = UUID.randomUUID().toString(); // 自动生成UUID作为邀请码ID
-    }
-
-    // Getters, Setters, and other methods...
+    public void setCodeId(){
+        this.codeId=UUID.randomUUID().toString();
+    } // 自动生成UUID作为邀请码ID
 
     public String getCodeId() {
         return codeId;
@@ -56,19 +55,19 @@ public class InvitationCode {
         return startTime;
     }
 
-    public void setuserid(Long userid) {
+    public void setuserid(int userid) {
         this.userid = userid;
     }
 
-    public Long getuserid() {
+    public int getuserid() {
         return userid;
     }
 
-    public void setapprover_id(Long approver_id) {
+    public void setapprover_id(String approver_id) {
         this.approver_id = approver_id;
     }
 
-    public Long getapprover_id() {
+    public String getapprover_id() {
         return approver_id;
     }
 

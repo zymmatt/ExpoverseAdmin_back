@@ -1,5 +1,6 @@
 // UserController.java
 package com.example.admin.controller;
+
 import com.example.admin.entity.User;
 import com.example.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class UserController {
     }
 
     @RequestMapping(value="/findById/{id}", method= RequestMethod.GET)
-    public User findById(@PathVariable Long id) {
+    public User findById(@PathVariable int id) {
         return userService.findById(id);
     }
 
@@ -38,12 +39,13 @@ public class UserController {
     }
 
     @RequestMapping(value="/updateUser", method= RequestMethod.PUT)
-    public void updateUser(@PathVariable Long id, @RequestBody User user) {
-        userService.updateUser(id, user);
+    public void updateUser(@RequestBody User user) {
+        userService.updateUser(user);
     }
 
     @RequestMapping(value="/deleteUser", method= RequestMethod.DELETE)
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(int id) {
         userService.deleteUser(id);
     }
+
 }

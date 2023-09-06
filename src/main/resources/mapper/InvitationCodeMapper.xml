@@ -6,8 +6,25 @@
 <mapper namespace="com.example.admin.mapper.InvitationCodeMapper">
 
     <insert id="insertInvitationCode" parameterType="com.example.admin.entity.InvitationCode">
-        INSERT INTO invitation_codes (codeId, start_date, end_date, start_time, userid, approver_id)
-        VALUES (#{codeId}, #{startDate}, #{endDate}, #{startTime}, #{inviteeId}, #{approverId})
+        INSERT INTO expoverse.invitation_codes (invitation_code_id, start_date, end_date, start_time, userid, approver_id)
+        VALUES (#{codeId}, #{startDate}, #{endDate}, #{startTime}, #{userid}, #{approver_id})
     </insert>
+
+    <resultMap id="codeIdMap" type="com.example.admin.entity.InvitationCode">
+        <id column="id" property="id"/>
+        <result column="invitation_code_id" property="codeId"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="start_time" property="startTime"/>
+        <result column="user_id" property="userid"/>
+    </resultMap>
+
+    <select id="findCodebyId" resultMap="codeIdMap">
+        SELECT invitation_code_id FROM expoverse.invitation_codes WHERE invitation_code_id = #{codeId}
+    </select>
+
+    <select id="getAllInvitation" resultMap="codeIdMap">
+        SELECT * FROM expoverse.invitation_codes
+    </select>
 
 </mapper>

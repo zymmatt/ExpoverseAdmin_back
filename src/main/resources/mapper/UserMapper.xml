@@ -18,25 +18,29 @@
     </resultMap>
 
 
-    <!-- 查询所有用户 DATE_FORMAT(approval_date, '%Y-%m-%d %H:%i:%s') AS approval_date -->
-    <select id="findAll"  resultType="com.example.admin.entity.User">
-        SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id from expoverse.user ORDER BY approval_date DESC;
+    <!-- 查询所有用户 DATE_FORMAT(approval_date, '%Y-%m-%d %H:%i:%s') AS approval_date
+    resultType="com.example.admin.entity.User" -->
+    <select id="findAll"  resultMap="UserResultMap">
+        SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
+        from expoverse.user ORDER BY approval_date DESC;
     </select>
 
     <!-- 一页20行查询用户 -->
     <select id="findbyNamePage" resultMap="UserResultMap">
-        SELECT * from expoverse.user LIMIT #{limit} OFFSET #{offset};
+        SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
+        from expoverse.user LIMIT #{limit} OFFSET #{offset};
     </select>
 
     <!-- 根据ID查询用户 -->
     <select id="findById" parameterType="java.lang.Long" resultMap="UserResultMap">
-        SELECT * FROM expoverse.user WHERE id = #{id}
+        SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
+        from expoverse.user WHERE id = #{id}
     </select>
 
     <!-- 插入新用户 -->
     <insert id="insert" parameterType="com.example.admin.entity.User">
-        INSERT INTO expoverse.user (name, company, job, mail, phone, approval_date, approver_id)
-        VALUES (#{name}, #{company}, #{job}, #{mail}, #{phone}, #{approval_date}, #{approver_id})
+        INSERT INTO expoverse.user (name, company, job, mail, phone, approval_date, approver_id, secret_key)
+        VALUES (#{name}, #{company}, #{job}, #{mail}, #{phone}, #{approval_date}, #{approver_id}, UUID())
     </insert>
 
     <!-- 更新用户信息 -->
@@ -47,7 +51,7 @@
     </update>
 
     <!-- 根据ID删除用户 -->
-    <delete id="delete" parameterType="java.lang.Long">
+    <delete id="delete" parameterType="int">
         DELETE FROM expoverse.user WHERE id = #{id}
     </delete>
 

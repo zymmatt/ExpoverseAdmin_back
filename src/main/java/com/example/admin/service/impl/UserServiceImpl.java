@@ -1,10 +1,10 @@
 // UserServiceImpl.java
 package com.example.admin.service.impl;
 
-import com.example.admin.mapper.UserMapper;
 import com.example.admin.entity.User;
-
 import com.example.admin.service.UserService;
+import com.example.admin.mapper.UserMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        List<User> users = userMapper.findAll();
+        List<User>users = userMapper.findAll();
         return users;
     }
 
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(int id) {
         return userMapper.findById(id);
     }
 
@@ -38,13 +38,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Long id, User user) {
+    public void updateUser(User user) {
             userMapper.update(user);
     }
 
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUser(int id) {
+        System.out.println("delete user"+id);
         userMapper.delete(id);
     }
 

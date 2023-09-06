@@ -6,9 +6,9 @@ import java.util.List;
 public interface UserService {
     List<User> findAll();
     List<User> findbyNamePage(int limit, int page, String name);
-    User findById(Long id);
+    User findById(int id);
     void createUser(User user);
-    void updateUser(Long id, User user);
-    void deleteUser(Long id);
+    void updateUser(User user);
+    void deleteUser(int id);
 }
 

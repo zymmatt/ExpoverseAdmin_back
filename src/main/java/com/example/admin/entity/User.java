@@ -3,7 +3,7 @@ import java.util.Date;
 
 
 public class User {
-    private Long id;    //访客唯一id
+    private int id;    //访客唯一id
     private String name;    //姓名
     private String company; //公司名称
     private String job; //职务
@@ -11,6 +11,11 @@ public class User {
     private String phone;   //联系电话
     private String approval_date; //添加日期
     private String approver_id;   //审批人iD
+    private String secret_key; // UUID
+
+    public int getId() {
+        return id;
+    }
 
     public String getJob() {
         return job;

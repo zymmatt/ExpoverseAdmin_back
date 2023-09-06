@@ -32,12 +32,22 @@ CREATE TABLE user (
 
 
 邀请码表
+    invitation_code	邀请码      key
 	visit_startday  参观起始日
 	visit_endday    参观结束日
 	visit_starttime 参观起始小时（准点）
-	invitation_code	邀请码      key
-	name	邀请人
+	approver_id	管理员id
 	id     访客唯一id
+
+CREATE TABLE expoverse.invitation_codes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    invitation_code_id VARCHAR(36),
+    start_date DATE,
+    end_date DATE,
+    start_time TIME,
+    user_id INT,
+    approver_id VARCHAR(20)
+);
 
 
 
@@ -70,10 +80,19 @@ CREATE TABLE user (
 	userid   用户的id?     key
 	trigger_time  触发的时间
 	product_id     参观的产品id
-	period_time   持续了多少分钟？
+	// period_time   持续了多少分钟？
+
+
+
+    访客参观流程,模型点一下进入观察模式,假如模型有DM,会进入DM的查看界面
+    playfab倾向于收集能够重复更新的数据, playfab本身没有数据库接口,
+
 
 https://deepinout.com/mysql/mysql-questions/1111_mysql_the_optimal_way_to_store_multipleselection_survey_answers_in_a_database.html
 MySQL 数据库中存储多选项调查答案的最佳方法
+
+
+
 expo专用问卷用户调查
 	survey_id	调查问卷id	key
 
