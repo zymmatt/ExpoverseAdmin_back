@@ -8,7 +8,7 @@ public class ExhibitionVisit {
 
     private int userid; // 用户id
 
-    private String trigger_time; // 参观动作的触发时间
+    private Long trigger_timestamp; // 参观动作的触发时间
 
     private String exhibition_id; //展区id
 
@@ -22,12 +22,10 @@ public class ExhibitionVisit {
         return id;
     }
 
-    public int getUserid() {
-        return userid;
-    }
+    public int getUserid() { return userid; }
 
-    public String getTrigger_time() {
-        return trigger_time;
+    public Long gettrigger_timestamp() {
+        return trigger_timestamp;
     }
 
     public void setExhibition_id(String exhibition_id) {
@@ -38,8 +36,8 @@ public class ExhibitionVisit {
         this.id = id;
     }
 
-    public void setTrigger_time(String trigger_time) {
-        this.trigger_time = trigger_time;
+    public void settrigger_timestamp(Long trigger_timestamp) {
+        this.trigger_timestamp = trigger_timestamp;
     }
 
     public void setUserid(int userid) {

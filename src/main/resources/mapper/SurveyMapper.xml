@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.admin.mapper.SurveyMapper">
+    <!-- 插入新的问卷,产生问卷编号 -->
+    <insert id="insert" parameterType="com.example.admin.entity.User">
+        INSERT INTO expoverse.user (name, company, job, mail, phone, approval_date, approver_id, secret_key)
+        VALUES (#{name}, #{company}, #{job}, #{mail}, #{phone}, #{approval_date}, #{approver_id}, UUID())
+    </insert>
+
+
+
+
+
+
+
+
+
+</mapper>

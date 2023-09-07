@@ -2,17 +2,24 @@ package com.example.admin.entity;
 
 // 展区参观行为统计的单个结果
 public class Exhibition_data {
+
     private String exhibition_id; //展区id
 
-    private int visitNum=0;//参观人次
+    private int visitNum;//参观人次
 
-    private int visitUser=0;//参观人数
+    private int visitUser;//参观人数
 
-    private int visitTime=0;//参观时长
+    private int visitTime;//参观时长
 
-    public int getVisitNum() {
-        return visitNum;
+
+    public Exhibition_data(String exhbid, int visitNum, int visitUser, int visitTime){
+        this.exhibition_id=exhbid;
+        this.visitNum = visitNum;
+        this.visitUser = visitUser;
+        this.visitTime = visitTime;
     }
+
+    public int getVisitNum() { return visitNum; }
 
     public int getVisitTime() {
         return visitTime;

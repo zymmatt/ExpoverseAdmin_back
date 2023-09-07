@@ -8,5 +8,6 @@ import java.util.List;
 @Mapper
 public interface ExhibitionVisitMapper {
     void insertExhibitionVisit(ExhibitionVisit exhibitionVisit);
-    List<ExhibitionVisit> getDatabyDate(String startTime, String endTime);
+    List<ExhibitionVisit> getDatabyDate(Long startTime, Long endTime);
+    List<String> getExhibitionList();
 }

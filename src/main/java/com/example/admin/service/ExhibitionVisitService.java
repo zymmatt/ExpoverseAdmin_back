@@ -4,7 +4,7 @@ import com.example.admin.entity.ExhibitionVisit;
 import java.util.List;
 public interface ExhibitionVisitService {
     void createData(ExhibitionVisit exhibitionVisit);
-    List<Exhibition_data> getDatabyDate(String startDate, String endDate);
+    List<Exhibition_data> getDatabyDate(Long startDate, Long endDate);
     void downloadDataExcel();
 
 }

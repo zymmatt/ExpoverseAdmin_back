@@ -73,12 +73,21 @@ CREATE TABLE expoverse.invitation_codes (
 	exhibition_name  展区的名字
 	describtion   产品描述
 
+CREATE TABLE `expoverse`.`exhibition` (
+  `exhibition_id` VARCHAR(20) NOT NULL,
+  `verse_id` VARCHAR(20) NULL,
+  `name` VARCHAR(45) NULL,
+  `describtion` VARCHAR(45) NULL,
+  PRIMARY KEY (`exhibition_id`));
+
+
 
 
 访客参观记录
 	exhibition_id  参观的展区id
 	userid   用户的id?     key
-	trigger_time  触发的时间
+	trigger_timestamp  触发的时间   Long
+	enter  进入还是离开  boolean
 	product_id     参观的产品id
 	// period_time   持续了多少分钟？
 
@@ -107,17 +116,59 @@ expo专用问卷用户调查
 
 		
 问卷题目
-	ques_id 题目id     key
+	ques_id 题目id  int    key
 	ques_content 题目问题
 	ques_type 题目类型
-		
+
+CREATE TABLE `expoverse`.`survey_questions` (
+  `ques_id` INT NOT NULL AUTO_INCREMENT,
+  `ques_content` VARCHAR(45) NOT NULL,
+  `ques_type` VARCHAR(20) NOT NULL,
+  `` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
 
 问卷选项
-	ques_id
-	ques_option_id 选项id  key
+	ques_id   int
+	option_id 选项id   int  key
 	option_content 选项内容
-		
-		
+
+CREATE TABLE `expoverse`.`survey_options` (
+  `option_id` INT NOT NULL AUTO_INCREMENT,
+  `ques_id` INT NOT NULL,
+  `option_content` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`option_id`));
+
+
+用户作答问卷的记录
+    survey_id   int  key
+    userid    int
+    duration_sec
+    trigger_timestamp
+
+CREATE TABLE `expoverse`.`survey_user` (
+  `survey_id` INT NOT NULL AUTO_INCREMENT,
+  `userid` INT NULL,
+  `duration_sec` INT NULL,
+  `trigger_timestamp` INT UNSIGNED NULL,
+  PRIMARY KEY (`survey_id`));
+
+
+
+
+
+单选/多选, 针对单个问题打钩了哪一项
+    id         key    Auto Increment
+    survey_id   int
+    option_id   int
+
+CREATE TABLE `expoverse`.`option_answers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `survey_id` INT NOT NULL,
+  `option_id` INT NOT NULL,
+  `option_content` VARCHAR(90),
+  PRIMARY KEY (`id`));
+
 		
 blob表
 	图片container

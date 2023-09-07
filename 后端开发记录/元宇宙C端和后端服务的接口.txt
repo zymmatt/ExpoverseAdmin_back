@@ -25,7 +25,7 @@
     {
         "userid":"xxx", # 客户id
         "duration_sec": 600,  #回答时长,多少秒钟
-        "trigger_time":" 1693829695",  # 触发的时间戳
+        "trigger_timestamp":" 1693829695",  # 触发的时间戳
         "questions":[
             {"ques_id":"xxx", "answer":"",
                 "choice":[
@@ -56,7 +56,7 @@
         "userid":"xxx",
         "exhibition_id":"xxx",  # 展区id
         "enter":true/false,  # true代表进入, false代表走出
-        "trigger_time":" 1693829695",  # 触发的时间戳
+        "trigger_timestamp":" 1693829695",  # 触发的时间戳
     }
 
 
