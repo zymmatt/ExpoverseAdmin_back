@@ -1,7 +1,7 @@
 package com.example.admin.service.impl;
 
-import com.example.admin.entity.ExhibitionVisit;
-import com.example.admin.entity.Exhibition_data;
+import com.example.admin.entity.Visit.ExhibitionVisit;
+import com.example.admin.entity.Visit.Exhibition_data;
 import com.example.admin.service.ExhibitionVisitService;
 import com.example.admin.mapper.ExhibitionVisitMapper;
 

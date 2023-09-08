@@ -1,7 +1,7 @@
-package com.example.admin.entity;
+package com.example.admin.entity.Survey;
 
 // 统计单个选项有多少个人选了
-public class OptionAnswer {
+public class OptionAnswers {
     //private int ques_id; // 问题id
     private int option_id; // 选项id
     private String option_content; //选项内容
@@ -29,5 +29,10 @@ public class OptionAnswer {
 
     public void setOption_id(int option_id) {
         this.option_id = option_id;
+    }
+
+    public OptionAnswers(int option_id, int answer_num){
+        this.option_id = option_id;
+        this.answer_num = answer_num;
     }
 }

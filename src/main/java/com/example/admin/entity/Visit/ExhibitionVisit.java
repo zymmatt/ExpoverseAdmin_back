@@ -1,4 +1,4 @@
-package com.example.admin.entity;
+package com.example.admin.entity.Visit;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

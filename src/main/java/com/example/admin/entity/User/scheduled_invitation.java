@@ -1,4 +1,4 @@
-package com.example.admin.entity;
+package com.example.admin.entity.User;
 
 public class scheduled_invitation {
     private String currentDate;//日期

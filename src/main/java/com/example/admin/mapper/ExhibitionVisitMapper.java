@@ -1,5 +1,5 @@
 package com.example.admin.mapper;
-import com.example.admin.entity.ExhibitionVisit;
+import com.example.admin.entity.Visit.ExhibitionVisit;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

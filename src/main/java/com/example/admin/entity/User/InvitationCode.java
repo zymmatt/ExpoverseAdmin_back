@@ -1,4 +1,4 @@
-package com.example.admin.entity;
+package com.example.admin.entity.User;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.UUID;

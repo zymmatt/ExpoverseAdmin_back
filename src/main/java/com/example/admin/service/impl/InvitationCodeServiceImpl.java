@@ -1,7 +1,7 @@
 package com.example.admin.service.impl;
 
-import com.example.admin.entity.scheduled_invitation;
-import com.example.admin.entity.InvitationCode;
+import com.example.admin.entity.User.scheduled_invitation;
+import com.example.admin.entity.User.InvitationCode;
 import com.example.admin.service.InvitationCodeService;
 import com.example.admin.mapper.InvitationCodeMapper;
 

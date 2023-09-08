@@ -1,8 +1,8 @@
 package com.example.admin.controller;
 
-import com.example.admin.entity.SingleQuestion;
-import com.example.admin.entity.SingleQuestionDetail;
-import com.example.admin.entity.UserSurvey;
+import com.example.admin.entity.Survey.SingleQuestionStat;
+import com.example.admin.entity.Survey.SingleQuestionByUser;
+import com.example.admin.entity.Survey.SingleSurvey;
 
 import com.example.admin.service.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +18,31 @@ public class SurveyController {
 
     // 某一位用户提交了问卷后,记录所有的回答结果录入数据库
     @RequestMapping(value="/createSurvey", method = RequestMethod.POST)
-    public void createSurvey(@RequestBody UserSurvey userSurvey) {
-        surveyService.createSurvey(userSurvey);
+    public void createSurvey(@RequestBody SingleSurvey singleSurvey) {
+        surveyService.createSurvey(singleSurvey);
     }
 
+    // 获得已收集的问卷数量
+    @RequestMapping(value="/getSurveyNum", method = RequestMethod.GET)
+    public int getSurveyNum() {
+        return surveyService.getSurveyNum();
+    }
+
+    // 获得平均完成时间
+    @RequestMapping(value="/getAvgTime", method = RequestMethod.GET)
+    public int getAvgTime() {
+        return surveyService.getAvgTime();
+    }
 
     // 获得所有问题的回答选项统计量
     @RequestMapping(value="/getAllQues", method = RequestMethod.GET)
-    public List<SingleQuestion> getAllQues() {
+    public List<SingleQuestionStat> getAllQues() {
         return surveyService.getAllQues();
     }
 
     // 获得单个问题每一位用户的具体作答
     @RequestMapping(value="/getQuesDetail", method = RequestMethod.GET)
-    public List<SingleQuestionDetail> getQuesDetail(int ques_id){
+    public List<SingleQuestionByUser> getQuesDetail(int ques_id){
         return surveyService.getQuesDetail(ques_id);
     }
 

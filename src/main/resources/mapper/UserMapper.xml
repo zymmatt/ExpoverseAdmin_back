@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.admin.mapper.UserMapper">
     <!-- 定义一个resultMap，用于将数据库表的列映射到User实体类的字段 -->
-    <resultMap id="UserResultMap" type="com.example.admin.entity.User">
+    <resultMap id="UserResultMap" type="com.example.admin.entity.User.User">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="company" property="company"/>
@@ -19,7 +19,7 @@
 
 
     <!-- 查询所有用户 DATE_FORMAT(approval_date, '%Y-%m-%d %H:%i:%s') AS approval_date
-    resultType="com.example.admin.entity.User" -->
+    resultType="com.example.admin.entity.User.User" -->
     <select id="findAll"  resultMap="UserResultMap">
         SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
         from expoverse.user ORDER BY approval_date DESC;
@@ -32,19 +32,24 @@
     </select>
 
     <!-- 根据ID查询用户 -->
-    <select id="findById" parameterType="java.lang.Long" resultMap="UserResultMap">
+    <select id="findById" parameterType="int" resultMap="UserResultMap">
         SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
         from expoverse.user WHERE id = #{id}
     </select>
 
+    <select id="findNamebyId" parameterType="int" resultType="String">
+        SELECT name from expoverse.user
+        WHERE id= #{id}
+    </select>
+
     <!-- 插入新用户 -->
-    <insert id="insert" parameterType="com.example.admin.entity.User">
+    <insert id="insert" parameterType="com.example.admin.entity.User.User">
         INSERT INTO expoverse.user (name, company, job, mail, phone, approval_date, approver_id, secret_key)
         VALUES (#{name}, #{company}, #{job}, #{mail}, #{phone}, #{approval_date}, #{approver_id}, UUID())
     </insert>
 
     <!-- 更新用户信息 -->
-    <update id="update" parameterType="com.example.admin.entity.User">
+    <update id="update" parameterType="com.example.admin.entity.User.User">
         UPDATE expoverse.user
         SET name = #{name}, company = #{company} , job = #{job}, mail= #{mail}, phone= #{phone}
         WHERE id = #{id}

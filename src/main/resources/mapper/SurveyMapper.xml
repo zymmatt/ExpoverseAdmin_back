@@ -4,18 +4,54 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.admin.mapper.SurveyMapper">
+
     <!-- 插入新的问卷,产生问卷编号 -->
-    <insert id="insert" parameterType="com.example.admin.entity.User">
-        INSERT INTO expoverse.user (name, company, job, mail, phone, approval_date, approver_id, secret_key)
-        VALUES (#{name}, #{company}, #{job}, #{mail}, #{phone}, #{approval_date}, #{approver_id}, UUID())
+    <insert id="insertSurveyUser" parameterType="com.example.admin.entity.Survey.SingleSurvey"
+            useGeneratedKeys="true" keyProperty="survey_id" keyColumn="survey_id">
+        INSERT INTO expoverse.survey_user (userid, duration_sec, trigger_timestamp)
+        VALUES (#{userid}, #{duration_sec}, #{trigger_timestamp})
     </insert>
 
+    <!-- 把每一道题的每一个答案的作答条目插入数据库中 -->
+    <insert id="insertSurveyOption" parameterType="com.example.admin.entity.Survey.SurveyOption">
+        INSERT INTO expoverse.option_answers (survey_id, option_id)
+        VALUES (#{survey_id}, #{option_id})
+    </insert>
 
+    <!-- 把每一道题的填空回答插入数据库中 -->
+    <insert id="insertQuesFill" parameterType="com.example.admin.entity.Survey.QuesFill">
+        INSERT INTO expoverse.ques_fill (ques_id, survey_id, filltext)
+        VALUES (#{ques_id}, #{survey_id}, #{filltext})
+    </insert>
 
+    <!-- 获得所有的问卷问题id -->
+    <select id="getAllQuesID" resultType="int">
+        SELECT ques_id FROM expoverse.survey_questions
+    </select>
 
+    <!-- 获得已收集的问卷数量 -->
+    <select id="getSurveyNum" resultType="int">
+        SELECT survey_id FROM expoverse.survey_user
+    </select>
 
+    <!-- 获得已收集的问卷的平均完成时间 -->
+    <select id="getAvgTime" resultType="int">
+        SELECT duration_sec FROM expoverse.survey_user
+    </select>
 
+    <!-- 获得某一道题目名下有哪些选项,返回所有的选项id -->
+    <select id="getOptionsForOneQues" parameterType="int" resultType="int">
+        SELECT option_id FROM expoverse.survey_options
+        WHERE ques_id = #{ques_id}
+    </select>
 
+    <!-- 获得某一个选项的所有作答survey_id和userid -->
+    <select id="getUserForOneOption" parameterType="int" resultType="com.example.admin.entity.Survey.UserSurvey">
+        SELECT expoverse.survey_user.survey_id,expoverse.survey_user.userid
+        FROM expoverse.option_answers JOIN expoverse.survey_user
+        ON expoverse.option_answers.survey_id = expoverse.survey_user.survey_id
+        WHERE expoverse.option_answers.option_id = #{option_id}
+    </select>
 
 
 </mapper>

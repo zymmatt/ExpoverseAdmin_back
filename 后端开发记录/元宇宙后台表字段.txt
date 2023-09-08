@@ -45,7 +45,7 @@ CREATE TABLE expoverse.invitation_codes (
     start_date DATE,
     end_date DATE,
     start_time TIME,
-    user_id INT,
+    userid INT,
     approver_id VARCHAR(20)
 );
 
@@ -114,6 +114,9 @@ expo专用问卷用户调查
 		第二题答案
 		第三题id
 
+
+
+
 		
 问卷题目
 	ques_id 题目id  int    key
@@ -128,6 +131,8 @@ CREATE TABLE `expoverse`.`survey_questions` (
   PRIMARY KEY (`id`));
 
 
+
+
 问卷选项
 	ques_id   int
 	option_id 选项id   int  key
@@ -138,6 +143,8 @@ CREATE TABLE `expoverse`.`survey_options` (
   `ques_id` INT NOT NULL,
   `option_content` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`option_id`));
+
+
 
 
 用户作答问卷的记录
@@ -156,7 +163,6 @@ CREATE TABLE `expoverse`.`survey_user` (
 
 
 
-
 单选/多选, 针对单个问题打钩了哪一项
     id         key    Auto Increment
     survey_id   int
@@ -168,6 +174,25 @@ CREATE TABLE `expoverse`.`option_answers` (
   `option_id` INT NOT NULL,
   `option_content` VARCHAR(90),
   PRIMARY KEY (`id`));
+
+
+
+expoverse.ques_fill
+填空题,某一次问卷中针对某个问题的回答
+    id
+    ques_id     int
+    survey_id   int
+    filltext    string
+
+
+CREATE TABLE `expoverse`.`ques_fill` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ques_id` INT NULL,
+  `survey_id` INT NULL,
+  `filltext` VARCHAR(90) NULL,
+  PRIMARY KEY (`id`));
+
+
 
 		
 blob表

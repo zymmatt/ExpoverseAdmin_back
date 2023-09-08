@@ -1,4 +1,4 @@
-package com.example.admin.entity;
+package com.example.admin.entity.Visit;
 
 // 展区参观行为统计的单个结果
 public class Exhibition_data {

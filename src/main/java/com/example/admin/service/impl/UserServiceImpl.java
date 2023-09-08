@@ -1,7 +1,7 @@
 // UserServiceImpl.java
 package com.example.admin.service.impl;
 
-import com.example.admin.entity.User;
+import com.example.admin.entity.User.User;
 import com.example.admin.service.UserService;
 import com.example.admin.mapper.UserMapper;
 

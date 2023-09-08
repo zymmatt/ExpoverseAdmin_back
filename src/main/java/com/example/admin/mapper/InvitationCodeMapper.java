@@ -1,5 +1,5 @@
 package com.example.admin.mapper;
-import com.example.admin.entity.InvitationCode;
+import com.example.admin.entity.User.InvitationCode;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

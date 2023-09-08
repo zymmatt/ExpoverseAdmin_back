@@ -1,14 +1,13 @@
 package com.example.admin.controller;
 
-import com.example.admin.entity.Exhibition_data;
-import com.example.admin.entity.ExhibitionVisit;
+import com.example.admin.entity.Visit.Exhibition_data;
+import com.example.admin.entity.Visit.ExhibitionVisit;
 import com.example.admin.service.ExhibitionVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 

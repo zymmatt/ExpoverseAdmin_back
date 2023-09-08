@@ -1,14 +1,17 @@
 package com.example.admin.service;
-import com.example.admin.entity.SingleQuestion;
-import com.example.admin.entity.UserSurvey;
-import com.example.admin.entity.SingleQuestionDetail;
+import com.example.admin.entity.Survey.SingleQuestionStat;
+import com.example.admin.entity.Survey.SingleSurvey;
+import com.example.admin.entity.Survey.SingleQuestionByUser;
 import java.util.List;
 
 public interface SurveyService {
 
-    void createSurvey(UserSurvey userSurvey);
-    List<SingleQuestion> getAllQues();
-    List<SingleQuestionDetail> getQuesDetail(int ques_id);
+    void createSurvey(SingleSurvey singleSurvey);
+    int getSurveyNum();
+    int getAvgTime();
+    List<SingleQuestionStat> getAllQues();
+    List<SingleQuestionByUser> getQuesDetail(int ques_id);
     void downloadDataExcel();
+
 
 }

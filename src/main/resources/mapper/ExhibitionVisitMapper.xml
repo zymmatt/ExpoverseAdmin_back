@@ -5,14 +5,14 @@
 
 <mapper namespace="com.example.admin.mapper.ExhibitionVisitMapper">
 
-    <insert id="insertExhibitionVisit" parameterType="com.example.admin.entity.ExhibitionVisit">
+    <insert id="insertExhibitionVisit" parameterType="com.example.admin.entity.Visit.ExhibitionVisit">
         INSERT INTO expoverse.exhibition_visit
         (userid, trigger_timestamp, exhibition_id, enter)
         VALUES (#{userid}, #{trigger_timestamp}, #{exhibition_id}, #{enter})
     </insert>
 
 
-    <resultMap id="ExhibitionVisitMap" type="com.example.admin.entity.ExhibitionVisit">
+    <resultMap id="ExhibitionVisitMap" type="com.example.admin.entity.Visit.ExhibitionVisit">
         <id column="id" property="id"/>
         <result column="userid" property="userid"/>
         <result column="trigger_timestamp" property="trigger_timestamp"/>
