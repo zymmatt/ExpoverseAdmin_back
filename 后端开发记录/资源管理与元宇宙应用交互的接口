@@ -1,0 +1,29 @@
+元宇宙应用想要获取一个json表，指定了每一个产品的DM下的图片的顺序
+展区id，产品id，DM的id遵照台北展厅展区产品ID的excel文件里的内容
+
+
+[
+    {
+        "exhibition_id":"InteFiveG",//展区id
+        // 展区影片始终要给最新,给啥用啥,都是url地址
+        "exhibition_movie_url": ["xxx","xxx","xxx","xxx","xxx","xxx"],
+        // 每一个产品
+        "prodlist":[
+            {
+                "prod_id":"InteFiveG_NX-H3003,
+                // # DM图片始终要给最新,给啥用啥,都是url地址
+                "DMlist":["xxx","xxx","xxx","xxx","xxx","xxx"]
+                // 产品影片始终要给最新,给啥用啥,都是url地址
+                "product_movie_url": ["xxx","xxx","xxx","xxx","xxx","xxx"],
+            },
+            {
+
+            },
+        ]
+    },
+    {
+
+    },
+
+]
+

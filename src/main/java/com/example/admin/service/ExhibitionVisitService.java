@@ -6,5 +6,4 @@ public interface ExhibitionVisitService {
     void createData(ExhibitionVisit exhibitionVisit);
     List<Exhibition_data> getDatabyDate(Long startDate, Long endDate);
     void downloadDataExcel();
-
 }
