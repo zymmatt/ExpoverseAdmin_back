@@ -23,7 +23,21 @@ public class ResourceController {
     }
 
 
+    //根据当前的展区id查询产品id列表
+    @RequestMapping(value="/getProdListbyExhbid", method= RequestMethod.GET)
+    public List<product> getProdListbyExhbid(String exhbid){
+        return resourceService.getProdListbyExhbid(exhbid);
+    }
 
+    //根据当前的产品id查询DM的URL列表用于展示在前端
+    @RequestMapping(value="/getDMURLbyProdid", method= RequestMethod.GET)
+    public List<DM> getDMURLbyProdid(String prodid){
+        return resourceService.getDMURLbyProdid(prodid);
+    }
 
-
+    // 获得临时的Azure blob storage的SAS来访问URL的缩略图
+    @RequestMapping(value="/gettempSAS", method= RequestMethod.GET)
+    public String gettempSAS(){
+        return resourceService.gettempSAS();
+    }
 }

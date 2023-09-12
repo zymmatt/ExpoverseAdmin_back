@@ -58,12 +58,27 @@ CREATE TABLE expoverse.invitation_codes (
 	product_id  产品 id         
 	file_no	在产品中的序号	
 
+CREATE TABLE `expoverse`.`url` (
+  `file_id` INT NOT NULL,
+  `file_url` VARCHAR(60) NULL,
+  `file_type` VARCHAR(20) NULL,
+  `product_id` VARCHAR(25) NULL,
+  `file_no` INT NULL,
+  PRIMARY KEY (`file_id`));
+
+
 
 
 产品和展区的从属表
-	product_id  产品 id         key
-	product_name  产品名称
-	exhibition_id  属于的展区
+	product_id  产品 id   string      key
+	product_name  产品名称     string
+	exhibition_id  属于的展区   string
+
+CREATE TABLE `expoverse`.`product` (
+  `product_id` VARCHAR(25) NOT NULL,
+  `product_name` VARCHAR(50) NULL,
+  `exhibition_id` VARCHAR(50) NULL,
+  PRIMARY KEY (`product_id`));
 
 
 

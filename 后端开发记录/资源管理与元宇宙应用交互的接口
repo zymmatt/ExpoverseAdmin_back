@@ -2,6 +2,10 @@
 展区id，产品id，DM的id遵照台北展厅展区产品ID的excel文件里的内容
 
 
+
+
+接口  /
+
 [
     {
         "exhibition_id":"InteFiveG",//展区id

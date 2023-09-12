@@ -13,5 +13,4 @@ public interface SurveyService {
     List<SingleQuestionByUser> getQuesDetail(int ques_id);
     void downloadDataExcel();
 
-
 }

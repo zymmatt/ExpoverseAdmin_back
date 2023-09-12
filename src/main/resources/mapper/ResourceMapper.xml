@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.admin.mapper.ResourceMapper">
+
+    <resultMap id="ProductResultMap" type="com.example.admin.entity.Resource.product">
+        <result column="product_id" property="product_id"/>
+        <result column="product_name" property="product_name"/>
+        <!-- 其他字段 -->
+    </resultMap>
+
+    <resultMap id="DMResultMap" type="com.example.admin.entity.Resource.DM">
+        <result column="file_url" property="url"/>
+        <!-- 其他字段 -->
+    </resultMap>
+
+
+
+    <!-- 根据展区ID获得产品列表 -->
+    <select id="getProdListbyExhbid" parameterType="String" resultMap="ProductResultMap">
+        SELECT product_id, product_name FROM expoverse.product WHERE exhibition_id = #{exhbid}
+    </select>
+
+    <!-- 根据产品ID获得DM的URL列表 -->
+    <select id="getDMURLbyProdid" parameterType="String" resultMap="DMResultMap">
+        SELECT file_url FROM expoverse.url WHERE product_id = #{prodid} ORDER BY file_no
+    </select>
+
+
+
+</mapper>
