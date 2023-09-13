@@ -1,6 +1,6 @@
 package com.example.admin.entity.Resource;
 
-public class product {
+public class Product {
     private String product_id; // 产品id
     private String product_name; // 产品名字
 

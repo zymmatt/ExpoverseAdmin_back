@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.admin.mapper.ResourceMapper">
 
-    <resultMap id="ProductResultMap" type="com.example.admin.entity.Resource.product">
+    <resultMap id="ProductResultMap" type="com.example.admin.entity.Resource.Product">
         <result column="product_id" property="product_id"/>
         <result column="product_name" property="product_name"/>
         <!-- 其他字段 -->

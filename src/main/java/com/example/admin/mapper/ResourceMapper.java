@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface ResourceMapper {
-    List<product> getProdListbyExhbid(String exhbid);
+    List<Product> getProdListbyExhbid(String exhbid);
 
     List<DM> getDMURLbyProdid(String prodid);
 
