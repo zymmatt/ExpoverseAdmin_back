@@ -62,10 +62,13 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     public void uploadDMdict(ProdUpdate prodUpdate) throws IOException {
-        System.out.println(prodUpdate.toString());
+        String prodid = prodUpdate.getProdid();
         List<UploadDM> uploadDMs = prodUpdate.getUploadDMlist();
+        List<URL> urlList = new ArrayList<>();
+        int file_no = 1;
         for (UploadDM uploadDM:uploadDMs){
             if(uploadDM.getsrc().startsWith("data:")){
+                //上传的新图片需要传进azure blob storage数据库中
                 String base64Image = uploadDM.getsrc();
                 String imagename = uploadDM.getName();
                 String outputPath = String.format("%s.jpg",imagename);
@@ -107,15 +110,24 @@ public class ResourceServiceImpl implements ResourceService{
                 base64Data = base64Data.trim();
                 // 将Base64数据解码为字节数组
                 byte[] imageBytes = Base64.getDecoder().decode(base64Data);
-                // 将字节数组转换为InputStream
+                // 将字节数组转换为二进制
                 //InputStream inputStream = file.getInputStream();
                 blobClient.upload(BinaryData.fromBytes(imageBytes));
                 System.out.println("上传了新图片"+outputPath);
-
+                String tempsrc = String.format("https://%s.blob.core.windows.net/%s/%s",
+                        accountName,containerName,outputPath);
+                // https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/121glj390n980.jpg
+                urlList.add(new URL(tempsrc,"image",prodid,file_no));
             }
             else{
                 System.out.println(uploadDM.getsrc());
+                urlList.add(new URL(uploadDM.getName(),"image", prodid, file_no));
             }
+            file_no+=1;
+        }
+        resourceMapper.deleteurlbyprodid(prodid);
+        for (URL url:urlList){
+            resourceMapper.inserturlbyprodid(url);
         }
     }
 

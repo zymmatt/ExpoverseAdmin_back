@@ -13,7 +13,11 @@ public interface ResourceMapper {
 
     List<DM> getDMURLbyProdid(String prodid);
 
+    // 删除某个product下已有的所有URL,之后要插入新的
+    void deleteurlbyprodid(String prodid);
 
+    // 向某个product下插入新的url
+    void inserturlbyprodid(URL url);
 }
 
 

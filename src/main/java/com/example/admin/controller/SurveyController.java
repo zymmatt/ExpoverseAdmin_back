@@ -1,8 +1,6 @@
 package com.example.admin.controller;
 
-import com.example.admin.entity.Survey.SingleQuestionStat;
-import com.example.admin.entity.Survey.SingleQuestionByUser;
-import com.example.admin.entity.Survey.SingleSurvey;
+import com.example.admin.entity.Survey.*;
 
 import com.example.admin.service.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,16 @@ import java.util.List;
 public class SurveyController {
     @Autowired
     private SurveyService surveyService;
+
+    // 获取所有的问题id,问题内容和问题类型
+    @RequestMapping(value="/getQuestions", method = RequestMethod.GET)
+    public List<Question> getQuestions() {
+        return surveyService.getQuestions();
+    }
+
+    // 获取所有的选项id,问题id和选项内容
+    @RequestMapping(value="/getOptions", method = RequestMethod.GET)
+    public List<Option> getOptions() { return surveyService.getOptions(); }
 
     // 某一位用户提交了问卷后,记录所有的回答结果录入数据库
     @RequestMapping(value="/createSurvey", method = RequestMethod.POST)

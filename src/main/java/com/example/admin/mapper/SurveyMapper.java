@@ -1,14 +1,15 @@
 package com.example.admin.mapper;
-import com.example.admin.entity.Survey.SingleSurvey;
-import com.example.admin.entity.Survey.UserSurvey;
-import com.example.admin.entity.Survey.SurveyOption;
-import com.example.admin.entity.Survey.QuesFill;
+import com.example.admin.entity.Survey.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface SurveyMapper {
+    // 获取所有的问题id,问题内容和问题类型
+    List<Question> getQuestions();
+    // 获取所有的选项id,问题id和选项内容
+    List<Option> getOptions();
     // 插入用户填写了一张问卷的基本信息,包括用户id,提交时间,作答时间,返回问卷id
     int insertSurveyUser(SingleSurvey singleSurvey);
     // 插入用户填写的问卷中有关每一个选项的作答情况,某张问卷选了哪个选项
@@ -25,5 +26,9 @@ public interface SurveyMapper {
     List<UserSurvey> getUserForOneOption(int option_id);
     // 获得平均完成时间
     List<Integer> getAvgTime();
+    // 获取所有问卷调查的问卷id,用户id,答题时长,提交时间
+    List<SurveyInfo> getSurvey();
+    // 获取某一张调查问卷勾选的所有选项
+    List<Integer> getOptionAnswer(int survey_id);
 }
 

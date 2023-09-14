@@ -1,5 +1,5 @@
 package com.example.admin.service.impl;
-
+import com.example.admin.entity.User.*;
 import com.example.admin.entity.Survey.*;
 import com.example.admin.service.SurveyService;
 import com.example.admin.mapper.SurveyMapper;
@@ -17,6 +17,12 @@ public class SurveyServiceImpl implements SurveyService{
 
     @Autowired
     private UserMapper userMapper;
+
+    @Override
+    public List<Question> getQuestions() { return surveyMapper.getQuestions(); }
+
+    @Override
+    public List<Option> getOptions() { return surveyMapper.getOptions(); }
 
     // 生成新的调查问卷回报
     @Override
@@ -106,8 +112,32 @@ public class SurveyServiceImpl implements SurveyService{
         return new ArrayList<>(surveydict.values());
     }
 
+    // 汇总所有答题问卷的答题情况
     @Override
     public void downloadDataExcel() {
+        // 所有问卷的信息
+        List<SurveyInfo> surveyInfos = surveyMapper.getSurvey();
+        List<Question> questions = surveyMapper.getQuestions();
+        List<>
+        List<ExcelSingleLine> excelSingleLineList = new ArrayList<>();
+        for (SurveyInfo surveyInfo:surveyInfos){
+            int survey_id = surveyInfo.getSurvey_id();
+            int userid = surveyInfo.getUserid();
+            User tempuser = userMapper.findById(userid);
+            ExcelSingleLine templine = new ExcelSingleLine(tempuser, surveyInfo);
+            List<Integer> OptionAnswers = surveyMapper.getOptionAnswer(survey_id);
+            for (Question question:questions){
+
+
+
+
+            }
+
+
+
+        }
+
+
 
     }
 }

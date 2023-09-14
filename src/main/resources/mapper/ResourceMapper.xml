@@ -28,6 +28,17 @@
         SELECT file_url FROM expoverse.url WHERE product_id = #{prodid} ORDER BY file_no
     </select>
 
+    <!-- 删除某个product下已有的所有URL,之后要插入新的 -->
+    <delete id="deleteurlbyprodid" parameterType="String">
+        DELETE FROM expoverse.url WHERE product_id = #{prodid}
+    </delete>
+
+    <!-- 向某个product下插入新的url -->
+    <insert id="inserturlbyprodid" parameterType="com.example.admin.entity.Resource.URL">
+        INSERT INTO expoverse.url (file_url, file_type, product_id, file_no)
+        VALUES (#{file_url}, #{file_type},#{product_id}, #{file_no})
+    </insert>
+
 
 
 </mapper>

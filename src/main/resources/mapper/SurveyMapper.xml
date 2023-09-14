@@ -53,5 +53,20 @@
         WHERE expoverse.option_answers.option_id = #{option_id}
     </select>
 
+    <select id="getQuestions" resultType="com.example.admin.entity.Survey.Question">
+        SELECT * FROM expoverse.survey_questions
+    </select>
+
+    <select id="getOptions" resultType="com.example.admin.entity.Survey.Option">
+        SELECT * FROM expoverse.survey_options
+    </select>
+
+    <select id="getSurvey" resultType="com.example.admin.entity.Survey.SurveyInfo">
+        SELECT * FROM expoverse.survey_user
+    </select>
+
+    <select id="getOptionAnswer" resultType="java.lang.Integer">
+        SELECT option_id FROM expoverse.option_answers WHERE survey_id = #{survey_id}
+    </select>
 
 </mapper>
