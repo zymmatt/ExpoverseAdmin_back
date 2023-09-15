@@ -7,6 +7,14 @@ import com.example.admin.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+
+import java.net.URLEncoder;
 import java.util.*;
 
 @Service
@@ -114,30 +122,95 @@ public class SurveyServiceImpl implements SurveyService{
 
     // 汇总所有答题问卷的答题情况
     @Override
-    public void downloadDataExcel() {
+    public void downloadDataExcel(HttpServletResponse response) throws IOException {
+        /*
         // 所有问卷的信息
         List<SurveyInfo> surveyInfos = surveyMapper.getSurvey();
         List<Question> questions = surveyMapper.getQuestions();
-        List<>
+        List<Option> options = surveyMapper.getOptions();
+        Map<Integer, String> quesid_text = new HashMap<>();//问题id查中文
+        for (Question question:questions){
+            quesid_text.put(question.getQues_id(), question.getQues_content());
+        }
+        Map<Integer, String> optionid_text = new HashMap<>();//选项id查中文
+        Map<Integer, Integer> option_quesid = new HashMap<>();//选项id查问题id
+        for (Option option:options){
+            optionid_text.put(option.getOption_id(),option.getOption_content());
+            option_quesid.put(option.getOption_id(),option.getQues_id());
+        }
         List<ExcelSingleLine> excelSingleLineList = new ArrayList<>();
         for (SurveyInfo surveyInfo:surveyInfos){
             int survey_id = surveyInfo.getSurvey_id();
             int userid = surveyInfo.getUserid();
             User tempuser = userMapper.findById(userid);
             ExcelSingleLine templine = new ExcelSingleLine(tempuser, surveyInfo);
+            //这张问卷中所有被勾选的选项
             List<Integer> OptionAnswers = surveyMapper.getOptionAnswer(survey_id);
+            //列出所有问题,以及每一个问题下的被勾选的回答选项
+            Map<Integer, HashSet<Integer>> ques_option = new HashMap<>();
             for (Question question:questions){
-
-
-
-
+                ques_option.put(question.getQues_id(),new HashSet<>());
             }
-
-
-
+            for (Integer optionid:OptionAnswers){
+                // 选项id找到问题id,再加入到这个问题id下被勾选的选项回答
+                ques_option.get(option_quesid.get(optionid)).add(optionid);
+            }
+            for (int ques_id : ques_option.keySet()) {
+               templine.addquestion(new SingleQuestionByUser(ques_id,survey_id,userid,
+                                    tempuser.getName(),ques_option.get(ques_id)));
+            }
+            // 一行的回答记录已经收集齐了这张问卷的所有问题下的所有回答
+            excelSingleLineList.add(templine);
         }
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Sheet1");
 
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("Column1");
+        headerRow.createCell(1).setCellValue("Column2");
 
+        Row dataRow1 = sheet.createRow(1);
+        dataRow1.createCell(0).setCellValue("Data1");
+        dataRow1.createCell(1).setCellValue("Data2");
+        workbook.
+        */
+        // 创建一个新的工作簿
+        Workbook workbook = new XSSFWorkbook();
 
+        // 创建一个工作表
+        Sheet sheet = workbook.createSheet("Sample Excel");
+
+        // 创建一个行
+        Row row = sheet.createRow(0);
+
+        // 创建单元格并设置值
+        Cell cell = row.createCell(0);
+        cell.setCellValue("Hello");
+
+        // 添加更多单元格和数据
+        OutputStream outputStream = null;
+        String rawFileName = "问卷调查结果.xlsx";
+        response.reset();
+        try {
+            response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.setCharacterEncoding("utf-8");
+            response.setHeader("content-disposition", "attachment;filename="+URLEncoder.encode(rawFileName,"utf-8"));
+
+            outputStream = new BufferedOutputStream(response.getOutputStream());
+            workbook.write(outputStream);
+            outputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 }
+

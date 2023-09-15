@@ -3,6 +3,7 @@ import com.example.admin.entity.User.User;
 import com.example.admin.entity.Survey.SurveyInfo;
 import com.example.admin.entity.Survey.SingleQuestionByUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // 问卷调查一行内的信息, 包含了问卷id,提交时间,用户姓名,电子邮箱,每一道问题的回答
@@ -38,8 +39,12 @@ public class ExcelSingleLine {
     public ExcelSingleLine(User user, SurveyInfo surveyInfo){
         this.user = user;
         this.surveyInfo = surveyInfo;
+        this.singleQuestionByUserList = new ArrayList<>();
     }
 
+    public void addquestion(SingleQuestionByUser singleQuestionByUser){
+        this.singleQuestionByUserList.add(singleQuestionByUser);
+    }
 
 
 }

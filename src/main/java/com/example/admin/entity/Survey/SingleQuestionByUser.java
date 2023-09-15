@@ -23,5 +23,17 @@ public class SingleQuestionByUser {
         return selectedOptions;
     }
 
+    public void setOption(int optionid){
+        this.selectedOptions.add(optionid);
+    }
+
+    public SingleQuestionByUser(int ques_id, int survey_id, int userid,
+                                String user_name, HashSet<Integer> selectedOptions){
+        this.ques_id=ques_id;
+        this.survey_id=survey_id;
+        this.userid=userid;
+        this.user_name=user_name;
+        this.selectedOptions=selectedOptions;
+    }
 
 }

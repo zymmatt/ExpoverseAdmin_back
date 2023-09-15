@@ -1,0 +1,112 @@
+是的，Java Spring Boot 应用可以生成 Excel 文件并允许 Web 前端进行下载。这通常通过一些库来实现，如 Apache POI 或 JExcelApi。
+
+以下是一个使用 Spring Boot 和 Apache POI 来生成 Excel 文件并允许前端下载的简单示例。
+
+### Maven 依赖
+
+首先，添加 Apache POI 的 Maven 依赖到你的 `pom.xml` 文件：
+
+```
+xml
+<dependencies>
+    <!-- ... 其他依赖 ... -->
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>5.0.0</version> <!-- 使用适当的版本 -->
+    </dependency>
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>5.0.0</version> <!-- 使用适当的版本 -->
+    </dependency>
+</dependencies>
+```
+
+### Spring Boot Controller
+
+然后，你可以创建一个 Spring Boot Controller 来生成 Excel 文件：
+
+```java
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+@RestController
+public class ExcelController {
+
+    @GetMapping("/download")
+    public ResponseEntity<byte[]> downloadExcel() throws IOException {
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Sheet1");
+
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("Column1");
+        headerRow.createCell(1).setCellValue("Column2");
+
+        Row dataRow1 = sheet.createRow(1);
+        dataRow1.createCell(0).setCellValue("Data1");
+        dataRow1.createCell(1).setCellValue("Data2");
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        workbook.write(outputStream);
+        workbook.close();
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=example.xlsx")
+                .body(outputStream.toByteArray());
+    }
+}
+```
+
+这个示例中，我们创建了一个简单的 Excel 文件，其中包含一个工作表和一些数据。
+
+然后，我们使用 `ByteArrayOutputStream` 将其转换为字节数组，并通过 Spring Boot 的 `ResponseEntity` 类将其作为一个附件发送给客户端。
+
+### 前端代码
+
+在前端，你可以使用一个简单的 HTML 按钮和 JavaScript 来触发文件下载：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel Download Example</title>
+</head>
+<body>
+
+<button onclick="downloadExcel()">Download Excel</button>
+
+<script>
+    function downloadExcel() {
+        fetch('/download')
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'example.xlsx';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+    }
+</script>
+
+</body>
+</html>
+```
+
+这个示例使用了 Fetch API 来请求 Excel 文件，并使用 Blob 和 `createObjectURL` 方法来创建一个可下载的链接。
+
+这样，当用户点击 "Download Excel" 按钮时，浏览器将下载由 Spring Boot 应用生成的 Excel 文件。
+
+
+https://blog.csdn.net/zyd573803837/article/details/109471189

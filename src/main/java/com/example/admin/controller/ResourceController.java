@@ -15,7 +15,7 @@ public class ResourceController {
     @Autowired
     private ResourceService resourceService;
 
-    //当元宇宙前端刚刚加载的时候向后端请求所有的产品的DM图片排列顺序
+    //当元宇宙前端刚刚加载的时候向后端请求所有的产品的DM图片,电影文件的URL
     @RequestMapping(value="/getAllProduct", method= RequestMethod.GET)
     public List<Product> getAllProduct(){ return resourceService.getAllProduct(); }
 

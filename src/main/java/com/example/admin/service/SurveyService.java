@@ -1,5 +1,8 @@
 package com.example.admin.service;
 import com.example.admin.entity.Survey.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 public interface SurveyService {
@@ -10,6 +13,7 @@ public interface SurveyService {
     int getAvgTime();
     List<SingleQuestionStat> getAllQues();
     List<SingleQuestionByUser> getQuesDetail(int ques_id);
-    void downloadDataExcel();
+    void downloadDataExcel(HttpServletResponse response) throws IOException;
 
 }
+

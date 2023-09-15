@@ -3,13 +3,31 @@ package com.example.admin.controller;
 import com.example.admin.entity.Survey.*;
 
 import com.example.admin.service.SurveyService;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
 @RequestMapping("/survey")
+@CrossOrigin(origins = "http://localhost:8080") // 允许来自http://localhost:3000的请求
 public class SurveyController {
     @Autowired
     private SurveyService surveyService;
@@ -56,8 +74,52 @@ public class SurveyController {
 
     // 把客户问卷作答数据汇集到Excel中,发送给前端供下载
     @RequestMapping(value="/downloadDataExcel", method= RequestMethod.GET)
-    public void downloadDataExcel(){
-        surveyService.downloadDataExcel();
+    //public ResponseEntity<byte[]> downloadExcel() throws IOException {
+    public void downloadExcel(HttpServletResponse response) throws IOException {
+        //File file = new File("C:\\Users\\IES235074\\Downloads\\localtest.xlsx");
+        //FileInputStream fileInputStream = new FileInputStream(file);
+        //Workbook workbook = new XSSFWorkbook(fileInputStream);
+
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Sheet1");
+
+        Row headerRow = sheet.createRow(0);
+        Cell headerCell = headerRow.createCell(0);
+        headerCell.setCellValue("Hello");
+        Cell headerCell2 = headerRow.createCell(1);
+        headerCell2.setCellValue("World");
+
+        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //workbook.write(byteArrayOutputStream);
+
+        // 关闭 workbook 和 ByteArrayOutputStream
+        //workbook.close();
+        //byteArrayOutputStream.close();
+        response.setHeader("Content-Disposition", "attachment;fileName=" +
+                URLEncoder.encode("testexcel", String.valueOf(StandardCharsets.UTF_8)));
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        //response.setHeader("content_type","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setHeader("content_type","application/vnd.ms-excel");
+        ServletOutputStream outputStream = response.getOutputStream();
+        workbook.write(outputStream);
+        outputStream.flush();
+        workbook.close();
+
+        /*
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''" + URLEncoder.encode("fileName", "UTF-8"));
+        headers.add(HttpHeaders.CONTENT_TYPE, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(bytes);
+        */
     }
+    //public void downloadDataExcel(HttpServletResponse response) throws IOException {
+        //surveyService.downloadDataExcel(response);
+    //}
+
 
 }
