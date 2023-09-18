@@ -4,6 +4,7 @@ import com.example.admin.entity.Survey.*;
 import com.example.admin.service.SurveyService;
 import com.example.admin.mapper.SurveyMapper;
 import com.example.admin.mapper.UserMapper;
+import com.example.admin.utils.datetime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+
+
 
 @Service
 public class SurveyServiceImpl implements SurveyService{
@@ -36,8 +40,8 @@ public class SurveyServiceImpl implements SurveyService{
     @Override
     public void createSurvey(SingleSurvey singleSurvey) {
         // 插入用户填写了一张问卷的基本信息,包括用户id,提交时间,作答时间,
-        int survey_id = surveyMapper.insertSurveyUser(singleSurvey);//返回得到的问卷id
-        int userid = singleSurvey.getUserid();
+        surveyMapper.insertSurveyUser(singleSurvey);
+        int survey_id = surveyMapper.getSurveyUser(singleSurvey);
         for (SingleQuesAnswer question: singleSurvey.getQuestions()){
             // 问题的填空回答插入
             //System.out.println(question.getAnswer().length());
@@ -123,14 +127,25 @@ public class SurveyServiceImpl implements SurveyService{
     // 汇总所有答题问卷的答题情况
     @Override
     public void downloadDataExcel(HttpServletResponse response) throws IOException {
-        /*
+        // 创建Excel表格   .xlsx
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Sheet1");
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("ID");
+        headerRow.createCell(1).setCellValue("開始時間");
+        headerRow.createCell(2).setCellValue("完成時長(秒)");
+        headerRow.createCell(3).setCellValue("電子郵件");
+        headerRow.createCell(4).setCellValue("名稱");
+        int headerRownum = 5;
         // 所有问卷的信息
         List<SurveyInfo> surveyInfos = surveyMapper.getSurvey();
         List<Question> questions = surveyMapper.getQuestions();
         List<Option> options = surveyMapper.getOptions();
-        Map<Integer, String> quesid_text = new HashMap<>();//问题id查中文
+        // Map<Integer, String> quesid_text = new HashMap<>();//问题id查中文
         for (Question question:questions){
-            quesid_text.put(question.getQues_id(), question.getQues_content());
+            // quesid_text.put(question.getQues_id(), question.getQues_content());
+            headerRow.createCell(headerRownum).setCellValue(question.getQues_content());
+            headerRownum += 1;
         }
         Map<Integer, String> optionid_text = new HashMap<>();//选项id查中文
         Map<Integer, Integer> option_quesid = new HashMap<>();//选项id查问题id
@@ -143,69 +158,77 @@ public class SurveyServiceImpl implements SurveyService{
             int survey_id = surveyInfo.getSurvey_id();
             int userid = surveyInfo.getUserid();
             User tempuser = userMapper.findById(userid);
-            ExcelSingleLine templine = new ExcelSingleLine(tempuser, surveyInfo);
-            //这张问卷中所有被勾选的选项
-            List<Integer> OptionAnswers = surveyMapper.getOptionAnswer(survey_id);
-            //列出所有问题,以及每一个问题下的被勾选的回答选项
-            Map<Integer, HashSet<Integer>> ques_option = new HashMap<>();
-            for (Question question:questions){
-                ques_option.put(question.getQues_id(),new HashSet<>());
+            if (tempuser != null){
+                ExcelSingleLine templine = new ExcelSingleLine(tempuser, surveyInfo);
+                //这张问卷中所有被勾选的选项
+                List<Integer> OptionAnswers = surveyMapper.getOptionAnswer(survey_id);
+                System.out.println(OptionAnswers);
+                //列出所有问题,以及每一个问题下的被勾选的回答选项
+                Map<Integer, HashSet<Integer>> ques_option = new HashMap<>();
+                for (Question question:questions){
+                    ques_option.put(question.getQues_id(),new HashSet<>());
+                }
+                for (Integer optionid:OptionAnswers){
+                    // 选项id找到问题id,再加入到这个问题id下被勾选的选项回答
+                    ques_option.get(option_quesid.get(optionid)).add(optionid);
+                }
+                for (Question question:questions) {
+                    int ques_id = question.getQues_id();
+                    SingleQuestionByUser singleQuestionByUser = new SingleQuestionByUser(ques_id,survey_id,userid,
+                                                                tempuser.getName(),ques_option.get(ques_id));
+                    if (question.getQues_type().contains("fill")){ //补充填空题内容
+                        String filltext = surveyMapper.getFilledForOneQues(new QuesFill(ques_id,survey_id,""));
+                        singleQuestionByUser.setFilled(filltext);
+                    }
+                    templine.addquestion(singleQuestionByUser);
+                }
+                // 一行的回答记录已经收集齐了这张问卷的所有问题下的所有回答
+                excelSingleLineList.add(templine);
             }
-            for (Integer optionid:OptionAnswers){
-                // 选项id找到问题id,再加入到这个问题id下被勾选的选项回答
-                ques_option.get(option_quesid.get(optionid)).add(optionid);
-            }
-            for (int ques_id : ques_option.keySet()) {
-               templine.addquestion(new SingleQuestionByUser(ques_id,survey_id,userid,
-                                    tempuser.getName(),ques_option.get(ques_id)));
-            }
-            // 一行的回答记录已经收集齐了这张问卷的所有问题下的所有回答
-            excelSingleLineList.add(templine);
         }
-        Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("Sheet1");
-
-        Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("Column1");
-        headerRow.createCell(1).setCellValue("Column2");
-
-        Row dataRow1 = sheet.createRow(1);
-        dataRow1.createCell(0).setCellValue("Data1");
-        dataRow1.createCell(1).setCellValue("Data2");
-        workbook.
-        */
-        // 创建一个新的工作簿
-        Workbook workbook = new XSSFWorkbook();
-
-        // 创建一个工作表
-        Sheet sheet = workbook.createSheet("Sample Excel");
-
-        // 创建一个行
-        Row row = sheet.createRow(0);
-
-        // 创建单元格并设置值
-        Cell cell = row.createCell(0);
-        cell.setCellValue("Hello");
+        int dataRowNum = 1;
+        for (ExcelSingleLine templine:excelSingleLineList){
+            Row dataRow = sheet.createRow(dataRowNum);
+            dataRow.createCell(0).setCellValue(templine.getSurveyInfo().getSurvey_id()); //问卷ID
+            dataRow.createCell(1).setCellValue(datetime.timestamp2str(templine.getSurveyInfo().getTrigger_timestamp())); //开始时间
+            dataRow.createCell(2).setCellValue(templine.getSurveyInfo().getDuration_sec()); //答卷时长
+            dataRow.createCell(3).setCellValue(templine.getUser().getmail()); //名称
+            dataRow.createCell(4).setCellValue(templine.getUser().getName()); //名字
+            int dataColNum = 5;
+            for (SingleQuestionByUser ques:templine.getSingleQuestionByUserList()){
+                StringBuilder stringBuilder = new StringBuilder();
+                HashSet<Integer> tempset = ques.getSelectedOptions();
+                for (Integer ans:tempset) {
+                    stringBuilder.append(optionid_text.get(ans)).append(", "); // 追加字符串
+                }
+                System.out.println("ques.getFilled()   "+ques.getFilled());
+                if (ques.getFilled() != null){
+                    stringBuilder.append(ques.getFilled()); // 补充填空题内容
+                }
+                dataRow.createCell(dataColNum).setCellValue(stringBuilder.toString());
+                dataColNum += 1;
+            }
+            //dataRow.createCell(0).setCellValue();
+            dataRowNum += 1;
+        }
 
         // 添加更多单元格和数据
-        OutputStream outputStream = null;
         String rawFileName = "问卷调查结果.xlsx";
         response.reset();
         try {
-            response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-            response.setCharacterEncoding("utf-8");
-            response.setHeader("content-disposition", "attachment;filename="+URLEncoder.encode(rawFileName,"utf-8"));
-
-            outputStream = new BufferedOutputStream(response.getOutputStream());
+            response.setHeader("Content-Disposition", "attachment;fileName=" +
+                    URLEncoder.encode(rawFileName, String.valueOf(StandardCharsets.UTF_8)));
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            //response.setHeader("content_type","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.setHeader("content_type","application/vnd.ms-excel");
+            ServletOutputStream outputStream = response.getOutputStream();
             workbook.write(outputStream);
             outputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                if (outputStream != null) {
-                    outputStream.close();
-                }
+                workbook.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

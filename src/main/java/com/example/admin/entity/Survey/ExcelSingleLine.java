@@ -10,6 +10,7 @@ import java.util.List;
 public class ExcelSingleLine {
     private User user;
     private SurveyInfo surveyInfo;
+    // 用户对每一道题目的回答
     private List<SingleQuestionByUser> singleQuestionByUserList;
 
     public List<SingleQuestionByUser> getSingleQuestionByUserList() {

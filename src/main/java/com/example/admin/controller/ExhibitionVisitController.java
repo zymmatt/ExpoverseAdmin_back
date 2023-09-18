@@ -2,6 +2,7 @@ package com.example.admin.controller;
 
 import com.example.admin.entity.Visit.Exhibition_data;
 import com.example.admin.entity.Visit.ExhibitionVisit;
+import com.example.admin.entity.Visit.ProductVisit;
 import com.example.admin.service.ExhibitionVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,17 @@ public class ExhibitionVisitController {
     @Autowired
     private ExhibitionVisitService exhibitionVisitService;
 
+
     // 应用端插入新的展区参观数据
-    @RequestMapping(value="/createData", method= RequestMethod.POST)
-    public void createData(@RequestBody ExhibitionVisit exhibitionVisit) {
-        exhibitionVisitService.createData(exhibitionVisit);
+    @RequestMapping(value="/createDataExhb", method= RequestMethod.POST)
+    public void createDataExhb(@RequestBody ExhibitionVisit exhibitionVisit) {
+        exhibitionVisitService.createDataExhb(exhibitionVisit);
+    }
+
+    // 应用端插入新的产品参观数据
+    @RequestMapping(value="/createDataProd", method= RequestMethod.POST)
+    public void createDataProd(@RequestBody ProductVisit productVisit) {
+        exhibitionVisitService.createDataProd(productVisit);
     }
 
     // 根据时间区间获得这段时间内的展区总体参观数据

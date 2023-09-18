@@ -1,7 +1,7 @@
 // UserController.java
 package com.example.admin.controller;
 
-import com.example.admin.entity.User.User;
+import com.example.admin.entity.User.*;
 import com.example.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +13,12 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @RequestMapping(value="/login", method= RequestMethod.GET)
+    public Login login(String code) {
+        return userService.verifylogin(code);
+    }
+
 
     @RequestMapping(value="/findAll", method= RequestMethod.GET)
     public List<User> findAll() {
@@ -31,10 +37,7 @@ public class UserController {
 
     @RequestMapping(value="/createUser", method= RequestMethod.POST)
     public void createUser(@RequestBody User user) {
-        //System.out.println(user.getName());
-        //System.out.println(user.getCompany());
-        //System.out.println(user.getJob());
-        //System.out.println(user.getPhone());
+
         userService.createUser(user);
     }
 

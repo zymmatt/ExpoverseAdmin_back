@@ -1,5 +1,5 @@
 package com.example.admin.mapper;
-import com.example.admin.entity.User.User;
+import com.example.admin.entity.User.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,4 +13,7 @@ public interface UserMapper {
     void insert(User user);
     void update(User user);
     void delete(int id);
+    InvitationCode findCode(String code);
+    void insertlogin(Login login);
+    int getlogin(Login login);
 }

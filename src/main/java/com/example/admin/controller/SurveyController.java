@@ -79,22 +79,8 @@ public class SurveyController {
         //File file = new File("C:\\Users\\IES235074\\Downloads\\localtest.xlsx");
         //FileInputStream fileInputStream = new FileInputStream(file);
         //Workbook workbook = new XSSFWorkbook(fileInputStream);
-
-        Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("Sheet1");
-
-        Row headerRow = sheet.createRow(0);
-        Cell headerCell = headerRow.createCell(0);
-        headerCell.setCellValue("Hello");
-        Cell headerCell2 = headerRow.createCell(1);
-        headerCell2.setCellValue("World");
-
-        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        //workbook.write(byteArrayOutputStream);
-
-        // 关闭 workbook 和 ByteArrayOutputStream
-        //workbook.close();
-        //byteArrayOutputStream.close();
+        surveyService.downloadDataExcel(response);
+        /*
         response.setHeader("Content-Disposition", "attachment;fileName=" +
                 URLEncoder.encode("testexcel", String.valueOf(StandardCharsets.UTF_8)));
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -104,17 +90,6 @@ public class SurveyController {
         workbook.write(outputStream);
         outputStream.flush();
         workbook.close();
-
-        /*
-        byte[] bytes = byteArrayOutputStream.toByteArray();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''" + URLEncoder.encode("fileName", "UTF-8"));
-        headers.add(HttpHeaders.CONTENT_TYPE, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-
-        return ResponseEntity.ok()
-                .headers(headers)
-                .body(bytes);
         */
     }
     //public void downloadDataExcel(HttpServletResponse response) throws IOException {

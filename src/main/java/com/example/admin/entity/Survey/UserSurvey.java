@@ -11,4 +11,13 @@ public class UserSurvey {
     public int getSurvey_id() {
         return survey_id;
     }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public void setSurvey_id(int survey_id) {
+        this.survey_id = survey_id;
+    }
+
 }

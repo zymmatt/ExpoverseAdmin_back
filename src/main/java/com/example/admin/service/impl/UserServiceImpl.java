@@ -1,12 +1,18 @@
 // UserServiceImpl.java
 package com.example.admin.service.impl;
 
+import com.example.admin.entity.User.InvitationCode;
+import com.example.admin.entity.User.Login;
 import com.example.admin.entity.User.User;
 import com.example.admin.service.UserService;
 import com.example.admin.mapper.UserMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 @Service
@@ -31,6 +37,31 @@ public class UserServiceImpl implements UserService {
         return userMapper.findById(id);
     }
 
+    @Override
+    public Login verifylogin(String code) {
+        // 验证这个邀请码是谁的, 是否还在有效期内
+        InvitationCode invitation = userMapper.findCode(code);
+        System.out.println(invitation);
+        //invitation.getStartDate().atStartOfDay().to
+        //invitation.getEndDate()
+        LocalDateTime localDateTimeStart = LocalDateTime.of(invitation.getStartDate(), invitation.getStartTime());
+        LocalDateTime localDateTimeEnd = LocalDateTime.of(invitation.getEndDate(), invitation.getStartTime());
+        long timestampStart = localDateTimeStart.toInstant(ZoneOffset.ofHours(8)).getEpochSecond();
+        long timestampEnd = localDateTimeEnd.toInstant(ZoneOffset.ofHours(8)).getEpochSecond();
+        long currentTimestamp = Instant.now().getEpochSecond();
+        if (currentTimestamp>timestampStart && currentTimestamp<timestampEnd){
+            System.out.println(timestampStart);
+            System.out.println(timestampEnd);
+            System.out.println(currentTimestamp);
+            // 还未过期,允许登录
+            int userid = invitation.getuserid();
+            Login res = new Login(userid,currentTimestamp);
+            userMapper.insertlogin(res);
+            int loginid = userMapper.getlogin(res);
+            return new Login(loginid, userid);
+        }
+        return null;
+    }
 
     @Override
     public void createUser(User user) {

@@ -11,6 +11,11 @@
         VALUES (#{userid}, #{trigger_timestamp}, #{exhibition_id}, #{enter})
     </insert>
 
+    <insert id="insertProductVisit" parameterType="com.example.admin.entity.Visit.ProductVisit">
+        INSERT INTO expoverse.product_visit
+        (loginid, userid, prodid, duration, trigger_timestamp)
+        VALUES (#{loginid}, #{userid}, #{prodid}, #{duration}, #{trigger_timestamp})
+    </insert>
 
     <resultMap id="ExhibitionVisitMap" type="com.example.admin.entity.Visit.ExhibitionVisit">
         <id column="id" property="id"/>
@@ -27,4 +32,6 @@
     <select id="getExhibitionList" resultType="String">
         SELECT exhibition_id FROM expoverse.exhibition;
     </select>
+
+
 </mapper>

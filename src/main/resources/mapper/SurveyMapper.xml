@@ -7,11 +7,15 @@
 
     <!-- 插入新的问卷,产生问卷编号 -->
     <insert id="insertSurveyUser" parameterType="com.example.admin.entity.Survey.SingleSurvey"
-            useGeneratedKeys="true" keyProperty="survey_id" keyColumn="survey_id">
+            useGeneratedKeys="true" keyProperty="survey_id">
         INSERT INTO expoverse.survey_user (userid, duration_sec, trigger_timestamp)
         VALUES (#{userid}, #{duration_sec}, #{trigger_timestamp})
     </insert>
-
+    <!--得到刚才插入的问卷信息的用户id -->
+    <select id="getSurveyUser" parameterType="com.example.admin.entity.Survey.SingleSurvey" resultType="int">
+        SELECT survey_id FROM expoverse.survey_user
+        WHERE userid = #{userid} and trigger_timestamp = #{trigger_timestamp}
+    </select>
     <!-- 把每一道题的每一个答案的作答条目插入数据库中 -->
     <insert id="insertSurveyOption" parameterType="com.example.admin.entity.Survey.SurveyOption">
         INSERT INTO expoverse.option_answers (survey_id, option_id)
@@ -69,5 +73,9 @@
         SELECT option_id FROM expoverse.option_answers WHERE survey_id = #{survey_id}
     </select>
 
+    <select id="getFilledForOneQues" parameterType="com.example.admin.entity.Survey.QuesFill"
+            resultType="java.lang.String">
+        SELECT filltext FROM expoverse.ques_fill WHERE ques_id = #{ques_id} and survey_id = #{survey_id}
+    </select>
 </mapper>
 

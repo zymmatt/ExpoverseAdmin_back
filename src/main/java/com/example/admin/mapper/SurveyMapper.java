@@ -10,8 +10,10 @@ public interface SurveyMapper {
     List<Question> getQuestions();
     // 获取所有的选项id,问题id和选项内容
     List<Option> getOptions();
-    // 插入用户填写了一张问卷的基本信息,包括用户id,提交时间,作答时间,返回问卷id
-    int insertSurveyUser(SingleSurvey singleSurvey);
+    // 插入用户填写了一张问卷的基本信息,包括用户id,提交时间,作答时间
+    void insertSurveyUser(SingleSurvey singleSurvey);
+    // 得到刚才插入的问卷信息的用户id
+    int getSurveyUser(SingleSurvey singleSurvey);
     // 插入用户填写的问卷中有关每一个选项的作答情况,某张问卷选了哪个选项
     void insertSurveyOption(SurveyOption surveyOption);
     // 插入用户填写的问卷中某一道题目的回答文字
@@ -30,5 +32,7 @@ public interface SurveyMapper {
     List<SurveyInfo> getSurvey();
     // 获取某一张调查问卷勾选的所有选项
     List<Integer> getOptionAnswer(int survey_id);
+    // 获取某一张调查问卷某一道题目的填写内容
+    String getFilledForOneQues(QuesFill quesFill);
 }
 

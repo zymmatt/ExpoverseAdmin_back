@@ -2,6 +2,7 @@ package com.example.admin.service.impl;
 
 import com.example.admin.entity.Visit.ExhibitionVisit;
 import com.example.admin.entity.Visit.Exhibition_data;
+import com.example.admin.entity.Visit.ProductVisit;
 import com.example.admin.service.ExhibitionVisitService;
 import com.example.admin.mapper.ExhibitionVisitMapper;
 
@@ -17,8 +18,13 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
     private ExhibitionVisitMapper exhibitionVisitMapper;
 
     @Override
-    public void createData(ExhibitionVisit exhibitionVisit) {
+    public void createDataExhb(ExhibitionVisit exhibitionVisit) {
         exhibitionVisitMapper.insertExhibitionVisit(exhibitionVisit);
+    }
+
+    @Override
+    public void createDataProd(ProductVisit productVisit) {
+        exhibitionVisitMapper.insertProductVisit(productVisit);
     }
 
     /*

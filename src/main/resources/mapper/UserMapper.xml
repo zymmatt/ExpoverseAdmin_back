@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.admin.mapper.UserMapper">
+
     <!-- 定义一个resultMap，用于将数据库表的列映射到User实体类的字段 -->
     <resultMap id="UserResultMap" type="com.example.admin.entity.User.User">
         <id column="id" property="id"/>
@@ -17,6 +18,15 @@
         <!-- 其他字段 -->
     </resultMap>
 
+    <resultMap id="InvitationCodeResultMap" type="com.example.admin.entity.User.InvitationCode">
+        <id column="id" property="id"/>
+        <result column="invitation_code_id" property="codeId"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="start_time" property="startTime"/>
+        <result column="userid" property="userid"/>
+        <result column="approver_id" property="approver_id"/>
+    </resultMap>
 
     <!-- 查询所有用户 DATE_FORMAT(approval_date, '%Y-%m-%d %H:%i:%s') AS approval_date
     resultType="com.example.admin.entity.User.User" -->
@@ -59,5 +69,25 @@
     <delete id="delete" parameterType="int">
         DELETE FROM expoverse.user WHERE id = #{id}
     </delete>
+
+    <!-- 查询邀请码 -->
+    <select id="findCode" parameterType="String" resultMap="InvitationCodeResultMap">
+        SELECT * from expoverse.invitation_codes
+        WHERE invitation_code_id= #{code}
+    </select>
+
+
+    <!-- 插入一条用户登录记录, 返回登录ID -->
+    <insert id="insertlogin" parameterType="com.example.admin.entity.User.Login"
+            useGeneratedKeys="true" keyProperty="loginid" keyColumn="loginid">
+        INSERT INTO expoverse.login (userid, trigger_timestamp)
+        VALUES (#{userid},  #{trigger_timestamp})
+    </insert>
+
+    <!-- 插入一条用户登录记录, 返回登录ID -->
+    <select id="getlogin" parameterType="com.example.admin.entity.User.Login"  resultType="int">
+        SELECT loginid FROM expoverse.login
+        WHERE userid = #{userid} and trigger_timestamp = #{trigger_timestamp}
+    </select>
 
 </mapper>
