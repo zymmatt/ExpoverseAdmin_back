@@ -8,6 +8,7 @@ import com.example.admin.mapper.ExhibitionVisitMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -18,11 +19,13 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
     private ExhibitionVisitMapper exhibitionVisitMapper;
 
     @Override
+    @Transactional
     public void createDataExhb(ExhibitionVisit exhibitionVisit) {
         exhibitionVisitMapper.insertExhibitionVisit(exhibitionVisit);
     }
 
     @Override
+    @Transactional
     public void createDataProd(ProductVisit productVisit) {
         exhibitionVisitMapper.insertProductVisit(productVisit);
     }
@@ -32,6 +35,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
     * 访问时间的处理比较复杂
     * */
     @Override
+    @Transactional
     public List<Exhibition_data> getDatabyDate(Long startDate, Long endDate) {
         List<ExhibitionVisit> visits = exhibitionVisitMapper.getDatabyDate(startDate, endDate);
         List<String> exhbids = exhibitionVisitMapper.getExhibitionList();
@@ -122,6 +126,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
     }
 
     @Override
+    @Transactional
     public void downloadDataExcel() {
         //下载Excel
     }

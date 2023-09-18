@@ -7,6 +7,7 @@ import com.example.admin.mapper.InvitationCodeMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
     // 随机的生成UUID作为激活码,去表中验证有没有重复,
     // 若没有则发出激活码,否则重新生成
     @Override
+    @Transactional
     public String generateCodeID() {
         String uuid = null;
         boolean isUnique = false;
@@ -55,6 +57,7 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
     *
     */
     @Override
+    @Transactional
     public List<scheduled_invitation> getScheduledDay() {
         List<InvitationCode>invitations = invitationCodeMapper.getAllInvitation();
         List<scheduled_invitation> schedule=new ArrayList<>();
@@ -85,11 +88,13 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
     }
 
     @Override
+    @Transactional
     public void createInvitation(InvitationCode invitation) {
         invitationCodeMapper.insertInvitationCode(invitation);
     }
 
     @Override
+    @Transactional
     public List<String> getAllCodeID() {
         //InvitationCodeMapper
         return null;

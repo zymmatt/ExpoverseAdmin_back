@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -31,13 +32,16 @@ public class SurveyServiceImpl implements SurveyService{
     private UserMapper userMapper;
 
     @Override
+    @Transactional
     public List<Question> getQuestions() { return surveyMapper.getQuestions(); }
 
     @Override
+    @Transactional
     public List<Option> getOptions() { return surveyMapper.getOptions(); }
 
     // 生成新的调查问卷回报
     @Override
+    @Transactional
     public void createSurvey(SingleSurvey singleSurvey) {
         // 插入用户填写了一张问卷的基本信息,包括用户id,提交时间,作答时间,
         surveyMapper.insertSurveyUser(singleSurvey);
@@ -64,12 +68,14 @@ public class SurveyServiceImpl implements SurveyService{
     }
 
     @Override
+    @Transactional
     public int getSurveyNum(){
         List<Integer> surveylist = surveyMapper.getSurveyNum();
         return surveylist.size();
     }
 
     @Override
+    @Transactional
     public int getAvgTime(){
         List<Integer> timelist = surveyMapper.getAvgTime();
         int total_seconds = 0;
@@ -79,6 +85,7 @@ public class SurveyServiceImpl implements SurveyService{
 
     // 获得所有问题的统计信息
     @Override
+    @Transactional
     public List<SingleQuestionStat> getAllQues() {
         List<SingleQuestionStat> singleQuestionStats=new ArrayList<>();
         List<Integer> queIDs = surveyMapper.getAllQuesID();
@@ -102,6 +109,7 @@ public class SurveyServiceImpl implements SurveyService{
 
     // 基于某一道题,获得所有答题的用户对这道题的选择
     @Override
+    @Transactional
     public List<SingleQuestionByUser> getQuesDetail(int ques_id) {
         List<Integer> Options = surveyMapper.getOptionsForOneQues(ques_id);
         // 创建字典,存放每一张问卷针对一道题的选择集合
@@ -126,6 +134,7 @@ public class SurveyServiceImpl implements SurveyService{
 
     // 汇总所有答题问卷的答题情况
     @Override
+    @Transactional
     public void downloadDataExcel(HttpServletResponse response) throws IOException {
         // 创建Excel表格   .xlsx
         Workbook workbook = new XSSFWorkbook();

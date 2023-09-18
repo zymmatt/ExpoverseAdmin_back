@@ -36,6 +36,7 @@ Params  无
 
 
 
+
 3.用户在元宇宙展厅参观时进入展区 / 离开展区
 延时10秒触发
 post   https://xxx.xxx.xxx.xxx/exhibitionVisit/createDataExhb
@@ -45,7 +46,7 @@ body
         "userid": xxx,  # int 用户id
         "exhibition_id":"xxx",  # 展区id
         "enter":true/false,  # true代表进入, false代表走出
-        "trigger_time":xxxxxxx,  # 触发时间的时间戳,精确到秒
+        "trigger_timestamp":xxxxxxx,  # 触发时间的时间戳,精确到秒
     }
 
 
@@ -61,7 +62,7 @@ body
         "userid": xxx,  # int 用户id
         "prodid":"xxx",  # 产品id
         "duration":xxx,  # 观看多少时长,秒为单位
-        "trigger_time":xxxxxxx,  # 触发时间的时间戳,精确到秒
+        "trigger_timestamp":xxxxxxx,  # 触发时间的时间戳,精确到秒
     }
 
 

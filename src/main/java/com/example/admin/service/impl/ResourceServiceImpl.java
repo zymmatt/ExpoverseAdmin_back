@@ -4,6 +4,7 @@ import com.azure.core.util.BinaryData;
 import com.example.admin.entity.Resource.*;
 import com.example.admin.service.ResourceService;
 import com.example.admin.mapper.ResourceMapper;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +28,26 @@ public class ResourceServiceImpl implements ResourceService{
     private ResourceMapper resourceMapper;
 
     @Override
+    @Transactional
     public List<Product> getAllProduct() {
 
         return null;
     }
 
     @Override
+    @Transactional
     public List<Product> getProdListbyExhbid(String exhbid) {
         return resourceMapper.getProdListbyExhbid(exhbid);
     }
 
     @Override
+    @Transactional
     public List<DM> getDMURLbyProdid(String prodid) {
         return resourceMapper.getDMURLbyProdid(prodid);
     }
 
     @Override
+    @Transactional
     public String gettempSAS(){
         String accountName = "expoverseazureblobdb";
         String accountKey = "MkEhnlU9L67tVooxRCcY4XmUL5yMSKfY1Mba9xjj3OpcrLg18g4R3rDXQgacHKa2AMg4QuocPUaP+AStXFGjyQ==";
@@ -61,6 +66,7 @@ public class ResourceServiceImpl implements ResourceService{
     }
 
     @Override
+    @Transactional
     public void uploadDMdict(ProdUpdate prodUpdate) throws IOException {
         String prodid = prodUpdate.getProdid();
         List<UploadDM> uploadDMs = prodUpdate.getUploadDMlist();

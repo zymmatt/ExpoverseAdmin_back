@@ -15,5 +15,5 @@ public interface UserMapper {
     void delete(int id);
     InvitationCode findCode(String code);
     void insertlogin(Login login);
-    int getlogin(Login login);
+    List<Integer> getlogin(Login login);
 }

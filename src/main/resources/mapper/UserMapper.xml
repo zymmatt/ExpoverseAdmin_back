@@ -77,14 +77,14 @@
     </select>
 
 
-    <!-- 插入一条用户登录记录, 返回登录ID -->
+    <!-- 插入一条用户登录记录 -->
     <insert id="insertlogin" parameterType="com.example.admin.entity.User.Login"
             useGeneratedKeys="true" keyProperty="loginid" keyColumn="loginid">
         INSERT INTO expoverse.login (userid, trigger_timestamp)
         VALUES (#{userid},  #{trigger_timestamp})
     </insert>
 
-    <!-- 插入一条用户登录记录, 返回登录ID -->
+    <!-- 查询-一条用户登录记录, 返回登录ID -->
     <select id="getlogin" parameterType="com.example.admin.entity.User.Login"  resultType="int">
         SELECT loginid FROM expoverse.login
         WHERE userid = #{userid} and trigger_timestamp = #{trigger_timestamp}
