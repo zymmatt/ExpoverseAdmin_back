@@ -112,8 +112,8 @@ CREATE TABLE `expoverse`.`exhibition` (
   PRIMARY KEY (`exhibition_id`));
 
 
-
-访客参观记录
+访客参观展区记录
+    loginid   哪一次的登录
 	exhibition_id  参观的展区id
 	userid   用户的id?     key
 	trigger_timestamp  触发的时间   Long
@@ -121,6 +121,21 @@ CREATE TABLE `expoverse`.`exhibition` (
 	product_id     参观的产品id
 	// period_time   持续了多少分钟？
 
+
+CREATE TABLE `expoverse`.`product_visit` (
+  `loginid` INT NOT NULL,
+  `userid` INT NULL,
+  `prodid` VARCHAR(25) NULL,
+  `duration` INT NULL,
+  `trigger_timestamp` INT NULL,
+  PRIMARY KEY (`loginid`));
+
+访客参观产品记录
+    loginid   哪一次的登录
+	prodid  参观的产品id
+	userid   用户的id?     key
+	trigger_timestamp  触发的时间   Long
+	duration   持续了多少秒
 
 
     访客参观流程,模型点一下进入观察模式,假如模型有DM,会进入DM的查看界面

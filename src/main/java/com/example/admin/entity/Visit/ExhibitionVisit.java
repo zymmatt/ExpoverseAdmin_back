@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 // 展区参观行为记录
 public class ExhibitionVisit {
-    private int id; //展区参观id
+    private int loginid; //登录ID
 
     private int userid; // 用户id
 
@@ -18,11 +18,19 @@ public class ExhibitionVisit {
         return exhibition_id;
     }
 
-    public int getId() {
-        return id;
+    public int getLoginid() {
+        return loginid;
+    }
+
+    public void setLoginid(int loginid) {
+        this.loginid = loginid;
     }
 
     public int getUserid() { return userid; }
+
+    public void setTrigger_timestamp(Long trigger_timestamp) {
+        this.trigger_timestamp = trigger_timestamp;
+    }
 
     public Long gettrigger_timestamp() {
         return trigger_timestamp;
@@ -30,14 +38,6 @@ public class ExhibitionVisit {
 
     public void setExhibition_id(String exhibition_id) {
         this.exhibition_id = exhibition_id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void settrigger_timestamp(Long trigger_timestamp) {
-        this.trigger_timestamp = trigger_timestamp;
     }
 
     public void setUserid(int userid) {

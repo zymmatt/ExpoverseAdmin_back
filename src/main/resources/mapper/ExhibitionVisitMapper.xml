@@ -7,8 +7,8 @@
 
     <insert id="insertExhibitionVisit" parameterType="com.example.admin.entity.Visit.ExhibitionVisit">
         INSERT INTO expoverse.exhibition_visit
-        (userid, trigger_timestamp, exhibition_id, enter)
-        VALUES (#{userid}, #{trigger_timestamp}, #{exhibition_id}, #{enter})
+        (loginid, userid, trigger_timestamp, exhibition_id, enter)
+        VALUES (#{loginid}, #{userid}, #{trigger_timestamp}, #{exhibition_id}, #{enter})
     </insert>
 
     <insert id="insertProductVisit" parameterType="com.example.admin.entity.Visit.ProductVisit">
@@ -18,7 +18,7 @@
     </insert>
 
     <resultMap id="ExhibitionVisitMap" type="com.example.admin.entity.Visit.ExhibitionVisit">
-        <id column="id" property="id"/>
+        <id column="loginid" property="loginid"/>
         <result column="userid" property="userid"/>
         <result column="trigger_timestamp" property="trigger_timestamp"/>
         <result column="exhibition_id" property="exhibition_id"/>

@@ -6,7 +6,7 @@ public class ProductVisit {
 
     private int userid; // 用户id
 
-    private int prodid; // 产品id
+    private String prodid; // 产品id
 
     private int duration; // 观看时长 秒为单位
 
@@ -32,7 +32,7 @@ public class ProductVisit {
         this.trigger_timestamp = trigger_timestamp;
     }
 
-    public void setProdid(int prodid) {
+    public void setProdid(String prodid) {
         this.prodid = prodid;
     }
 
@@ -40,7 +40,7 @@ public class ProductVisit {
         return duration;
     }
 
-    public int getProdid() {
+    public String getProdid() {
         return prodid;
     }
 
