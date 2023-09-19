@@ -24,14 +24,14 @@ public interface SurveyMapper {
     List<Integer> getAllQuesID();
     // 获得某一道题目名下有哪些选项,返回所有的选项id
     List<Integer> getOptionsForOneQues(int ques_id);
-    // 获得某一个选项的所有作答survey_id和userid
+    // 获得某一个选项的所有作答loginid和userid
     List<UserSurvey> getUserForOneOption(int option_id);
     // 获得平均完成时间
     List<Integer> getAvgTime();
     // 获取所有问卷调查的问卷id,用户id,答题时长,提交时间
     List<SurveyInfo> getSurvey();
     // 获取某一张调查问卷勾选的所有选项
-    List<Integer> getOptionAnswer(int survey_id);
+    List<Integer> getOptionAnswer(int loginid);
     // 获取某一张调查问卷某一道题目的填写内容
     String getFilledForOneQues(QuesFill quesFill);
 }

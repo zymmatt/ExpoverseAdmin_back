@@ -6,23 +6,23 @@ import java.util.List;
 // 针对一道问题,一个用户选择的所有选项id,还有可能填入的内容
 public class SingleQuestionByUser {
     private int ques_id;
-    private int survey_id;
+    private int loginid;
     private int userid;
     private String user_name;
     private String filled; //填空的内容
     private HashSet<Integer> selectedOptions; //基于某一道问题勾选的所有选项
 
-    public SingleQuestionByUser(int ques_id, int survey_id, int userid, String user_name){
+    public SingleQuestionByUser(int ques_id, int loginid, int userid, String user_name){
         this.ques_id = ques_id;
-        this.survey_id = survey_id;
+        this.loginid = loginid;
         this.userid = userid;
         this.user_name = user_name;
         this.selectedOptions = new HashSet<>();
         this.filled="";
     }
 
-    public void setSurvey_id(int survey_id) {
-        this.survey_id = survey_id;
+    public void setloginid(int loginid) {
+        this.loginid = loginid;
     }
 
     public void setUserid(int userid) {
@@ -33,8 +33,8 @@ public class SingleQuestionByUser {
         return userid;
     }
 
-    public int getSurvey_id() {
-        return survey_id;
+    public int getloginid() {
+        return loginid;
     }
 
     public void setQues_id(int ques_id) {
@@ -73,10 +73,10 @@ public class SingleQuestionByUser {
         this.selectedOptions.add(optionid);
     }
 
-    public SingleQuestionByUser(int ques_id, int survey_id, int userid,
+    public SingleQuestionByUser(int ques_id, int loginid, int userid,
                                 String user_name, HashSet<Integer> selectedOptions){
         this.ques_id=ques_id;
-        this.survey_id=survey_id;
+        this.loginid=loginid;
         this.userid=userid;
         this.user_name=user_name;
         this.selectedOptions=selectedOptions;

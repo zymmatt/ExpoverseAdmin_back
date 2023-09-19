@@ -1,77 +1,4 @@
-元宇宙应用需要向后端发送的请求
-
-后端ip地址
-https://xxx.xxx.xxx.xxx
-
-1.用户在web端登录时用含有验证码的链接直接进入
-链接  https://www.expoversebetatest.com:8080/code=xxxxxxxxxxxxxxx
-code验证码传到后端校验接口
-get   https://xxx.xxx.xxx.xxx/users/login
-Params   code:xxxxxxxxxxxxxxxxxxxxxxxxxxx  (string)
-返回json:{userid:xxx, loginid:xxx}  都是int
-userid用户id和loginid登录id在之后传用户参观记录,上传调查问卷的时候要用
-
-
-2.校验展区内DM和电影文件的一致性
-get  https://xxx.xxx.xxx.xxx/resource/getAllProduct
-Params  无
-返回json列表:
 {
-    "exhibition_id": "xxx",
-        # 展区id
-    "exhibition_movie_url": ["xxx"],
-        # 展区影片始终要给最新,给啥用啥
-    "DM_id": "xxx",
-        # 产品DM的id
-    "DM_image_url": [{"url":"xxx","download":false/true},
-                    {"url":"xxx","download":false/true},
-                    {"url":"xxx","download":false/true},
-                    {"url":"xxx","download":false/true},
-                    ],
-        # DM图片始终要给最新,给啥用啥, download代表是否需要从数据库下载,false就直接加载本地
-    "product_movie_url": ["xxx"],
-        # 产品影片始终要给最新,给啥用啥
-}
-
-
-
-
-
-3.用户在元宇宙展厅参观时进入展区 / 离开展区
-延时10秒触发
-post   https://xxx.xxx.xxx.xxx/exhibitionVisit/createDataExhb
-body
-   {
-        "loginid": xxx, # int 登录id
-        "userid": xxx,  # int 用户id
-        "exhibition_id":"xxx",  # 展区id
-        "enter":true/false,  # true代表进入, false代表走出
-        "trigger_timestamp":xxxxxxx,  # 触发时间的时间戳,精确到秒
-    }
-
-
-
-
-
-4.用户在元宇宙展厅参观时观看某个模型,一段时间后结束观看
-延时5秒触发
-post   https://xxx.xxx.xxx.xxx/exhibitionVisit/createDataProd
-body
-   {
-        "loginid": xxx, # int 登录id
-        "userid": xxx,  # int 用户id
-        "prodid":"xxx",  # 产品id
-        "duration":xxx,  # 观看多少时长,秒为单位
-        "trigger_timestamp":xxxxxxx,  # 触发时间的时间戳,精确到秒
-    }
-
-
-
-
-5.用户提交了一份问卷调查
-post   http://104.208.112.178:80/survey/createSurvey
-body
-    {
     "loginid": 6, 
     "userid": 265,
     "duration_sec": 600,  
@@ -188,15 +115,4 @@ body
         {"ques_id": 14, "answer": "有新內容了還會再來看",
         "option": []
         }]
-}用于填空题, 填写内容
-    option用于单选题和多选题, option_id是选择题的选项id,selected代表是否勾选
-    如果一道题只有填空, option可以是空列表,如果一道题没有填空,answer可以是空列表
-
-
-
-
-
-
-
-
-
+}

@@ -16,6 +16,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 
+import static com.example.admin.utils.pinyin.containsChinese;
+import static com.example.admin.utils.pinyin.convertToPinyin;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -62,8 +65,13 @@ public class UserServiceImpl implements UserService {
             int userid = invitation.getuserid();
             Login res = new Login(userid,currentTimestamp);
             userMapper.insertlogin(res);
+            String username = userMapper.findNamebyId(userid);
+            String username_english = username;
+            if (containsChinese(username)){ // 中文转拼音
+                username_english=convertToPinyin(username_english);
+            }
             int loginid = userMapper.getlogin(res).get(0);
-            return new Login(loginid, userid);
+            return new Login(loginid, userid, username, username_english);
         }
         return null;
     }

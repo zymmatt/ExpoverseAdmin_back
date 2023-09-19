@@ -2,6 +2,8 @@ package com.example.admin.entity.User;
 
 public class Login {
     private int userid;
+    private String username;
+    private String username_english;
     private int loginid; // 登录ID
     private Long trigger_timestamp; // 登录的时间戳
 
@@ -34,8 +36,35 @@ public class Login {
         this.trigger_timestamp = trigger_timestamp;
     }
 
-    public Login(int loginid, int userid){
+    public Login(int loginid, int userid,
+                 String username, String username_english){
         this.userid = userid;
         this.loginid = loginid;
+        this.username = username;
+        this.username_english = username_english;
+    }
+
+    public void setTrigger_timestamp(Long trigger_timestamp) {
+        this.trigger_timestamp = trigger_timestamp;
+    }
+
+    public Long getTrigger_timestamp() {
+        return trigger_timestamp;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getUsername_english() {
+        return username_english;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setUsername_english(String username_english) {
+        this.username_english = username_english;
     }
 }

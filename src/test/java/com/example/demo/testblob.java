@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 public class testblob {
     public static void uploadblob(BlobContainerClient containerClient){
         // Create a local file in the ./data/ directory for uploading and downloading
-        String localPath = "D:\\inventecWork\\expoverse\\DM\\";
+        String localPath = "D:\\inventecWork\\expoverse\\台北展厅影片\\product\\";
         File directory = new File(localPath);
         File[] files = directory.listFiles();
         for (File file : files) {
@@ -76,15 +76,15 @@ public class testblob {
         BlobServiceClient blobServiceClient = new BlobServiceClientBuilder().
                 connectionString(connectionString).buildClient();
         BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient(containerName);
-        BlobClient blobClient = containerClient.getBlobClient(blobName);
-        System.out.println(SASauthorize(containerClient));
+        // BlobClient blobClient = containerClient.getBlobClient(blobName);
+        // System.out.println(SASauthorize(containerClient));
 
         //uploadblob(containerClient);
 
         //listblob(containerClient);
 
         //System.out.println(connectionString);
-
+        downloadblob(containerClient,"5G-AMR.mp4","D:\\inventecWork\\expoverse\\");
         // Quickstart code goes here
     }
 

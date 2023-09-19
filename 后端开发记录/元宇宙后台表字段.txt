@@ -148,7 +148,7 @@ MySQL 数据库中存储多选项调查答案的最佳方法
 
 
 expo专用问卷用户调查
-	survey_id	调查问卷id	key
+	loginid	调查问卷id	key
 
 			用户id
 	submit_time	提交时间		
@@ -193,29 +193,29 @@ CREATE TABLE `expoverse`.`survey_options` (
 
 
 用户作答问卷的记录
-    survey_id   int  key
+    loginid   int  key
     userid    int
     duration_sec
     trigger_timestamp
 
 CREATE TABLE `expoverse`.`survey_user` (
-  `survey_id` INT NOT NULL AUTO_INCREMENT,
+  `loginid` INT NOT NULL AUTO_INCREMENT,
   `userid` INT NULL,
   `duration_sec` INT NULL,
   `trigger_timestamp` INT UNSIGNED NULL,
-  PRIMARY KEY (`survey_id`));
+  PRIMARY KEY (`loginid`));
 
 
 
 
 单选/多选, 针对单个问题打钩了哪一项
     id   key    Auto Increment
-    survey_id   int
+    loginid   int
     option_id   int
 
 ALTER TABLE `expoverse`.`option_answers`
 ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT AFTER `option_id`,
-CHANGE COLUMN `survey_id` `survey_id` INT NULL ,
+CHANGE COLUMN `loginid` `loginid` INT NULL ,
 DROP PRIMARY KEY,
 ADD PRIMARY KEY (`id`);
 ;
@@ -227,14 +227,14 @@ expoverse.ques_fill
 填空题,某一次问卷中针对某个问题的回答
     id
     ques_id     int
-    survey_id   int
+    loginid   int
     filltext    string
 
 
 CREATE TABLE `expoverse`.`ques_fill` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ques_id` INT NULL,
-  `survey_id` INT NULL,
+  `loginid` INT NULL,
   `filltext` VARCHAR(90) NULL,
   PRIMARY KEY (`id`));
 
