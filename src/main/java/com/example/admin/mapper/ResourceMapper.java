@@ -18,6 +18,21 @@ public interface ResourceMapper {
 
     // 向某个product下插入新的url
     void inserturlbyprodid(URL url);
+
+    List<ExhbMovie> getExhbMovieURLbyExhbid(String exhbid);
+
+    List<ProdMovie> getProdMovieURLbyExhbid(String exhbid);
+
+    void deleteurlbyexhbmovie(String exhbid);
+
+    void inserturlbyexhbmovie(URL url);
+
+    void deleteurlbyprodmovie(String exhbid);
+
+    void inserturlbyprodmovie(URL url);
+
+
+    List<String> getallExhbid();
 }
 
 

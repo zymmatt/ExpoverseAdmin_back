@@ -16,7 +16,15 @@
         <!-- 其他字段 -->
     </resultMap>
 
+    <resultMap id="ExhbMovieResultMap" type="com.example.admin.entity.Resource.ExhbMovie">
+        <result column="file_url" property="url"/>
+        <!-- 其他字段 -->
+    </resultMap>
 
+    <resultMap id="ProdMovieResultMap" type="com.example.admin.entity.Resource.ProdMovie">
+        <result column="file_url" property="url"/>
+        <!-- 其他字段 -->
+    </resultMap>
 
     <!-- 根据展区ID获得产品列表 -->
     <select id="getProdListbyExhbid" parameterType="String" resultMap="ProductResultMap">
@@ -25,20 +33,51 @@
 
     <!-- 根据产品ID获得DM的URL列表 -->
     <select id="getDMURLbyProdid" parameterType="String" resultMap="DMResultMap">
-        SELECT file_url FROM expoverse.url WHERE product_id = #{prodid} ORDER BY file_no
+        SELECT file_url FROM expoverse.url_dm WHERE product_id = #{prodid} ORDER BY file_no
     </select>
 
-    <!-- 删除某个product下已有的所有URL,之后要插入新的 -->
+    <!-- 根据展区ID获得展区电影的URL列表 -->
+    <select id="getExhbMovieURLbyExhbid" resultMap="ExhbMovieResultMap">
+        SELECT file_url FROM expoverse.url_exhbmovie WHERE exhibition_id = #{exhbid} ORDER BY file_no
+    </select>
+
+    <!-- 根据展区ID获得产品电影的URL列表 -->
+    <select id="getProdMovieURLbyExhbid" resultMap="ProdMovieResultMap">
+        SELECT file_url FROM expoverse.url_productmovie WHERE exhibition_id = #{exhbid} ORDER BY file_no
+    </select>
+
+    <!-- 删除某个product下已有的所有DM的URL,之后要插入新的 -->
     <delete id="deleteurlbyprodid" parameterType="String">
-        DELETE FROM expoverse.url WHERE product_id = #{prodid}
+        DELETE FROM expoverse.url_dm WHERE product_id = #{prodid}
     </delete>
 
     <!-- 向某个product下插入新的url -->
     <insert id="inserturlbyprodid" parameterType="com.example.admin.entity.Resource.URL">
-        INSERT INTO expoverse.url (file_url, file_type, product_id, file_no)
+        INSERT INTO expoverse.url_dm (file_url, file_type, product_id, file_no)
         VALUES (#{file_url}, #{file_type},#{product_id}, #{file_no})
     </insert>
 
+    <delete id="deleteurlbyexhbmovie" parameterType="String">
+        DELETE FROM expoverse.url_exhbmovie WHERE exhibition_id = #{exhbid}
+    </delete>
+
+    <insert id="inserturlbyexhbmovie">
+        INSERT INTO expoverse.url_exhbmovie (file_url, file_type, exhibition_id, file_no)
+        VALUES (#{file_url}, #{file_type},#{exhibition_id}, #{file_no})
+    </insert>
+
+    <delete id="deleteurlbyprodmovie">
+        DELETE FROM expoverse.url_productmovie WHERE exhibition_id = #{exhbid}
+    </delete>
+
+    <insert id="inserturlbyprodmovie">
+        INSERT INTO expoverse.url_productmovie (file_url, file_type, exhibition_id, file_no)
+        VALUES (#{file_url}, #{file_type},#{exhibition_id}, #{file_no})
+    </insert>
+
+    <select id="getallExhbid" resultType="java.lang.String">
+        SELECT exhibition_id FROM expoverse.exhibition
+    </select>
 
 
 </mapper>
