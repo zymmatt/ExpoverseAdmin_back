@@ -4,7 +4,7 @@ package com.example.admin.service.impl;
 import com.azure.core.util.BinaryData;
 import com.azure.storage.blob.BlobClient;
 import com.example.admin.entity.Resource.*;
-import com.example.admin.entity.Visit.exhb2prod;
+import com.example.admin.entity.Visit.*;
 import com.example.admin.mapper.ExhibitionVisitMapper;
 import com.example.admin.service.ResourceService;
 import com.example.admin.mapper.ResourceMapper;
@@ -32,6 +32,14 @@ public class ResourceServiceImpl implements ResourceService{
     @Autowired
     private ExhibitionVisitMapper exhibitionVisitMapper;
 
+
+    @Override
+    @Transactional
+    public String gettempSAS(){
+        return blobstorage.gettempSAS(blobstorage.getclient());
+    }
+
+
     @Override
     @Transactional
     public List<ExhbSrc> getAllResource() {
@@ -46,6 +54,7 @@ public class ResourceServiceImpl implements ResourceService{
         Map<String,List<ProdMovie>>prod2movielistdict= new HashMap<>();//从产品ID到电影列表
         Map<String,ExhbMovie>exhb2moviedict = new HashMap<>(); //从展区ID到电影
         Map<String, List<String>> exhb2proddict = new HashMap<>();//生成一个从展区ID找到对应展品ID的字典
+        String SAS = "?"+gettempSAS(); // 获得临时密钥
         for (String exhbid:exhbidlist){
             exhb2proddict.put(exhbid, new ArrayList<>());
             exhb2moviedict.put(exhbid,null);
@@ -79,7 +88,9 @@ public class ResourceServiceImpl implements ResourceService{
             for (String prodid:tempprodlist){
                 tempprodsrclist.add(new ProdSrc(prodid,prod2dmlistdict.get(prodid),prod2movielistdict.get(prodid)));
             }
-            exhbSrcList.add(new ExhbSrc(exhbid,tempExhbMovielist,tempprodsrclist));
+            ExhbSrc exhbSrc = new ExhbSrc(exhbid,tempExhbMovielist,tempprodsrclist);
+            exhbSrc.setSAS(SAS);
+            exhbSrcList.add(exhbSrc);
         }
         return exhbSrcList;
         /*
@@ -125,11 +136,6 @@ public class ResourceServiceImpl implements ResourceService{
     }
 
 
-    @Override
-    @Transactional
-    public String gettempSAS(){
-        return blobstorage.gettempSAS(blobstorage.getclient());
-    }
 
     @Override
     @Transactional

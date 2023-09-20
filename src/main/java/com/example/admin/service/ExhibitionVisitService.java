@@ -5,5 +5,6 @@ public interface ExhibitionVisitService {
     void createDataExhb(ExhibitionVisit exhibitionVisit);
     void createDataProd(ProductVisit productVisit);
     List<Exhibition_data> getDatabyDate(Long startDate, Long endDate);
-    void downloadDataExcel();
+    void downloadvisitTimeDataExcel();
+    void downloadvisitUserDataExcel();
 }

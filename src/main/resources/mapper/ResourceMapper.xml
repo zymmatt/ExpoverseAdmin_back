@@ -8,6 +8,7 @@
     <resultMap id="ProductResultMap" type="com.example.admin.entity.Resource.Product">
         <result column="product_id" property="product_id"/>
         <result column="product_name" property="product_name"/>
+        <result column="exhibition_id" property="exhibition_id"/>
         <!-- 其他字段 -->
     </resultMap>
 
@@ -36,7 +37,7 @@
     </resultMap>
 
     <select id="getallProduct" resultMap="ProductResultMap">
-        SELECT product_id, product_name FROM expoverse.product
+        SELECT product_id, product_name, exhibition_id FROM expoverse.product
     </select>
 
     <!-- 根据展区ID获得产品列表 -->
@@ -56,7 +57,9 @@
 
     <!-- 根据展区ID获得产品电影的URL列表 -->
     <select id="getProdMovieURLbyExhbid" resultMap="ProdMovieResultMap">
-        SELECT file_url FROM expoverse.url_productmovie WHERE exhibition_id = #{exhbid} ORDER BY file_no
+        SELECT file_url FROM expoverse.url_productmovie JOIN expoverse.product
+        ON expoverse.product.product_id=expoverse.url_productmovie.product_id
+        WHERE expoverse.product.exhibition_id= #{exhbid} ORDER BY file_no
     </select>
 
     <!-- 删除某个product下已有的所有DM的URL,之后要插入新的 -->

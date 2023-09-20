@@ -12,7 +12,9 @@ public interface ExhibitionVisitMapper {
     void insertProductVisit(ProductVisit productVisit);
     List<ExhibitionVisit> ExhbgetDatabyDate(Long startTime, Long endTime);
     List<ProductVisit> ProdgetDatabyDate(Long startTime, Long endTime);
-    List<String> getExhibitionList();
+    List<Exhibition> getAllExhibition();
+    List<String> getExhibitionList(); // 获取所有的展区ID
     List<exhb2prod> getexhb2prod();
 
 }
+

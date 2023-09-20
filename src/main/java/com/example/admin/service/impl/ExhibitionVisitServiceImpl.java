@@ -195,8 +195,22 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
 
     @Override
     @Transactional
-    public void downloadDataExcel() {
+    public void downloadvisitTimeDataExcel() {
         //下载Excel
+        List<Exhibition> exhibitionList = exhibitionVisitMapper.getAllExhibition();
+        List<Product> productList = resourceMapper.getallProduct();
+        Map<String, Integer> visitNum = new HashMap<>();
+
+
+
+
+    }
+
+    @Override
+    @Transactional
+    public void downloadvisitUserDataExcel() {
+        //下载Excel
+
     }
 }
 

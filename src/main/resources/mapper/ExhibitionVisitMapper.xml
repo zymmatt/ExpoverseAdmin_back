@@ -46,6 +46,22 @@
         SELECT exhibition_id FROM expoverse.exhibition
     </select>
 
+    <resultMap id="ExhibitionMap" type="com.example.admin.entity.Visit.Exhibition">
+        <result column="exhibition_id" property="exhibition_id"/>
+        <result column="verse_id" property="verse_id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <select id="getAllExhibition" resultMap="ExhibitionMap">
+        SELECT exhibition_id,verse_id,name,description FROM expoverse.exhibition
+    </select>
+
+    <select id="getExhibitionList" resultType="String">
+        SELECT exhibition_id FROM expoverse.exhibition
+    </select>
+
+
     <resultMap id="exhb2prodMap" type="com.example.admin.entity.Visit.exhb2prod">
         <result column="exhibition_id" property="exhbid"/>
         <result column="product_id" property="prodid"/>

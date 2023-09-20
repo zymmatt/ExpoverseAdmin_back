@@ -108,7 +108,7 @@ CREATE TABLE `expoverse`.`exhibition` (
   `exhibition_id` VARCHAR(20) NOT NULL,
   `verse_id` VARCHAR(20) NULL,
   `name` VARCHAR(45) NULL,
-  `describtion` VARCHAR(45) NULL,
+  `description` VARCHAR(45) NULL,
   PRIMARY KEY (`exhibition_id`));
 
 

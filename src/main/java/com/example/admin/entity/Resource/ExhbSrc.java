@@ -6,6 +6,15 @@ public class ExhbSrc {
     private String exhibition_id;
     private List<ExhbMovie> exhibition_movie_url;
     private List<ProdSrc> prodSrcList;
+    private String SAS; //访问密钥
+
+    public String getSAS() {
+        return SAS;
+    }
+
+    public void setSAS(String SAS) {
+        this.SAS = SAS;
+    }
 
     public String getExhibition_id() {
         return exhibition_id;
@@ -37,4 +46,5 @@ public class ExhbSrc {
         this.exhibition_movie_url = exhibition_movie_url;
         this.prodSrcList = prodSrcList;
     }
+
 }

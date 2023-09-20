@@ -45,10 +45,17 @@ public class ExhibitionVisitController {
         return null;
     }
 
-    // 把展区参观数据汇集到Excel中,发送给前端供下载
-    @RequestMapping(value="/downloadDataExcel", method= RequestMethod.GET)
-    public void downloadDataExcel(){
-        exhibitionVisitService.downloadDataExcel();
+    // 把展区的参观时长数据汇集到Excel中,发送给前端供下载
+    @RequestMapping(value="/downloadvisitTimeDataExcel", method= RequestMethod.GET)
+    public void downloadvisitTimeDataExcel(){
+        exhibitionVisitService.downloadvisitTimeDataExcel();
     }
+
+    // 把展区的参观人次数据汇集到Excel中,发送给前端供下载
+    @RequestMapping(value="/downloadvisitUserDataExcel", method= RequestMethod.GET)
+    public void downloadvisitUserDataExcel(){
+        exhibitionVisitService.downloadvisitUserDataExcel();
+    }
+
 
 }
