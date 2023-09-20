@@ -13,18 +13,31 @@
 
     <resultMap id="DMResultMap" type="com.example.admin.entity.Resource.DM">
         <result column="file_url" property="url"/>
+        <result column="product_id" property="prodid"/>
+        <result column="file_no" property="file_no"/>
+        <result column="download" property="download"/>
         <!-- 其他字段 -->
     </resultMap>
 
     <resultMap id="ExhbMovieResultMap" type="com.example.admin.entity.Resource.ExhbMovie">
         <result column="file_url" property="url"/>
+        <result column="exhibition_id" property="exhibition_id"/>
+        <result column="file_no" property="file_no"/>
+        <result column="download" property="download"/>
         <!-- 其他字段 -->
     </resultMap>
 
     <resultMap id="ProdMovieResultMap" type="com.example.admin.entity.Resource.ProdMovie">
         <result column="file_url" property="url"/>
+        <result column="product_id" property="prodid"/>
+        <result column="file_no" property="file_no"/>
+        <result column="download" property="download"/>
         <!-- 其他字段 -->
     </resultMap>
+
+    <select id="getallProduct" resultMap="ProductResultMap">
+        SELECT product_id, product_name FROM expoverse.product
+    </select>
 
     <!-- 根据展区ID获得产品列表 -->
     <select id="getProdListbyExhbid" parameterType="String" resultMap="ProductResultMap">
@@ -79,5 +92,16 @@
         SELECT exhibition_id FROM expoverse.exhibition
     </select>
 
+    <select id="getallExhbMovie" resultMap="ExhbMovieResultMap">
+        SELECT file_url,exhibition_id,file_no,download FROM expoverse.url_exhbmovie ORDER BY file_no
+    </select>
+
+    <select id="getallDM" resultMap="DMResultMap">
+        SELECT file_url,product_id,file_no,download FROM expoverse.url_dm ORDER BY file_no
+    </select>
+
+    <select id="getallProdMovie" resultMap="ProdMovieResultMap">
+        SELECT file_url,product_id,file_no,download FROM expoverse.url_productmovie ORDER BY file_no
+    </select>
 
 </mapper>

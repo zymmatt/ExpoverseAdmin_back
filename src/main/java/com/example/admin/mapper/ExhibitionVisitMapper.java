@@ -1,6 +1,5 @@
 package com.example.admin.mapper;
-import com.example.admin.entity.Visit.ExhibitionVisit;
-import com.example.admin.entity.Visit.ProductVisit;
+import com.example.admin.entity.Visit.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,8 +10,9 @@ public interface ExhibitionVisitMapper {
 
     void insertExhibitionVisit(ExhibitionVisit exhibitionVisit);
     void insertProductVisit(ProductVisit productVisit);
-    List<ExhibitionVisit> getDatabyDate(Long startTime, Long endTime);
+    List<ExhibitionVisit> ExhbgetDatabyDate(Long startTime, Long endTime);
+    List<ProductVisit> ProdgetDatabyDate(Long startTime, Long endTime);
     List<String> getExhibitionList();
-
+    List<exhb2prod> getexhb2prod();
 
 }

@@ -18,7 +18,6 @@ public class ExhibitionVisitController {
     @Autowired
     private ExhibitionVisitService exhibitionVisitService;
 
-
     // 应用端插入新的展区参观数据
     @RequestMapping(value="/createDataExhb", method= RequestMethod.POST)
     public void createDataExhb(@RequestBody ExhibitionVisit exhibitionVisit) {

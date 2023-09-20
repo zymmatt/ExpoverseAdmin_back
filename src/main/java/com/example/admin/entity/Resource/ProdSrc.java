@@ -5,13 +5,14 @@ import java.util.List;
 public class ProdSrc {
     private String prodid;
     private List<DM> DMlist;
-
-    public void setProdid(String prodid) {
-        this.prodid = prodid;
-    }
+    private List<ProdMovie> movielist;
 
     public String getProdid() {
         return prodid;
+    }
+
+    public void setProdid(String prodid) {
+        this.prodid = prodid;
     }
 
     public List<DM> getDMlist() {
@@ -22,8 +23,19 @@ public class ProdSrc {
         this.DMlist = DMlist;
     }
 
-    public ProdSrc(String prodid, List<DM> DMlist){
+    public List<ProdMovie> getMovielist() {
+        return movielist;
+    }
+
+    public void setMovielist(List<ProdMovie> movielist) {
+        this.movielist = movielist;
+    }
+
+    public ProdSrc(String prodid, List<DM> DMlist, List<ProdMovie> movielist){
         this.prodid = prodid;
         this.DMlist = DMlist;
+        this.movielist = movielist;
     }
+
+
 }

@@ -13,25 +13,538 @@ userid用户id和loginid登录id在之后传用户参观记录,上传调查问�
 
 
 2.校验展区内DM和电影文件的一致性
-get  https://xxx.xxx.xxx.xxx/resource/getAllProduct
+get  http://104.208.112.178:80/resource/getAllResource
 Params  无
 返回json列表:
-{
-    "exhibition_id": "xxx",
-        # 展区id
-    "exhibition_movie_url": ["xxx"],
-        # 展区影片始终要给最新,给啥用啥
-    "DM_id": "xxx",
-        # 产品DM的id
-    "DM_image_url": [{"url":"xxx","download":false/true},
-                    {"url":"xxx","download":false/true},
-                    {"url":"xxx","download":false/true},
-                    {"url":"xxx","download":false/true},
-                    ],
-        # DM图片始终要给最新,给啥用啥, download代表是否需要从数据库下载,false就直接加载本地
-    "product_movie_url": ["xxx"],
-        # 产品影片始终要给最新,给啥用啥
-}
+[
+    {
+        "exhibition_id": "Culture",
+        "exhibition_movie_url": [],
+        "product_movie_url": [],
+        "prodSrcList": []
+    },
+    {
+        "exhibition_id": "InteCar",
+        "exhibition_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_Movie.mp4"
+            }
+        ],
+        "product_movie_url": [],
+        "prodSrcList": [
+            {
+                "prodid": "InteCar_AIBox",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_AIBox_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteCar_e-Cockpit-1",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_e-Cockpit-1_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteCar_e-Cockpit-2",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_e-Cockpit-2_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteCar_Gateway",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_Gateway_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteCar_RFID",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_RFID_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteCar_ServerAD",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_ServerAD_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_ServerAD_2.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteCar_Switch",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_Switch_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteCar_WCM",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteCar_WCM_1.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "exhibition_id": "InteFiveG",
+        "exhibition_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/v15omk2smm80.mp4"
+            }
+        ],
+        "product_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/5G-AMR.mp4"
+            }
+        ],
+        "prodSrcList": [
+            {
+                "prodid": "InteFiveG_Firestorm",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteFiveG_Firestorm_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteFiveG_Kona",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteFiveG_Kona_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteFiveG_NX-H3003",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteFiveG_NX-H3003_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteFiveG_NX-H3003_2.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteFiveG_NX-R2100",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteFiveG_NX-R2100_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteFiveG_NX-R2100_2.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "exhibition_id": "InteHome",
+        "exhibition_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/ilefauv1pfo0.mp4"
+            }
+        ],
+        "product_movie_url": [],
+        "prodSrcList": [
+            {
+                "prodid": "InteHome_A528",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_A528_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_A528_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_A528_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_A528_4.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_A528_5.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_A528_6.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteHome_C21",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_C21_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_C21_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_C21_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_C21_4.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_C21_5.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_C21_6.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteHome_J21",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_J21_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_J21_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_J21_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_J21_4.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_J21_6.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteHome_Q21",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_Q21_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_Q21_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_Q21_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_Q21_4.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_Q21_5.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_Q21_6.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteHome_S68",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_S68_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_S68_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_S68_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_S68_4.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_S68_5.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_S68_6.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteHome_SmartScreen",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_4.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_5.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_6.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_7.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_8.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_9.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_SmartScreen_10.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteHome_T88",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_T88_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_T88_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_T88_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_T88_4.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_T88_5.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_T88_6.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteHome_TranslationPen",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_TranslationPen_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_TranslationPen_2.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_TranslationPen_3.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteHome_TranslationPen_4.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "exhibition_id": "InteManuf",
+        "exhibition_movie_url": [],
+        "product_movie_url": [],
+        "prodSrcList": [
+            {
+                "prodid": "InteManuf_ATC32E",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_ATC32E_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_E200G4",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_E200G4_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_E850G4",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_E850G4_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_Entei",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_Entei_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_Horsea",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_Horsea_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_HPE",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_HPE_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_NC-WA03",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_NC-WA03_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_PiagetHY5",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_PiagetHY5_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteManuf_Rhydon",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteManuf_Rhydon_1.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "exhibition_id": "InteMedic",
+        "exhibition_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteMedic_Movie.mp4"
+            }
+        ],
+        "product_movie_url": [],
+        "prodSrcList": [
+            {
+                "prodid": "InteMedic_ATC63E",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteMedic_ATC63E_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteMedic_ATC63E_2.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteMedic_ePaper",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteMedic_ePaper_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteMedic_I-SWAT",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteMedic_I-SWAT_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteMedic_M215T",
+                "dmlist": []
+            },
+            {
+                "prodid": "InteMedic_M240",
+                "dmlist": []
+            },
+            {
+                "prodid": "InteMedic_Simai",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteMedic_Simai_1.jpg"
+                    },
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteMedic_Simai_2.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "exhibition_id": "InteSemiFac",
+        "exhibition_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteSemiFac_Movie.jpg"
+            }
+        ],
+        "product_movie_url": [],
+        "prodSrcList": [
+            {
+                "prodid": "InteSemiFac_CMS5G+",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteSemiFac_CMS5G+_1.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "exhibition_id": "InteTraffic",
+        "exhibition_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteTraffic_Movie.mp4"
+            }
+        ],
+        "product_movie_url": [],
+        "prodSrcList": [
+            {
+                "prodid": "InteTraffic_AIMobile",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteTraffic_AIMobile_1.jpg"
+                    }
+                ]
+            },
+            {
+                "prodid": "InteTraffic_NC-U1",
+                "dmlist": [
+                    {
+                        "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/InteTraffic_NC-U1_1.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "exhibition_id": "Profile",
+        "exhibition_movie_url": [
+            {
+                "url": "https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/Profile_Movie.mp4"
+            }
+        ],
+        "product_movie_url": [],
+        "prodSrcList": []
+    }
+]
 
 
 

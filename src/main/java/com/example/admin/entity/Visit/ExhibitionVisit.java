@@ -26,7 +26,9 @@ public class ExhibitionVisit {
         this.loginid = loginid;
     }
 
-    public int getUserid() { return userid; }
+    public int getUserid() {
+        return userid;
+    }
 
     public void setTrigger_timestamp(Long trigger_timestamp) {
         this.trigger_timestamp = trigger_timestamp;
@@ -51,6 +53,9 @@ public class ExhibitionVisit {
     public void setEnter(boolean enter) {
         this.enter = enter;
     }
+
+
+
 }
 
 

@@ -4,6 +4,8 @@ package com.example.admin.service.impl;
 import com.azure.core.util.BinaryData;
 import com.azure.storage.blob.BlobClient;
 import com.example.admin.entity.Resource.*;
+import com.example.admin.entity.Visit.exhb2prod;
+import com.example.admin.mapper.ExhibitionVisitMapper;
 import com.example.admin.service.ResourceService;
 import com.example.admin.mapper.ResourceMapper;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,10 +29,60 @@ public class ResourceServiceImpl implements ResourceService{
     @Autowired
     private ResourceMapper resourceMapper;
 
+    @Autowired
+    private ExhibitionVisitMapper exhibitionVisitMapper;
+
     @Override
     @Transactional
     public List<ExhbSrc> getAllResource() {
-        List<String> exhbidlist = resourceMapper.getallExhbid();
+        List<ExhbSrc> exhbSrcList = new ArrayList<>(); // 最终返回的结果
+        List<String> exhbidlist = resourceMapper.getallExhbid(); // 所有的展区ID
+        List<Product> prodlist = resourceMapper.getallProduct(); // 所有的产品ID
+        List<ExhbMovie> exhbMovieList = resourceMapper.getallExhbMovie(); // 所有的展区电影
+        List<DM> dmList = resourceMapper.getallDM(); // 所有的DM,按照文件顺序排序
+        List<ProdMovie> prodMovieList = resourceMapper.getallProdMovie(); // 所有的产品电影,按照文件顺序排序
+        List<exhb2prod> exhb2prodList = exhibitionVisitMapper.getexhb2prod();// 展区到展品的对应字典
+        Map<String,List<DM>>prod2dmlistdict = new HashMap<>();//从产品ID到DM列表
+        Map<String,List<ProdMovie>>prod2movielistdict= new HashMap<>();//从产品ID到电影列表
+        Map<String,ExhbMovie>exhb2moviedict = new HashMap<>(); //从展区ID到电影
+        Map<String, List<String>> exhb2proddict = new HashMap<>();//生成一个从展区ID找到对应展品ID的字典
+        for (String exhbid:exhbidlist){
+            exhb2proddict.put(exhbid, new ArrayList<>());
+            exhb2moviedict.put(exhbid,null);
+        }
+        for (exhb2prod item:exhb2prodList){
+            exhb2proddict.get(item.getExhbid()).add(item.getProdid());
+        }
+        for (Product product:prodlist){
+            prod2dmlistdict.put(product.getProduct_id(),new ArrayList<>());
+            prod2movielistdict.put(product.getProduct_id(),new ArrayList<>());
+        }
+        for (DM dm:dmList){
+            prod2dmlistdict.get(dm.getProdid()).add(dm);
+        }
+        for (ProdMovie prodMovie:prodMovieList){
+            prod2movielistdict.get(prodMovie.getProdid()).add(prodMovie);
+        }
+        for (ExhbMovie exhbMovie:exhbMovieList){
+            exhb2moviedict.put(exhbMovie.getExhibition_id(),exhbMovie);
+        }
+        for (String exhbid : exhb2proddict.keySet()) {
+            //Integer value = exhb2proddict.get(key);
+            //System.out.println("Key: " + key + ", Value: " + value);
+            List<String> tempprodlist = exhb2proddict.get(exhbid); // 展区ID找到展品ID列表
+            List<ExhbMovie> tempExhbMovielist = new ArrayList<>();
+            List<ProdSrc> tempprodsrclist = new ArrayList<>();
+            ExhbMovie tempexhbmovie = exhb2moviedict.get(exhbid);
+            if (tempexhbmovie != null){
+                tempExhbMovielist.add(tempexhbmovie);//目前每一个展区只会有一个影片
+            }
+            for (String prodid:tempprodlist){
+                tempprodsrclist.add(new ProdSrc(prodid,prod2dmlistdict.get(prodid),prod2movielistdict.get(prodid)));
+            }
+            exhbSrcList.add(new ExhbSrc(exhbid,tempExhbMovielist,tempprodsrclist));
+        }
+        return exhbSrcList;
+        /*
         List<ExhbSrc> exhbSrcList = new ArrayList<>();
         for (String exhbid:exhbidlist){
             List<Product> prodlist = resourceMapper.getProdListbyExhbid(exhbid);
@@ -45,6 +97,7 @@ public class ResourceServiceImpl implements ResourceService{
             exhbSrcList.add(new ExhbSrc(exhbid,exhbMovieList,prodMovieList,prodSrcList));
         }
         return exhbSrcList;
+        */
     }
 
     @Override

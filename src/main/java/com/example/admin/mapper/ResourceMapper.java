@@ -9,6 +9,17 @@ import java.util.List;
 
 @Mapper
 public interface ResourceMapper {
+
+    List<String> getallExhbid();
+
+    List<Product> getallProduct();
+
+    List<ExhbMovie> getallExhbMovie();
+
+    List<DM> getallDM();
+
+    List<ProdMovie> getallProdMovie();
+
     List<Product> getProdListbyExhbid(String exhbid);
 
     List<DM> getDMURLbyProdid(String prodid);
@@ -31,8 +42,6 @@ public interface ResourceMapper {
 
     void inserturlbyprodmovie(URL url);
 
-
-    List<String> getallExhbid();
 }
 
 

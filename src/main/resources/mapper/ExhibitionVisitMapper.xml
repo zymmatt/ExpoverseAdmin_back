@@ -24,14 +24,35 @@
         <result column="exhibition_id" property="exhibition_id"/>
     </resultMap>
 
-    <select id="getDatabyDate" resultMap="ExhibitionVisitMap">
+    <select id="ExhbgetDatabyDate" resultMap="ExhibitionVisitMap">
         SELECT * FROM expoverse.exhibition_visit WHERE trigger_timestamp
         BETWEEN #{startTime} AND #{endTime};
     </select>
 
-    <select id="getExhibitionList" resultType="String">
-        SELECT exhibition_id FROM expoverse.exhibition;
+    <resultMap id="ProductVisitMap" type="com.example.admin.entity.Visit.ProductVisit">
+        <id column="loginid" property="loginid"/>
+        <result column="userid" property="userid"/>
+        <result column="trigger_timestamp" property="trigger_timestamp"/>
+        <result column="duration" property="duration"/>
+        <result column="prodid" property="prodid"/>
+    </resultMap>
+
+    <select id="ProdgetDatabyDate" resultMap="ProductVisitMap">
+        SELECT * FROM expoverse.product_visit WHERE trigger_timestamp
+        BETWEEN #{startTime} AND #{endTime};
     </select>
 
+    <select id="getExhibitionList" resultType="String">
+        SELECT exhibition_id FROM expoverse.exhibition
+    </select>
+
+    <resultMap id="exhb2prodMap" type="com.example.admin.entity.Visit.exhb2prod">
+        <result column="exhibition_id" property="exhbid"/>
+        <result column="product_id" property="prodid"/>
+    </resultMap>
+
+    <select id="getexhb2prod" resultMap="exhb2prodMap">
+        SELECT exhibition_id, product_id FROM expoverse.product
+    </select>
 
 </mapper>

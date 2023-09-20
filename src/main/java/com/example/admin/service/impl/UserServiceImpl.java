@@ -1,9 +1,7 @@
 // UserServiceImpl.java
 package com.example.admin.service.impl;
 
-import com.example.admin.entity.User.InvitationCode;
-import com.example.admin.entity.User.Login;
-import com.example.admin.entity.User.User;
+import com.example.admin.entity.User.*;
 import com.example.admin.service.UserService;
 import com.example.admin.mapper.UserMapper;
 
@@ -34,7 +32,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public List<User> findbyNamePage(int limit, int page, String name) {
-
         return userMapper.findbyNamePage(limit, 20*page-20, name);
     }
 
@@ -87,7 +84,6 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
             userMapper.update(user);
     }
-
 
     @Override
     @Transactional
