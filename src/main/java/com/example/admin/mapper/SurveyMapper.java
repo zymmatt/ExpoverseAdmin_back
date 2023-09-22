@@ -32,6 +32,8 @@ public interface SurveyMapper {
     List<SurveyInfo> getSurvey();
     // 获取某一张调查问卷勾选的所有选项
     List<Integer> getOptionAnswer(int loginid);
+    // 获取所有填空问题的回答,要按照问卷的提交时间从晚到早排序
+    List<QuesFill> getallQuesFill();
     // 获取某一张调查问卷某一道题目的填写内容
     String getFilledForOneQues(QuesFill quesFill);
 }

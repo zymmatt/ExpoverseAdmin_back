@@ -84,7 +84,7 @@ public class SurveyServiceImpl implements SurveyService{
         return (int)(total_seconds /timelist.size()/60); //返回平均的分钟数
     }
 
-    // 获得所有问题的统计信息
+    // 获得所有单选多选问题的统计信息
     @Override
     @Transactional
     public List<SingleQuestionStat> getAllQues() {
@@ -106,6 +106,43 @@ public class SurveyServiceImpl implements SurveyService{
             singleQuestionStats.add(singleQuestionStat);
         }
         return singleQuestionStats;
+    }
+
+
+    // 获得所有填空问题的回答列表,按照时间顺序由晚到早排序
+    @Override
+    @Transactional
+    public List<FillQuestionStat> getAllFill() {
+        List<FillQuestionStat> fillQuestionStats = new ArrayList<>();
+        List<QuesFill> quesFillList = surveyMapper.getallQuesFill();
+        List<Question> questions = surveyMapper.getQuestions();
+        //List<Question> fillquestionList = new ArrayList<>(); // 找出所有填空题
+        Map<Integer, List<QuesFill>> quesid2fill = new HashMap<>(); // 问题ID对应到填空答案的合集,可以保证是从晚到早的
+        Map<Integer, String> quesid2content = new HashMap<>(); // 问题ID对应到问题内容
+        for (Question question:questions){
+            // 这道题包含了填空内容
+            if (question.getQues_type().contains("fill")){
+                int ques_id = question.getQues_id();
+                String ques_content = question.getQues_content();
+                // String ques_type = question.getQues_type();
+                // fillquestionList.add(new Question(ques_id,ques_content,ques_type));
+                quesid2fill.put(ques_id,new ArrayList<>());
+                quesid2content.put(ques_id, ques_content);
+            }
+        }
+        for (QuesFill quesFill:quesFillList){
+            int ques_id = quesFill.getQues_id();
+            int loginid = quesFill.getLoginid();
+            String filltext = quesFill.getFilltext();
+            Long trigger_timestamp = quesFill.getTrigger_timestamp();
+            quesid2fill.get(ques_id).add(new QuesFill(ques_id,loginid,filltext,trigger_timestamp));
+        }
+        for (int ques_id:quesid2fill.keySet()){
+            String ques_content = quesid2content.get(ques_id);
+            List<QuesFill> answers = quesid2fill.get(ques_id);
+            fillQuestionStats.add(new FillQuestionStat(ques_id,ques_content,answers));
+        }
+        return fillQuestionStats;
     }
 
     // 基于某一道题,获得所有答题的用户对这道题的选择

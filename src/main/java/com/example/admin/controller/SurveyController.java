@@ -60,11 +60,15 @@ public class SurveyController {
         return surveyService.getAvgTime();
     }
 
-    // 获得所有问题的回答选项统计量
+    // 获得所有单选多选问题的回答选项统计量
     @RequestMapping(value="/getAllQues", method = RequestMethod.GET)
     public List<SingleQuestionStat> getAllQues() {
         return surveyService.getAllQues();
     }
+
+    // 获得所有填空问题的回答记录列表
+    @RequestMapping(value="/getAllFill", method = RequestMethod.GET)
+    public List<FillQuestionStat> getAllFill() { return surveyService.getAllFill(); }
 
     // 获得单个问题每一位用户的具体作答
     @RequestMapping(value="/getQuesDetail", method = RequestMethod.GET)

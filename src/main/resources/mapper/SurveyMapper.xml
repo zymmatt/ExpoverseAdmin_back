@@ -77,5 +77,15 @@
             resultType="java.lang.String">
         SELECT filltext FROM expoverse.ques_fill WHERE ques_id = #{ques_id} and loginid = #{loginid}
     </select>
+
+    <select id="getallQuesFill" resultType="com.example.admin.entity.Survey.QuesFill">
+        SELECT expoverse.ques_fill.ques_id,expoverse.ques_fill.loginid,
+        expoverse.ques_fill.filltext,expoverse.survey_user.trigger_timestamp
+        FROM expoverse.ques_fill JOIN expoverse.survey_user
+        ON expoverse.ques_fill.loginid = expoverse.survey_user.loginid
+        ORDER BY expoverse.survey_user.trigger_timestamp
+        DESC
+    </select>
+
 </mapper>
 

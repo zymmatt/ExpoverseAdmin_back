@@ -28,4 +28,11 @@ public class Question {
     public void setQues_type(String ques_type) {
         this.ques_type = ques_type;
     }
+
+    public Question(int ques_id, String ques_content, String ques_type){
+        this.ques_id = ques_id;
+        this.ques_content = ques_content;
+        this.ques_type = ques_type;
+    }
+
 }
