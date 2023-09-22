@@ -25,6 +25,11 @@ public class InvitationCodeController {
         return invitationCodeService.getScheduledDay();
     }
 
+    @RequestMapping(value="/getScheduledHour", method= RequestMethod.GET)
+    public List<scheduled_invitation> getScheduledHour() {
+        return invitationCodeService.getScheduledHour();
+    }
+
     @RequestMapping(value="/createInvitation", method= RequestMethod.POST)
     public void createInvitation(@RequestBody InvitationCode invitationCode) {
         invitationCodeService.createInvitation(invitationCode);

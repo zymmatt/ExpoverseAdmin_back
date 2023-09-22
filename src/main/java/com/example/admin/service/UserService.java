@@ -8,8 +8,10 @@ public interface UserService {
     List<User> findbyNamePage(int limit, int page, String name);
     User findById(int id);
     Login verifylogin(String code);
+    Login templogin(String code);
     void createUser(User user);
     void updateUser(User user);
     void deleteUser(int id);
+    void alive(int loginid, Long alive_timestamp);
 }
 

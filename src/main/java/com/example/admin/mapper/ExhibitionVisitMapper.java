@@ -15,6 +15,7 @@ public interface ExhibitionVisitMapper {
     List<Exhibition> getAllExhibition();
     List<String> getExhibitionList(); // 获取所有的展区ID
     List<exhb2prod> getexhb2prod();
-
+    List<ExhibitionVisit> getexhbvisitbyexhbid(String exhbid); //根据展区ID寻找展区参观记录
+    List<ExhibitionVisit> getexhbvisitbyloginid(String exhbid, int loginid);
 }
 

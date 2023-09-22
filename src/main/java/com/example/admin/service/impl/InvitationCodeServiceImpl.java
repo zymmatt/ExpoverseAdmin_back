@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -51,11 +53,53 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
     }
 
     /*
-    * 把每一个请求记录中的起始日期到终止日期之间的日子放进字典中,
-    * 字典中已经有的日子要把占据座位变量增加,最后字典中的所有日子和对应
-    * 的占据座位量放入到scheduled Invitation中,列表返回
-    *
-    */
+     * 把每一个请求记录中的起始日期到终止日期之间的日子放进字典中,
+     * 字典中已经有的日子要把占据座位变量增加,最后字典中的所有日子和对应
+     * 的占据座位量放入到scheduled Invitation中,列表返回
+     * 精细到整点小时的单位
+     */
+    @Override
+    @Transactional
+    public List<scheduled_invitation> getScheduledHour() {
+        List<InvitationCode>invitations = invitationCodeMapper.getAllInvitation();
+        List<scheduled_invitation> schedule=new ArrayList<>();
+        Map<String, Integer> scheduleDict = new HashMap<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH");
+        for (InvitationCode single:invitations){
+            LocalTime starttime = single.getStartTime();
+            LocalDate startDate=single.getStartDate();
+            LocalDate endDate=single.getEndDate();
+            LocalDateTime startDT = startDate.atTime(starttime);
+            LocalDateTime endDT = endDate.atTime(starttime);
+            while (startDT.compareTo(endDT)<0) {
+                String tempDT = startDT.format(formatter);
+                if (scheduleDict.containsKey(tempDT)){
+                    scheduleDict.put(tempDT, scheduleDict.get(tempDT)+1);
+                }
+                else{
+                    scheduleDict.put(tempDT, 1);
+                }
+                startDT = startDT.plusHours(1);
+            }
+        }
+        for (Map.Entry<String, Integer> entry: scheduleDict.entrySet()) {
+            scheduled_invitation temp_day = new scheduled_invitation();
+            String[] parts = entry.getKey().split(" ");
+            temp_day.setCurrentDate(parts[0]);
+            temp_day.setCurrentTime(parts[1]);
+            temp_day.setOccupied_seats(entry.getValue());
+            schedule.add(temp_day);
+        }
+        return schedule;
+    }
+
+
+    /*
+     * 把每一个请求记录中的起始日期到终止日期之间的日子放进字典中,
+     * 字典中已经有的日子要把占据座位变量增加,最后字典中的所有日子和对应
+     * 的占据座位量放入到scheduled Invitation中,列表返回
+     *
+     */
     @Override
     @Transactional
     public List<scheduled_invitation> getScheduledDay() {

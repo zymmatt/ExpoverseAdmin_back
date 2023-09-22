@@ -14,11 +14,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // 演示时使用的临时登录,不用查询邀请码,而是返回最近注册的用户的信息
     @RequestMapping(value="/login", method= RequestMethod.GET)
+    public Login templogin(String code) {
+        return userService.templogin(code);
+    }
+
+    @RequestMapping(value="/login2", method= RequestMethod.GET)
     public Login login(String code) {
         return userService.verifylogin(code);
     }
 
+    @RequestMapping(value="/alive", method = RequestMethod.POST)
+    public void alive(int loginid, Long alive_timestamp){
+        userService.alive(loginid, alive_timestamp);
+    }
 
     @RequestMapping(value="/findAll", method= RequestMethod.GET)
     public List<User> findAll() {
@@ -50,5 +60,7 @@ public class UserController {
     public void deleteUser(int id) {
         userService.deleteUser(id);
     }
+
+
 
 }

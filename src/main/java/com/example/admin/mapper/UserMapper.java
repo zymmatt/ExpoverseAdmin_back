@@ -16,4 +16,7 @@ public interface UserMapper {
     InvitationCode findCode(String code);
     void insertlogin(Login login);
     List<Integer> getlogin(Login login);
+    List<Login> getallLogin();
+    void updatealive(int loginid, Long alive_timestamp);
+    User getLatestUser();
 }

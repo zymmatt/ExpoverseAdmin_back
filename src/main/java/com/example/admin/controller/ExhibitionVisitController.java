@@ -7,6 +7,8 @@ import com.example.admin.service.ExhibitionVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -47,14 +49,14 @@ public class ExhibitionVisitController {
 
     // 把展区的参观时长数据汇集到Excel中,发送给前端供下载
     @RequestMapping(value="/downloadvisitTimeDataExcel", method= RequestMethod.GET)
-    public void downloadvisitTimeDataExcel(){
-        exhibitionVisitService.downloadvisitTimeDataExcel();
+    public void downloadvisitTimeDataExcel(HttpServletResponse response) throws IOException {
+        exhibitionVisitService.downloadvisitTimeDataExcel(response);
     }
 
     // 把展区的参观人次数据汇集到Excel中,发送给前端供下载
-    @RequestMapping(value="/downloadvisitUserDataExcel", method= RequestMethod.GET)
-    public void downloadvisitUserDataExcel(){
-        exhibitionVisitService.downloadvisitUserDataExcel();
+    @RequestMapping(value="/downloadvisitNumDataExcel", method= RequestMethod.GET)
+    public void downloadvisitNumDataExcel(HttpServletResponse response) throws IOException {
+        exhibitionVisitService.downloadvisitNumDataExcel(response);
     }
 
 

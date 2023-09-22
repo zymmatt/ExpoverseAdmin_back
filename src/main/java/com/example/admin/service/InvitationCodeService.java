@@ -6,6 +6,7 @@ import java.util.List;
 public interface InvitationCodeService {
     String generateCodeID();
     List<scheduled_invitation> getScheduledDay();
+    List<scheduled_invitation> getScheduledHour();
     void createInvitation(InvitationCode invitation);
     List<String> getAllCodeID();
 }

@@ -43,6 +43,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    public Login templogin(String code){
+        User latestUser = userMapper.getLatestUser();
+        int userid = latestUser.getId();
+        long currentTimestamp = Instant.now().getEpochSecond();
+        Login res = new Login(userid,currentTimestamp);
+        userMapper.insertlogin(res);
+        String username = latestUser.getName();
+        String username_english = username;
+        if (containsChinese(username)){ // 中文转拼音
+            username_english=convertToPinyin(username_english);
+        }
+        int loginid = userMapper.getlogin(res).get(0);
+        return new Login(loginid, userid, username, username_english);
+    }
+
+    @Override
+    @Transactional
     public Login verifylogin(String code) {
         // 验证这个邀请码是谁的, 是否还在有效期内
         InvitationCode invitation = userMapper.findCode(code);
@@ -75,6 +92,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    public void alive(int loginid, Long alive_timestamp) {
+        userMapper.updatealive(loginid,alive_timestamp);
+    }
+
+    @Override
+    @Transactional
     public void createUser(User user) {
         userMapper.insert(user);
     }
@@ -91,5 +114,6 @@ public class UserServiceImpl implements UserService {
         System.out.println("delete user"+id);
         userMapper.delete(id);
     }
+
 
 }

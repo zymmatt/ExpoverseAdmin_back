@@ -22,6 +22,7 @@
         <result column="userid" property="userid"/>
         <result column="trigger_timestamp" property="trigger_timestamp"/>
         <result column="exhibition_id" property="exhibition_id"/>
+        <result column="enter" property="enter"/>
     </resultMap>
 
     <select id="ExhbgetDatabyDate" resultMap="ExhibitionVisitMap">
@@ -57,10 +58,6 @@
         SELECT exhibition_id,verse_id,name,description FROM expoverse.exhibition
     </select>
 
-    <select id="getExhibitionList" resultType="String">
-        SELECT exhibition_id FROM expoverse.exhibition
-    </select>
-
 
     <resultMap id="exhb2prodMap" type="com.example.admin.entity.Visit.exhb2prod">
         <result column="exhibition_id" property="exhbid"/>
@@ -69,6 +66,18 @@
 
     <select id="getexhb2prod" resultMap="exhb2prodMap">
         SELECT exhibition_id, product_id FROM expoverse.product
+    </select>
+
+    <select id="getexhbvisitbyexhbid" resultMap="ExhibitionVisitMap">
+        SELECT loginid, userid, trigger_timestamp, exhibition_id, enter
+        FROM expoverse.exhibition_visit
+        WHERE exhibition_id = #{exhbid}
+    </select>
+
+    <select id="getexhbvisitbyloginid" resultMap="ExhibitionVisitMap">
+        SELECT loginid, userid, trigger_timestamp, exhibition_id, enter
+        FROM expoverse.exhibition_visit
+        WHERE exhibition_id = #{exhbid} AND loginid = #{loginid}
     </select>
 
 </mapper>

@@ -80,8 +80,8 @@
     <!-- 插入一条用户登录记录 -->
     <insert id="insertlogin" parameterType="com.example.admin.entity.User.Login"
             useGeneratedKeys="true" keyProperty="loginid" keyColumn="loginid">
-        INSERT INTO expoverse.login (userid, trigger_timestamp)
-        VALUES (#{userid},  #{trigger_timestamp})
+        INSERT INTO expoverse.login (userid, trigger_timestamp, alive_timestamp)
+        VALUES (#{userid},  #{trigger_timestamp}, #{alive_timestamp})
     </insert>
 
     <!-- 查询-一条用户登录记录, 返回登录ID -->
@@ -89,5 +89,21 @@
         SELECT loginid FROM expoverse.login
         WHERE userid = #{userid} and trigger_timestamp = #{trigger_timestamp}
     </select>
+
+    <update id="updatealive">
+        UPDATE expoverse.login SET alive_timestamp = #{alive_timestamp} WHERE loginid = #{loginid}
+    </update>
+
+    <select id="getallLogin" resultType="com.example.admin.entity.User.Login">
+        SELECT loginid, userid, trigger_timestamp, alive_timestamp from expoverse.login
+    </select>
+
+    <select id="getLatestUser" resultMap="UserResultMap">
+        SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
+        from expoverse.user
+        ORDER BY id DESC
+        LIMIT 1
+    </select>
+
 
 </mapper>
