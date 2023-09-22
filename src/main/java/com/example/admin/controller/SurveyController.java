@@ -74,27 +74,8 @@ public class SurveyController {
 
     // 把客户问卷作答数据汇集到Excel中,发送给前端供下载
     @RequestMapping(value="/downloadDataExcel", method= RequestMethod.GET)
-    //public ResponseEntity<byte[]> downloadExcel() throws IOException {
     public void downloadExcel(HttpServletResponse response) throws IOException {
-        //File file = new File("C:\\Users\\IES235074\\Downloads\\localtest.xlsx");
-        //FileInputStream fileInputStream = new FileInputStream(file);
-        //Workbook workbook = new XSSFWorkbook(fileInputStream);
         surveyService.downloadDataExcel(response);
-        /*
-        response.setHeader("Content-Disposition", "attachment;fileName=" +
-                URLEncoder.encode("testexcel", String.valueOf(StandardCharsets.UTF_8)));
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        //response.setHeader("content_type","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        response.setHeader("content_type","application/vnd.ms-excel");
-        ServletOutputStream outputStream = response.getOutputStream();
-        workbook.write(outputStream);
-        outputStream.flush();
-        workbook.close();
-        */
     }
-    //public void downloadDataExcel(HttpServletResponse response) throws IOException {
-        //surveyService.downloadDataExcel(response);
-    //}
-
 
 }

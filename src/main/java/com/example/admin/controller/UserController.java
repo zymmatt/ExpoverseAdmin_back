@@ -25,8 +25,9 @@ public class UserController {
         return userService.verifylogin(code);
     }
 
+    // 应用端传过来的时间戳是String格式的,要转成long
     @RequestMapping(value="/alive", method = RequestMethod.POST)
-    public void alive(int loginid, Long alive_timestamp){
+    public void alive(int loginid, String alive_timestamp){
         userService.alive(loginid, alive_timestamp);
     }
 

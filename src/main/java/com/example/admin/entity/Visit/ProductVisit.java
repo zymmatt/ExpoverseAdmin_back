@@ -12,9 +12,16 @@ public class ProductVisit {
 
     private Long trigger_timestamp; // 参观动作的触发时间
 
-    public int getUserid() {
-        return userid;
+    public ProductVisit(int loginid, int userid, String prodid,
+                        int duration, Long trigger_timestamp){
+        this.loginid = loginid;
+        this.userid = userid;
+        this.prodid = prodid;
+        this.duration = duration;
+        this.trigger_timestamp = trigger_timestamp;
     }
+
+    public int getUserid() { return userid; }
 
     public void setUserid(int userid) {
         this.userid = userid;

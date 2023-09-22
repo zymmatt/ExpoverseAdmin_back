@@ -41,14 +41,32 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
 
     @Override
     @Transactional
-    public void createDataExhb(ExhibitionVisit exhibitionVisit) {
+    public void createDataExhb(PostExhbVisit postExhbVisit) {
+        int loginid = postExhbVisit.getLoginid();
+        int userid = postExhbVisit.getUserid();
+        String exhbid =  postExhbVisit.getExhibition_id();
+        boolean isenter = postExhbVisit.getEnter();
+        String trigger_timestamp = postExhbVisit.getTrigger_timestamp();
+        ExhibitionVisit exhibitionVisit= new ExhibitionVisit(loginid,userid,Long.parseLong(trigger_timestamp),
+                                                             exhbid,isenter);
         exhibitionVisitMapper.insertExhibitionVisit(exhibitionVisit);
     }
 
     @Override
     @Transactional
-    public void createDataProd(ProductVisit productVisit) {
-        exhibitionVisitMapper.insertProductVisit(productVisit);
+    public void createDataProd(PostProdVisit postProdVisit) {
+        int userid = postProdVisit.getUserid();
+        int loginid = postProdVisit.getLoginid();
+        Long trigger_timestamp = Long.parseLong(postProdVisit.getTrigger_timestamp());
+        List<PostProdVisitSingle> productList = postProdVisit.getProduct();
+        for (PostProdVisitSingle postProdVisitSingle:productList){
+            String prodid = postProdVisitSingle.getProdid();
+            int duration = postProdVisitSingle.getDuration();
+            ProductVisit productVisit = new ProductVisit(loginid, userid, prodid,
+                                                         duration, trigger_timestamp);
+            exhibitionVisitMapper.insertProductVisit(productVisit);
+        }
+
     }
 
     public List<Product_data> ProdgetDatabyDate(Long startDate, Long endDate){

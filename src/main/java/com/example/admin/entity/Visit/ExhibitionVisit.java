@@ -14,6 +14,16 @@ public class ExhibitionVisit {
 
     private boolean enter; // 进入还是离开, 默认是进入
 
+    public ExhibitionVisit(int loginid, int userid, Long trigger_timestamp,
+                           String exhibition_id, boolean enter ){
+        this.loginid = loginid;
+        this.userid = userid;
+        this.trigger_timestamp = trigger_timestamp;
+        this.exhibition_id = exhibition_id;
+        this.enter = enter;
+    }
+
+
     public String getExhibition_id() {
         return exhibition_id;
     }
