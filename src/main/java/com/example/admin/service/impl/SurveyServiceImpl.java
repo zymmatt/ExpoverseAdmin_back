@@ -89,7 +89,15 @@ public class SurveyServiceImpl implements SurveyService{
     @Transactional
     public List<SingleQuestionStat> getAllQues() {
         List<SingleQuestionStat> singleQuestionStats=new ArrayList<>();
-        List<Integer> queIDs = surveyMapper.getAllQuesID();
+        List<Integer> queIDs = new ArrayList<>();
+        List<Question> questions = surveyMapper.getQuestions();
+
+        for (Question question:questions){
+            // 这道题包含了填空选项, 单选和多选都要
+            if (question.getQues_type().contains("multichoice") || question.getQues_type().contains("singlechoice")){
+                queIDs.add(question.getQues_id());
+            }
+        }
         //Map<String, Integer> scheduleDict = new HashMap<>();
         //for (Map.Entry<String, Integer> entry: scheduleDict.entrySet()) {}
         // 获得所有问题id
