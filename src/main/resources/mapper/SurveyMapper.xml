@@ -58,7 +58,7 @@
     </select>
 
     <select id="getQuestions" resultType="com.example.admin.entity.Survey.Question">
-        SELECT * FROM expoverse.survey_questions
+        SELECT ques_id, ques_content, ques_type, label FROM expoverse.survey_questions
     </select>
 
     <select id="getOptions" resultType="com.example.admin.entity.Survey.Option">

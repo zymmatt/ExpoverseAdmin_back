@@ -7,6 +7,7 @@ import java.util.List;
 public class SingleQuestionStat {
     private int ques_id; //问题的id
     private String ques_content; //问题的内容
+    private String label; // 问题label
     private List<OptionAnswers> answers;
 
     public int getQues_id() {
@@ -37,9 +38,18 @@ public class SingleQuestionStat {
         this.ques_id = ques_id;
     }
 
-    public SingleQuestionStat(int ques_id){
-        this.ques_id=ques_id;
-        this.answers=new ArrayList<>();
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public SingleQuestionStat(int ques_id, String label){
+        this.ques_id = ques_id;
+        this.label = label;
+        this.answers = new ArrayList<>();
     }
 }
 

@@ -55,7 +55,9 @@
     </resultMap>
 
     <select id="getAllExhibition" resultMap="ExhibitionMap">
-        SELECT exhibition_id,verse_id,name,description FROM expoverse.exhibition
+        SELECT exhibition_id,verse_id,name,description
+        FROM expoverse.exhibition
+        ORDER BY number ASC
     </select>
 
 

@@ -310,7 +310,11 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         int exhbcol = 4;
         int prodcol = 4;
         // 总体数据中每一个展区每一个展品的参观时长
-        for (String exhbid : exhb2proddict.keySet()) {
+
+        //for (String exhbid : exhb2proddict.keySet()) {
+        // 保证展区的排列顺序
+        for (Exhibition exhibition: exhibitionList) {
+            String exhbid = exhibition.getExhibition_id();
             if (exhb2proddict.get(exhbid).size()==0){ // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
                 sheet.addMergedRegion(new CellRangeAddress(0, 1, exhbcol, exhbcol));
                 headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
@@ -552,7 +556,10 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         int exhbcol = 4;
         int prodcol = 4;
         // 总体数据中每一个展区每一个展品的参观人次
-        for (String exhbid : exhb2proddict.keySet()) {
+        // 保证展区的排列顺序
+        // for (String exhbid : exhb2proddict.keySet()) {
+        for (Exhibition exhibition: exhibitionList) {
+            String exhbid = exhibition.getExhibition_id();
             if (exhb2proddict.get(exhbid).size()==0){ // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
                 sheet.addMergedRegion(new CellRangeAddress(0, 1, exhbcol, exhbcol));
                 headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
@@ -620,7 +627,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             tempRow.createCell(1).setCellValue(userid2name.get(loginid2userid.get(loginid)));
             // 访问时间
             tempRow.createCell(2).setCellValue(datetime.timestamp2str(login.getTrigger_timestamp()));
-            Long totalseconds = 120L;
+            long totalseconds = 120L;
             if (login.getAlive_timestamp() != null){
                 totalseconds = login.getAlive_timestamp()-login.getTrigger_timestamp();
             }
