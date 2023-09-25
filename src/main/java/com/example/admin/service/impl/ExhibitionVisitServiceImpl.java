@@ -151,6 +151,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             // 每次进入的记录加一次点击量
             if (single.isEnter()){
                 visitNum.put(tempexhbid, visitNum.get(tempexhbid)+1);
+
             }
             // 处理访客量, 用HashSet集合来存储名字确保不重复
             int tempuserid = single.getUserid();

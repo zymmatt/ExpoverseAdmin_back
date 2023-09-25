@@ -38,6 +38,7 @@ public class ExhibitionVisitController {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             long startday = sdf.parse(startDate).getTime()/1000;
             long endday = sdf.parse(endDate).getTime()/1000;
+            endday = endday+86400; // 终止日要加24小时,包含进当天
             return exhibitionVisitService.getDatabyDate(startday, endday);
         }catch (ParseException e) {
             e.printStackTrace();
