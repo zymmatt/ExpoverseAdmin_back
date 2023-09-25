@@ -97,15 +97,17 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         for (ProductVisit single:visits){
             // 处理点击量
             String tempprodid = single.getProdid();
-
             // 每次记录加一次点击量
-            visitNum.put(tempprodid, visitNum.get(tempprodid)+1);
-            // 处理访客量, 用HashSet集合来存储名字确保不重复
-            int tempuserid = single.getUserid();
+            // 只有当这个展品ID已经被汇总表格存放过才能记录,防止参观ID中有一些意料之外的数据
+            if (visitNum.containsKey(tempprodid)) {
+                visitNum.put(tempprodid, visitNum.get(tempprodid) + 1);
+                // 处理访客量, 用HashSet集合来存储名字确保不重复
+                int tempuserid = single.getUserid();
 
-            visitUser.get(tempprodid).add(tempuserid);
-            // 访问时间用duration来累加就好了
-            visitTime.put(tempprodid, visitTime.get(tempprodid)+single.getDuration());
+                visitUser.get(tempprodid).add(tempuserid);
+                // 访问时间用duration来累加就好了
+                visitTime.put(tempprodid, visitTime.get(tempprodid) + single.getDuration());
+            }
         }
         // 生成每一个产品的数据对象, 分别把数据都放进去
         for (String prodid:visitNum.keySet()){
@@ -508,11 +510,14 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         }
         // 对每一次展品参观的记录,都要对应到是哪一个loginid参观了哪一个展品共多少次
         for (ProductVisit productVisit:productVisitList){
-            prodid2visitdict.get(productVisit.getProdid()).add(productVisit);//展品ID记录对应的参观记录
-            int loginid = productVisit.getLoginid();
             String prodid = productVisit.getProdid();
-            // int duration = productVisit.getDuration();
-            loginid2productvisit.get(loginid).put(prodid,loginid2productvisit.get(loginid).get(prodid)+1);
+            // 要确定字典里面事先已经放入了这个展品ID,防止意料之外的展品参观记录的放入
+            if (prodid2visitdict.containsKey(prodid)) {
+                prodid2visitdict.get(prodid).add(productVisit);//展品ID记录对应的参观记录
+                int loginid = productVisit.getLoginid();
+                // int duration = productVisit.getDuration();
+                loginid2productvisit.get(loginid).put(prodid, loginid2productvisit.get(loginid).get(prodid) + 1);
+            }
         }
         // 对每一次展区参观的记录,都要对应到是哪一个loginid参观了哪一个展区,把记录添加进去
         for (ExhibitionVisit exhibitionVisit:exhvisit){
