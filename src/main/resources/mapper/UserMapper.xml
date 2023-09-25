@@ -32,7 +32,7 @@
     resultType="com.example.admin.entity.User.User" -->
     <select id="findAll"  resultMap="UserResultMap">
         SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
-        from expoverse.user ORDER BY approval_date DESC;
+        from expoverse.user ORDER BY id DESC;
     </select>
 
     <!-- 一页20行查询用户 -->
