@@ -93,6 +93,8 @@
 
     <select id="getallExhbid" resultType="java.lang.String">
         SELECT exhibition_id FROM expoverse.exhibition
+        ORDER BY number
+        ASC
     </select>
 
     <select id="getallExhbMovie" resultMap="ExhbMovieResultMap">

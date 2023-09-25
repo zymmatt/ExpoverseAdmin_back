@@ -75,7 +75,9 @@ public class ResourceServiceImpl implements ResourceService{
         for (ExhbMovie exhbMovie:exhbMovieList){
             exhb2moviedict.put(exhbMovie.getExhibition_id(),exhbMovie);
         }
-        for (String exhbid : exhb2proddict.keySet()) {
+
+        //for (String exhbid : exhb2proddict.keySet()) {
+        for (String exhbid: exhbidlist){
             //Integer value = exhb2proddict.get(key);
             //System.out.println("Key: " + key + ", Value: " + value);
             List<String> tempprodlist = exhb2proddict.get(exhbid); // 展区ID找到展品ID列表
