@@ -254,11 +254,12 @@ public class SurveyServiceImpl implements SurveyService{
                 for (Integer ans:tempset) {
                     stringBuilder.append(optionid_text.get(ans)).append(", "); // 追加字符串
                 }
-                System.out.println("ques.getFilled()   "+ques.getFilled());
+                // System.out.println("ques.getFilled()   "+ques.getFilled());
                 if (ques.getFilled() != null){
                     stringBuilder.append(ques.getFilled()); // 补充填空题内容
                 }
                 dataRow.createCell(dataColNum).setCellValue(stringBuilder.toString());
+                sheet.setColumnWidth(dataColNum, 30*256); // 记录回答内容的列设置的宽一些
                 dataColNum += 1;
             }
             //dataRow.createCell(0).setCellValue();

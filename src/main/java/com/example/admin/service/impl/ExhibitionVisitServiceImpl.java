@@ -219,12 +219,12 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         Map<Integer, Map<String, List<ExhibitionVisit>>> loginid2exhbvisit = new HashMap<>(); // 每一个登录ID在每个展区里的参观记录
         Map<Integer, Integer> loginid2userid = new HashMap<>(); // 登录ID查用户ID的字典
         Map<Integer, String> userid2name = new HashMap<>(); // 用户ID查用户名字的字典
-        // loginList按照登录ID和触发时间戳排序
+        // loginList按照登录ID和触发时间戳排序, 最晚登录的要放在最前面
         Collections.sort(loginList, (r1, r2) ->{
             if (r1.getLoginid()==r2.getLoginid()){
-                return Long.compare(r1.getTrigger_timestamp(), r2.getTrigger_timestamp());
+                return -Long.compare(r1.getTrigger_timestamp(), r2.getTrigger_timestamp());
             } else {
-                return Integer.compare(r1.getLoginid(),r2.getLoginid());
+                return -Integer.compare(r1.getLoginid(),r2.getLoginid());
             }
         });
         //int total_duration = 0; // 用户访问的时长
@@ -462,9 +462,9 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         // loginList按照登录ID和触发时间戳排序
         Collections.sort(loginList, (r1, r2) ->{
             if (r1.getLoginid()==r2.getLoginid()){
-                return Long.compare(r1.getTrigger_timestamp(), r2.getTrigger_timestamp());
+                return -Long.compare(r1.getTrigger_timestamp(), r2.getTrigger_timestamp());
             } else {
-                return Integer.compare(r1.getLoginid(),r2.getLoginid());
+                return -Integer.compare(r1.getLoginid(),r2.getLoginid());
             }
         });
         long total_duration = 0L; // 所有登录人次访问的总时长
