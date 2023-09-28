@@ -20,7 +20,9 @@ public class InvitationCode {
     private LocalTime startTime;
     
     private int userid;
-    
+
+    private String username;
+
     private String approver_id;
 
     public void setCodeId(){
@@ -63,12 +65,28 @@ public class InvitationCode {
         return userid;
     }
 
-    public void setapprover_id(String approver_id) {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getApprover_id() {
+        return approver_id;
+    }
+
+    public void setApprover_id(String approver_id) {
         this.approver_id = approver_id;
     }
 
-    public String getapprover_id() {
-        return approver_id;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     // Override equals, hashCode, and toString methods if necessary...

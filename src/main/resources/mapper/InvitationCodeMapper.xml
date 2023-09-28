@@ -16,7 +16,8 @@
         <result column="start_date" property="startDate"/>
         <result column="end_date" property="endDate"/>
         <result column="start_time" property="startTime"/>
-        <result column="userid" property="userid"/>
+        <result column="name" property="username"/>
+        <result column="approver_id" property="approver_id"/>
     </resultMap>
 
     <select id="findCodebyId" resultMap="codeIdMap">
@@ -24,7 +25,13 @@
     </select>
 
     <select id="getAllInvitation" resultMap="codeIdMap">
-        SELECT * FROM expoverse.invitation_codes
+        SELECT expoverse.invitation_codes.invitation_code_id,expoverse.invitation_codes.start_date,
+        expoverse.invitation_codes.end_date, expoverse.invitation_codes.start_time, expoverse.user.name,
+        expoverse.invitation_codes.approver_id
+        FROM expoverse.invitation_codes JOIN expoverse.user
+        ON expoverse.invitation_codes.userid = expoverse.user.id
+        ORDER BY expoverse.invitation_codes.id
+        DESC
     </select>
 
 </mapper>

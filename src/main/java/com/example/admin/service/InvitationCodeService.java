@@ -7,7 +7,8 @@ public interface InvitationCodeService {
     String generateCodeID();
     List<scheduled_invitation> getScheduledDay();
     List<scheduled_invitation> getScheduledHour();
+    List<InvitationCode> getAllInvitation();
     void createInvitation(InvitationCode invitation);
-    List<String> getAllCodeID();
+
 }
 

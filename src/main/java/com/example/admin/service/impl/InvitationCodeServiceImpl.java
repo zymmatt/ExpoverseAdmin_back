@@ -139,8 +139,7 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
 
     @Override
     @Transactional
-    public List<String> getAllCodeID() {
-        //InvitationCodeMapper
-        return null;
+    public List<InvitationCode> getAllInvitation() {
+        return invitationCodeMapper.getAllInvitation();
     }
 }

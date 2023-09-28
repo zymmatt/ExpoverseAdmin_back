@@ -35,4 +35,12 @@ public class InvitationCodeController {
         invitationCodeService.createInvitation(invitationCode);
     }
 
+    @RequestMapping(value="/getAllInvitation", method= RequestMethod.GET)
+    public List<InvitationCode> getAllInvitation() {
+        return invitationCodeService.getAllInvitation();
+    }
+
+
+
+
 }

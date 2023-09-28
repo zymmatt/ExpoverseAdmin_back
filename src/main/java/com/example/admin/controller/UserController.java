@@ -15,12 +15,12 @@ public class UserController {
     private UserService userService;
 
     // 演示时使用的临时登录,不用查询邀请码,而是返回最近注册的用户的信息
-    @RequestMapping(value="/login", method= RequestMethod.GET)
-    public Login templogin(String code) {
+    @RequestMapping(value="/templogin", method= RequestMethod.GET)
+    public Login login2(String code) {
         return userService.templogin(code);
     }
 
-    @RequestMapping(value="/login2", method= RequestMethod.GET)
+    @RequestMapping(value="/login", method= RequestMethod.GET)
     public Login login(String code) {
         return userService.verifylogin(code);
     }
@@ -48,7 +48,6 @@ public class UserController {
 
     @RequestMapping(value="/createUser", method= RequestMethod.POST)
     public void createUser(@RequestBody User user) {
-
         userService.createUser(user);
     }
 
@@ -61,7 +60,5 @@ public class UserController {
     public void deleteUser(int id) {
         userService.deleteUser(id);
     }
-
-
 
 }
