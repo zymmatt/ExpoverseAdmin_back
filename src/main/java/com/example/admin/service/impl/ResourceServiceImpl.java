@@ -23,6 +23,8 @@ import java.util.*;
 import java.io.FileOutputStream;
 import java.time.OffsetDateTime;
 
+import static java.lang.Math.min;
+
 @Service
 public class ResourceServiceImpl implements ResourceService{
 
@@ -144,8 +146,13 @@ public class ResourceServiceImpl implements ResourceService{
     public void uploadDMdict(ProdUpdate prodUpdate) throws IOException {
         String prodid = prodUpdate.getProdid();
         List<UploadDM> uploadDMs = prodUpdate.getUploadDMlist();
+        List<DM> dmlist = resourceMapper.getDMURLbyProdid(prodid);
+        HashMap<String,Integer> DMdict = new HashMap<>();
         List<URL> urlList = new ArrayList<>();
         int file_no = 1;
+        for (DM dm:dmlist){
+            DMdict.put(dm.getUrl(),dm.getDownload());
+        }
         for (UploadDM uploadDM:uploadDMs){
             if(uploadDM.getsrc().startsWith("data:")){
                 //上传的新图片需要传进azure blob storage数据库中
@@ -177,7 +184,7 @@ public class ResourceServiceImpl implements ResourceService{
                 */
                 BlobContainerClient containerClient = blobstorage.getclient();
                 BlobClient blobClient = containerClient.getBlobClient(outputPath);
-
+                //BlobClient oldblobClient = containerClient.getBlobClient(oldUrl);
                 String base64Data = base64Image.substring(base64Image.indexOf(',') + 1);
                 base64Data = base64Data.replaceAll("\r|\n", "");
                 base64Data = base64Data.trim();
@@ -186,19 +193,36 @@ public class ResourceServiceImpl implements ResourceService{
                 // 将字节数组转换为二进制
                 //InputStream inputStream = file.getInputStream();
                 blobClient.upload(BinaryData.fromBytes(imageBytes));
+                //oldblobClient.deleteIfExists(); // 删除已有的旧资源
                 System.out.println("上传了新图片"+outputPath);
                 String accountName = blobstorage.accountName();
                 String containerName = blobstorage.containerName();
                 String tempsrc = String.format("https://%s.blob.core.windows.net/%s/%s",
                         accountName,containerName,outputPath);
                 // https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/121glj390n980.jpg
-                urlList.add(new URL(tempsrc,"image",prodid,file_no));
+                URL tempurl = new URL(tempsrc,"image",prodid,file_no);
+                tempurl.setDownload(1); // 新资源的版本号从1开始
+                urlList.add(tempurl);
+
             }
             else{
                 System.out.println(uploadDM.getsrc());
-                urlList.add(new URL(uploadDM.getName(),"image", prodid, file_no));
+                URL tempurl = new URL(uploadDM.getName(),"image", prodid, file_no);
+                // 在老的DM列表中包含了新DM列表中的某一个
+                if (DMdict.containsKey(uploadDM.getName())){
+                    int oldDownload = DMdict.get(uploadDM.getName());
+                    tempurl.setDownload(oldDownload);
+                    DMdict.remove(uploadDM.getName());
+                }
+                urlList.add(tempurl); // 老资源不用修改已有的blob数据也不用修改download版本号
             }
             file_no+=1;
+        }
+        // 对于提交的新DM列表中没有包含的旧有DM，可以直接删除
+        BlobContainerClient containerClient = blobstorage.getclient();
+        for (String name:DMdict.keySet()){
+            BlobClient blobClient = containerClient.getBlobClient(name);
+            blobClient.deleteIfExists(); //
         }
         resourceMapper.deleteurlbyprodid(prodid);
         for (URL url:urlList){

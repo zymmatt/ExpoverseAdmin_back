@@ -6,7 +6,7 @@ public class URL {
     private String product_id;
     private String exhibition_id;
     private int file_no;
-    private boolean download;
+    private int download;
 
     public void setProduct_id(String product_id) {
         this.product_id = product_id;
@@ -48,11 +48,11 @@ public class URL {
         return exhibition_id;
     }
 
-    public boolean isDownload() {
+    public int isDownload() {
         return download;
     }
 
-    public void setDownload(boolean download) {
+    public void setDownload(int download) {
         this.download = download;
     }
 
