@@ -1,13 +1,15 @@
 package com.example.admin.entity.Resource;
 
 public class DM {
-    private String url;//某张图片的URL
+    private String url;//某张DM图片的URL
 
-    private String prodid;
+    private String prodid; // DM的产品ID
 
-    private int file_no;
+    private int file_no; // 某张DM图片在应用端存储的文件顺序,即应用端资源里存储第几个,不是真实展示的顺序
 
-    private int download;
+    private int download; // 某张DM图片的版本号
+
+    private int real_no; // 某张DM图片的真实展示文件顺序,当图片顺序调换而没有插入新图片时,则只要更新real_no就可以了
 
     public String getUrl() { return url; }
 
@@ -35,5 +37,13 @@ public class DM {
 
     public void setDownload(int download) {
         this.download = download;
+    }
+
+    public int getReal_no() {
+        return real_no;
+    }
+
+    public void setReal_no(int real_no) {
+        this.real_no = real_no;
     }
 }

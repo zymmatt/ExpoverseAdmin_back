@@ -6,6 +6,7 @@ public class URL {
     private String product_id;
     private String exhibition_id;
     private int file_no;
+    private int real_no;
     private int download;
 
     public void setProduct_id(String product_id) {
@@ -48,12 +49,20 @@ public class URL {
         return exhibition_id;
     }
 
-    public int isDownload() {
+    public void setDownload(int download) {
+        this.download = download;
+    }
+
+    public int getDownload() {
         return download;
     }
 
-    public void setDownload(int download) {
-        this.download = download;
+    public void setReal_no(int real_no) {
+        this.real_no = real_no;
+    }
+
+    public int getReal_no() {
+        return real_no;
     }
 
     public URL(String file_url, String file_type, String product_id, int file_no){
@@ -62,5 +71,6 @@ public class URL {
         this.product_id = product_id;
         this.file_no = file_no;
     }
+
 
 }

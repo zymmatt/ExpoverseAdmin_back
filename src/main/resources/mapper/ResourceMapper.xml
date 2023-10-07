@@ -17,6 +17,7 @@
         <result column="product_id" property="prodid"/>
         <result column="file_no" property="file_no"/>
         <result column="download" property="download"/>
+        <result column="real_no" property="real_no"/>
         <!-- 其他字段 -->
     </resultMap>
 
@@ -47,7 +48,8 @@
 
     <!-- 根据产品ID获得DM的URL列表 -->
     <select id="getDMURLbyProdid" parameterType="String" resultMap="DMResultMap">
-        SELECT file_url FROM expoverse.url_dm WHERE product_id = #{prodid} ORDER BY file_no
+        SELECT file_url,product_id,file_no,download,real_no
+        FROM expoverse.url_dm WHERE product_id = #{prodid} ORDER BY real_no
     </select>
 
     <!-- 根据展区ID获得展区电影的URL列表 -->
@@ -69,8 +71,8 @@
 
     <!-- 向某个product下插入新的url -->
     <insert id="inserturlbyprodid" parameterType="com.example.admin.entity.Resource.URL">
-        INSERT INTO expoverse.url_dm (file_url, file_type, product_id, file_no)
-        VALUES (#{file_url}, #{file_type},#{product_id}, #{file_no})
+        INSERT INTO expoverse.url_dm (file_url, file_type, product_id, file_no, download, real_no)
+        VALUES (#{file_url}, #{file_type},#{product_id}, #{file_no}, #{download}, #{real_no})
     </insert>
 
     <delete id="deleteurlbyexhbmovie" parameterType="String">
@@ -102,7 +104,7 @@
     </select>
 
     <select id="getallDM" resultMap="DMResultMap">
-        SELECT file_url,product_id,file_no,download FROM expoverse.url_dm ORDER BY file_no
+        SELECT file_url,product_id,file_no,download,real_no FROM expoverse.url_dm ORDER BY real_no
     </select>
 
     <select id="getallProdMovie" resultMap="ProdMovieResultMap">

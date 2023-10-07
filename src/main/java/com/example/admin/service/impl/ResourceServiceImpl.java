@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.util.*;
 import java.io.FileOutputStream;
 import java.time.OffsetDateTime;
-
+import com.example.admin.utils.string_proc;
 import static java.lang.Math.min;
 
 @Service
@@ -51,11 +51,11 @@ public class ResourceServiceImpl implements ResourceService{
         List<ExhbMovie> exhbMovieList = resourceMapper.getallExhbMovie(); // 所有的展区电影
         List<DM> dmList = resourceMapper.getallDM(); // 所有的DM,按照文件顺序排序
         List<ProdMovie> prodMovieList = resourceMapper.getallProdMovie(); // 所有的产品电影,按照文件顺序排序
-        List<exhb2prod> exhb2prodList = exhibitionVisitMapper.getexhb2prod();// 展区到展品的对应字典
-        Map<String,List<DM>>prod2dmlistdict = new HashMap<>();//从产品ID到DM列表
-        Map<String,List<ProdMovie>>prod2movielistdict= new HashMap<>();//从产品ID到电影列表
-        Map<String,ExhbMovie>exhb2moviedict = new HashMap<>(); //从展区ID到电影
-        Map<String, List<String>> exhb2proddict = new HashMap<>();//生成一个从展区ID找到对应展品ID的字典
+        List<exhb2prod> exhb2prodList = exhibitionVisitMapper.getexhb2prod(); // 展区到展品的对应字典
+        Map<String,List<DM>>prod2dmlistdict = new HashMap<>(); // 从产品ID到DM列表
+        Map<String,List<ProdMovie>>prod2movielistdict= new HashMap<>(); // 从产品ID到电影列表
+        Map<String,ExhbMovie>exhb2moviedict = new HashMap<>(); // 从展区ID到电影
+        Map<String, List<String>> exhb2proddict = new HashMap<>(); // 生成一个从展区ID找到对应展品ID的字典
         String SAS = "?"+gettempSAS(); // 获得临时密钥
         for (String exhbid:exhbidlist){
             exhb2proddict.put(exhbid, new ArrayList<>());
@@ -139,8 +139,9 @@ public class ResourceServiceImpl implements ResourceService{
         return resourceMapper.getProdMovieURLbyExhbid(exhbid);
     }
 
-
-
+    // 上传的字典里有这些参数  src name file_no
+    // src 以data:打头说明是新图片, name是xxxxxx.jpg, file_no=-1
+    // src 以https://打头说明是老图片, name是不加SAS的url地址, file_no是原来这张图片在应用端存储的顺序位置
     @Override
     @Transactional
     public void uploadDMdict(ProdUpdate prodUpdate) throws IOException {
@@ -149,16 +150,18 @@ public class ResourceServiceImpl implements ResourceService{
         List<DM> dmlist = resourceMapper.getDMURLbyProdid(prodid);
         HashMap<String,Integer> DMdict = new HashMap<>();
         List<URL> urlList = new ArrayList<>();
-        int file_no = 1;
         for (DM dm:dmlist){
             DMdict.put(dm.getUrl(),dm.getDownload());
         }
-        for (UploadDM uploadDM:uploadDMs){
+        for (int i=0;i<uploadDMs.size();i++){
+            UploadDM uploadDM = uploadDMs.get(i);
+            int file_no = uploadDM.getFile_no(); // 这个新的文件应该存在应用端的第几个顺序
+            // for (UploadDM uploadDM:uploadDMs){
             if(uploadDM.getsrc().startsWith("data:")){
                 //上传的新图片需要传进azure blob storage数据库中
                 String base64Image = uploadDM.getsrc();
-                String imagename = uploadDM.getName();
-                String outputPath = String.format("%s.jpg",imagename);
+                String outputPath = uploadDM.getName();
+                // String outputPath = String.format("%s.jpg",imagename);
                 /*
                 try {
                     String base64Data = base64Image.substring(base64Image.indexOf(',') + 1);
@@ -200,14 +203,23 @@ public class ResourceServiceImpl implements ResourceService{
                 String tempsrc = String.format("https://%s.blob.core.windows.net/%s/%s",
                         accountName,containerName,outputPath);
                 // https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/121glj390n980.jpg
-                URL tempurl = new URL(tempsrc,"image",prodid,file_no);
-                tempurl.setDownload(1); // 新资源的版本号从1开始
+                URL tempurl = new URL(tempsrc,"image",prodid,file_no);// file_no在前端都已经指定好了
+                // tempurl.setDownload(1); // 新资源的版本号从1开始
+                tempurl.setReal_no(i+1); // 真实展示的顺序
+                if (file_no<=dmlist.size()){ // 如果是初始的dm列表范围内的, 就增加对应位置的download
+                    tempurl.setDownload(dmlist.get(file_no-1).getDownload()+1);
+                }
+                else{
+                    tempurl.setDownload(1); // 如果是在dm列表范围以外新增的, 就把download设置为1
+                }
                 urlList.add(tempurl);
 
             }
             else{
                 System.out.println(uploadDM.getsrc());
+
                 URL tempurl = new URL(uploadDM.getName(),"image", prodid, file_no);
+                tempurl.setReal_no(i+1); // 真实展示的顺序
                 // 在老的DM列表中包含了新DM列表中的某一个
                 if (DMdict.containsKey(uploadDM.getName())){
                     int oldDownload = DMdict.get(uploadDM.getName());
@@ -216,11 +228,14 @@ public class ResourceServiceImpl implements ResourceService{
                 }
                 urlList.add(tempurl); // 老资源不用修改已有的blob数据也不用修改download版本号
             }
-            file_no+=1;
         }
         // 对于提交的新DM列表中没有包含的旧有DM，可以直接删除
         BlobContainerClient containerClient = blobstorage.getclient();
-        for (String name:DMdict.keySet()){
+        // System.out.println("多余的DM url");
+        // System.out.println(DMdict.toString());
+        //  https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/11r4jdl3sq400.jpg
+        for (String url:DMdict.keySet()){
+            String name = string_proc.extractFileName(url); //11r4jdl3sq400.jpg
             BlobClient blobClient = containerClient.getBlobClient(name);
             blobClient.deleteIfExists(); //
         }
@@ -233,8 +248,13 @@ public class ResourceServiceImpl implements ResourceService{
     @Override
     @Transactional
     public String updateExhbMovie(MultipartFile file, String exhbid, String name) throws IOException {
+        List<ExhbMovie> exhbMovies = resourceMapper.getExhbMovieURLbyExhbid(exhbid);
+        String oldurl = exhbMovies.get(0).getUrl();
+        String oldname = string_proc.extractFileName(oldurl);
         BlobContainerClient containerClient = blobstorage.getclient();
         BlobClient blobClient = containerClient.getBlobClient(name);
+        BlobClient oldClient = containerClient.getBlobClient(oldname);
+        oldClient.deleteIfExists();// 删除旧的视频
         byte[] imageBytes = file.getBytes();
         blobClient.upload(BinaryData.fromBytes(imageBytes));
         System.out.println("上传了新视频"+name);
@@ -299,8 +319,13 @@ public class ResourceServiceImpl implements ResourceService{
     @Override
     @Transactional
     public String updateProdMovie(MultipartFile file, String exhbid, String name) throws IOException {
+        List<ProdMovie> prodMovies = resourceMapper.getProdMovieURLbyExhbid(exhbid);
+        String oldurl = prodMovies.get(0).getUrl();
+        String oldname = string_proc.extractFileName(oldurl);
         BlobContainerClient containerClient = blobstorage.getclient();
         BlobClient blobClient = containerClient.getBlobClient(name);
+        BlobClient oldClient = containerClient.getBlobClient(oldname);
+        oldClient.deleteIfExists(); // 删除旧的视频
         byte[] imageBytes = file.getBytes();
         blobClient.upload(BinaryData.fromBytes(imageBytes));
         System.out.println("上传了新视频"+name);
