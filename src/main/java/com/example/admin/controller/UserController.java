@@ -23,9 +23,14 @@ public class UserController {
 
     // 应用端输入验证码完成登录
     @RequestMapping(value="/login", method= RequestMethod.GET)
-    public ResponseObject login(String code) {
-        return ResponseObject.success(userService.verifylogin(code));
+    public Login login(String code) {
+        return userService.verifylogin(code);
     }
+    // public ResponseObject login(String code) {
+    //    return ResponseObject.success(userService.verifylogin(code));
+    //}
+
+
 
     // 应用端更新某个loginid的心跳, 5分钟更新一次, 传过来的时间戳是String格式的,要转成long
     @RequestMapping(value="/alive", method = RequestMethod.POST)

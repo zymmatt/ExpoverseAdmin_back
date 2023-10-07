@@ -22,14 +22,14 @@ public class ExhibitionVisitController {
     @RequestMapping(value="/createDataExhb", method= RequestMethod.POST)
     public ResponseObject createDataExhb(@RequestBody PostExhbVisit postExhbVisit) {
         exhibitionVisitService.createDataExhb(postExhbVisit);
-        return ResponseObject.success("查询新的展区参观数据成功");
+        return ResponseObject.success("插入新的展区参观数据成功");
     }
 
     // 应用端插入新的产品参观数据, 可能同时包含很多个产品
     @RequestMapping(value="/createDataProd", method= RequestMethod.POST)
     public ResponseObject createDataProd(@RequestBody PostProdVisit postProdVisit) {
         exhibitionVisitService.createDataProd(postProdVisit);
-        return ResponseObject.success("查询新的展品参观数据成功");
+        return ResponseObject.success("插入新的展品参观数据成功");
     }
 
     // 管理员后台  根据时间区间获得这段时间内的展区总体参观数据

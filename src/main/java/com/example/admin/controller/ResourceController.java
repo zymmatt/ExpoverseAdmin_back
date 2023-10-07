@@ -18,9 +18,14 @@ public class ResourceController {
     private ResourceService resourceService;
 
     //应用端  当元宇宙前端刚刚加载的时候向后端请求所有的产品的DM图片,电影文件的URL
+    //@RequestMapping(value="/getAllResource", method= RequestMethod.GET)
+    //public ResponseObject getAllResource(){
+    //    return ResponseObject.success(resourceService.getAllResource());
+    //}
+
     @RequestMapping(value="/getAllResource", method= RequestMethod.GET)
-    public ResponseObject getAllResource(){
-        return ResponseObject.success(resourceService.getAllResource());
+    public List<ExhbSrc> getAllResource(){
+        return resourceService.getAllResource();
     }
 
     //管理员平台 根据当前的展区id查询产品id列表
