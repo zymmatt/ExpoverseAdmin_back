@@ -242,6 +242,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             String name = user.getName();
             userid2name.put(userid,name);
         }
+
         for (Exhibition exhibition:exhibitionList){
             String exhbid = exhibition.getExhibition_id();
             exhb2proddict.put(exhbid, new ArrayList<>());
@@ -262,6 +263,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                 //每个loginid下的每一个展品我们都初始设置参观时长是0
             }
         }
+
         // 对每一次展品参观的记录,都要对应到是哪一个loginid参观了哪一个展品多长时间,要做累加
         for (ProductVisit productVisit:productVisitList){
             prodid2visitdict.get(productVisit.getProdid()).add(productVisit);//展品ID记录对应的参观记录
@@ -270,12 +272,18 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             int duration = productVisit.getDuration();
             loginid2productvisit.get(loginid).put(prodid,loginid2productvisit.get(loginid).get(prodid)+duration);
         }
+
         // 对每一次展区参观的记录,都要对应到是哪一个loginid参观了哪一个展区,把记录添加进去
         for (ExhibitionVisit exhibitionVisit:exhvisit){
             int loginid = exhibitionVisit.getLoginid();
             String exhbid = exhibitionVisit.getExhibition_id();
-            loginid2exhbvisit.get(loginid).get(exhbid).add(exhibitionVisit);
+            // System.out.println(loginid);
+            // System.out.println(exhbid);
+            if (loginid2exhbvisit.containsKey(loginid)){
+                loginid2exhbvisit.get(loginid).get(exhbid).add(exhibitionVisit);
+            }
         }
+
         // 创建一个工作表
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Sheet1");
@@ -659,7 +667,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         }
 
         String rawFileName = "访问人次统计.xlsx";
-        response.reset();
+        // response.reset();
         try {
             response.setHeader("Content-Disposition", "attachment;fileName=" +
                     URLEncoder.encode(rawFileName, String.valueOf(StandardCharsets.UTF_8)));

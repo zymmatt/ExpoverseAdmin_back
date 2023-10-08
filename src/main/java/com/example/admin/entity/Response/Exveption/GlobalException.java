@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class GlobalException {
+
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(Exception.class)
     public ResponseObject handlerException(Exception e) {
@@ -17,12 +18,8 @@ public class GlobalException {
         return ResponseObject.fail("服务器出错！");
     }
 
-    /**
-     * 自定义异常
-     *
-     * @param e
-     * @return
-     */
+    //  自定义异常   @param e   @return
+
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(ServiceException.class)
     public ResponseObject handleException(ServiceException e) {

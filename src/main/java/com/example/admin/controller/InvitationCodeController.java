@@ -17,8 +17,8 @@ public class InvitationCodeController {
 
     // 管理员后台 生成一个不重复的激活码
     @RequestMapping(value="/generateCodeID", method= RequestMethod.GET)
-    public ResponseObject generateCodeID() {
-        return ResponseObject.success(invitationCodeService.generateCodeID());
+    public String generateCodeID() {
+        return invitationCodeService.generateCodeID();
     }
 
     // 管理员后台  行事历获得月格式下每一天的预约数量

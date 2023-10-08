@@ -80,9 +80,9 @@ public class SurveyController {
 
     // 管理员平台 把客户问卷作答数据汇集到Excel中,发送给前端供下载
     @RequestMapping(value="/downloadDataExcel", method= RequestMethod.GET)
-    public ResponseObject downloadExcel(HttpServletResponse response) throws IOException {
+    public void downloadExcel(HttpServletResponse response) throws IOException {
         surveyService.downloadDataExcel(response);
-        return ResponseObject.success("下载客户问卷作答Excel成功");
+        // return ResponseObject.success("下载客户问卷作答Excel成功");
     }
 
 }
