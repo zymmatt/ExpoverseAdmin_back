@@ -50,15 +50,17 @@ public class ExhibitionVisitController {
 
     // 管理员后台  把展区的参观时长数据汇集到Excel中,发送给前端供下载
     @RequestMapping(value="/downloadvisitTimeDataExcel", method= RequestMethod.GET)
-    public void downloadvisitTimeDataExcel(HttpServletResponse response) throws IOException {
-        exhibitionVisitService.downloadvisitTimeDataExcel(response);
+    //public String downloadvisitTimeDataExcel(HttpServletResponse response) throws IOException {
+    public String downloadvisitTimeDataExcel() throws IOException {
+        return exhibitionVisitService.downloadvisitTimeDataExcel();
         //return ResponseObject.success("下载展区参观时长数据成功");
     }
 
     // 把展区的参观人次数据汇集到Excel中,发送给前端供下载
     @RequestMapping(value="/downloadvisitNumDataExcel", method= RequestMethod.GET)
-    public void downloadvisitNumDataExcel(HttpServletResponse response) throws IOException {
-        exhibitionVisitService.downloadvisitNumDataExcel(response);
+    //public void downloadvisitNumDataExcel(HttpServletResponse response) throws IOException {
+    public String downloadvisitNumDataExcel() throws IOException {
+        return exhibitionVisitService.downloadvisitNumDataExcel();
         //return ResponseObject.success("下载展区参观人次数据成功");
     }
 

@@ -4,7 +4,10 @@ import com.azure.core.util.BinaryData;
 import com.azure.storage.blob.*;
 import com.azure.storage.blob.sas.BlobSasPermission;
 import com.azure.storage.blob.sas.BlobServiceSasSignatureValues;
+import org.apache.poi.ss.usermodel.Workbook;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 
 
@@ -37,7 +40,14 @@ public class blobstorage {
         return containerClient.generateSas(sasSignatureValues);
     }
 
-
+    public static byte[] workbookToByteArray(Workbook workbook) {
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+            workbook.write(bos);
+            return bos.toByteArray();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to convert workbook to byte array", e);
+        }
+    }
 
 
 

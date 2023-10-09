@@ -1,9 +1,13 @@
 package com.example.admin.service.impl;
+import com.azure.core.util.BinaryData;
+import com.azure.storage.blob.BlobClient;
+import com.azure.storage.blob.BlobContainerClient;
 import com.example.admin.entity.User.*;
 import com.example.admin.entity.Survey.*;
 import com.example.admin.service.SurveyService;
 import com.example.admin.mapper.SurveyMapper;
 import com.example.admin.mapper.UserMapper;
+import com.example.admin.utils.blobstorage;
 import com.example.admin.utils.datetime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -179,7 +183,8 @@ public class SurveyServiceImpl implements SurveyService{
     // 汇总所有答题问卷的答题情况
     @Override
     @Transactional
-    public void downloadDataExcel(HttpServletResponse response) throws IOException {
+    // public void downloadDataExcel(HttpServletResponse response) throws IOException {
+    public String downloadDataExcel() throws IOException {
         // 创建Excel表格   .xlsx
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Sheet1");
@@ -268,6 +273,18 @@ public class SurveyServiceImpl implements SurveyService{
 
         // 添加更多单元格和数据
         String rawFileName = "问卷调查结果.xlsx";
+        byte[] bytes = blobstorage.workbookToByteArray(workbook);
+        BlobContainerClient containerClient = blobstorage.getclient();
+        BlobClient blobClient = containerClient.getBlobClient(rawFileName);
+        blobClient.deleteIfExists();// 删除旧的
+        blobClient.upload(BinaryData.fromBytes(bytes));
+        // System.out.println("上传了新文件"+rawFileName);
+        String accountName = blobstorage.accountName();
+        String containerName = blobstorage.containerName();
+        String tempSAS = blobstorage.gettempSAS(blobstorage.getclient());
+        return String.format("https://%s.blob.core.windows.net/%s/%s?%s",
+                accountName,containerName,rawFileName,tempSAS);
+        /*
         response.reset();
         try {
             response.setHeader("Content-Disposition", "attachment;fileName=" +
@@ -287,6 +304,16 @@ public class SurveyServiceImpl implements SurveyService{
                 e.printStackTrace();
             }
         }
+
+
+        // 保存工作簿到文件
+        FileOutputStream fos = new FileOutputStream(rawFileName);
+        workbook.write(fos);
+        fos.close();
+        // 关闭工作簿
+        workbook.close();
+
+         */
     }
 
 }

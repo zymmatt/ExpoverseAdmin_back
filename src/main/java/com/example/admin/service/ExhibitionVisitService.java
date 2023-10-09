@@ -9,6 +9,9 @@ public interface ExhibitionVisitService {
     void createDataExhb(PostExhbVisit postExhbVisit);
     void createDataProd(PostProdVisit postProdVisit);
     List<Exhibition_data> getDatabyDate(Long startDate, Long endDate);
-    void downloadvisitTimeDataExcel(HttpServletResponse response) throws IOException;
-    void downloadvisitNumDataExcel(HttpServletResponse response) throws IOException;
+    // void downloadvisitTimeDataExcel(HttpServletResponse response) throws IOException;
+    String downloadvisitTimeDataExcel() throws IOException;
+
+    // void downloadvisitNumDataExcel(HttpServletResponse response) throws IOException;
+    String downloadvisitNumDataExcel() throws IOException;
 }

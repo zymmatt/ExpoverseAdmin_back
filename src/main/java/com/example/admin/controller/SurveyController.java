@@ -28,7 +28,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/survey")
-@CrossOrigin(origins = "http://localhost:8080") // 允许来自http://localhost:3000的请求
+// @CrossOrigin(origins = "http://localhost:8080") // 允许来自http://localhost:3000的请求
 public class SurveyController {
     @Autowired
     private SurveyService surveyService;
@@ -80,8 +80,9 @@ public class SurveyController {
 
     // 管理员平台 把客户问卷作答数据汇集到Excel中,发送给前端供下载
     @RequestMapping(value="/downloadDataExcel", method= RequestMethod.GET)
-    public void downloadExcel(HttpServletResponse response) throws IOException {
-        surveyService.downloadDataExcel(response);
+    //public void downloadExcel(HttpServletResponse response) throws IOException {
+    public String downloadExcel() throws IOException {
+        return surveyService.downloadDataExcel();
         // return ResponseObject.success("下载客户问卷作答Excel成功");
     }
 

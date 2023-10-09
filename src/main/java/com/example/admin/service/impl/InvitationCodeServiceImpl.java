@@ -11,11 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -95,32 +91,60 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
 
 
     /*
-     * 把每一个请求记录中的起始日期到终止日期之间的日子放进字典中,
-     * 字典中已经有的日子要把占据座位变量增加,最后字典中的所有日子和对应
+     * 把每一个请求记录中的起始日期到终止日期之间的小时放进字典中,
+     * 字典中已经有的小时要把占据座位变量增加,
+     * 每一个日子的占据座位数取每一小时的占据座位的最大值,
+     * 最后字典中的所有日子和对应
      * 的占据座位量放入到scheduled Invitation中,列表返回
-     *
+     * yyyy-MM-dd
+     *      yyyy-MM-dd HH
+     *              已经占据的座位数
      */
     @Override
     @Transactional
     public List<scheduled_invitation> getScheduledDay() {
         List<InvitationCode>invitations = invitationCodeMapper.getAllInvitation();
         List<scheduled_invitation> schedule=new ArrayList<>();
-        Map<String, Integer> scheduleDict = new HashMap<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        Map<String, Map<String, Integer>> scheduleDict = new HashMap<>();
+        DateTimeFormatter dayformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter hourformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH");
         for (InvitationCode single:invitations){
+            LocalTime starttime = single.getStartTime();
             LocalDate startDate=single.getStartDate();
             LocalDate endDate=single.getEndDate();
-            while (!startDate.isAfter(endDate)) {
-                String tempday = startDate.format(formatter);
-                if (scheduleDict.containsKey(tempday)){
-                    scheduleDict.put(tempday, scheduleDict.get(tempday)+1);
+            LocalDateTime startDT = startDate.atTime(starttime);
+            LocalDateTime endDT = endDate.atTime(starttime);
+            while (startDT.compareTo(endDT)<0) {
+                String tempday = startDT.format(dayformatter);
+                String tempDT = startDT.format(hourformatter);
+                // 如果某一天是头一回被加入字典
+                if (!scheduleDict.containsKey(tempday)){
+                    Map<String, Integer> hourDict = new HashMap<>();
+                    scheduleDict.put(tempday, hourDict);
+                }
+                // 在某一天下添加新的小时-占据座位数
+                if (scheduleDict.get(tempday).containsKey(tempDT)){
+                    scheduleDict.get(tempday).put(tempDT, scheduleDict.get(tempday).get(tempDT)+1);
                 }
                 else{
-                    scheduleDict.put(tempday, 1);
+                    scheduleDict.get(tempday).put(tempDT, 1);
                 }
-                startDate = startDate.plusDays(1);
+                startDT = startDT.plusHours(1);
             }
         }
+        for (String tempday : scheduleDict.keySet()) {
+            // System.out.println(scheduleDict.get(tempday).values().toString());
+            int maxValue = Collections.max(scheduleDict.get(tempday).values());
+            // System.out.println(tempday);
+            // System.out.println(maxValue);
+            // System.out.println("day: " + tempday + ", Value: " + maxValue);
+            scheduled_invitation temp_day = new scheduled_invitation();
+            temp_day.setCurrentDate(tempday);
+            temp_day.setCurrentTime("");
+            temp_day.setOccupied_seats(maxValue);
+            schedule.add(temp_day);
+        }
+        /*
         for (Map.Entry<String, Integer> entry: scheduleDict.entrySet()) {
             scheduled_invitation temp_day = new scheduled_invitation();
             temp_day.setCurrentDate(entry.getKey());
@@ -128,6 +152,7 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
             temp_day.setOccupied_seats(entry.getValue());
             schedule.add(temp_day);
         }
+        */
         return schedule;
     }
 

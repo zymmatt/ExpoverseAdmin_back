@@ -1,5 +1,8 @@
 package com.example.admin.service.impl;
 
+import com.azure.core.util.BinaryData;
+import com.azure.storage.blob.BlobClient;
+import com.azure.storage.blob.BlobContainerClient;
 import com.example.admin.entity.User.*;
 import com.example.admin.entity.Visit.*;
 import com.example.admin.entity.Resource.*;
@@ -17,7 +20,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import com.example.admin.utils.blobstorage;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
@@ -199,7 +202,8 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
 
     @Override
     @Transactional
-    public void downloadvisitTimeDataExcel(HttpServletResponse response) throws IOException {
+    // public String downloadvisitTimeDataExcel(HttpServletResponse response) throws IOException {
+    public String downloadvisitTimeDataExcel() throws IOException {
         //统计访客参观时长  下载Excel
         List<Exhibition> exhibitionList = exhibitionVisitMapper.getAllExhibition();
         List<Product> productList = resourceMapper.getallProduct();
@@ -286,6 +290,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
 
         // 创建一个工作表
         Workbook workbook = new XSSFWorkbook();
+
         Sheet sheet = workbook.createSheet("Sheet1");
 
         // 总计区域的抬头合并单元格
@@ -417,6 +422,18 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         }
 
         String rawFileName = "访问时长统计.xlsx";
+        byte[] bytes = blobstorage.workbookToByteArray(workbook);
+        BlobContainerClient containerClient = blobstorage.getclient();
+        BlobClient blobClient = containerClient.getBlobClient(rawFileName);
+        blobClient.deleteIfExists();// 删除旧的
+        blobClient.upload(BinaryData.fromBytes(bytes));
+        // System.out.println("上传了新文件"+rawFileName);
+        String accountName = blobstorage.accountName();
+        String containerName = blobstorage.containerName();
+        String tempSAS = blobstorage.gettempSAS(blobstorage.getclient());
+        return String.format("https://%s.blob.core.windows.net/%s/%s?%s",
+                accountName,containerName,rawFileName,tempSAS);
+        /*
         response.reset();
         try {
             response.setHeader("Content-Disposition", "attachment;fileName=" +
@@ -436,18 +453,23 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                 e.printStackTrace();
             }
         }
+
+
         // 保存工作簿到文件
-        //FileOutputStream fos = new FileOutputStream("excel_example.xlsx");
-        //workbook.write(fos);
-        //fos.close();
+        FileOutputStream fos = new FileOutputStream(rawFileName);
+        workbook.write(fos);
+        fos.close();
         // 关闭工作簿
-        //workbook.close();
+        workbook.close();
+
+         */
 
     }
 
     @Override
     @Transactional
-    public void downloadvisitNumDataExcel(HttpServletResponse response) throws IOException {
+    //public void downloadvisitNumDataExcel(HttpServletResponse response) throws IOException {
+    public String downloadvisitNumDataExcel() throws IOException {
         //统计访客参观人次  下载Excel
         List<Exhibition> exhibitionList = exhibitionVisitMapper.getAllExhibition();
         List<Product> productList = resourceMapper.getallProduct();
@@ -667,7 +689,19 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         }
 
         String rawFileName = "访问人次统计.xlsx";
+        byte[] bytes = blobstorage.workbookToByteArray(workbook);
+        BlobContainerClient containerClient = blobstorage.getclient();
+        BlobClient blobClient = containerClient.getBlobClient(rawFileName);
+        blobClient.deleteIfExists();// 删除旧的
+        blobClient.upload(BinaryData.fromBytes(bytes));
+        // System.out.println("上传了新文件"+rawFileName);
+        String accountName = blobstorage.accountName();
+        String containerName = blobstorage.containerName();
+        String tempSAS = blobstorage.gettempSAS(blobstorage.getclient());
+        return String.format("https://%s.blob.core.windows.net/%s/%s?%s",
+                accountName,containerName,rawFileName,tempSAS);
         // response.reset();
+        /*
         try {
             response.setHeader("Content-Disposition", "attachment;fileName=" +
                     URLEncoder.encode(rawFileName, String.valueOf(StandardCharsets.UTF_8)));
@@ -686,6 +720,15 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                 e.printStackTrace();
             }
         }
+
+        // 保存工作簿到文件
+        FileOutputStream fos = new FileOutputStream(rawFileName);
+        workbook.write(fos);
+        fos.close();
+        // 关闭工作簿
+        workbook.close();
+
+         */
     }
 }
 

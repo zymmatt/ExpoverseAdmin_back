@@ -43,7 +43,9 @@
 
     <!-- 根据展区ID获得产品列表 -->
     <select id="getProdListbyExhbid" parameterType="String" resultMap="ProductResultMap">
-        SELECT product_id, product_name FROM expoverse.product WHERE exhibition_id = #{exhbid}
+        SELECT product_id, product_name FROM expoverse.product
+        WHERE exhibition_id = #{exhbid}
+        ORDER BY number ASC
     </select>
 
     <!-- 根据产品ID获得DM的URL列表 -->
