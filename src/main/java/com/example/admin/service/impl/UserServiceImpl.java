@@ -100,9 +100,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void alive(int loginid, String alive_timestamp) {
+    public int alive(int loginid, String alive_timestamp) {
+        int userid = userMapper.getUseridByloginid(loginid);
+        int newloginid = userMapper.getUserLatestloginid(userid);
         // 应用端传过来的时间戳是String格式的,要转成long
         userMapper.updatealive(loginid,Long.parseLong(alive_timestamp));
+        return newloginid;
     }
 
     @Override

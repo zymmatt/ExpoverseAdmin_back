@@ -44,11 +44,12 @@ public class UserController {
     //    return ResponseObject.success(userService.verifylogin(code));
     //}
 
-    // 应用端更新某个loginid的心跳, 5分钟更新一次, 传过来的时间戳是String格式的,要转成long
+    // 应用端更新某个loginid的心跳, 5分钟更新一次, 传过来的时间戳是String格式的,要转成long,
+    // 同时会检验是否有异常登录的情况,如果心跳的loginid发生了变化,就说明有其他人登录了
     @RequestMapping(value="/alive", method = RequestMethod.POST)
     public ResponseObject alive(int loginid, String alive_timestamp){
-        userService.alive(loginid, alive_timestamp);
-        return ResponseObject.success(String.format("更新loginid: %s 心跳记录",loginid));
+        int newloginid = userService.alive(loginid, alive_timestamp);
+        return ResponseObject.success(newloginid,String.format("更新loginid: %s 心跳记录",newloginid));
     }
 
     // 管理员平台获取所有用户

@@ -106,4 +106,20 @@
     </select>
 
 
+
+    <select id="getUserLatestloginid" resultType="int">
+        SELECT loginid
+        from expoverse.login
+        WHERE userid= #{userid}
+        ORDER BY loginid DESC
+        LIMIT 1
+    </select>
+
+    <select id="getUseridByloginid" resultType="int">
+        SELECT userid
+        from expoverse.login
+        WHERE loginid = #{loginid}
+    </select>
+
+
 </mapper>

@@ -12,6 +12,6 @@ public interface UserService {
     void createUser(User user);
     void updateUser(User user);
     void deleteUser(int id);
-    void alive(int loginid, String alive_timestamp);
+    int alive(int loginid, String alive_timestamp);
 }
 

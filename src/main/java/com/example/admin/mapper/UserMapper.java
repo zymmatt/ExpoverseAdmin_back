@@ -19,4 +19,7 @@ public interface UserMapper {
     List<Login> getallLogin();
     void updatealive(int loginid, Long alive_timestamp);
     User getLatestUser();
+    int getUseridByloginid(int loginid);
+    int getUserLatestloginid(int userid);
+
 }

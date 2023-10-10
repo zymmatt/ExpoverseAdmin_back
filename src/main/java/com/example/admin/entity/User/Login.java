@@ -35,7 +35,7 @@ public class Login {
     public Login(int userid, Long trigger_timestamp){
         this.userid = userid;
         this.trigger_timestamp = trigger_timestamp;
-        this.alive_timestamp = trigger_timestamp+60; //登录时假定最少呆了1分钟
+        this.alive_timestamp = trigger_timestamp+10; //登录时假定最少呆了10秒
     }
 
     public Login(int loginid, int userid,
