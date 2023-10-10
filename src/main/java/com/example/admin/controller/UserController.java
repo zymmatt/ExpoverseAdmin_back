@@ -23,8 +23,21 @@ public class UserController {
 
     // 应用端输入验证码完成登录
     @RequestMapping(value="/login", method= RequestMethod.GET)
-    public Login login(String code) {
-        return userService.verifylogin(code);
+    public ResponseObject login(String code) {
+        // return userService.verifylogin(code);
+        Login login = userService.verifylogin(code);
+        if (login == null){
+            return ResponseObject.fail(login,"验证码错误");
+        }
+        else if (login.getUserid()==-1){
+            return ResponseObject.fail(login, "验证码的访问时间还没到");
+        }
+        else if (login.getUserid()==-2){
+            return ResponseObject.fail(login, "验证码的访问时间已经过期");
+        }
+        else {
+            return ResponseObject.success(login);
+        }
     }
 
     // public ResponseObject login(String code) {

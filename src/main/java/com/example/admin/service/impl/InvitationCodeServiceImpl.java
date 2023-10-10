@@ -159,6 +159,9 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
     @Override
     @Transactional
     public void createInvitation(InvitationCode invitation) {
+        LocalTime originalTime = invitation.getStartTime();
+        // 将LocalTime减去8小时
+        invitation.setStartTime(originalTime.minusHours(8));
         invitationCodeMapper.insertInvitationCode(invitation);
     }
 
@@ -168,3 +171,6 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
         return invitationCodeMapper.getAllInvitation();
     }
 }
+
+
+

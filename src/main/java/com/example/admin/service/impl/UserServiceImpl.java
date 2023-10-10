@@ -63,7 +63,10 @@ public class UserServiceImpl implements UserService {
     public Login verifylogin(String code) {
         // 验证这个邀请码是谁的, 是否还在有效期内
         InvitationCode invitation = userMapper.findCode(code);
-        System.out.println(invitation);
+        if (invitation==null){
+           return null;
+        }
+        // System.out.println(invitation);
         //invitation.getStartDate().atStartOfDay().to
         //invitation.getEndDate()
         LocalDateTime localDateTimeStart = LocalDateTime.of(invitation.getStartDate(), invitation.getStartTime());
@@ -87,7 +90,12 @@ public class UserServiceImpl implements UserService {
             int loginid = userMapper.getlogin(res).get(0);
             return new Login(loginid, userid, username, username_english);
         }
-        return null;
+        else if (currentTimestamp<timestampStart){
+            return new Login(-1,currentTimestamp); // 验证码的访问时间还没到
+        }
+        else{
+            return new Login(-2,currentTimestamp); // 验证码的访问时间已经过期
+        }
     }
 
     @Override
