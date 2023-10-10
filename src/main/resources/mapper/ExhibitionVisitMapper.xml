@@ -67,7 +67,10 @@
     </resultMap>
 
     <select id="getexhb2prod" resultMap="exhb2prodMap">
-        SELECT exhibition_id, product_id FROM expoverse.product
+        SELECT exhibition_id, product_id
+        FROM expoverse.product
+        ORDER BY number
+        ASC
     </select>
 
     <select id="getexhbvisitbyexhbid" resultMap="ExhibitionVisitMap">

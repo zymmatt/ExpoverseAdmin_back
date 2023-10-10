@@ -341,5 +341,10 @@ public class ResourceServiceImpl implements ResourceService{
                 accountName,containerName,name,gettempSAS());
     }
 
-
+    @Override
+    @Transactional
+    public String uploadDM(MultipartFile file) throws IOException{
+        byte[] imageBytes = file.getBytes();
+        return "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(imageBytes);
+    }
 }

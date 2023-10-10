@@ -84,4 +84,11 @@ public class ResourceController {
         return ResponseObject.success(resourceService.updateExhbMovie(file, exhbid, name));
     }
 
+    // 管理员平台 上传DM
+    @RequestMapping(value="/uploadDM", method= RequestMethod.POST)
+    public String uploadDM(@RequestParam("file") MultipartFile file) throws IOException {
+        return resourceService.uploadDM(file);
+    }
+
+
 }

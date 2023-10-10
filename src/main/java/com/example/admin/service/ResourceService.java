@@ -27,4 +27,6 @@ public interface ResourceService {
     String updateExhbMovie(MultipartFile file, String exhbid, String name) throws IOException;
 
     String updateProdMovie(MultipartFile file, String exhbid, String name) throws IOException;
+
+    String uploadDM(MultipartFile file) throws IOException;
 }
