@@ -67,7 +67,7 @@ public class testblob {
         // 替换为您的Azure Blob Storage连接字符串
 
         String containerName = "test-ctn1"; // 替换为您的容器名称
-        String blobName = "11p5gb505vqg0.jpg"; // 替换为要上传的Blob名称
+        String blobName = "InteManuf_NC-WA03_1.jpg"; // 替换为要上传的Blob名称
         //DefaultAzureCredential defaultCredential = new DefaultAzureCredentialBuilder().build();
         //BlobServiceClient blobServiceClient = new BlobServiceClientBuilder()
         //        .endpoint(accountUrl)
@@ -77,10 +77,10 @@ public class testblob {
                 connectionString(connectionString).buildClient();
         BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient(containerName);
         BlobClient blobClient = containerClient.getBlobClient(blobName);
-        blobClient.deleteIfExists(); //
+        //blobClient.deleteIfExists(); //
         // BlobClient blobClient = containerClient.getBlobClient(blobName);
         // System.out.println(SASauthorize(containerClient));
-
+        blobClient.uploadFromFile("D:\\inventecWork\\expoverse\\DM\\InteManuf_NC-WA03_1.jpg");
         //uploadblob(containerClient);
 
         //listblob(containerClient);

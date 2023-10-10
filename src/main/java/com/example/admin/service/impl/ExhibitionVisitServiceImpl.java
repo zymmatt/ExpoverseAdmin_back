@@ -307,7 +307,10 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         totaldataRow.createCell(2).setCellValue(loginList.size());
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 3, 3));
         headerRow.createCell(3).setCellValue("平均访问展区数(个)");
-        int avgvisitexhb = exhvisit.size()/loginList.size();
+        int avgvisitexhb = 0;
+        if (loginList.size()>0){ // 可能没有登录
+            avgvisitexhb = exhvisit.size()/loginList.size();
+        }
         totaldataRow.createCell(3).setCellValue(avgvisitexhb);
         // 用户区域的抬头合并单元格
         Row userheaderRow = sheet.createRow(3); // 用户区域的第一行,展区名字
@@ -573,7 +576,10 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         totaldataRow.createCell(2).setCellValue(loginList.size());
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 3, 3));
         headerRow.createCell(3).setCellValue("平均访问时间(分钟/人次)");
-        int avgvisittime = (int)(total_duration/60/loginList.size());
+        int avgvisittime = 0;
+        if (loginList.size()>0){ // 参观人次可能为0
+            avgvisittime = (int)(total_duration/60/loginList.size());
+        }
         totaldataRow.createCell(3).setCellValue(avgvisittime);
         // 用户区域的抬头合并单元格
         Row userheaderRow = sheet.createRow(3); // 用户区域的第一行,展区名字
