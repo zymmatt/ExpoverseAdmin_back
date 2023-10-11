@@ -105,6 +105,9 @@ public class SurveyServiceImpl implements SurveyService{
                 SingleQuestionStat singleQuestionStat = new SingleQuestionStat(ques_id, label);
                 // 获得一个问题下的所有option id
                 List<Integer> Options = surveyMapper.getOptionsForOneQues(ques_id);
+                if (9<=ques_id && ques_id<=13){
+                    Collections.reverse(Options); // 按照 5分 4分 3分的顺序来排
+                }
                 for (Integer option_id:Options){
                     //一个一个选项的统计有多少个人选了
                     List<UserSurvey>userSurveys = surveyMapper.getUserForOneOption(option_id);
