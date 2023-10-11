@@ -307,9 +307,9 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         totaldataRow.createCell(2).setCellValue(loginList.size());
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 3, 3));
         headerRow.createCell(3).setCellValue("平均访问展区数(个)");
-        int avgvisitexhb = 0;
+        double avgvisitexhb = 0;
         if (loginList.size()>0){ // 可能没有登录
-            avgvisitexhb = exhvisit.size()/loginList.size();
+            avgvisitexhb = (double) exhvisit.size()/loginList.size();
         }
         totaldataRow.createCell(3).setCellValue(avgvisitexhb);
         // 用户区域的抬头合并单元格
@@ -342,8 +342,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                 List<ExhibitionVisit> exhbvisits = exhibitionVisitMapper.getexhbvisitbyexhbid(exhbid);
                 long totalDuration = statistics.exhbvisitTimeStat(exhbvisits);
                 //totaldataRow.createCell(prodcol).setCellValue((int) (totalDuration/60));
-                float tempminute = (float) (totalDuration/60);
-                totaldataRow.createCell(prodcol).setCellValue(Math.round(tempminute * 100.0) / 100.0);
+                totaldataRow.createCell(prodcol).setCellValue((double) (totalDuration/60));
                 exhbid2col.put(exhbid,exhbcol);
                 //总计的展品数据的第几列比用户的展品数据的第几列一样
                 exhbcol+=1;
@@ -355,14 +354,13 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                 prodRow.createCell(prodcol).setCellValue(prod2name.get(prodid));
                 userprodRow.createCell(prodcol).setCellValue(prod2name.get(prodid));
                 // 统计唯一展品的访问时长
-                int temp_prodduration = 0;
+                double temp_prodduration = 0;
 
                 for (ProductVisit productVisit:prodid2visitdict.get(prodid)){
                     temp_prodduration += productVisit.getDuration();
                 }
                 //totaldataRow.createCell(prodcol).setCellValue((int) (temp_prodduration/60));
-                float tempminute = (float) (temp_prodduration/60);
-                totaldataRow.createCell(prodcol).setCellValue(Math.round(tempminute * 100.0) / 100.0);
+                totaldataRow.createCell(prodcol).setCellValue(temp_prodduration/60);
                 prodid2col.put(prodid,prodcol);
                 //总计的展品数据的第几列比用户的展品数据的第几列一样
                 exhbcol+=1;
@@ -380,13 +378,12 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                     prodRow.createCell(prodcol).setCellValue(prod2name.get(prodid));
                     userprodRow.createCell(prodcol).setCellValue(prod2name.get(prodid));
                     // 逐个统计展品的访问时长
-                    int temp_prodduration = 0;
+                    double temp_prodduration = 0;
                     for (ProductVisit productVisit:prodid2visitdict.get(prodid)){
                         temp_prodduration += productVisit.getDuration();
                     }
                     // totaldataRow.createCell(prodcol).setCellValue((int) (temp_prodduration/60));
-                    float tempminute = (float) (temp_prodduration/60);
-                    totaldataRow.createCell(prodcol).setCellValue(Math.round(tempminute * 100.0) / 100.0);
+                    totaldataRow.createCell(prodcol).setCellValue(temp_prodduration/60);
                     prodid2col.put(prodid,prodcol);
                     //总计的展品数据的第几列比用户的展品数据的第几列一样
                     prodcol+=1;
@@ -405,22 +402,20 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             tempRow.createCell(1).setCellValue(userid2name.get(loginid2userid.get(loginid)));
             // 访问时间
             tempRow.createCell(2).setCellValue(datetime.timestamp2str(login.getTrigger_timestamp()));
-            Long totalseconds = 120L;
+            long totalseconds = 120L;
             if (login.getAlive_timestamp() != null){
                 totalseconds = login.getAlive_timestamp()-login.getTrigger_timestamp();
             }
             // 访问时长 分钟
             // tempRow.createCell(3).setCellValue((int) (totalseconds/60));
-            float tempminute = (float) (totalseconds/60);
-            tempRow.createCell(3).setCellValue(Math.round(tempminute * 100.0) / 100.0);
+            tempRow.createCell(3).setCellValue((double)(totalseconds/60));
             // 所有展品下的访问时长
             for (String exhbid : exhb2proddict.keySet()) {
                 if (exhb2proddict.get(exhbid).size()==0) { // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
                     int tempcell = exhbid2col.get(exhbid);
                     List<ExhibitionVisit> exhbvisits = loginid2exhbvisit.get(loginid).get(exhbid);
                     long totalDuration = statistics.exhbvisitTimeStat(exhbvisits);
-                    float tempduminute = (float) (totalDuration/60);
-                    tempRow.createCell(tempcell).setCellValue(Math.round(tempduminute * 100.0) / 100.0);
+                    tempRow.createCell(tempcell).setCellValue((double)(totalDuration/60));
                     //tempRow.createCell(tempcell).setCellValue((int) (totalDuration/60));
 
                 } else {
@@ -428,8 +423,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                         String prodid = exhb2proddict.get(exhbid).get(tempi);
                         int tempcell = prodid2col.get(prodid);
                         int visitSeconds = loginid2productvisit.get(loginid).get(prodid);
-                        float tempduminute = (float) (visitSeconds/60);
-                        tempRow.createCell(tempcell).setCellValue(Math.round(tempduminute * 100.0) / 100.0);
+                        tempRow.createCell(tempcell).setCellValue(visitSeconds/60);
                         //tempRow.createCell(tempcell).setCellValue((int)(visitSeconds/60));
                     }
                 }
