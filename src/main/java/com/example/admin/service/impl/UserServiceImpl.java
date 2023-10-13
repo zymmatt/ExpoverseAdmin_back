@@ -75,9 +75,6 @@ public class UserServiceImpl implements UserService {
         long timestampEnd = localDateTimeEnd.toInstant(ZoneOffset.ofHours(8)).getEpochSecond();
         long currentTimestamp = Instant.now().getEpochSecond();
         if (currentTimestamp>timestampStart && currentTimestamp<timestampEnd){
-            System.out.println(timestampStart);
-            System.out.println(timestampEnd);
-            System.out.println(currentTimestamp);
             // 还未过期,允许登录
             int userid = invitation.getuserid();
             Login res = new Login(userid,currentTimestamp);

@@ -1,9 +1,9 @@
 package com.example.admin.controller;
 
-import com.example.admin.entity.Resource.*;
+import com.example.admin.entity.Resource.ExhbSrc;
+import com.example.admin.entity.Resource.ProdUpdate;
 import com.example.admin.entity.Response.ResponseObject;
 import com.example.admin.service.ResourceService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/iecadmin/resource")
-public class ResourceController {
+@RequestMapping("/resource")
+public class ResourceControllerorig {
     @Autowired
     private ResourceService resourceService;
 

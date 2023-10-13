@@ -1,35 +1,20 @@
 package com.example.admin.controller;
 
 import com.example.admin.entity.Response.ResponseObject;
-import com.example.admin.entity.Survey.*;
-
+import com.example.admin.entity.Survey.SingleSurvey;
 import com.example.admin.service.SurveyService;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 @RestController
-@RequestMapping("/api/iecadmin/survey")
+@RequestMapping("/survey")
 // @CrossOrigin(origins = "http://localhost:8080") // 允许来自http://localhost:3000的请求
-public class SurveyController {
+public class SurveyControllerorig {
     @Autowired
     private SurveyService surveyService;
 

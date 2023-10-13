@@ -1,17 +1,18 @@
 package com.example.admin.controller;
+
 import com.example.admin.entity.Response.ResponseObject;
-import com.example.admin.entity.User.scheduled_invitation;
 import com.example.admin.entity.User.InvitationCode;
 import com.example.admin.service.InvitationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/iecadmin/invitationCode")
-public class InvitationCodeController {
+@RequestMapping("/invitationCode")
+public class InvitationCodeControllerorig {
     @Autowired
     private InvitationCodeService invitationCodeService;
 

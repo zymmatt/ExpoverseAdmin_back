@@ -2,16 +2,15 @@
 package com.example.admin.controller;
 
 import com.example.admin.entity.Response.ResponseObject;
-import com.example.admin.entity.User.*;
+import com.example.admin.entity.User.Login;
+import com.example.admin.entity.User.User;
 import com.example.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/iecadmin/users")
-public class UserController {
+@RequestMapping("/users")
+public class UserControllerorig {
     @Autowired
     private UserService userService;
 
