@@ -28,7 +28,7 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
         String uuid = null;
         boolean isUnique = false;
         do {
-            uuid = UUID.randomUUID().toString();
+            uuid = UUID.randomUUID().toString().substring(0, 8);
             List<InvitationCode>codes = invitationCodeMapper.findCodebyId(uuid);
             if (codes.size()==0) {
                 isUnique = true;
