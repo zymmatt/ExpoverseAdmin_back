@@ -4,14 +4,22 @@ package com.example.admin.service.impl;
 import com.example.admin.entity.User.*;
 import com.example.admin.service.UserService;
 import com.example.admin.mapper.UserMapper;
-
+import com.alibaba.fastjson2.JSON;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.admin.utils.pinyin.containsChinese;
@@ -79,12 +87,14 @@ public class UserServiceImpl implements UserService {
             int userid = invitation.getuserid();
             Login res = new Login(userid,currentTimestamp);
             userMapper.insertlogin(res);
+            int loginid = res.getLoginid();
+            System.out.println(loginid);
             String username = userMapper.findNamebyId(userid);
             String username_english = username;
             if (containsChinese(username)){ // 中文转拼音
                 username_english=convertToPinyin(username_english);
             }
-            int loginid = userMapper.getlogin(res).get(0);
+            // int loginid = userMapper.getlogin(res).get(0);
             return new Login(loginid, userid, username, username_english);
         }
         else if (currentTimestamp<timestampStart){
@@ -103,6 +113,20 @@ public class UserServiceImpl implements UserService {
         // 应用端传过来的时间戳是String格式的,要转成long
         userMapper.updatealive(loginid,Long.parseLong(alive_timestamp));
         return newloginid;
+    }
+
+    @Override
+    @Transactional
+    public String getLanguage() throws IOException {
+        // JSON 文件路径
+        String filePath = "./LanguageData.json";
+        // 创建 ObjectMapper 对象
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // 从文件中读取 JSON 数据并将其解析为 Object（通常是 Map 或 List）
+        Object jsonData = objectMapper.readValue(new File(filePath), Object.class);
+        // 将 JSON 数据原封不动地输出
+        return objectMapper.writeValueAsString(jsonData);
     }
 
     @Override

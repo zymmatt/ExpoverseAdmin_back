@@ -1,0 +1,804 @@
+{
+    "Data": [
+        {
+            "ID": 0,
+            "TYPE": 0,
+            "CNS": "欢迎参观元宇宙展厅",
+            "CNT": "歡迎參觀元宇宙展廳",
+            "EN": "Welcome to Inventec",
+            "ES": "Bienvenido a Inventec"
+        },
+        {
+            "ID": 1,
+            "TYPE": 0,
+            "CNS": "邮箱",
+            "CNT": "郵箱",
+            "EN": "Mail",
+            "ES": "Correo"
+        },
+        {
+            "ID": 2,
+            "TYPE": 0,
+            "CNS": "邀请码",
+            "CNT": "邀請碼",
+            "EN": "Invitation code",
+            "ES": "Código de invitación"
+        },
+        {
+            "ID": 3,
+            "TYPE": 0,
+            "CNS": "登录",
+            "CNT": "登錄",
+            "EN": "Log in",
+            "ES": "Acceso"
+        },
+        {
+            "ID": 4,
+            "TYPE": 0,
+            "CNS": "设置",
+            "CNT": "設置",
+            "EN": "Settings",
+            "ES": "Ajustes"
+        },
+        {
+            "ID": 5,
+            "TYPE": 0,
+            "CNS": "语言",
+            "CNT": "語言",
+            "EN": "Language",
+            "ES": "Idioma"
+        },
+        {
+            "ID": 6,
+            "TYPE": 0,
+            "CNS": "提交",
+            "CNT": "提交",
+            "EN": "Submit",
+            "ES": "Entregar"
+        },
+        {
+            "ID": 7,
+            "TYPE": 0,
+            "CNS": "取消",
+            "CNT": "取消",
+            "EN": "Cancel",
+            "ES": "Cancelar"
+        },
+        {
+            "ID": 8,
+            "TYPE": 0,
+            "CNS": "英業達台北元宇宙展廳觀展意見調查表",
+            "CNT": "英業達台北元宇宙展廳觀展意見調查表",
+            "EN": "Inventec Taipei Metaverse Showroom Visitor Survey Form",
+            "ES": "Inventec Taipei Metaverse Showroom Visitor Survey Form"
+        },
+        {
+            "ID": 9,
+            "TYPE": 0,
+            "CNS": "您好！",
+            "CNT": "您好！",
+            "EN": "Dear",
+            "ES": "Dear"
+        },
+        {
+            "ID": 10,
+            "TYPE": 0,
+            "CNS": "感謝您參觀英業達台北元宇宙展廳，為提供更佳的觀展品質，懇請您協助填寫以下問題，謝謝。",
+            "CNT": "感謝您參觀英業達台北元宇宙展廳，為提供更佳的觀展品質，懇請您協助填寫以下問題，謝謝。",
+            "EN": "Thank you for visiting Inventec Taipei Metaverse Showroom. To provide better visiting experience, please fill up the following questions. ",
+            "ES": "Thank you for visiting Inventec Taipei Metaverse Showroom. To provide better visiting experience, please fill up the following questions. "
+        },
+        {
+            "ID": 11,
+            "TYPE": 0,
+            "CNS": "1.請問您感興趣的產品或解決方案為何？(可複選)",
+            "CNT": "1.請問您感興趣的產品或解決方案為何？(可複選)",
+            "EN": "1.What are the products and solutions that interest you? (Multiple choice)",
+            "ES": "1.What are the products and solutions that interest you? (Multiple choice)"
+        },
+        {
+            "ID": 12,
+            "TYPE": 0,
+            "CNS": "智慧醫療專區 ",
+            "CNT": "智慧醫療專區 ",
+            "EN": "Smart Medicine",
+            "ES": "Smart Medicine"
+        },
+        {
+            "ID": 13,
+            "TYPE": 0,
+            "CNS": "智慧交通專區",
+            "CNT": "智慧交通專區",
+            "EN": "Smart Transportation",
+            "ES": "Smart Transportation"
+        },
+        {
+            "ID": 14,
+            "TYPE": 0,
+            "CNS": "5G專區",
+            "CNT": "5G專區",
+            "EN": "5G",
+            "ES": "5G"
+        },
+        {
+            "ID": 15,
+            "TYPE": 0,
+            "CNS": "智慧居家專區",
+            "CNT": "智慧居家專區",
+            "EN": "Smart Home",
+            "ES": "Smart Home"
+        },
+        {
+            "ID": 16,
+            "TYPE": 0,
+            "CNS": "智慧半導體工廠專區",
+            "CNT": "智慧半導體工廠專區",
+            "EN": "Smart Factory",
+            "ES": "Smart Factory"
+        },
+        {
+            "ID": 17,
+            "TYPE": 0,
+            "CNS": "智慧製造專區",
+            "CNT": "智慧製造專區",
+            "EN": "Smart Manufacturing",
+            "ES": "Smart Manufacturing"
+        },
+        {
+            "ID": 18,
+            "TYPE": 0,
+            "CNS": "智慧車輛專區",
+            "CNT": "智慧車輛專區",
+            "EN": "Smart Vehicles",
+            "ES": "Smart Vehicles"
+        },
+        {
+            "ID": 19,
+            "TYPE": 0,
+            "CNS": "2.承上題，是否有不理解的地方想詢問？",
+            "CNT": "2.承上題，是否有不理解的地方想詢問？",
+            "EN": "2.Do you have questions about our products or solutions?",
+            "ES": "2.Do you have questions about our products or solutions?"
+        },
+        {
+            "ID": 20,
+            "TYPE": 0,
+            "CNS": "無",
+            "CNT": "無",
+            "EN": "No.",
+            "ES": "No."
+        },
+        {
+            "ID": 21,
+            "TYPE": 0,
+            "CNS": "有，請說明",
+            "CNT": "有，請說明",
+            "EN": "Yes. Specifically,",
+            "ES": "Yes. Specifically,"
+        },
+        {
+            "ID": 22,
+            "TYPE": 0,
+            "CNS": "3.請問英業達元宇宙展廳是否能符合您的觀展需求？(5為最高分)",
+            "CNT": "3.請問英業達元宇宙展廳是否能符合您的觀展需求？(5為最高分)",
+            "EN": "3.How satisfied are you with Inventec Taipei Metaverse Showroom? (5 denotes highest level of satisfaction.)",
+            "ES": "3.How satisfied are you with Inventec Taipei Metaverse Showroom? (5 denotes highest level of satisfaction.)"
+        },
+        {
+            "ID": 23,
+            "TYPE": 0,
+            "CNS": "導覽內容",
+            "CNT": "導覽內容",
+            "EN": "Navigation content",
+            "ES": "Navigation content"
+        },
+        {
+            "ID": 24,
+            "TYPE": 0,
+            "CNS": "導覽長度",
+            "CNT": "導覽長度",
+            "EN": "Navigation length",
+            "ES": "Navigation length"
+        },
+        {
+            "ID": 25,
+            "TYPE": 0,
+            "CNS": "導覽語速",
+            "CNT": "導覽語速",
+            "EN": "Navigator speed",
+            "ES": "Navigator speed"
+        },
+        {
+            "ID": 26,
+            "TYPE": 0,
+            "CNS": "登入方式",
+            "CNT": "登入方式",
+            "EN": "Log in method",
+            "ES": "Log in method"
+        },
+        {
+            "ID": 27,
+            "TYPE": 0,
+            "CNS": "操作介面",
+            "CNT": "操作介面",
+            "EN": "User interface",
+            "ES": "User interface"
+        },
+        {
+            "ID": 28,
+            "TYPE": 0,
+            "CNS": "提示",
+            "CNT": "提示",
+            "EN": "Prompt",
+            "ES": "pronto"
+        },
+        {
+            "ID": 29,
+            "TYPE": 0,
+            "CNS": "确定",
+            "CNT": "確定",
+            "EN": "OK",
+            "ES": "Seguro"
+        },
+        {
+            "ID": 30,
+            "TYPE": 0,
+            "CNS": "4.歡迎留下對於英業達元宇宙展廳的建議。",
+            "CNT": "4.歡迎留下對於英業達元宇宙展廳的建議。",
+            "EN": "4.Welcome to leave suggestions for Inventec Taipei Metaverse Showroom.",
+            "ES": "4.Welcome to leave suggestions for Inventec Taipei Metaverse Showroom."
+        },
+        {
+            "ID": 31,
+            "TYPE": 0,
+            "CNS": "请选择你的角色",
+            "CNT": "請選擇你的角色",
+            "EN": "Choose your character",
+            "ES": "Elige a tu personaje"
+        },
+        {
+            "ID": 32,
+            "TYPE": 0,
+            "CNS": "登录失败，邀请码错误或已过期",
+            "CNT": "登錄失敗，邀請碼錯誤或已過期",
+            "EN": "Login failed. Invitation code is incorrect or has expired.",
+            "ES": "Error de inicio de sesion. El código de invitación es incorrecto o ha caducado."
+        },
+        {
+            "ID": 33,
+            "TYPE": 0,
+            "CNS": "邀请码不能为空",
+            "CNT": "邀請碼不能為空",
+            "EN": "Invitation code cannot be empty.",
+            "ES": "El código de invitación no puede estar vacío."
+        },
+        {
+            "ID": 34,
+            "TYPE": 0,
+            "CNS": "您的账号已在其他设备登录",
+            "CNT": "您的賬號已在其他設備登錄",
+            "EN": "Your account has been logged in on another device.",
+            "ES": "Su cuenta ha iniciado sesión en otro dispositivo."
+        },
+        {
+            "ID": "InteMedic_ATC63E",
+            "TYPE": 0,
+            "CNS": "ATC 63E醫用平板",
+            "CNT": "ATC 63E醫用平板",
+            "EN": "ATC 63E Tablet",
+            "ES": "ATC 63E Tablet"
+        },
+        {
+            "ID": "InteMedic_M215T",
+            "TYPE": 0,
+            "CNS": "M 215T醫用一體機",
+            "CNT": "M 215T醫用一體機",
+            "EN": "M 215T Medical All-in-One",
+            "ES": "M 215T Medical All-in-One"
+        },
+        {
+            "ID": "InteMedic_Simai",
+            "TYPE": 0,
+            "CNS": "思邁輸液系統",
+            "CNT": "思邁輸液系統",
+            "EN": "Chiline SmartMed Infusion System",
+            "ES": "Chiline SmartMed Infusion System"
+        },
+        {
+            "ID": "InteMedic_M240",
+            "TYPE": 0,
+            "CNS": "M 240醫用一體機",
+            "CNT": "M 240醫用一體機",
+            "EN": "M 240Medical All-in-One",
+            "ES": "M 240Medical All-in-One"
+        },
+        {
+            "ID": "InteMedic_I-SWAT",
+            "TYPE": 0,
+            "CNS": "英愛膚I-SWAT智慧傷口軟體",
+            "CNT": "英愛膚I-SWAT智慧傷口軟體",
+            "EN": "I-SWAT AI Software in Skin Wound",
+            "ES": "I-SWAT AI Software in Skin Wound"
+        },
+        {
+            "ID": "InteMedic_ePaper",
+            "TYPE": 0,
+            "CNS": "AIM-ePaper 13m電子紙",
+            "CNT": "AIM-ePaper 13m電子紙",
+            "EN": "AIM-ePaper 13m",
+            "ES": "AIM-ePaper 13m"
+        },
+        {
+            "ID": "InteTraffic_NC-U1",
+            "TYPE": 0,
+            "CNS": "NC-U1一體式AI Box",
+            "CNT": "NC-U1一體式AI Box",
+            "EN": "NC-U1 All-in-One AI Box",
+            "ES": "NC-U1 All-in-One AI Box"
+        },
+        {
+            "ID": "InteTraffic_AIMobile",
+            "TYPE": 0,
+            "CNS": "AIMobile 5G AI移動式基站",
+            "CNT": "AIMobile 5G AI移動式基站",
+            "EN": "AIMobile 5G AI Portable Station",
+            "ES": "AIMobile 5G AI Portable Station"
+        },
+        {
+            "ID": "InteFiveG_AMR",
+            "TYPE": 0,
+            "CNS": "AMR",
+            "CNT": "AMR",
+            "EN": "AMR",
+            "ES": "AMR"
+        },
+        {
+            "ID": "InteFiveG_NX-H3003",
+            "TYPE": 0,
+            "CNS": "NX-H3003",
+            "CNT": "NX-H3003",
+            "EN": "NX-H3003",
+            "ES": "NX-H3003"
+        },
+        {
+            "ID": "InteFiveG_Firestorm",
+            "TYPE": 0,
+            "CNS": "Inseego Firestorm",
+            "CNT": "Inseego Firestorm",
+            "EN": "Inseego Firestorm",
+            "ES": "Inseego Firestorm"
+        },
+        {
+            "ID": "InteFiveG_Kona",
+            "TYPE": 0,
+            "CNS": "Inseego Kona",
+            "CNT": "Inseego Kona",
+            "EN": "Inseego Kona",
+            "ES": "Inseego Kona"
+        },
+        {
+            "ID": "InteFiveG_NX-R2100",
+            "TYPE": 0,
+            "CNS": "NX-R2100 Series",
+            "CNT": "NX-R2100 Series",
+            "EN": "NX-R2100 Series",
+            "ES": "NX-R2100 Series"
+        },
+        {
+            "ID": "InteHome_Mifi",
+            "TYPE": 0,
+            "CNS": "Inseego MiFi",
+            "CNT": "Inseego MiFi",
+            "EN": "Inseego MiFi",
+            "ES": "Inseego MiFi"
+        },
+        {
+            "ID": "InteHome_ZephyrusM16",
+            "TYPE": 0,
+            "CNS": "ASUS ROG Zephyrus M16",
+            "CNT": "ASUS ROG Zephyrus M16",
+            "EN": "ASUS ROG Zephyrus M16",
+            "ES": "ASUS ROG Zephyrus M16"
+        },
+        {
+            "ID": "InteHome_SONOS",
+            "TYPE": 0,
+            "CNS": "SONOS智慧家庭音響",
+            "CNT": "SONOS智慧家庭音響",
+            "EN": "SONOS Audio",
+            "ES": "SONOS Audio"
+        },
+        {
+            "ID": "InteHome_SmartScreen",
+            "TYPE": 0,
+            "CNS": "樂齡機",
+            "CNT": "樂齡機",
+            "EN": "Happy Life Device",
+            "ES": "Happy Life Device"
+        },
+        {
+            "ID": "InteHome_TranslationPen",
+            "TYPE": 0,
+            "CNS": "掃描翻譯筆",
+            "CNT": "掃描翻譯筆",
+            "EN": "Scan Translation Pen",
+            "ES": "Scan Translation Pen"
+        },
+        {
+            "ID": "InteHome_J21",
+            "TYPE": 0,
+            "CNS": "全家寶全方位生理量測系統-健健寶電子血壓計",
+            "CNT": "全家寶全方位生理量測系統-健健寶電子血壓計",
+            "EN": "Chiline Multifunction Physiological Measurement System-J21",
+            "ES": "Chiline Multifunction Physiological Measurement System-J21"
+        },
+        {
+            "ID": "InteHome_Q21",
+            "TYPE": 0,
+            "CNS": "全家寶全方位生理量測系統-強強寶心電圖機",
+            "CNT": "全家寶全方位生理量測系統-強強寶心電圖機",
+            "EN": "Chiline Multifunction Physiological Measurement System-Q21",
+            "ES": "Chiline Multifunction Physiological Measurement System-Q21"
+        },
+        {
+            "ID": "InteHome_C21",
+            "TYPE": 0,
+            "CNS": "全家寶全方位生理量測系統-清清寶血糖/總膽固醇/尿酸檢測系統",
+            "CNT": "全家寶全方位生理量測系統-清清寶血糖/總膽固醇/尿酸檢測系統",
+            "EN": "Chiline Multifunction Physiological Measurement System-C21",
+            "ES": "Chiline Multifunction Physiological Measurement System-C21"
+        },
+        {
+            "ID": "InteHome_S68",
+            "TYPE": 0,
+            "CNS": "全家寶全方位生理量測系統-血氧檢測系統",
+            "CNT": "全家寶全方位生理量測系統-血氧檢測系統",
+            "EN": "Chiline Multifunction Physiological Measurement System-S68",
+            "ES": "Chiline Multifunction Physiological Measurement System-S68"
+        },
+        {
+            "ID": "InteHome_T88",
+            "TYPE": 0,
+            "CNS": "全家寶全方位生理量測系統-智能體溫計",
+            "CNT": "全家寶全方位生理量測系統-智能體溫計",
+            "EN": "Chiline Multifunction Physiological Measurement System-T88",
+            "ES": "Chiline Multifunction Physiological Measurement System-T88"
+        },
+        {
+            "ID": "InteHome_A528",
+            "TYPE": 0,
+            "CNS": "智慧行動安全監控暨空氣淨化機",
+            "CNT": "智慧行動安全監控暨空氣淨化機",
+            "EN": "Care Angel",
+            "ES": "Care Angel"
+        },
+        {
+            "ID": "InteSemiFac_CMS5G+",
+            "TYPE": 0,
+            "CNS": "Industrial IoT Gateway",
+            "CNT": "Industrial IoT Gateway",
+            "EN": "Industrial IoT Gateway",
+            "ES": "Industrial IoT Gateway"
+        },
+        {
+            "ID": "InteSemiFac_ElecCabinet",
+            "TYPE": 0,
+            "CNS": "電控箱",
+            "CNT": "電控箱",
+            "EN": "Electrical Control Panel",
+            "ES": "Electrical Control Panel"
+        },
+        {
+            "ID": "InteSemiFac_HeatingTape",
+            "TYPE": 0,
+            "CNS": "加熱帶+水管",
+            "CNT": "加熱帶+水管",
+            "EN": "Heating Jacket",
+            "ES": "Heating Jacket"
+        },
+        {
+            "ID": "InteManuf_ATC32E",
+            "TYPE": 0,
+            "CNS": "ATC 32E",
+            "CNT": "ATC 32E",
+            "EN": "ATC 32E",
+            "ES": "ATC 32E"
+        },
+        {
+            "ID": "InteManuf_AIM8IAC",
+            "TYPE": 0,
+            "CNS": "AIM8IAC",
+            "CNT": "AIM8IAC",
+            "EN": "AIM8IAC",
+            "ES": "AIM8IAC"
+        },
+        {
+            "ID": "InteManuf_AIM10",
+            "TYPE": 0,
+            "CNS": "AIM10",
+            "CNT": "AIM10",
+            "EN": "AIM10",
+            "ES": "AIM10"
+        },
+        {
+            "ID": "InteManuf_PiagetHY5",
+            "TYPE": 0,
+            "CNS": "Piaget HY5 Mainstream 2U HPC Server",
+            "CNT": "Piaget HY5 Mainstream 2U HPC Server",
+            "EN": "Piaget HY5 Mainstream 2U HPC Server",
+            "ES": "Piaget HY5 Mainstream 2U HPC Server"
+        },
+        {
+            "ID": "InteManuf_Entei",
+            "TYPE": 0,
+            "CNS": "Entei 2U24Bay High Density Storage Server",
+            "CNT": "Entei 2U24Bay High Density Storage Server",
+            "EN": "Entei 2U24Bay High Density Storage Server",
+            "ES": "Entei 2U24Bay High Density Storage Server"
+        },
+        {
+            "ID": "InteManuf_Rhydon",
+            "TYPE": 0,
+            "CNS": "Rhydon AI GPU BOX",
+            "CNT": "Rhydon AI GPU BOX",
+            "EN": "Rhydon AI GPU BOX",
+            "ES": "Rhydon AI GPU BOX"
+        },
+        {
+            "ID": "InteManuf_HPE",
+            "TYPE": 0,
+            "CNS": "HPE Synergy 480 Gen10 Compute Module",
+            "CNT": "HPE Synergy 480 Gen10 Compute Module",
+            "EN": "HPE Synergy 480 Gen10 Compute Module",
+            "ES": "HPE Synergy 480 Gen10 Compute Module"
+        },
+        {
+            "ID": "InteManuf_Rack",
+            "TYPE": 0,
+            "CNS": "機櫃",
+            "CNT": "機櫃",
+            "EN": "Rack",
+            "ES": "Rack"
+        },
+        {
+            "ID": "InteManuf_NC-WA03",
+            "TYPE": 0,
+            "CNS": "NC-WA03",
+            "CNT": "NC-WA03",
+            "EN": "NC-WA03",
+            "ES": "NC-WA03"
+        },
+        {
+            "ID": "InteManuf_Horsea",
+            "TYPE": 0,
+            "CNS": "Horsea/Seadra 2U AMD Rome/Intel Xeon Server",
+            "CNT": "Horsea/Seadra 2U AMD Rome/Intel Xeon Server",
+            "EN": "Horsea/Seadra 2U AMD Rome/Intel Xeon Server",
+            "ES": "Horsea/Seadra 2U AMD Rome/Intel Xeon Server"
+        },
+        {
+            "ID": "InteManuf_E850G4",
+            "TYPE": 0,
+            "CNS": "E850G4 OTII Edge Server",
+            "CNT": "E850G4 OTII Edge Server",
+            "EN": "E850G4 OTII Edge Server",
+            "ES": "E850G4 OTII Edge Server"
+        },
+        {
+            "ID": "InteManuf_E200G4",
+            "TYPE": 0,
+            "CNS": "E200G4 Fan-less Edge Box(uCPE)",
+            "CNT": "E200G4 Fan-less Edge Box(uCPE)",
+            "EN": "E200G4 Fan-less Edge Box(uCPE)",
+            "ES": "E200G4 Fan-less Edge Box(uCPE)"
+        },
+        {
+            "ID": "InteCar_RFID",
+            "TYPE": 0,
+            "CNS": "RFID外車門把手",
+            "CNT": "RFID外車門把手",
+            "EN": "RFID Exterior Door Handle",
+            "ES": "RFID Exterior Door Handle"
+        },
+        {
+            "ID": "InteCar_e-Cockpit-1",
+            "TYPE": 0,
+            "CNS": "e-Cockpit System",
+            "CNT": "e-Cockpit System",
+            "EN": "e-Cockpit System",
+            "ES": "e-Cockpit System"
+        },
+        {
+            "ID": "InteCar_WCM",
+            "TYPE": 0,
+            "CNS": "WCM",
+            "CNT": "WCM",
+            "EN": "WCM",
+            "ES": "WCM"
+        },
+        {
+            "ID": "InteCar_e-Cockpit-2",
+            "TYPE": 0,
+            "CNS": "e-Cockpit System-2",
+            "CNT": "e-Cockpit System-2",
+            "EN": "e-Cockpit System-2",
+            "ES": "e-Cockpit System-2"
+        },
+        {
+            "ID": "InteCar_ServerAD",
+            "TYPE": 0,
+            "CNS": "Server for Autonomous Driving",
+            "CNT": "Server for Autonomous Driving",
+            "EN": "Server for Autonomous Driving",
+            "ES": "Server for Autonomous Driving"
+        },
+        {
+            "ID": "InteCar_Switch",
+            "TYPE": 0,
+            "CNS": "Automotive Ethernet Switch",
+            "CNT": "Automotive Ethernet Switch",
+            "EN": "Automotive Ethernet Switch",
+            "ES": "Automotive Ethernet Switch"
+        },
+        {
+            "ID": "InteCar_Gateway",
+            "TYPE": 0,
+            "CNS": "Automotive Central Gateway",
+            "CNT": "Automotive Central Gateway",
+            "EN": "Automotive Central Gateway",
+            "ES": "Automotive Central Gateway"
+        },
+        {
+            "ID": "InteCar_AIBox",
+            "TYPE": 0,
+            "CNS": "Edge AI Box",
+            "CNT": "Edge AI Box",
+            "EN": "Edge AI Box",
+            "ES": "Edge AI Box"
+        },
+        {
+            "ID": "Profile",
+            "TYPE": 0,
+            "CNS": "公司简介&荣誉墙",
+            "CNT": "公司簡介&榮譽牆",
+            "EN": "Profile & Honor",
+            "ES": "Perfil y honor"
+        },
+        {
+            "ID": "Culture",
+            "TYPE": 0,
+            "CNS": "公司理念&专利墙",
+            "CNT": "公司理念&專利牆",
+            "EN": "Values & Patent",
+            "ES": "Valores y patente"
+        },
+        {
+            "ID": "InteMedic",
+            "TYPE": 0,
+            "CNS": "智慧医疗",
+            "CNT": "智慧醫療",
+            "EN": "Smart Medicine",
+            "ES": "Medicina inteligente"
+        },
+        {
+            "ID": "InteTraffic",
+            "TYPE": 0,
+            "CNS": "智慧交通",
+            "CNT": "智慧交通",
+            "EN": "Smart Transportation",
+            "ES": "Transporte inteligente"
+        },
+        {
+            "ID": "InteFiveG",
+            "TYPE": 0,
+            "CNS": "5G",
+            "CNT": "5G",
+            "EN": "5G",
+            "ES": "5G"
+        },
+        {
+            "ID": "InteHome",
+            "TYPE": 0,
+            "CNS": "智慧居家",
+            "CNT": "智慧居家",
+            "EN": "Smart Home",
+            "ES": "Casa inteligente"
+        },
+        {
+            "ID": "InteSemiFac",
+            "TYPE": 0,
+            "CNS": "智慧半导体工厂",
+            "CNT": "智慧半導體工廠",
+            "EN": "Smart Factory",
+            "ES": "Fábrica inteligente"
+        },
+        {
+            "ID": "InteManuf",
+            "TYPE": 0,
+            "CNS": "智慧制造",
+            "CNT": "智慧製造",
+            "EN": "Smart Manufacturing",
+            "ES": "Fabricación inteligente"
+        },
+        {
+            "ID": "InteCar",
+            "TYPE": 0,
+            "CNS": "智慧车辆",
+            "CNT": "智慧車輛",
+            "EN": "Smart Vehicles",
+            "ES": "Vehículos inteligentes"
+        },
+        {
+            "ID": "NarCaption_Profile",
+            "TYPE": 0,
+            "CNS": "欢迎各位嘉宾莅临英业达，英业达集团创立在1975年。<00:00:00:00>公司成立初期，以生产计算器起家；<00:00:05:26>1989年起开始生产笔记型电脑及文字处理机等产品，<00:00:09:08>是全球第一间生产笔记型电脑的公司，<00:00:14:22>同年也成立了无敌商业股份有限公司，生产知名的电脑辞典；<00:00:17:41>1998年，开始研发生产高阶桌面电脑及伺服器等产品；<00:00:23:12>2000年，成立英华达，从事资讯家电、OKWAP手机、科学绘图机等产品业务；<00:00:28:55>2011年，协助小米集团生产小米手机；<00:00:36:15>2016年，因应IoT时代的来临，成立英研智能移动，跨足工业平板市场；<00:00:40:39>2018年，布局成立5G、AI和工业4.0三个技术中心，<00:00:47:55>并结合产业趋势延续笔电转型，<00:00:53:49>朝AI、IoT、智慧家居、智慧医疗等方面持续发展努力；<00:00:57:02>2020年，成立数字中心和策略中心。<00:01:02:58>英业达获奖无数，荣获公司治理评鉴奖的最高等级，<00:01:06:43>及国家发明奖、国家质量奖、国家人才发展奖的大型企业奖等，<00:01:11:44>奠基于ESG的核心价值，并以人才为本为永续经营的目标。<00:01:17:32>",
+            "CNT": "歡迎各位嘉賓蒞臨英業達，英業達集團創立在1975年。<00:00:00:00>公司成立初期，以生產計算機起家；<00:00:05:26>1989年起開始生產筆記型電腦及文字處理機等產品，<00:00:09:08>是全球第一間生產筆記型電腦的公司，<00:00:14:22>同年也成立了無敵商業股份有限公司，生產知名的電腦辭典；<00:00:17:41>1998年，開始研發生產高階桌上型電腦及伺服器等產品；<00:00:23:12>2000年，成立英華達，從事資訊家電、OKWAP手機、科學繪圖機等產品業務；<00:00:28:55>2011年，協助小米集團生產小米手機；<00:00:36:15>2016年，因應IoT時代的來臨，成立英研智能移動，跨足工業平板市場；<00:00:40:39>2018年，布局成立5G、AI和工業4.0三個技術中心，<00:00:47:55>並結合產業趨勢延續筆電轉型，<00:00:53:49>朝AI、IoT、智慧家居、智慧醫療等方面持續發展努力；<00:00:57:02>2020年，成立數位中心和策略中心。<00:01:02:58>英業達獲獎無數，榮獲公司治理評鑑獎的最高等級，<00:01:06:43>及國家發明獎、國家品質獎、國家人才發展獎的大型企業獎等，<00:01:11:44>奠基於ESG的核心價值，並以人才為本為永續經營的目標。<00:01:17:32>",
+            "EN": "Welcome to Inventec. Inventec Corporation was established in 1975. <00:00:00:00>Initially, its primary focus was on manufacturing calculators. <00:00:05:13>In 1989, Inventec became the first global company <00:00:09:20>to manufacture notebook computers and word processors. <00:00:12:58>Concurrently, Inventec Besta Co., Ltd. was founded, <00:00:16:12>dedicated to producing electronic dictionaries under the same name. <00:00:19:39>In 1998, <00:00:23:06>it commenced manufacturing high-end desktop computers and servers. <00:00:24:34>In 2000, the company established Inventec Appliances Corporation <00:00:28:31>to manufacture information appliances, <00:00:32:32>OKWAP mobile phones, and scientific plotters. <00:00:34:40>In 2011, Inventec assisted Xiaomi Corporation <00:00:37:34>in manufacturing Xiaomi smartphones. <00:00:41:11>In 2016, recognizing the emergence of the IoT era, <00:00:43:07>Inventec founded AIMobile Co., Ltd. <00:00:47:27>and entered the industrial tablet market. <00:00:50:02>In 2018, Inventec established three technology centers specializing in 5G, AI, and Industry 4.0. <00:00:52:17>In addition, it continued the transformation of laptops <00:01:00:40>and integrated industry trends, striving for continuous development <00:01:03:52>in AI, IoT, smart home, and smart medical care. <00:01:07:22>In 2020, the company established the Digital Center and Strategy Center. <00:01:11:16>Throughout its journey, Inventec has garnered numerous accolades, <00:01:15:51>including awards for large enterprises <00:01:19:09>such as the highest level of Corporate Governance Evaluation, <00:01:21:20>the National Innovation Award, the National Quality Award, <00:01:24:25>and the National Talent Development Award. <00:01:27:41>Embracing ESG-based core values, Inventec prioritizes sustainable <00:01:29:53>operations centered on nurturing and retaining exceptional talents. <00:01:34:30>",
+            "ES": "Bienvenidos a Inventec. Inventec Corporation fue fundada en 1975. <00:00:00:00>Inicialmente, su enfoque principal era la fabricación de calculadoras. <00:00:06:32>En 1989, Inventec se convirtió en la primera empresa global <00:00:11:08>en fabricar computadoras portátiles y procesadores de texto. < 00:00:15:45 >Paralelamente, fundó Inventec Besta Co., Ltd., < 00:00:19:30 >dedicadaa producir diccionarios electrónicos bajo el mismo nombre. < 00:00:23:16>En 1998, < 00:00:27:24>comenzó a fabricar computadoras de escritorio de alta gama y servidores. < 00:00:29:28>En 2000, la compañía estableció Inventec Appliances Corporation < 00:00:33:43>para fabricar dispositivos de información, < 00:00:37:54 >teléfonos móviles OKWAP y plotters científicos. < 00:00:40:02 >En 2011, Inventec ayudó a Xiaomi Corporation < 00:00:43:15>en la fabricación de smartphones Xiaomi. < 00:00:46:23>En 2016, reconociendo la aparición de la era IoT, < 00:00:49:07>Inventec fundó AIMobile Co., Ltd. < 00:00:53:07>y entró en el mercado de tablets industriales. < 00:00:56:00>En 2018, Inventec estableció tres centros tecnológicos especializados < 00:00:58:58>en 5G, IA e Industria 4.0. < 00:01:03:51>Además, continuó la transformación de laptops e integró tendencias < 00:01:06:47>de la industria, esforzándose por un desarrollo continuo < 00:01:10:34>en IA, IoT, hogar inteligente y atención médica inteligente. < 00:01:13:40>En 2020, la empresa estableció el Centro Digital y el Centro Estratégico. < 00:01:17:44>A lo largo de su trayectoria, < 00:01:23:00>Inventec ha recibido numerosos reconocimientos, < 00:01:24:52>incluyendo premios para grandes empresas como el nivel más alto < 00:01:27:32>de Evaluación de Gobernanza Corporativa, < 00:01:30:34>el Premio Nacional de Innovación, el Premio Nacional de Calidad < 00:01:32:45 >y el Premio Nacional de Desarrollo de Talentos. < 00:01:36:06 >Abrazando valores fundamentales basados en ESG, < 00:01:38:55 >Inventec prioriza operaciones sostenibles centradas < 00:01:42:19>en nutrir y retener talentos excepcionales. < 00:01:45:09 >"
+        },
+        {
+            "ID": "NarCaption_Culture",
+            "TYPE": 0,
+            "CNS": "英业达的经营理念「创新、质量、虚心、力行」中，<00:00:00:0>「创新」的价值在于因应环境趋势，不断成长、改变、突破。<00:00:04:29>近年来英业达除了持续深耕既有的笔记型电脑、伺服器及智慧装置外，<00:00:09:58>并致力于发展ABCDE5技术，<00:00:16:53>即AI人工智能、Block Chain区块链、Cloud Computing云端运算、<00:00:20:00>Data Science资料科学、ESG与5G技术，以及车用电子和医疗照护领域。<00:00:25:25>  在创新研发的同时，英业达亦同步进行策略性专利布局，<00:00:32:34>透过专家审查机制及优渥的奖励制度，<00:00:37:53>鼓励员工持续创新发明，布局领域技术专利。<00:00:41:31>英业达近年在车用电子领域，<00:00:45:50>荣获全球企业「车联网智能路侧」发明专利百大排行；<00:00:48:45>在智慧制造领域，荣获「全球企业智慧制造」专利百大排行。<00:00:53:20>  创新研发及专利保护的观念已是英业达企业文化的一部份，<00:00:58:47>除了研发专案的持续创新，<00:01:04:14>集团亦定期举办个人和团体创意提案竞赛、<00:01:06:30>黑客松创新竞赛、自动化改善项目竞赛等活动，<00:01:10:32>目前英业达全球专利获证数超过17,000件，<00:01:14:53>专利布局全球16个国家/地区，涵盖AI、5G、高效运算散热、智慧制造、<00:01:19:09>车用电子和医疗照护等领域专利，<00:01:26:29>并取得发明创作贡献奖、产业创新奖、新创奖、知识产权示范企业等荣誉，<00:01:29:36>以庞大的研发能量进行多元技术与产品创新开发，结合专利权保护累积竞争优势。<00:01:36:46> ",
+            "CNT": "英業達的經營理念「創新、品質、虛心、力行」中，<00:00:00:0>「創新」的價值在於因應環境趨勢，不斷成長、改變、突破。<00:00:04:29>近年來英業達除了持續深耕既有的筆記型電腦、伺服器及智慧裝置外，<00:00:09:58>並致力於發展ABCDE5技術，<00:00:16:53>即AI人工智慧、Block Chain區塊鏈、Cloud Computing雲端運算、<00:00:20:00>Data Science資料科學、ESG與5G技術，以及車用電子和醫療照護領域<00:00:25:25>  在創新研發的同時，英業達亦同步進行策略性專利布局，<00:00:32:34>透過專家審查機制及優渥的獎勵制度，<00:00:37:53>鼓勵員工持續創新發明，布局領域技術專利。<00:00:41:31>英業達近年在車用電子領域，<00:00:45:50>榮獲全球企業「車聯網智能路側」發明專利百大排行；<00:00:48:45>在智慧製造領域，榮獲「全球企業智慧製造」專利百大排行。<00:00:53:20>  創新研發及專利保護的觀念已是英業達企業文化的一部份，<00:00:58:47>除了研發專案的持續創新，<00:01:04:14>集團亦定期舉辦個人和團體創意提案競賽、<00:01:06:30>黑客松創新競賽、自動化改善專案競賽等活動，<00:01:10:32>目前英業達全球專利獲證數超過17,000件，<00:01:14:53>專利佈局全球16個國家/地區，涵蓋AI、5G、高效運算散熱、智慧製造、<00:01:19:09>車用電子和醫療照護等領域專利，<00:01:26:29>並取得發明創作貢獻獎、產業創新獎、新創獎、知識產權示範企業等榮譽，<00:01:29:36>以龐大的研發能量進行多元技術與產品創新開發，結合專利權保護累積競爭優勢。<00:01:36:46> ",
+            "EN": "\"Innovation, Quality, Open Mind and Execution\" is the Corporate Philosophy of Inventec Group. <00:00:00:00>Here, we uphold the value of “Innovation” as we constantly strive to grow, adapt, <00:00:05:23>and push boundaries in response to the ever-changing market trends.< 00:00:10:11> Over the years, we have not only focused on the development of existing products such as notebook PCs, <00:00:13:26>servers, and smart devices, but also on the exploration of revolutionary technologies ABCDE5G,< 00:00:18:50> namely Artificial Intelligence, Blockchain, Cloud Computing, Data Science, ESG and 5G technology,< 00:00:25:31> as well as automotive electronics and medical care. <00:00:32:21>  Concurrent with innovative research and development,< 00:00:35:13> Inventec executes strategic development of patent portfolios. <00:00:37:46>Our employees are motivated to keep innovating and inventing<00:00:41:28> by means of an expert review system and a generous reward system <00:00:44:39>that promotes building comprehensive technical patents in various fields. <00:00:48:06>Inventec has achieved top positions in the global enterprise patenting rankings. <00:00:51:38> Our patents in the field of automotive electronics place us in the top 100 global patents ranking of \"Internet of Vehicles for Intelligent Road Side\". <00:00:56:09>We also earned a spot in the top 100 \"Smart Manufacturing of Global Enterprises\" for smart manufacturing patents. <00:01:04:05>  Innovation is embedded in our corporate DNA, <00:01:10:36>and we take pride in fostering a culture of patent protection that yields tangible results.< 00:01:13:12> Apart from continuously innovating R&D projects, <00:01:17:56> our corporation regularly organizes individual and group competitions for innovation applications, hackathon innovation challenges, <00:01:21:12> automation improvement project competitions,< 00:01:28:17> and other similar activities. With a focus on patent protection, <00:01:30:55>we have accrued more than 17,000 patents across 16 countries/regions covering various cutting-edge domains such as AI,< 00:01:34:37> 5G, high-performance computing cooling, smart manufacturing,< 00:01:41:31> automotive electronics, and medical care. Our efforts have been recognized with multiple honors, <00:01:45:38>including National Invention and Creation Award, National Industrial Innovation Award<00:01:50:58>, National Innovation Award, and Intellectual Property Demonstration Enterprise, among others. <00:01:55:54>Through robust R&D for diversified technology and product development, <00:02:01:09>we continue to build a lasting competitive advantage combined with patent protection. <00:02:05:23> ",
+            "ES": "La Filosofía Corporativa del Grupo Inventec <00:00:00:00>es \"Innovación, Calidad, Mente Abierta y Ejecución\". <00:00:02:24>Aquí, sostenemos el valor de la \"Innovación\" <00:00:05:34>ya que constantemente nos esforzamos para crecer, <00:00:08:27>adaptarnos y superar límites <00:00:11:20>en respuesta a las tendencias del mercado en constante cambio. <00:00:13:09>A lo largo de los años, no solo nos hemos centrado <00:00:16:05>en el desarrollo de productos existentes como computadoras portátiles, <00:00:19:28>servidores y dispositivos inteligentes, <00:00:23:29>sino también en la exploración de tecnologías revolucionarias ABCDE5G, <00:00:25:54>es decir, Inteligencia Artificial, Blockchain, Computación en la Nube, <00:00:30:35>Ciencia de Datos, ESG y tecnología 5G, <00:00:34:02>así como electrónica automotriz y atención médica. <00:00:36:55> Paralelamente con la investigación y desarrollo innovadoras, <00:00:39:47>Inventec ejecuta el desarrollo estratégico de patentes. <00:00:43:32>Nuestros empleados están motivados para seguir innovando e inventando <00:00:46:56>mediante un sistema de revisión experta <00:00:50:54>y un generoso sistema de recompensas <00:00:52:53>que promueve la construcción de patentes técnicas integrales <00:00:54:11>en diversos campos. <00:00:56:03>Inventec ha alcanzado las primeras posiciones <00:00:57:08>en los rankings de patentes empresariales globales. <00:00:59:06>Nuestras patentes en el campo de la electrónica automotriz <00:01:04:46>nos sitúan en el ranking de las top 100 patentes globales <00:01:08:43>en \"Internet de Vehículos para Carreteras Inteligentes\". <00:01:11:22>También logramos un lugar en las top 100 de <00:01:14:42>\"Fabricación Inteligente de Empresas Globales\" <00:01:18:09>para patentes de fabricación inteligente. <00:01:19:44> "
+        },
+        {
+            "ID": "NarCaption_InteMedic",
+            "TYPE": 0,
+            "CNS": "此区为智慧医疗。<00:00:00:00> 一进到智慧医院，电子纸病床卡已是智慧医院的标准配备。<00:00:01:43>台大医院、台北荣总、与三总都已经有使用。<00:00:07:29>透过智慧医疗，预计到2025年，全球每年可省下1500 亿美元的医疗费用。<00:00:12:10>特别在医疗数据的记录、分析和运算的表现上，尤其明显。<00:00:19:28>我们以思迈输液系统和医用护理台车为例 ：<00:00:24:03> 思迈输液系统主要在于精准控制输液流速，<00:00:29:29>思迈输液联线系统软件可和医院的HIS以及NIS系统进行串接并进行资料的双向传输，<00:00:33:42>可达到提升用药安全及提升护理人员工作效率的两大目标。<00:00:42:09>思迈输液系统并荣获2022年国家新创奖及SNQ国家质量标章。<00:00:47:26> 以往护理师给药，需仰赖人工的三读五对，<00:00:54:09>而现在透过思迈输液系统，护理师只需扫描4个条形码(病人、药品、帮浦、护理师)，思迈系统便可自动比对资料。<00:01:08:49>当资料正确，输液参数自动传输到帮浦进行输液，藉此降低人为疏失的风险。<00:01:05:58>有了这套系统，护理师只需要透过护理站的电脑、随身手机及平板或是智慧护理推车，<00:01:16:31>即可掌握所有帮浦的输液状态或警报讯息，<00:01:24:31>而完整的输液过程，也将会实时的纪录在医院的信息系统中。<00:01:28:29> 智慧医疗的应用，更可将服务由医院内延伸到医院外，<00:01:33:56>落实于居家医疗、偏乡医疗与远距医疗，我们就以『英爱肤智能伤口软件』为例：<00:01:38:58> 与台湾医学中心联合开发，并以 AI 影像判读为核心的「英爱肤 I-SWAT」，<00:01:45:59>透过深度学习算法，学习超过 2,000 张伤口照片，以及多位医师的诊断经验，<00:01:52:34>可同时判读 5 种伤口病征：<00:01:59:36>深度 (Depth)、感染 (Infection)、动脉阻塞症兆 (Arterial ulcer)、静脉阻塞症兆 (Venous ulcer)、压疮症兆 (Pressure ulcer)等，<00:02:02:14>除了拥有近似专科医师的高判读准确率，更以二级医材为开发标准，进行取证。<00:02:12:43> 本产品适用急诊室病患检伤、初期伤口病征分析等各种应用，成为补足医疗量能缺口，<00:02:20:01>与预防伤口恶化的利器，提供病患更好的医疗与生活质量。<00:02:28:08> 接着我们看到医疗平板，ATC-63E他是一个 13.3” 医疗平板电脑，<00:02:33:27>是专为现代智能医疗需求设计的移动式设备。<00:02:40:39> 他可以大幅提高医疗专业人员之工作效率及医疗质量，<00:02:44:53>其适用的场景包括护理站、智慧病房、急诊室、 开刀房及远距医疗等。<00:02:49:54> ATC-63E配备最新11代 Core™ i5 处理器，以更快速、更强大的运算能力， <00:02:56:50> 协助医疗专业人员即时追踪和分析患者数据。并且已通过IEC 60601-1医疗认证，<00:03:04:13>保护患者和医疗设备免受电子干扰。<00:03:13:13> 除此之外，M215T/M240 配备前摄影镜头可做为远距医疗使用，<00:03:16:45>并配备 RFID & IC 读卡器及阅读灯可以供护理师穿梭在病房间做为巡房使用。<00:03:23:40>内建WIFI/G-LAN，也兼容于5G Router，可将大量的医疗数据透过网络上传至后台分析。<00:03:31:36> ",
+            "CNT": "此區為智慧醫療。<00:00:00:00> 一進到智慧醫院，電子紙病床卡已是智慧醫院的標準配備。<00:00:01:43>臺大醫院、台北榮總、與三總都已經有使用。<00:00:07:29>透過智慧醫療，預計到2025年，全球每年可省下1500 億美元的醫療費用。<00:00:12:10>特別在醫療數據的記錄、分析和運算的表現上，尤其明顯。<00:00:19:28>我們以思邁輸液系統和醫用護理台車為例<00:00:24:03>： 思邁輸液系統主要在於精準控制輸液流速，<00:00:29:29>思邁輸液連線系統軟體可和醫院的HIS以及NIS系統進行串接並進行資料的雙向傳輸，<00:00:33:42>可達到提升用藥安全及提升護理人員工作效率的兩大目標。<00:00:42:09>思邁輸液系統並榮獲2022年國家新創獎及SNQ國家品質標章。<00:00:47:26> 以往護理師給藥，需仰賴人工的三讀五對，<00:00:54:09>而現在透過思邁輸液系統，護理師只需掃描4個條碼(病人、藥品、幫浦、護理師) ，思邁系統便可自動比對資料。<00:01:08:49>當資料正確，輸液參數自動傳輸到幫浦進行輸液，藉此降低人為疏失的風險。<00:01:05:58>有了這套系統，護理師只需要透過護理站的電腦、隨身手機及平板或是智慧護理推車，<00:01:16:31>即可掌握所有幫浦的輸液狀態或警報訊息，<00:01:24:31>而完整的輸液過程，也將會即時的紀錄在醫院的資訊系統中。<00:01:28:29> 智慧醫療的應用，更可將服務由醫院內延伸到醫院外，<00:01:33:56>落實於居家醫療、偏鄉醫療與遠距醫療，我們就以『英愛膚智慧傷口軟體』為例：<00:01:38:58> 與台灣醫學中心聯合開發，並以 AI 影像判讀為核心的「英愛膚 I-SWAT」，<00:01:45:59>透過深度學習演算法，學習超過 2,000 張傷口照片，以及多位醫師的診斷經驗，<00:01:52:34>可同時判讀 5 種傷口病徵：<00:01:59:36>深度 (Depth)、感染 (Infection)、動脈阻塞癥兆 (Arterial ulcer)、靜脈阻塞癥兆 (Venous ulcer)、壓瘡癥兆 (Pressure ulcer)等，<00:02:02:14>除了擁有近似專科醫師的高判讀準確率，更以二級醫材為開發標準，進行取證。<00:02:12:43> 本產品適用急診室病患檢傷、初期傷口病徵分析等各種應用，成為補足醫療量能缺口，<00:02:20:01>與預防傷口惡化的利器，提供病患更好的醫療與生活品質。<00:02:28:08> 接著我們看到醫療平板，ATC-63E他是一個 13.3” 醫療平板電腦，<00:02:33:27>是專為現代智慧醫療需求設計的移動式設備。<00:02:40:39> 他可以大幅提高醫療專業人員之工作效率及醫療品質，<00:02:44:53>其適用的場景包括護理站、智慧病房、急診室、 開刀房及遠距醫療等。<00:02:49:54> ATC-63E配備最新11代 Core™ i5 處理器，以更快速、更強大的運算能力， <00:02:56:50>協助醫療專業人員即時追蹤和分析患者數據。並且已通過IEC 60601-1醫療認證，<00:03:04:13>保護患者和醫療設備免受電子干擾。<00:03:13:13> 除此之外，M215T/M240 配備前攝影鏡頭可做為遠距醫療使用，<00:03:16:45>並配備 RFID & IC 讀卡器及閱讀燈可以供護理師穿梭在病房間做為巡房使用。<00:03:23:40>內建WIFI/G-LAN，也相容於5G Router，可將大量的醫療數據透過網路上傳至後台分析。<00:03:31:36> ",
+            "EN": "This stop features smart medicine. <00:00:00:00> E-paper bedside patient cards have become a standard device in smart hospitals, < 00:00:01:49> such as National Taiwan University Hospital, Taipei Veterans General Hospital, <00:00:06:00> and Tri-Service General Hospital. It is estimated that by 2025, <00:00:11:53> implementing smart medicine can reduce medical costs by US$150 billion worldwide. <00:00:14:02> The cost reduction is especially pronounced in areas such as recording, analyzing, <00:00:19:32>and computing medical data. Take the SmartMed Infusion System and medical nursing cart as examples. <00:00:24:09> The SmartMed Infusion System can precisely control infusion speed. <00:00:29:20> The system can conduct transmission of data between SmartMed system, Hospital Information System and Nurse Information System, <00:00:33:01>achieving the two major goals of improving medication safety and improving nurses’work efficiency. <00:00:39:27>  The SmartMed Infusion System was awarded the 2022 National Innovation Award and the Symbol of National Quality. <00:00:44:11> In the past, to dispense medicine, <00:00:50:15>nurses must manually read information three times and check whether the patients’name, medicine, <00:00:52:18>  dosage, time of administration, and method of administration are correct. <00:00:57:07>With the SmartMed Infusion System, however, <00:01:01:07>nurses only need to scan four barcodes (on the patient, the medicine, pump, and nurse), <00:01:03:31>and the system will automatically compare the data. When the data are in line with one another, <00:01:08:36>the infusion parameters will be automatically transmitted to the pump for correct infusion, thereby reducing the risk of human errors. <00:01:12:47> With this system, nurses can obtain all infusion statuses or warning messages via the computer at the nursing station, <00:01:19:19>their tablets, or smart nursing carts. <00:01:25:33>During the entire infusion process, information will be recorded in the hospital’s information system in real time. <00:01:27:50> Smart medicine enables the extension of medical services from within medical institutions to outside setting such as homes, <00:01:33:41>remote areas, and telemedicine. <00:01:39:51>Take I-SWAT, AI Software in Skin Wound, as an example. <00:01:41:46> Jointly developed by Inventec and a medical center in Taiwan, I-SWAT is based on AI image analysis. <00:01:45:36>By using deep-learning algorithms and learning from over 2,000 images of wounds, <00:01:51:16>as well as from the diagnostic experiences of several physicians,< 00:01:55:20> I-SWAT can simultaneously classify five key wound conditions: <00:01:58:35>depth, infection, arterial ulcer, venous ulcer, and pressure ulcer<00:02:01:58>. In addition to having a high accuracy of wound classification similar to specialists,< 00:02:06:18> I-SWAT was developed following the standards of<00:02:10:40> Class II medical devices (SaMD) and is currently applying for such a license. <00:02:12:58> I-SWAT is suitable for use in the emergency department for triaging patients <00:02:17:24>and for classification of conditions of wounds without medical personnel in wound care specialization. <00:02:21:30>It can bridge the gap in medical capacity and prevent wound deterioration, <00:02:26:18>providing patients with superior medical treatment and a better quality of life. <00:02:30:09> There is also the ATC 63E medical tablet. ATC-63E is a 13.3” medical tablet designed for modern smart medical needs.< 00:02:33:58> It Significantly improve the working efficiency and medical quality of medical professionals<00:02:43:22> And it. Applicable scenarios include nursing stations, <00:02:47:58>smart wards, emergency rooms, surgery rooms, and telemedicine. <00:02:51:30> And it also. <00:02:55:30>Equipped with the latest 11th generation Core™ i5 processor<00:02:56:29> to perform faster and more powerful computing power, <00:03:00:20>it assists medical professionals to track and analyze patient data in real time. <00:03:02:59> I have to emphasize that, <00:03:07:02> it. Has passed IEC 60601-1 medical certification <00:03:08:33>to protect patients and medical equipment from electronic interference. <00:03:13:11> Moreover, M215T/M240 medical all-in-one is equipped with a front camera to facilitate telemedicine use. <00:03:16:49>It has both RFID & IC card reader and a reading light for nurses to use when visiting wards. <00:03:23:56> In addition, it is equipped with WIFI and G-Lan, <00:03:29:15> and compatible to connect external 5G router allowing for the uploading of a large amount of medical data <00:03:32:06>to the backend for analysis. <00:03:37:32> ",
+            "ES": "Esta parada es la medicina inteligente.< 00:00:00:00> La tarjeta de cabecera de tinta electrónica del paciente junto a la cama <00:00:01:43>se han convertidoen un dispositivo estándar en hospitales inteligentes, <00:00:05:01>como el Hospital Nacional de la Universidad de Taiwán, <00:00:07:58>el Hospital General de Veteranos de Taipei <00:00:10:06>y el Hospital General de Tri-Service. <00:00:11:51>Se estima que para 2025, la implementación de medicina inteligente <00:00:13:25>puede reducir los costos médicos en US$150 mil millones a nivel mundial. <00:00:17:45>La reducción de costos es especialmente notoria <00:00:21:54>en áreas como el registro, análisis y cálculo de datos médicos. <00:00:24:03>Tomemos como ejemplos el Sistema de Infusión SmartMed <00:00:27:19>y el carrito de enfermería médica. <00:00:30:07> El Sistema de Infusión SmartMed <00:00:31:49>puede controlar con precisión la velocidad de infusión. <00:00:33:35>El sistema puede realizar transmisión de datos entre <00:00:35:57>el sistema SmartMed, el Sistema de Información Hospitalaria <00:00:37:37>y el Sistema de Información de Enfermería, <00:00:39:39>logrando los dos objetivos principales de mejorar la seguridad de <00:00:42:52>la medicación y aumentar la eficiencia del trabajo de las enfermeras. <00:00:45:31>El Sistema de Infusión SmartMed fue galardonado con <00:00:48:30>el Premio Nacional de Innovación 2022 y el Símbolo de Calidad Nacional. <00:00:51:20> En el pasado, para dispensar medicamentos, <00:00:55:02>las enfermeras debían leer manualmente la información tres veces <00:00:57:10>y verificar si el nombre del paciente, medicamento, dosis, <00:00:59:42>hora de administración y método de administración son correctos. <00:01:02:05>Sin embargo, con el Sistema de Infusión SmartMed, <00:01:05:11>las enfermeras solo necesitan escanear cuatro códigos de barras <00:01:07:50> (del paciente, el medicamento, la bomba y la enfermera), <00:01:10:11>y el sistema comparará automáticamente los datos. <00:01:13:13>Cuando los datos coinciden entre sí, <00:01:15:25>los parámetros de infusión se transmitirán automáticamente a la bomba para <00:01:17:25>la correcta infusión, <00:01:20:16>reduciendo así el riesgo de errores humanos. <00:01:21:49> Con este sistema, las enfermeras pueden obtener todos los <00:01:23:28>estados de infusión o mensajes de advertencia a través de la computadora <00:01:26:23>en la estación de enfermería, <00:01:29:16>sus tabletas o carritos de enfermería inteligentes. <00:01:30:30>Durante todo el proceso de infusión, <00:01:32:50>la información se registrará en tiempo real <00:01:34:28>en el sistema de información del hospital. <00:01:37:27> La medicina inteligente permite la extensión de servicios médicos <00:01:38:39>desde instituciones médicas hacia entornos externos como hogares, <00:01:41:16>áreas remotas y telemedicina. <00:01:44:47>Tomemos como ejemplo a I-SWAT, un software de IA para heridas cutáneas. <00:01:46:13> Desarrollado conjuntamente por Inventec y un centro médico en Taiwán, <00:01:49:54>I-SWAT se basa en análisis de imágenes con IA. <00:01:53:24>Utilizando algoritmos de aprendizaje profundo <00:01:55:33>y aprendiendo de más de 2,000 imágenes de heridas, <00:01:58:27>así como de las experiencias diagnósticas de varios médicos, <00:02:00:40>I-SWAT puede clasificar simultáneamente cinco condiciones clave de heridas: <00:02:03:30>profundidad, infección, úlcera arterial, úlcera venosa y úlcera por presión. <00:02:06:43>Además de tener una alta precisión en la <00:02:10:29>clasificación de heridas similar a la de especialistas, <00:02:13:10>I-SWAT fue desarrollado siguiendo los estándares de <00:02:15:00>dispositivos médicos Clase II (SaMD) <00:02:18:07>y actualmente está en proceso de solicitud para tal licencia. <00:02:19:11> I-SWAT es adecuado para el uso <00:02:21:40>en departamento de emergencias para clasificar a los pacientes <00:02:23:05>y para la clasificación de condiciones de heridas <00:02:25:42>sin personal médico especializado en cuidado de heridas. <00:02:27:39>Puede cerrar la brecha en la capacidad médica y prevenir el deterioro de las heridas, <00:02:30:06>proporcionando a los pacientes un tratamiento médico superior <00:02:33:37>y una mejor calidad de vida. <00:02:36:12> También está la tableta médica ATC 63E. <00:02:37:47>ATC-63E es una tableta médica de 13.3 pulgadas diseñada <00:02:40:52>para las necesidades médicas inteligentes modernas. <00:02:45:25>Mejora significativamente la eficiencia laboral <00:02:46:59>y la calidad médica de los profesionales de la salud. <00:02:49:10>Sus escenarios aplicables incluyen estaciones de enfermería, <00:02:52:03>salas médicas inteligentes, salas de emergencia, quirófanos y telemedicina. <00:02:54:45> Además, está equipada con el último procesador Core™ i5 de 11ª generación <00:02:58:36>para ofrecer una potencia de cálculo más rápida y potente, <00:03:03:08>ayudando a los profesionales médicos a rastrear <00:03:05:39>y analizar datos de pacientes en tiempo real. <00:03:07:32> Debo enfatizar que ha pasado la certificación médica IEC 60601-1 para <00:03:09:54>proteger a los pacientes y al equipo médico de interferencias electrónicas. <00:03:12:57> Además, el todo-en-uno médico M215T/M240 <00:03:17:21>está equipado con una cámara frontal para facilitar la telemedicina. <00:03:19:47>Tiene tanto un lector de tarjetas RFID e IC como una luz de lectura <00:03:24:16>para que las enfermeras la utilicen al visitar las salas. <00:03:28:34>Además, está equipado con WIFI y Gigabit LAN, <00:03:29:57>y es compatible para conectar un router externo 5G, <00:03:32:45>lo que permite la subida de una gran cantidad de datos médicos <00:03:35:04>al sistema backend para su análisis. <00:03:37:50> "
+        },
+        {
+            "ID": "NarCaption_InteTraffic",
+            "TYPE": 0,
+            "CNS": "此区为智慧交通。<00:00:00:00>  透过智慧交通，可享受更便利、更安全的交通运输。<00:00:01:52>有了智慧电杆、智慧交通网的建立、自驾车安全的行驶指日可待。<00:00:06:49> 现场这支智慧电杆，上方配置摄影机，<00:00:13:11>并搭配采用NVIDIA平台开发的AIM-Edge产品，<00:00:17:07>能执行各种解决方案，大家可以看到地上的白色框框，<00:00:21:31>就是电子围篱，当有人进入电子围篱区域，现场即会发出警示声音。<00:00:26:31>此外，也可应用在科技执法，可将影像传至AIM-Edge进行运算，<00:00:32:46>再实时回传运算结果至平台，电视画面上的绿色框框都是辨识结果，<00:00:38:52>只要在后台透过滑鼠点击四个角落，可自定义不同的范围不同的目的，<00:00:45:06>例如：统计车流、违规停车、逆向驾驶等，<00:00:55:28>目前已成功导入台湾、泰国、菲律宾、美国及加拿大等。<00:00:55:28> 此外，这里有一部AMR，<00:01:01:09>你可以把想象成是在马路上跑的智慧Bus，如同我们一进展厅所看见的那台EV；<00:01:03:59>你也可以把它当成是在智慧工厂里运送物品的AGV。<00:01:10:40>传统的AGV只能根据预先设定好的程式来运作，<00:01:15:21>但是请注意，这一部AMR可以和中控室互动，根据实时下达的指令作动作。<00:01:20:11> ",
+            "CNT": "此區為智慧交通。<00:00:00:00> 透過智慧交通，可享受更便利、更安全的交通運輸。<00:00:01:52>有了智慧電桿、智慧交通網的建立、自駕車安全的行駛指日可待。<00:00:06:49> 現場這支智慧電桿，上方配置攝影機，<00:00:13:11>並搭配採用NVIDIA平台開發的AIM-Edge產品，<00:00:17:07>能執行各種解決方案，大家可以看到地上的白色框框，<00:00:21:31>就是電子圍籬，當有人進入電子圍籬區域，現場即會發出警示聲音。<00:00:26:31>此外，也可應用在科技執法，可將影像傳至AIM-Edge進行運算，<00:00:32:46>再即時回傳運算結果至平台，電視畫面上的綠色框框都是辨識結果，<00:00:38:52>只要在後台透過滑鼠點擊四個角落，可自定義不同的範圍不同的目的，<00:00:45:06>例如：統計車流、違規停車、逆向駕駛等，<00:00:51:01>目前已成功導入台灣、泰國、菲律賓、美國及加拿大等。<00:00:55:28> 此外，這裡有一部AMR，<00:01:01:09>你可以把想像成是在馬路上跑的智慧Bus，如同我們一進展廳所看見的那台EV；<00:01:03:59>你也可以把它當成是在智慧工廠裡運送物品的AGV。<00:01:10:40>傳統的AGV只能根據預先設定好的程式來運作，<00:01:15:21>但是請注意，這一部AMR可以和中控室互動，根據即時下達的指令作動作。<00:01:20:11> ",
+            "EN": "This stop features smart transportation. By adopting smart transportation, <00:00:00:00>people can enjoy more convenient and safer transportation. <00:00:04:18>By establishing smart poles and smart transportation networks, <00:00:07:30>we can expect self-driving cars to be able to run safely on the road. <00:00:10:58> This smart pole here is equipped with a camera on top and an AIM-Edge product developed on the NVIDIA platform, <00:00:14:46>and it can implement various solutions.< 00:00:20:44> For example, this white square on the floor is an e-gate. <00:00:22:51>Whenever someone enters this area, alert goes off.< 00:00:26:36> Moreover, the smart poles can be adopted for technology law enforcement<00:00:29:33>. Images captured by the camera are transmitted to AIM-Edge for computing, and the results are instantly transmitted back to the dashboard<00:00:34:01>. The green squares you can see on the TV are the recognition results. <00:00:41:22>Operators in the backend can use the mouse to<00:00:45:12> click on four corners to define different scopes and different purposes of recognition, <00:00:47:45>such as obtaining traffic statistics, detecting illegal parking, <00:00:51:33>and identifying wrong-way driving. <00:00:54:58>The smart poles have been introduced to Taiwan, Thailand, the Philippines, the United States, and Canada. <00:00:56:58> Here features an AMR,< 00:01:03:20> which is like a smart bus on the street. <00:01:04:46>Just like the EV you saw upon when you entered this exhibition hall,< 00:01:07:02> you can think of this AMR as an AGV that transports goods in smart factories. <00:01:10:28> Unlike conventional AGVs that can only operate according to pre-set programs, <00:01:14:58>this AMR can interact with the central control room and follow real-time orders. <00:01:19:44> ",
+            "ES": "Esta parada es el transporte inteligente. <00:00:00:00>Al adoptar el transporte inteligente, <00:00:02:32>las personas pueden disfrutar de un transporte más conveniente y seguro. <00:00:05:11>Al establecer postes inteligentes y redes de transporte inteligente, <00:00:08:58>podemos esperar que los coches autónomos circulen de <00:00:12:11>manera segura por las carreteras. <00:00:15:14> Este poste inteligente que ven aquí está equipado con una cámara <00:00:17:53>en la parte superior <00:00:21:37>y un producto AIM-Edge desarrollado en la plataforma NVIDIA, <00:00:22:28>y puede implementar diversas soluciones. <00:00:26:01>Por ejemplo, este cuadrado blanco en el suelo es una cerca electrónica. <00:00:28:36>Cada vez que alguien entra en esta área, se activa la alarma. <00:00:33:05>Además, los postes inteligentes pueden ser adoptados <00:00:37:22>para la aplicación de la ley a través de la tecnología. <00:00:40:52>Las imágenes capturadas por la cámara se transmiten al <00:00:43:39>AIM-Edge para su procesamiento, <00:00:47:17>y los resultados se envían instantáneamente de regreso al panel de control. <00:00:48:50>Los cuadrados verdes que pueden ver en la TV son los resultados de reconocimiento. <00:00:53:08>Los operadores en el backend pueden usar el ratón <00:00:58:32>para hacer clic en las cuatro esquinas <00:01:01:08>y definir diferentes ámbitos y propósitos de reconocimiento, <00:01:02:16>como obtener estadísticas de tráfico, detectar estacionamientos ilegales <00:01:05:07>e identificar conducciones en sentido contrario. <00:01:09:38>Los postes inteligentes se han introducido <00:01:13:12>en Taiwán, Tailandia, Filipinas, Estados Unidos y Canadá. <00:01:15:35> Aquí se presenta un AMR, que es como un autobús inteligente en la calle. <00:01:19:41>Al igual que el EV que vieron al entrar en esta sala de exposiciones, <00:01:24:53>pueden pensar en este AMR como un AGV <00:01:28:22>que transporta mercancías en fábricas inteligentes. <00:01:31:42>A diferencia de los AGVs convencionales <00:01:34:28>que solo pueden operar según programas preestablecidos, <00:01:37:31>este AMR puede interactuar con la sala de control central <00:01:40:16>y seguir órdenes en tiempo real. <00:01:43:41> "
+        },
+        {
+            "ID": "NarCaption_InteFiveG",
+            "TYPE": 0,
+            "CNS": "此区为5G。 大家有听过数位双生吗? < 00:00:00:00> 我们现在在这个荧幕上展示的平台就是一个范例。<00:00:03:51>中间这边是这个展厅的3D模型、右上角是我们桃园的产线。想象一下，<00:00:08:25>你在桃园那边，然后想要操控现场的物品。<00:00:15:29>透过荧幕上这个3D建模平台就可以达到。<00:00:19:19>他不仅可以提供无时差的现场状况，并且还可以进行操控。<00:00:23:29>现实中发生的，和屏幕上是同步进行的，<00:00:28:47>透过数字双生，让我们成功达到虚实整合！<00:00:32:51> 那5G如何覆盖偏乡地区？<00:00:36:43> 一般家中要达到5G，通常是透过光纤网络。<00:00:39:31>但在偏乡或是网络基础建设较不完善的区域，<00:00:43:47>光纤的架设非常昂贵，而且费时又费力。<00:00:48:09>前方的这两台 FWA 设备就成了最好的解决方案，<00:00:52:10>代替了光纤网络，成为 5G 到府的最后一里路。<00:00:57:04>FWA 全名是 Fixed Wireless Access 无线固定网络接入。<00:01:01:09>前方这一台较小的是 Kona ，透过配置的 高增益毫米波天线数组，<00:01:06:32>可接收距离 7公里外的 5G 基地台信号，提供使用者媲美5G的高速、稳定的网络。<00:01:12:27>另一台较大的是 Firestorm，功能上与 Kona 差不多，<00:01:19:58>主要的区别在于 Firestorm将天线优化在频率较低的 5G 频段，<00:01:24:30>能够在没有毫米波覆盖的地方，提供一样好的网络服务。<00:01:29:50> 另外，小圆桌上的这一台是5G MiFi，<00:01:34:30>它是无线网络分享器，链接5G，同时支持32台 5G/WiFi 装置同时连网。<00:01:38:07>非常适合 团体商务出差及领队带团旅游使用。<00:01:45:38>那现在来看实际的AMR Demo！<00:01:50:35> ",
+            "CNT": "此區為5G。 大家有聽過數位雙生嗎?< 00:00:00:00> 我們現在在這個螢幕上展示的平台就是一個範例。<00:00:03:51>中間這邊是這個展廳的3D模型、右上角是我們桃園的產線。想像一下，<00:00:08:25>你在桃園那邊，然後想要操控現場的物品。<00:00:15:29>透過螢幕上這個3D建模平台就可以達到。<00:00:19:19>他不僅可以提供無時差的現場狀況，並且還可以進行操控。<00:00:23:29>現實中發生的，和螢幕上是同步進行的，<00:00:28:47>透過數位雙生，讓我們成功達到虛實整合！<00:00:32:51> 那5G如何覆蓋偏鄉地區？<00:00:36:43> 一般家中要達到5G，通常是透過光纖網路。<00:00:39:31>但在偏鄉或是網路基礎建設較不完善的區域，<00:00:43:47>光纖的架設非常昂貴，而且費時又費力。<00:00:48:09>前方的這兩台 FWA 設備就成了最好的解決方案，<00:00:52:10>代替了光纖網路，成為 5G 到府的最後一哩路。<00:00:57:04>FWA 全名是 Fixed Wireless Access 無線固定網路接入。<00:01:01:09>前方這一台較小的是 Kona ，透過配置的 高增益毫米波天線陣列，<00:01:06:32>可接收距離 7公里外的 5G 基地台信號，提供使用者媲美5G的高速、穩定的網路。<00:01:12:27>另一台較大的是 Firestorm，功能上與 Kona 差不多，<00:01:19:58>主要的區別在於 Firestorm將天線優化在頻率較低的 5G 頻段，<00:01:24:30>能夠在沒有毫米波覆蓋的地方，提供一樣好的網路服務。<00:01:29:50> 另外，小圓桌上的這一台是5G MiFi，<00:01:34:30>它是無線網路分享器，連結5G，同時支援32台 5G/WiFi 裝置同時連網。<00:01:38:07>非常適合 團體商務出差及領隊帶團旅遊使用。<00:01:45:38>那現在來看實際的AMR Demo！<00:01:50:35> ",
+            "EN": "This stop features 5G.  Here is our digital twin display, <00:00:00:00>and everything in this showroom maps to the management system. Through 5G, <00:00:03:39> everything that happens in real life will be immediately shown in the digital twin. <00:00:07:59> 5G’s low latency and high capacity communication technology provides real-time information and interaction from afar.< 00:00:12:01> Now, my colleague will demonstrate how to control the AGV<00:00:19:07> in digital twins remotely through a phone connected to 5G.< 00:00:22:30> You can see that the location and status of the AGV is the same as that<00:00:25:55> on digital twins. 5G connects the real world and the virtual world. <00:00:29:55> How can 5G coverage in remote areas be achieved? <00:00:34:19> 5G coverage at home typically requires fiber optic networks. <00:00:37:14>However, in remote areas or areas with unfavorable internet infrastructure,< 00:00:41:14> establishing fiber optic networks is extremely expensive, <00:00:46:03>time-consuming, and labor-consuming. To address this problem, <00:00:49:24>the two FWAs in front of you can replace fiber optic networks, making 5G available at home. <00:00:52:52> FWA refers to fixed wireless access<00:00:58:31>. The smaller machine in front of you is Kona. Kona has high-gain millimeter-wave antenna array. <00:01:01:42>As a result, it can receive 5G signals from stations 7 km away, <00:01:06:58>and it can provide users with a fast and stable network comparable to that of 5G. <00:01:11:29> The larger machine here is Firestorm. <00:01:16:08>It has similar functions to KONA. <00:01:18:33>The difference being that Firestorm optimizes the antenna frequency<00:01:20:36> to lower 5G frequencies so that it can provide equally <00:01:24:14>superior network services at places without millimeter-wave coverage.  <00:01:27:16> The device on this side of the desk is a 5G MiFi. <00:01:31:04> It is a wireless network sharer connecting to 5G <00:01:34:13>that allows 32 5G or WiFi devices to be connected to the internet simultaneously.< 00:01:37:20> Thus, it is optimal for group business trips and for tour guides to lead tours. <00:01:42:40>  ",
+            "ES": "Esta parada presenta el 5G. <00:00:00:00>Aquí está nuestra exhibición de gemelo digital, <00:00:02:14>y todo en esta sala de exposiciones se refleja en el sistema de gestión. <00:00:05:22>A través del 5G, todo lo que sucede en el mundo físico <00:00:09:29>se mostrará de inmediato en su gemelo digital. <00:00:14:05>La baja latencia y la alta capacidad de comunicación del 5G <00:00:15:56>proporcionan información e interacción en tiempo real a distancia. <00:00:19:56>El 5G conecta el mundo real y el mundo virtual. <00:00:23:20> ¿Cómo se puede lograr la cobertura 5G en áreas remotas? <00:00:27:27> La cobertura 5G en el hogar generalmente requiere redes de fibra óptica. <00:00:31:39>Sin embargo, <00:00:36:51>en áreas remotas o áreas con infraestructura de internet desfavorable, <00:00:38:05>establecer redes de fibra óptica es extremadamente costoso, <00:00:41:15>lleva mucho tiempo y requiere mucha mano de obra. <00:00:45:04>Para abordar este problema, <00:00:47:57>los dos FWAs que tienen delante pueden reemplazar las redes de fibra óptica, <00:00:50:15>haciendo que el 5G esté disponible en el hogar. <00:00:54:28> FWA se refiere a acceso inalámbrico fijo. <00:00:57:28>La máquina más pequeña que tienen delante es Kona. <00:01:01:40>Kona tiene un arreglo de antena milimétrica de alta ganancia. <00:01:05:20>Como resultado, puede recibir señales 5G de estaciones a 7 km de distancia, <00:01:09:30>y puede proporcionar a los usuarios una red rápida <00:01:14:44>y estable comparable a la del 5G. <00:01:17:49> La máquina más grande aquí es Firestorm. <00:01:19:52>Tiene funciones similares a KONA. <00:01:23:01>La diferencia es que Firestorm optimiza la frecuencia de <00:01:25:56>la antena a frecuencias 5G más bajas, <00:01:29:25>de modo que puede proporcionar servicios de <00:01:32:00>red igualmente superiores en lugares sin cobertura de onda milimétrica. <00:01:34:32> El dispositivo de este lado del escritorio es un MiFi 5G. <00:01:37:46>Es un compartidor de red inalámbrica que se conecta al 5G <00:01:41:58>y permite que 32 dispositivos 5G o WiFi <00:01:45:45>se conecten a internet simultáneamente. <00:01:48:27>Por lo tanto, es óptimo para viajes de negocios y para <00:01:51:06>que los guías turísticos lideren excursiones. <00:01:54:43> "
+        },
+        {
+            "ID": "NarCaption_InteHome",
+            "TYPE": 0,
+            "CNS": "此区为智慧居家。 透过5G 覆盖所带来的高速网络，<00:00:00:00>就可享受高质量的智能居家生活。<00:00:05:00>智慧居家有三个重点，第一是舒适，第二是健康，第三是安全。<00:00:08:02>现在我们就来看在5G覆盖下，智慧居家如何过着舒适、健康的生活。<00:00:14:08> 现代人上班压力大，打Game、听音乐、追剧，是我们放松心情常用的舒压方式。<00:00:21:10>透过5G FWA，在家打 Game不延迟，追剧不Lag，听音乐质量高。<00:00:28:21>现场 SONOS playbar，提供左中右音频加上subwoofer 重低音，<00:00:35:29>组成完整3.1声道家庭剧院组，<00:00:41:28>播放内容和设定都由手机中单一app控制，是一套完美的家庭娱乐系统。<00:00:44:25> 全家宝全方位生理量测系统可以由用户在家中自行量测多种生理数据：<00:00:50:55>血压、血糖、总胆固醇、尿酸、心电图、<00:00:57:33>血氧及体温等。数据并可自动上传至云端系统，<00:01:02:08>除了数据的储存外，并可以实时分享健康讯息给家人。全家宝健康管理平台并可将资讯即时传输到医院或医疗服务端让医护人员进行监控，基于这些数据，<00:01:12:00>可以提供远距健管服务和咨询，并将健康管理服务延伸到家中。<00:01:19:54> 还有，气候变迁是2 1世纪的热门话题，<00:01:27:11>空气质量则是重要指针。<00:01:31:03>透过全家宝「环境小天使」智慧空气净化机，让你呼吸到最干净的空气，<00:01:33:21>此外同时具备即时影音监控，可远程即时侦测家中状况，对居家安全尤为实用。<00:01:39:40> ",
+            "CNT": "此區為智慧居家。 透過5G 覆蓋所帶來的高速網路，<00:00:00:00>就可享受高品質的智慧居家生活。<00:00:05:00>智慧居家有三個重點，第一是舒適，第二是健康，第三是安全。<00:00:08:02>現在我們就來看在5G覆蓋下，智慧居家如何過著舒適、健康的生活。<00:00:14:08> 現代人上班壓力大，打Game、聽音樂、追劇，是我們放鬆心情常用的舒壓方式。<00:00:21:10>透過5G FWA，在家打 Game不延遲，追劇不Lag，聽音樂品質高。<00:00:28:21>現場 SONOS playbar，提供左中右音頻加上subwoofer 重低音，<00:00:35:29>組成完整3.1聲道家庭劇院組，<00:00:41:28>播放內容和設定都由手機中單一app控制，是一套完美的家庭娛樂系統。<00:00:44:25> 全家寶全方位生理量測系統可以由使用者在家中自行量測多種生理數據：<00:00:50:55>血壓、血糖、總膽固醇、尿酸、心電圖、<00:00:57:33>血氧及體溫等。數據並可自動上傳至雲端系統，<00:01:02:08>除了數據的儲存外，並可以即時分享健康訊息給家人。<00:01:07:05>全家寶健康管理平台並可將資訊即時傳輸到醫院或醫療服務端讓醫護人員進行監控，<00:01:12:00>基於這些數據，可以提供遠距健管服務和諮詢，並將健康管理服務延伸到家中。<00:01:19:54> 還有，氣候變遷是2 1世紀的熱門話題，<00:01:27:11>空氣品質則是重要指標。<00:01:31:03>透過全家寶「環境小天使」智慧空氣淨化機，讓你呼吸到最乾淨的空氣，<00:01:33:21>此外同時具備即時影音監控，可遠端即時偵測家中狀況，對居家安全尤為實用。<00:01:39:40> ",
+            "EN": "This stop features smart home. <00:00:00:00>  With the high-speed internet enabled by 5G coverage,< 00:00:01:44> one can enjoy high-quality smart home life. <00:00:04:48>Smart homes have three key features: comfort, health, and safety. <00:00:07:11>Now, let’s see how 5G coverage allows residents<00:00:11:37> in a smart home to lead a comfortable and healthy life. <00:00:14:33> Contemporary people are under great pressure from work, <00:00:17:08>and they often resort to playing online games and watching<00:00:19:50> dramas and listening to music online to release stress.< 00:00:23:00> With 5G FWA, people will not experience <00:00:25:42>lagging while playing games or watching videos online, <00:00:28:45> and they can enjoy high-equality music. <00:00:31:48> The SONOS playbar here is a perfect home entertainment system. <00:00:33:54>It offers left, center, and right channels as well as subwoofer<00:00:37:31>, forming a comprehensive 3.1 channel home theater system. <00:00:41:19>The playing content and settings are controlled by a single mobile phone app.< 00:00:44:55>  Introduction to the Chiline Multifunction Physiological Measurement System. <00:00:48:42> The Chiline Multifunction Physiological Measurement System can <00:00:53:03>let user measure various vital signs at home; namely, <00:00:56:29>blood pressure, blood glucose, total cholesterol, uric acid, ECG, blood oxygen level and body temperature.< 00:00:59:45> Not only saving data to cloud but also can share data to user’s family.< 00:01:06:59> Chiline HealthCare Platform can also link to hospital or medical service <00:01:11:19>to let medical staff to check patients’ status online.< 00:01:15:33> Based on the data transmitted, <00:01:18:10> health management services and consultations can be provided, <00:01:20:25>and health management services can be extended to users’ home. <00:01:23:25> On a different note, climate change is a hot topic in the 21st century, <00:01:26:45>and air quality is a key indicator of climate change. <00:01:31:05>By using Chiline “Care Angel” portable smart air purifier, you can breathe the cleanest air. <00:01:34:10>The air purifier is also equipped with real-time video monitoring, <00:01:39:12>so users can be aware of their home security. <00:01:42:45> ",
+            "ES": "Esta parada presenta el hogar inteligente. <00:00:00:00> Con la alta velocidad de internet proporcionada por la cobertura 5G, <00:00:02:35>uno puede disfrutar de una vida de hogar inteligente de alta calidad. <00:00:06:50>Las casas inteligentes tienen tres características clave: <00:00:10:40>comodidad, salud y seguridad. <00:00:15:01>Ahora, veamos cómo la cobertura 5G permite a los residentes <00:00:16:37>de una casa inteligente llevar una vida cómoda y saludable. <00:00:20:33>Las personas contemporáneas están bajo una gran presión en el trabajo y, <00:00:23:58>a menudo, recurren a jugar videojuegos en línea, <00:00:27:49>ver películas y series, y escuchar música en línea para liberar el estrés. <00:00:31:17>Con el FWA 5G, las personas no experimentarán retrasos <00:00:35:51>al jugar o ver videos en línea, <00:00:40:45>y pueden disfrutar de música de alta calidad. <00:00:42:18>La barra de sonido SONOS aquí <00:00:45:06>es un sistema de entretenimiento para el hogar perfecto. <00:00:46:48>Ofrece canales izquierdo, central y derecho, así como un subwoofer, <00:00:50:24>formando un completo sistema de cine en casa de 3.1 canales. <00:00:54:31>El contenido y la configuración se <00:00:58:45>controlan mediante una única aplicación de teléfono móvil. <00:01:00:57> Introducción al Sistema de Medición Fisiológica Multifuncional Chiline. <00:01:04:32>El Sistema de Medición Fisiológica Multifuncional Chiline <00:01:09:11>permite al usuario medir diversos signos vitales en casa; <00:01:14:30>tales como, presión arterial, glucosa en sangre, <00:01:16:04>colesterol total, ácido úrico, electrocardiograma (ECG), <00:01:19:05>nivel de oxígeno en sangre y temperatura corporal. <00:01:22:54>No solo guarda datos en la nube, <00:01:26:10>sino que también puede compartir datos con la familia del usuario. <00:01:28:38>La Plataforma de Salud Chiline también puede conectarse con <00:01:32:20>hospitales o servicios médicos para que el personal médico <00:01:36:40>verifique el estado de los pacientes en línea. <00:01:38:58>Basado en los datos transmitidos, <00:01:41:16>se pueden proporcionar servicios y consultas de salud, <00:01:43:36>y los servicios de salud pueden extenderse al hogar del usuario. <00:01:46:22> Cambiando de tema, el cambio climático es un tema candente en el siglo XXI, <00:01:50:20>y la calidad del aire es un indicador clave del cambio climático. <00:01:55:07>Al usar el purificador de aire inteligente portátil \"Care Angel\" de Chiline, <00:01:58:31>puedes respirar el aire más limpio. <00:02:02:58>El purificador de aire también está equipado con monitoreo de video en tiempo real, <00:02:05:35>por lo que los usuarios pueden estar informados sobre la seguridad de su hogar. <00:02:10:14> "
+        },
+        {
+            "ID": "NarCaption_nteSemiFac",
+            "TYPE": 0,
+            "CNS": "",
+            "CNT": "",
+            "EN": "",
+            "ES": ""
+        },
+        {
+            "ID": "NarCaption_InteManuf",
+            "TYPE": 0,
+            "CNS": "此区为智慧制造。<00:00:00:00> 英业达企业电脑事业群以生产伺服器产品为主，每年生产400万台伺服器，<00:00:01:42>根据2020年统计，全球生产约1600万台伺服器，<00:00:09:01>每4台就有一台是英业达制造的，特别介绍6家大型客户，<00:00:14:16>我们称做BAT和DHL，B是百度/A是阿里巴巴/T是腾讯，<00:00:19:40>D是DELL/H是HP/L是Lenovo联想，代工生产比例约30%~65%。<00:00:26:00> 多台伺服器的堆叠为机柜，欧美OCP 机柜规格为宽19吋、高42U，<00:00:35:06>但后来中国大陆崛起，想要依据自己的规格客制化生产，<00:00:42:00>故在2011年，BAT这3家公司，召开了天蝎会议，<00:00:46:56>找了当时伺服器代工最优秀的公司进行开会讨论，<00:00:52:07>但当时未达成结论，直到2014年，再度召开天蝎2.0计划会议，制定宽21吋、高42U~46U的规格，<00:00:56:41>只要增加2吋即可增加20%的Storage，<00:01:07:13>同时采模组化，以节省成本及便于维护；<00:01:11:22>到了2016年，天蝎3.0计划，着重在运算及软体管理为主。<00:01:15:24>目前天蝎的规格在大陆已相当成熟，价格只有OCP欧美规格的3分之2，<00:01:21:42>欧美规格设置好后，因为有不同的厂牌，还需要调整及处理，故还需2~3天才能运作，<00:01:28:55>但天蝎规格采模组化，不光成本低，启动也很迅速，只需2~3小时即可运作。<00:01:36:37> ",
+            "CNT": "此區為智慧製造。<00:00:00:00> 英業達企業電腦事業群以生產伺服器產品為主，每年生產400萬台伺服器，<00:00:01:42>根據2020年統計，全球生產約1600萬台伺服器，<00:00:09:01>每4台就有一台是英業達製造的，特別介紹6家大型客戶，<00:00:14:16>我們稱做BAT和DHL，B是百度/A是阿里巴巴/T是騰訊，<00:00:19:40>D是DELL/H是HP/L是Lenovo聯想，代工生產比例約30%~65%。<00:00:26:00> 多台伺服器的堆疊為機櫃，歐美OCP 機櫃規格為寬19吋、高42U，<00:00:35:06>但後來中國大陸崛起，想要依據自己的規格客製化生產，<00:00:42:00>故在2011年，BAT這3家公司，召開了天蠍會議，<00:00:46:56>找了當時伺服器代工最優秀的公司進行開會討論，<00:00:52:07>但當時未達成結論，直到2014年，再度召開天蠍2.0計畫會議，制定寬21吋、高42U~46U的規格，<00:00:56:41>只要增加2吋即可增加20%的Storage，<00:01:07:13>同時採模組化，以節省成本及便於維護；<00:01:11:22>到了2016年，天蠍3.0計畫，著重在運算及軟體管理為主。<00:01:15:24>目前天蠍的規格在大陸已相當成熟，價格只有OCP歐美規格的3分之2，<00:01:21:42>歐美規格設置好後，因為有不同的廠牌，還需要調整及處理，故還需2~3天才能運作，<00:01:28:55>但天蠍規格採模組化，不光成本低，啟動也很迅速，只需2~3小時即可運作。<00:01:36:37> ",
+            "EN": "This stop features smart manufacturing. <00:00:00:00> The Enterprise Business Group (EBG) primarily manufactures servers.< 00:00:02:08> Each year, it generates 4 million servers. According to the statistics of 2020,< 00:00:06:44> approximately 16 million servers were manufactured worldwide, <00:00:12:01>and every one in four servers was manufactured by Inventec. <00:00:15:42>The EBG has six major clients, namely Baidu, Inc., Alibaba Group, and Tencent Holdings Ltd. (BAT), as well as Dell Inc. , <00:00:18:58>Hewlett Packard Development Company, L.P., and Lenovo Group Limited (DHL). <00:00:28:45> The EBG serves as an original equipment manufacturer (OEM) for approximately 30% to 60% of their products. <00:00:32:52> A server rack houses stacks of servers. <00:00:40:32> The dimensions specified in the OCP Rack, <00:00:42:52>common in European countries and the United States,< 00:00:45:51> are 19 inches wide and 42 U tall. However, later on, <00:00:48:38>China became powerful in the server scene and wanted to have its own rack specifications. <00:00:52:42> In 2011, BAT held a meeting and invited outstanding server OEM companies to participate.< 00:00:57:12> This meeting, later named the Scorpio Project, only proposed ideas and did not make specifications.< 00:01:03:05> In 2014, the Scorpio 2.0 Rack Solution meeting was held,< 00:01:08:51> and specifications of 21 inches wide and 42–46 U tall were determined to facilitate storage and cooling.< 00:01:14:11> With an additional 2 inches, 20% more storage was achieved. <00:01:20:56>Additionally, to reduce costs and facilitate maintenance,< 00:01:28:23> the servers were modularized. In 2016, <00:01:24:53>the Scorpio 3.0 Rack Solution meeting emphasized calculation and software management. To date,< 00:01:31:44> the Scorpio specifications have reached maturity in China,< 00:01:38:16> and their prices are only 2/3 of that of an OCP Rack. Moreover, <00:01:41:40>after an OCP rack is established,< 00:01:45:54> because it contains servers of different brands<00:01:48:06>, modifications may take 2 to 3 days for it to work. In contrast, because Scorpio is modularized,< 00:01:50:22> it is cheap and only takes 2 to 3 hours to be ready to operate. <00:01:56:41> ",
+            "ES": "Esta parada presenta la manufactura inteligente. <00:00:00:00> El Enterprise Business Group (EBG) <00:00:03:07>se dedica principalmente a la fabricación de servidores. <00:00:05:57>Cada año, produce 4 millones de servidores. <00:00:08:57>Según las estadísticas de 2020, <00:00:12:24>aproximadamente 16 millones de servidores se fabricaron a nivel mundial, <00:00:16:04>y uno de cada cuatro servidores fue fabricado por Inventec. <00:00:19:21>El EBG tiene seis clientes principales, a saber, <00:00:22:47>Baidu, Inc., Alibaba Group y Tencent Holdings Ltd. (BAT), <00:00:25:48>así como Dell Inc., Hewlett Packard Development Company, L.P., <00:00:28:47>y Lenovo Group Limited (DHL). <00:00:32:41>El EBG actúa como fabricante de equipo original (OEM) <00:00:34:35>para aproximadamente el 30% al 60% de sus productos. <00:00:38:52> Un bastidor de servidor alberga pilas de servidores. <00:00:43:27>Las dimensiones especificadas en el OCP Rack, <00:00:47:08>comunes en países europeos y Estados Unidos, <00:00:50:27>son de 19 pulgadas de ancho y 42 U de alto. <00:00:52:14>Sin embargo, más tarde, China ganó relevancia en el mercado de servidores <00:00:56:30>y quiso tener sus propias especificaciones para racks. <00:01:00:26>En 2011, BAT celebró una reunión <00:01:04:00>e invitó a destacadas empresas OEM de servidores a participar. <00:01:06:23>Esta reunión, posteriormente denominada Proyecto Scorpio, <00:01:10:27>solo propuso ideas y no estableció especificaciones. <00:01:14:22>En 2014, se llevó a cabo la reunión de Solución Scorpio 2.0 Rack <00:01:17:49>y se determinaron especificaciones de 21 pulgadas de ancho <00:01:23:04>y 42-46 U de alto para facilitar el almacenamiento y la refrigeración. <00:01:27:05>Con 2 pulgadas adicionales, se logró un 20% más de almacenamiento. <00:01:31:10>Además, para reducir costos y facilitar el mantenimiento, <00:01:36:32>se modularizaron los servidores. <00:01:40:08>En 2016, la reunión de Solución Scorpio 3.0 Rack <00:01:42:06>enfatizó el cálculo y la gestión de software. <00:01:46:57>Hasta la fecha, <00:01:49:43>las especificaciones de Scorpio han alcanzado la madurez en China, <00:01:50:51>y sus precios son solo 2/3 de los de un OCP Rack. <00:01:54:18>Además, después de establecer un OCP rack, <00:01:57:46>dado que contiene servidores de diferentes marcas, <00:02:00:43>las modificaciones pueden tardar de 2 a 3 días en funcionar. <00:02:03:16>En contraste, debido a que Scorpio está modularizado, <00:02:07:01>es económico y solo tarda de 2 a 3 horas en estar listo para operar. <00:02:10:45> "
+        },
+        {
+            "ID": "NarCaption_InteCar",
+            "TYPE": 0,
+            "CNS": "此区为智慧车辆。<00:00:00:00> 这是车用电子事业处所打造的展示车，<00:00:01:51>上面集成了车用电子事业处所开发的产品，其中包含了：<00:00:05:26>智能电子座舱(e-Cockpit)、车规级无线充电(Wireless Charger)、超宽频(Ultra-wideband)智慧汽车门禁系统、<00:00:10:29>中央网关(Central Gateway)、ADAS系统、车用网络switch、乘客资讯系统(passenger information system)。<00:00:19:36> 车用电子事业处的团队均有受过IATF 16949、VDA 6.3、ISO 26262、ISO 21434的训练及认证，<00:00:28:10>并已有多项产品出货给客户。<00:00:40:03>我们的生产基地涵盖中国、台湾、墨西哥及捷克，以贴近各地汽车市场。<00:00:42:52> ",
+            "CNT": "此區為智慧車輛。<00:00:00:00> 這是車用電子事業處所打造的展示車，<00:00:01:51>上面集成了車用電子事業處所開發的產品，其中包含了：<00:00:05:26>智慧電子座艙(e-Cockpit)、車規級無線充電(Wireless Charger)、超寬頻(Ultra-wideband)智慧汽車門禁系統、<00:00:10:29>中央網關(Central Gateway)、ADAS系統、車用網路switch、乘客資訊系統(passenger information system)。<00:00:19:36> 車用電子事業處的團隊均有受過IATF 16949、VDA 6.3、ISO 26262、ISO 21434的訓練及認證，<00:00:28:10>並已有多項產品出貨給客戶。<00:00:40:03>我們的生產基地涵蓋中國、台灣、墨西哥及捷克，以貼近各地汽車市場。<00:00:42:52> ",
+            "EN": "This stop features smart vehicles. <00:00:00:00> This demo car is built by NXP solution. There are e-cockpit system<00:00:02:08>, wireless charger, ultra wide band for digital key, <00:00:06:43> gateway, ethernet switch and passenger information system. <00:00:09:48> The first one I would like to introduce is UWB. <00:00:13:02> As you can see we put several UWB prototypes <00:00:16:15>in the demo car to sense and we can achieve the precision up to 10cm. <00:00:19:06>When we bring this USB key, and close to the car, <00:00:22:59>the UWB would detect the key and do the corresponding action, <00:00:26:11>here we use the light bar to show the reaction. <00:00:29:40>The UWB uses NXP FS32K MCU and NXP UWB IC NCJ29D5 and NXP Bluetooth MCU to achieve our requirement.  <00:00:32:22> Inside the vehicle, our e-cockpit is built with NXP i.MX8QM and can support up to 4 displays,< 00:00:43:20> cluster, infotainment system, and another monitor for back seat. <00:00:49:28>We have implemented some software features based on NXP HW platform like gesture control, <00:00:53:18> and we can switch cluster information by the button on steering wheel. <00:00:59:03>   Our wireless charger has been integrated into our infotainment system. <00:01:02:20>It uses NXP MWCT22C3A wireless charging controller and NXP NFC transceiver and secure element.< 00:01:06:12> Once I put the cell phone on the charger,< 00:01:14:36> it starts to charge automatically and you can see we have collected some charging raw data into this UI.  <00:01:16:51> Our gateway is under the floor and it uses NXP S32G, SJA1110A ethernet switch and NXP CAN, LIN, Flexray PHY, <00:01:22:01>to provide ethernet, CAN, LIN, Flexray.< 00:01:31:40> Our next goal on this demo car is to connect all these devices to gateway as a central hub and can interact with each other.  <00:01:34:50> The last 2 systems are our ethernet switch and PIS system.< 00:01:41:34> They are our first automotive product and were select by a government institute, <00:01:45:13> called ARTC, on their autonomous driving bus, and it is still operated for public. <00:01:49:05>The switch uses i.MX6 and SJA1105 and PIS system uses i.MX8.  <00:01:54:08> ",
+            "ES": "Esta parada presenta el vehículo inteligente. <00:00:00:00> este coche de demostración está construido con una solución de NXP. <00:00:02:47>Cuenta con un sistema e-cockpit, cargador inalámbrico, <00:00:07:47>banda ultra ancha para llave digital, gateway, <00:00:11:39>switch ethernet y sistema de información para pasajeros. <00:00:14:00> Lo primero que me gustaría presentar es el UWB. <00:00:17:28>Como pueden ver, hemos colocado <00:00:21:14>varios prototipos UWB en el coche de demostración para detectar <00:00:23:38>y podemos lograr una precisión de hasta 10 cm. <00:00:27:24>Cuando acercamos esta llave USB al coche, <00:00:30:43>el UWB detecta la llave y realiza la acción correspondiente; <00:00:33:41>aquí usamos la barra de luz para mostrar la reacción. <00:00:36:51>El UWB utiliza el MCU FS32K de NXP, <00:00:40:28>el IC UWB NCJ29D5 de NXP y el MCU Bluetooth de NXP <00:00:44:25>para cumplir nuestros requisitos. <00:00:50:46> Dentro del vehículo, <00:00:52:47>nuestro e-cockpit está construido con el NXP i.MX8QM <00:00:54:23>y puede soportar hasta 4 pantallas, cluster, <00:00:58:48>sistema de infoentretenimiento y otro monitor para el asiento trasero. <00:01:01:21> Hemos implementado algunas características de software basadas <00:01:05:27>en la plataforma HW de NXP, como el control por gestos, <00:01:09:03>y podemos cambiar la información del cluster con el botón del volante. <00:01:13:11> Nuestro cargador inalámbrico <00:01:17:18>ha sido integrado en nuestro sistema de infoentretenimiento. <00:01:18:46>Utiliza el controlador de carga inalámbrica MWCT22C3A de NXP <00:01:22:29>y el transceptor NFC de NXP y el elemento seguro. <00:01:28:22>Una vez que coloco el celular en el cargador, comienza a cargar automáticamente y pueden ver <00:01:31:49>que hemos recopilado algunos datos crudos de carga en esta interfaz. <00:01:37:41> Nuestra gateway está debajo del suelo y utiliza NXP S32G, <00:01:40:51>el switch ethernet SJA1110A y NXP CAN, LIN, Flexray PHY, <00:01:45:35>para proporcionar ethernet, CAN, LIN, Flexray. <00:01:50:49>Nuestro próximo objetivo en este coche de demostración es <00:01:54:12>conectar todos estos dispositivos a la gateway como un centro central <00:01:57:28>y que puedan interactuar entre sí. <00:02:01:11> Los últimos 2 sistemas son nuestro switch ethernet y el sistema PIS. <00:02:03:15>Son nuestro primer producto automotriz <00:02:07:57>y fueron seleccionados por un instituto gubernamental, <00:02:12:06>llamado ARTC, para su autobús de conducción autónoma, <00:02:13:17>y todavía está en funcionamiento para el público. <00:02:16:22>El switch utiliza i.MX6 y SJA1105 y el sistema PIS utiliza i.MX8. <00:02:19:09> "
+        }
+    ]
+}

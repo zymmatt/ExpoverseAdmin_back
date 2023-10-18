@@ -1,19 +1,23 @@
 package com.example.demo;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Instant;
-import java.time.ZoneOffset;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.example.admin.entity.User.LanguageWord;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.util.ResourceUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class demo1 {
 
     public static void main(String[] args) throws IOException
     {
+        /*
         // 创建一个新的工作簿
         Workbook workbook = new XSSFWorkbook();
 
@@ -38,25 +42,6 @@ public class demo1 {
         headerRow2.createCell(6).setCellValue("ATC63E");
         headerRow2.createCell(7).setCellValue("M215 T");
 
-       // Row row = sheet.createRow(0);
-        //Cell cell = row.createCell(0);
-        //cell.setCellValue("姓名");
-        // sheet.removeMergedRegion(5);
-
-
-
-
-        // 拆分单元格
-        //sheet.removeMergedRegion(0);
-
-        // 创建一个新的行和单元格
-        //row = sheet.createRow(1);
-        //cell = row.createCell(0);
-        //cell.setCellValue("拆分单元格1");
-
-        //cell = row.createCell(1);
-        //cell.setCellValue("拆分单元格2");
-
         // 保存工作簿到文件
         FileOutputStream fos = new FileOutputStream("excel_example.xlsx");
         workbook.write(fos);
@@ -64,6 +49,22 @@ public class demo1 {
 
         // 关闭工作簿
         workbook.close();
+        */
+        // JSON 文件路径
+        String filePath = "./LanguageData.json";
+
+        try {
+            // 创建 ObjectMapper 对象
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            // 从文件中读取 JSON 数据并将其解析为 Object（通常是 Map 或 List）
+            Object jsonData = objectMapper.readValue(new File(filePath), Object.class);
+            // 将 JSON 数据原封不动地输出
+            String jsonStr = objectMapper.writeValueAsString(jsonData);
+            System.out.println(jsonStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

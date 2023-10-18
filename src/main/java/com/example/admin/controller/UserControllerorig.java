@@ -8,6 +8,8 @@ import com.example.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/users")
 public class UserControllerorig {
@@ -49,6 +51,12 @@ public class UserControllerorig {
     public ResponseObject alive(int loginid, String alive_timestamp){
         int newloginid = userService.alive(loginid, alive_timestamp);
         return ResponseObject.success(newloginid,String.format("更新loginid: %s 心跳记录",newloginid));
+    }
+
+    // 应用端登录时请求语言资料
+    @RequestMapping(value="/language", method = RequestMethod.GET)
+    public String getLanguage() throws IOException {
+        return userService.getLanguage();
     }
 
     // 管理员平台获取所有用户

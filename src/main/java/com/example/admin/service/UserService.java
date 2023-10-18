@@ -1,6 +1,9 @@
 package com.example.admin.service;
 // import com.example.admin.dto.UserDTO;
 import com.example.admin.entity.User.*;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
@@ -13,5 +16,7 @@ public interface UserService {
     void updateUser(User user);
     void deleteUser(int id);
     int alive(int loginid, String alive_timestamp);
+    String getLanguage() throws IOException;
+
 }
 
