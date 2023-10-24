@@ -1,4 +1,5 @@
 package com.example.admin.mapper;
+import com.example.admin.entity.User.Login;
 import com.example.admin.entity.Visit.*;
 import org.apache.ibatis.annotations.Mapper;
 

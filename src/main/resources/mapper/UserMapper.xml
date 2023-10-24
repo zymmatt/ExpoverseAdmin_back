@@ -105,8 +105,6 @@
         LIMIT 1
     </select>
 
-
-
     <select id="getUserLatestloginid" resultType="int">
         SELECT loginid
         from expoverse.login
@@ -121,5 +119,20 @@
         WHERE loginid = #{loginid}
     </select>
 
+    <select id="getUserVisitbyDate" resultType="com.example.admin.entity.User.Login">
+        SELECT loginid, userid, trigger_timestamp, alive_timestamp
+        FROM expoverse.login WHERE trigger_timestamp
+        BETWEEN #{startDate} AND #{endDate}
+        ORDER BY trigger_timestamp
+        ASC;
+    </select>
+
+    <select id="getNewUserbyDate" resultMap="UserResultMap">
+        SELECT id, name, company, job, mail, phone, approval_date, approver_id
+        FROM expoverse.user WHERE approval_date
+        BETWEEN #{startday} AND #{endday}
+        ORDER BY approval_date
+        ASC;
+    </select>
 
 </mapper>

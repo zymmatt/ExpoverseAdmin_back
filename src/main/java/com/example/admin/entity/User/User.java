@@ -12,6 +12,7 @@ public class User {
     private String approval_date; //添加日期
     private String approver_id;   //审批人iD
     private String secret_key; // UUID
+    private String endDT; //邀请码过期的时候
 
     public int getId() {
         return id;
@@ -45,6 +46,13 @@ public class User {
         return company;
     }
 
+    public String getEndDT() {
+        return endDT;
+    }
+
+    public void setEndDT(String endDT) {
+        this.endDT = endDT;
+    }
 
     // getters, setters, constructors...
 }

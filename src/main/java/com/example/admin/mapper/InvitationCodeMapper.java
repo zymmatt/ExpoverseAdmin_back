@@ -7,6 +7,7 @@ import java.util.List;
 @Mapper
 public interface InvitationCodeMapper {
     void insertInvitationCode(InvitationCode invitationCode);
+    List<InvitationCode> getLatestCodeForEach();
     List<InvitationCode> findCodebyId(String codeId);
     List<InvitationCode> getAllInvitation();
 }

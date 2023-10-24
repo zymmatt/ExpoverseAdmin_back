@@ -34,4 +34,15 @@
         DESC
     </select>
 
+    <select id="getLatestCodeForEach" resultMap="codeIdMap">
+        SELECT t.userid, t.invitation_code_id,t.start_date, t.end_date, t.start_time, t.id
+        FROM expoverse.invitation_codes t
+        JOIN (
+        SELECT userid, max(id) as id
+        FROM expoverse.invitation_codes
+        group by userid
+        ) maxt
+        ON t.userid=maxt.userid and t.id=maxt.id;
+    </select>
+
 </mapper>

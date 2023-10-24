@@ -7,6 +7,9 @@ import com.example.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -69,6 +72,46 @@ public class UserController {
         return userService.findById(id);
     }
 
+    // 管理员后台  首页根据时间区间获得这段时间内的参观人数(按天统计)
+    @RequestMapping(value="/getUserbyDate", method= RequestMethod.GET)
+    public ResponseObject getUserbyDate(String startDate, String endDate){
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            long startday = sdf.parse(startDate).getTime()/1000;
+            long endday = sdf.parse(endDate).getTime()/1000;
+            // endday = endday+86400; // 终止日要加24小时,包含进当天
+            return ResponseObject.success(userService.getUserbyDate(startday, endday));
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // 管理员后台  首页根据时间区间获得这段时间内的参观人次(按天统计)
+    @RequestMapping(value="/getVisitbyDate", method= RequestMethod.GET)
+    public ResponseObject getVisitbyDate(String startDate, String endDate){
+        long startday = Long.parseLong(startDate);
+        long endday =  Long.parseLong(endDate);
+        // endday = endday+86400; // 终止日要加24小时,包含进当天
+        return ResponseObject.success(userService.getVisitbyDate(startday, endday));
+    }
+
+    // 管理员后台  首页根据时间区间获得这段时间内的新注册人次(按天统计)
+    @RequestMapping(value="/getNewUserbyDate", method= RequestMethod.GET)
+    public ResponseObject getNewUserbyDate(String startDate, String endDate){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(startDate);
+        System.out.println(endDate);
+        String startday = sdf.format(new Date(1000*Long.parseLong(startDate)));
+        String endday = sdf.format(new Date(1000*Long.parseLong(endDate)));
+        System.out.println("line111");
+        System.out.println(startday);
+        System.out.println(endday);
+        // endday = endday+86400; // 终止日要加24小时,包含进当天
+        return ResponseObject.success(userService.getNewUserbyDate(startday, endday));
+
+    }
+
     // 管理员平台创建新用户
     @RequestMapping(value="/createUser", method= RequestMethod.POST)
     public ResponseObject createUser(@RequestBody User user) {
@@ -89,5 +132,6 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseObject.success("成功删除新用户");
     }
+
 
 }

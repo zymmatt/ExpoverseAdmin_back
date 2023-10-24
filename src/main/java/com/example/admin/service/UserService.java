@@ -17,6 +17,9 @@ public interface UserService {
     void deleteUser(int id);
     int alive(int loginid, String alive_timestamp);
     String getLanguage() throws IOException;
+    List<DayUserVisit> getUserbyDate(Long startDate, Long endDate);
+    int getVisitbyDate(Long startDate, Long endDate);
+    int getNewUserbyDate(String startday, String endday);
 
 }
 

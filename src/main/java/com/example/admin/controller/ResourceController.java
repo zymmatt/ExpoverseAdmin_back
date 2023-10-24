@@ -81,7 +81,7 @@ public class ResourceController {
     public ResponseObject updateProdMovie(@RequestParam("file") MultipartFile file,
                                   @RequestParam("exhbid") String exhbid,
                                   @RequestParam("name") String name) throws IOException {
-        return ResponseObject.success(resourceService.updateExhbMovie(file, exhbid, name));
+        return ResponseObject.success(resourceService.updateProdMovie(file, exhbid, name));
     }
 
     // 管理员平台 上传DM

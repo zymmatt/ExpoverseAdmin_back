@@ -21,5 +21,6 @@ public interface UserMapper {
     User getLatestUser();
     int getUseridByloginid(int loginid);
     int getUserLatestloginid(int userid);
-
+    List<Login> getUserVisitbyDate(Long startDate, Long endDate);
+    List<User> getNewUserbyDate(String startday, String endday);
 }
