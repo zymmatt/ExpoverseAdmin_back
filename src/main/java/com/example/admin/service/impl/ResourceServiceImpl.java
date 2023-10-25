@@ -347,4 +347,15 @@ public class ResourceServiceImpl implements ResourceService{
         byte[] imageBytes = file.getBytes();
         return "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(imageBytes);
     }
+
+    @Override
+    @Transactional
+    public String getAndroid(){
+        String FileName = "IECShowRoom_Android.apk";
+        String accountName = blobstorage.accountName();
+        String containerName = blobstorage.containerName();
+        String tempSAS = blobstorage.gettempSAS(blobstorage.getclient());
+        return String.format("https://%s.blob.core.windows.net/%s/%s?%s",
+                accountName,containerName,FileName,tempSAS);
+    }
 }

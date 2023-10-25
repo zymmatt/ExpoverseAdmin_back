@@ -100,13 +100,13 @@ public class UserController {
     @RequestMapping(value="/getNewUserbyDate", method= RequestMethod.GET)
     public ResponseObject getNewUserbyDate(String startDate, String endDate){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(startDate);
-        System.out.println(endDate);
+        // System.out.println(startDate);
+        /// System.out.println(endDate);
         String startday = sdf.format(new Date(1000*Long.parseLong(startDate)));
         String endday = sdf.format(new Date(1000*Long.parseLong(endDate)));
-        System.out.println("line111");
-        System.out.println(startday);
-        System.out.println(endday);
+        // System.out.println("line111");
+        // System.out.println(startday);
+        // System.out.println(endday);
         // endday = endday+86400; // 终止日要加24小时,包含进当天
         return ResponseObject.success(userService.getNewUserbyDate(startday, endday));
 

@@ -90,5 +90,11 @@ public class ResourceControllerorig {
         return resourceService.uploadDM(file);
     }
 
+    // 下载平台, 下载安卓APK
+    @RequestMapping(value="/getAndroid", method= RequestMethod.GET)
+    public String getAndroid() {
+        return resourceService.getAndroid();
+    }
+
 
 }
