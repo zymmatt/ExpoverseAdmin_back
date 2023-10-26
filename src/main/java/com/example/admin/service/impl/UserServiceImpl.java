@@ -181,7 +181,7 @@ public class UserServiceImpl implements UserService {
             Login res = new Login(userid,currentTimestamp);
             userMapper.insertlogin(res);
             int loginid = res.getLoginid();
-            System.out.println(loginid);
+            // System.out.println(loginid);
             String username = userMapper.findNamebyId(userid);
             String username_english = username;
             if (containsChinese(username)){ // 中文转拼音
@@ -237,7 +237,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteUser(int id) {
-        System.out.println("delete user"+id);
+        // System.out.println("delete user"+id);
         userMapper.delete(id);
     }
 

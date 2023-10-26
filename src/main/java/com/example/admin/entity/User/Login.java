@@ -78,5 +78,15 @@ public class Login {
         this.alive_timestamp = alive_timestamp;
     }
 
-
+    @Override
+    public String toString() {
+        return "Login{" +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", username_english='" + username_english + '\'' +
+                ", loginid=" + loginid +
+                ", trigger_timestamp=" + trigger_timestamp +
+                ", alive_timestamp=" + alive_timestamp +
+                '}';
+    }
 }

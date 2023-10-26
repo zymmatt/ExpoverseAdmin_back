@@ -74,17 +74,14 @@ public class UserController {
 
     // 管理员后台  首页根据时间区间获得这段时间内的参观人数(按天统计)
     @RequestMapping(value="/getUserbyDate", method= RequestMethod.GET)
-    public ResponseObject getUserbyDate(String startDate, String endDate){
-        try{
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            long startday = sdf.parse(startDate).getTime()/1000;
-            long endday = sdf.parse(endDate).getTime()/1000;
-            // endday = endday+86400; // 终止日要加24小时,包含进当天
-            return ResponseObject.success(userService.getUserbyDate(startday, endday));
-        }catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public ResponseObject getUserbyDate(Long startDate, Long endDate){
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //System.out.println("RequestMapping getUserbyDate");
+        //System.out.println(startDate);
+        //long startday = sdf.parse(startDate).getTime()/1000;
+        //long endday = sdf.parse(endDate).getTime()/1000;
+        // endday = endday+86400; // 终止日要加24小时,包含进当天
+        return ResponseObject.success(userService.getUserbyDate(startDate, endDate));
     }
 
     // 管理员后台  首页根据时间区间获得这段时间内的参观人次(按天统计)
