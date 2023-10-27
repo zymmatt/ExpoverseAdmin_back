@@ -34,13 +34,16 @@ public interface ResourceMapper {
 
     List<ProdMovie> getProdMovieURLbyExhbid(String exhbid);
 
+    List<ProdMovie> getProdMovieURLbyProdid(String prodid);
+
     void deleteurlbyexhbmovie(String exhbid);
 
     void inserturlbyexhbmovie(URL url);
 
-    void deleteurlbyprodmovie(String exhbid);
+    void deleteurlbyprodmovie(String prodid);
 
     void inserturlbyprodmovie(URL url);
+
 
 }
 

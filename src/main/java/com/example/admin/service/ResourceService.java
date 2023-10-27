@@ -18,7 +18,7 @@ public interface ResourceService {
 
     List<ExhbMovie> getExhbMovieURLbyExhbid(String exhbid);
 
-    List<ProdMovie> getProdMovieURLbyExhbid(String exhbid);
+    List<ProdMovie> getProdMovieURLbyProdid(String prodid);
 
     String gettempSAS();
 
@@ -26,7 +26,7 @@ public interface ResourceService {
 
     String updateExhbMovie(MultipartFile file, String exhbid, String name) throws IOException;
 
-    String updateProdMovie(MultipartFile file, String exhbid, String name) throws IOException;
+    String updateProdMovie(MultipartFile file, String prodid, String name) throws IOException;
 
     String uploadDM(MultipartFile file) throws IOException;
 

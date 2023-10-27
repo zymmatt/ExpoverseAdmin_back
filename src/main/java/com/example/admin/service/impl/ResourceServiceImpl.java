@@ -135,8 +135,8 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     @Transactional
-    public List<ProdMovie> getProdMovieURLbyExhbid(String exhbid) {
-        return resourceMapper.getProdMovieURLbyExhbid(exhbid);
+    public List<ProdMovie> getProdMovieURLbyProdid(String prodid) {
+        return resourceMapper.getProdMovieURLbyProdid(prodid);
     }
 
     // 上传的字典里有这些参数  src name file_no
@@ -248,13 +248,15 @@ public class ResourceServiceImpl implements ResourceService{
     @Override
     @Transactional
     public String updateExhbMovie(MultipartFile file, String exhbid, String name) throws IOException {
-        List<ExhbMovie> exhbMovies = resourceMapper.getExhbMovieURLbyExhbid(exhbid);
-        String oldurl = exhbMovies.get(0).getUrl();
-        String oldname = string_proc.extractFileName(oldurl);
         BlobContainerClient containerClient = blobstorage.getclient();
         BlobClient blobClient = containerClient.getBlobClient(name);
-        BlobClient oldClient = containerClient.getBlobClient(oldname);
-        oldClient.deleteIfExists();// 删除旧的视频
+        List<ExhbMovie> exhbMovies = resourceMapper.getExhbMovieURLbyExhbid(exhbid);
+        if (exhbMovies.size()>0){
+            String oldurl = exhbMovies.get(0).getUrl();
+            String oldname = string_proc.extractFileName(oldurl);
+            BlobClient oldClient = containerClient.getBlobClient(oldname);
+            oldClient.deleteIfExists();// 删除旧的视频
+        }
         byte[] imageBytes = file.getBytes();
         blobClient.upload(BinaryData.fromBytes(imageBytes));
         System.out.println("上传了新视频"+name);
@@ -318,14 +320,16 @@ public class ResourceServiceImpl implements ResourceService{
 
     @Override
     @Transactional
-    public String updateProdMovie(MultipartFile file, String exhbid, String name) throws IOException {
-        List<ProdMovie> prodMovies = resourceMapper.getProdMovieURLbyExhbid(exhbid);
-        String oldurl = prodMovies.get(0).getUrl();
-        String oldname = string_proc.extractFileName(oldurl);
+    public String updateProdMovie(MultipartFile file, String prodid, String name) throws IOException {
         BlobContainerClient containerClient = blobstorage.getclient();
         BlobClient blobClient = containerClient.getBlobClient(name);
-        BlobClient oldClient = containerClient.getBlobClient(oldname);
-        oldClient.deleteIfExists(); // 删除旧的视频
+        List<ProdMovie> prodMovies = resourceMapper.getProdMovieURLbyProdid(prodid);
+        if (prodMovies.size()>0){
+            String oldurl = prodMovies.get(0).getUrl();
+            String oldname = string_proc.extractFileName(oldurl);
+            BlobClient oldClient = containerClient.getBlobClient(oldname);
+            oldClient.deleteIfExists(); // 删除旧的视频
+        }
         byte[] imageBytes = file.getBytes();
         blobClient.upload(BinaryData.fromBytes(imageBytes));
         System.out.println("上传了新视频"+name);
@@ -333,9 +337,9 @@ public class ResourceServiceImpl implements ResourceService{
         String containerName = blobstorage.containerName();
         String src = String.format("https://%s.blob.core.windows.net/%s/%s",
                 accountName,containerName,name);
-        resourceMapper.deleteurlbyprodmovie(exhbid);
-        URL url = new URL(src,"movie", "", 1);
-        url.setExhibition_id(exhbid);
+        resourceMapper.deleteurlbyprodmovie(prodid);
+        URL url = new URL(src,"movie", prodid, 1);
+        // url.setExhibition_id(exhbid);
         resourceMapper.inserturlbyprodmovie(url);
         return String.format("https://%s.blob.core.windows.net/%s/%s?%s",
                 accountName,containerName,name,gettempSAS());

@@ -46,10 +46,10 @@ public class ResourceController {
         return ResponseObject.success(resourceService.getExhbMovieURLbyExhbid(exhbid));
     }
 
-    //管理员平台 根据当前的展区id查询产品电影的URL列表用于展示在前端
-    @RequestMapping(value="/getProdMovieURLbyExhbid", method= RequestMethod.GET)
-    public ResponseObject getProdMovieURLbyExhbid(String exhbid){
-        return ResponseObject.success(resourceService.getProdMovieURLbyExhbid(exhbid));
+    //管理员平台 根据当前的展品id查询产品电影的URL列表用于展示在前端
+    @RequestMapping(value="/getProdMovieURLbyProdid", method= RequestMethod.GET)
+    public ResponseObject getProdMovieURLbyProdid(String prodid){
+        return ResponseObject.success(resourceService.getProdMovieURLbyProdid(prodid));
     }
 
     // 应用端 管理员平台 获得临时的Azure blob storage的SAS来访问URL的缩略图
@@ -79,9 +79,9 @@ public class ResourceController {
     // 管理员平台 更新产品影片
     @RequestMapping(value="/updateProdMovie", method= RequestMethod.POST)
     public ResponseObject updateProdMovie(@RequestParam("file") MultipartFile file,
-                                  @RequestParam("exhbid") String exhbid,
-                                  @RequestParam("name") String name) throws IOException {
-        return ResponseObject.success(resourceService.updateProdMovie(file, exhbid, name));
+                                          @RequestParam("prodid") String prodid,
+                                          @RequestParam("name") String name) throws IOException {
+        return ResponseObject.success(resourceService.updateProdMovie(file, prodid, name));
     }
 
     // 管理员平台 上传DM
