@@ -46,7 +46,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         boolean isenter = postExhbVisit.getEnter();
         String trigger_timestamp = postExhbVisit.getTrigger_timestamp();
         ExhibitionVisit exhibitionVisit= new ExhibitionVisit(loginid,userid,Long.parseLong(trigger_timestamp),
-                                                             exhbid,isenter);
+                exhbid,isenter);
         exhibitionVisitMapper.insertExhibitionVisit(exhibitionVisit);
     }
 
@@ -61,7 +61,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             String prodid = postProdVisitSingle.getProdid();
             int duration = postProdVisitSingle.getDuration();
             ProductVisit productVisit = new ProductVisit(loginid, userid, prodid,
-                                                         duration, trigger_timestamp);
+                    duration, trigger_timestamp);
             exhibitionVisitMapper.insertProductVisit(productVisit);
         }
 
@@ -119,9 +119,9 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
     }
 
     /*
-    * 收集日期范围内的所有记录, 逐条的按照展区ID和用户ID放到字典里做累加记录
-    * 访问时间的处理比较复杂
-    * */
+     * 收集日期范围内的所有记录, 逐条的按照展区ID和用户ID放到字典里做累加记录
+     * 访问时间的处理比较复杂
+     * */
     @Override
     @Transactional
     public List<Exhibition_data> getDatabyDate(Long startDate, Long endDate) {
@@ -293,15 +293,17 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         Row prodRow = sheet.createRow(1); // 总计的第二行,展品名字
         Row totaldataRow = sheet.createRow(2); // 记录总计数据在第三行
         sheet.addMergedRegion(new CellRangeAddress(0, 2, 0, 0));
-        headerRow.createCell(0).setCellValue("总计");
+        headerRow.createCell(0).setCellValue("總計");
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 1, 1));
-        headerRow.createCell(1).setCellValue("访客人数(人)");
+        headerRow.createCell(1).setCellValue("訪客人數(人)");
         totaldataRow.createCell(1).setCellValue(userset.size()); // 集合不计算重复登录的用户
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 2, 2));
-        headerRow.createCell(2).setCellValue("访客次数(次)");
+        headerRow.createCell(2).setCellValue("訪客次數(次)");
         totaldataRow.createCell(2).setCellValue(loginList.size());
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 3, 3));
-        headerRow.createCell(3).setCellValue("平均访问展区数(个)");
+        headerRow.createCell(3).setCellValue("平均訪問展區數(個)");
+        sheet.addMergedRegion(new CellRangeAddress(0, 1, 4, 4));
+        headerRow.createCell(4).setCellValue("各展區/展品的累計參觀時長（秒）");
         double avgvisitexhb = 0;
         if (loginList.size()>0){ // 可能没有登录
             avgvisitexhb = (double) exhvisit.size()/loginList.size();
@@ -311,18 +313,20 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         Row userheaderRow = sheet.createRow(3); // 用户区域的第一行,展区名字
         Row userprodRow = sheet.createRow(4); // 总计的第二行,展品名字
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 0, 0));
-        userheaderRow.createCell(0).setCellValue("登录序号");
+        userheaderRow.createCell(0).setCellValue("登錄序號");
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 1, 1));
         userheaderRow.createCell(1).setCellValue("姓名");
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 2, 2));
-        userheaderRow.createCell(2).setCellValue("访问时间");
+        userheaderRow.createCell(2).setCellValue("訪問時間");
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 3, 3));
-        userheaderRow.createCell(3).setCellValue("访问时长(秒)");
+        userheaderRow.createCell(3).setCellValue("訪問時長(秒)");
+        sheet.addMergedRegion(new CellRangeAddress(3, 4, 4, 4));
+        userheaderRow.createCell(4).setCellValue("本次登錄中各展區/展品的參觀時長（秒）");
         //headerRow.createCell(3).setCellValue("平均访问时间(分钟/人)");
         //int avgminduration = total_duration/60/loginList.size(); // 秒转分钟再除以人次
         //totaldataRow.createCell(3).setCellValue(avgminduration);
-        int exhbcol = 4;
-        int prodcol = 4;
+        int exhbcol = 5;
+        int prodcol = 5;
         // 总体数据中每一个展区每一个展品的参观时长
 
         //for (String exhbid : exhb2proddict.keySet()) {
@@ -426,7 +430,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             loginRow += 1;
         }
 
-        String rawFileName = "访问时长统计.xlsx";
+        String rawFileName = "訪問時長統計.xlsx";
         byte[] bytes = blobstorage.workbookToByteArray(workbook);
         BlobContainerClient containerClient = blobstorage.getclient();
         BlobClient blobClient = containerClient.getBlobClient(rawFileName);
@@ -569,15 +573,17 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         Row prodRow = sheet.createRow(1); // 总计的第二行,展品名字
         Row totaldataRow = sheet.createRow(2); // 记录总计数据在第三行
         sheet.addMergedRegion(new CellRangeAddress(0, 2, 0, 0));
-        headerRow.createCell(0).setCellValue("总计");
+        headerRow.createCell(0).setCellValue("總計");
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 1, 1));
-        headerRow.createCell(1).setCellValue("访客人数(人)");
+        headerRow.createCell(1).setCellValue("展廳訪客人數(人)");
         totaldataRow.createCell(1).setCellValue(userset.size()); // 集合不计算重复登录的用户
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 2, 2));
-        headerRow.createCell(2).setCellValue("访客次数(次)");
+        headerRow.createCell(2).setCellValue("展廳訪客人次數（人次）");
         totaldataRow.createCell(2).setCellValue(loginList.size());
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 3, 3));
-        headerRow.createCell(3).setCellValue("平均访问时间(秒/人次)");
+        headerRow.createCell(3).setCellValue("展廳平均訪問時間(秒/人次)");
+        sheet.addMergedRegion(new CellRangeAddress(0, 1, 4, 4));
+        headerRow.createCell(4).setCellValue("各展區/展品的累計參觀人次數（人次）");
         float avgvisittime = 0;
         if (loginList.size()>0){ // 参观人次可能为0
             avgvisittime = (float)(total_duration/loginList.size());
@@ -588,18 +594,20 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         Row userheaderRow = sheet.createRow(3); // 用户区域的第一行,展区名字
         Row userprodRow = sheet.createRow(4); // 总计的第二行,展品名字
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 0, 0));
-        userheaderRow.createCell(0).setCellValue("登录序号");
+        userheaderRow.createCell(0).setCellValue("登錄序號");
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 1, 1));
         userheaderRow.createCell(1).setCellValue("姓名");
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 2, 2));
-        userheaderRow.createCell(2).setCellValue("访问时间");
+        userheaderRow.createCell(2).setCellValue("訪問時間");
         sheet.addMergedRegion(new CellRangeAddress(3, 4, 3, 3));
-        userheaderRow.createCell(3).setCellValue("访问时长(秒)");
+        userheaderRow.createCell(3).setCellValue("訪問時長(秒)");
+        sheet.addMergedRegion(new CellRangeAddress(3, 4, 4, 4));
+        userheaderRow.createCell(4).setCellValue("本次登錄中訪問各展區/展品次數（次）");
         //headerRow.createCell(3).setCellValue("平均访问时间(分钟/人)");
         //int avgminduration = total_duration/60/loginList.size(); // 秒转分钟再除以人次
         //totaldataRow.createCell(3).setCellValue(avgminduration);
-        int exhbcol = 4;
-        int prodcol = 4;
+        int exhbcol = 5;
+        int prodcol = 5;
         // 总体数据中每一个展区每一个展品的参观人次
         // 保证展区的排列顺序
         // for (String exhbid : exhb2proddict.keySet()) {
@@ -700,7 +708,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             loginRow += 1;
         }
 
-        String rawFileName = "访问人次统计.xlsx";
+        String rawFileName = "訪問人次統計.xlsx";
         byte[] bytes = blobstorage.workbookToByteArray(workbook);
         BlobContainerClient containerClient = blobstorage.getclient();
         BlobClient blobClient = containerClient.getBlobClient(rawFileName);

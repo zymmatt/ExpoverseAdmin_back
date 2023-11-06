@@ -1,12 +1,14 @@
 package com.example.admin.entity.Survey;
 // 在问卷中对某一道问题给出的填空回答
 public class QuesFill {
+    private int surveyid; // 调查问卷ID
     private int ques_id;
     private int loginid;
     private String filltext;
     private Long trigger_timestamp; // 这个问题的回答时间戳,在部分统计中会用到
 
-    public QuesFill(int ques_id, int loginid, String filltext){
+    public QuesFill(int ques_id, int loginid, String filltext, int surveyid){
+        this.surveyid = surveyid;
         this.ques_id = ques_id;
         this.loginid = loginid;
         this.filltext = filltext;
@@ -19,6 +21,13 @@ public class QuesFill {
         this.trigger_timestamp = trigger_timestamp;
     }
 
+    public int getSurveyid() {
+        return surveyid;
+    }
+
+    public void setSurveyid(int surveyid) {
+        this.surveyid = surveyid;
+    }
 
     public int getQues_id() {
         return ques_id;

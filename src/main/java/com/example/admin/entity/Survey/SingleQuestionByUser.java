@@ -1,7 +1,6 @@
 package com.example.admin.entity.Survey;
 
 import java.util.HashSet;
-import java.util.List;
 
 // 针对一道问题,一个用户选择的所有选项id,还有可能填入的内容
 public class SingleQuestionByUser {

@@ -13,16 +13,20 @@ import java.time.OffsetDateTime;
 
 public class blobstorage {
     public static String accountName(){
-        return "expoverseazureblobdb";
+        // return "expoverseazureblobdb";
+        return "expoverseblob";
     }
 
     public static String containerName(){
-        return "test-ctn1";
+        // return "test-ctn1";
+        return "iecshowroom";
     }
 
     public static BlobContainerClient getclient(){
         String accountName = accountName();
-        String accountKey = "MkEhnlU9L67tVooxRCcY4XmUL5yMSKfY1Mba9xjj3OpcrLg18g4R3rDXQgacHKa2AMg4QuocPUaP+AStXFGjyQ==";
+        // String accountKey = "MkEhnlU9L67tVooxRCcY4XmUL5yMSKfY1Mba9xjj3OpcrLg18g4R3rDXQgacHKa2AMg4QuocPUaP+AStXFGjyQ==";
+        String accountKey = "rvtxbykXeAm87hjaeXh7QX27tJ+Te2s9ay37wSVaRLckzbdUlW5tzY+tldNnk3YYINjpbkMV72IE+ASt8Iqu5g==";
+
         String connectionString = String.format("DefaultEndpointsProtocol=https;AccountName=%s;" +
                 "AccountKey=%s;EndpointSuffix=core.windows.net",accountName, accountKey);
         BlobServiceClient blobServiceClient = new BlobServiceClientBuilder().

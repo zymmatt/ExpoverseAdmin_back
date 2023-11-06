@@ -77,7 +77,7 @@
     </select>
 
 
-    <!-- 插入一条用户登录记录 -->
+    <!-- 插入一条用户登录记录,插入后得到 loginid -->
     <insert id="insertlogin" parameterType="com.example.admin.entity.User.Login"
             useGeneratedKeys="true" keyProperty="loginid" keyColumn="loginid">
         INSERT INTO expoverse.login (userid, trigger_timestamp, alive_timestamp)

@@ -7,25 +7,27 @@
 
     <!-- 插入新的问卷,产生问卷编号 -->
     <insert id="insertSurveyUser" parameterType="com.example.admin.entity.Survey.SingleSurvey"
-            useGeneratedKeys="true" keyProperty="loginid">
+            useGeneratedKeys="true" keyProperty="surveyid" keyColumn="surveyid" >
         INSERT INTO expoverse.survey_user (loginid, userid, duration_sec, trigger_timestamp)
         VALUES (#{loginid}, #{userid}, #{duration_sec}, #{trigger_timestamp})
     </insert>
+
     <!--得到刚才插入的问卷信息的用户id -->
     <select id="getSurveyUser" parameterType="com.example.admin.entity.Survey.SingleSurvey" resultType="int">
-        SELECT loginid FROM expoverse.survey_user
+        SELECT surveyid FROM expoverse.survey_user
         WHERE userid = #{userid} and trigger_timestamp = #{trigger_timestamp}
     </select>
+
     <!-- 把每一道题的每一个答案的作答条目插入数据库中 -->
     <insert id="insertSurveyOption" parameterType="com.example.admin.entity.Survey.SurveyOption">
-        INSERT INTO expoverse.option_answers (loginid, option_id)
-        VALUES (#{loginid}, #{option_id})
+        INSERT INTO expoverse.option_answers (loginid, option_id, surveyid)
+        VALUES (#{loginid}, #{option_id}, #{surveyid})
     </insert>
 
     <!-- 把每一道题的填空回答插入数据库中 -->
     <insert id="insertQuesFill" parameterType="com.example.admin.entity.Survey.QuesFill">
-        INSERT INTO expoverse.ques_fill (ques_id, loginid, filltext)
-        VALUES (#{ques_id}, #{loginid}, #{filltext})
+        INSERT INTO expoverse.ques_fill (ques_id, loginid, filltext, surveyid)
+        VALUES (#{ques_id}, #{loginid}, #{filltext}, #{surveyid})
     </insert>
 
     <!-- 获得所有的问卷问题id -->
@@ -35,7 +37,7 @@
 
     <!-- 获得已收集的问卷数量 -->
     <select id="getSurveyNum" resultType="int">
-        SELECT loginid FROM expoverse.survey_user
+        SELECT surveyid FROM expoverse.survey_user
     </select>
 
     <!-- 获得已收集的问卷的平均完成时间 -->
@@ -51,9 +53,9 @@
 
     <!-- 获得某一个选项的所有作答loginid和userid -->
     <select id="getUserForOneOption" parameterType="int" resultType="com.example.admin.entity.Survey.UserSurvey">
-        SELECT expoverse.survey_user.loginid,expoverse.survey_user.userid
-        FROM expoverse.option_answers JOIN expoverse.survey_user
-        ON expoverse.option_answers.loginid = expoverse.survey_user.loginid
+        SELECT expoverse.login.loginid,expoverse.login.userid
+        FROM expoverse.option_answers JOIN expoverse.login
+        ON expoverse.option_answers.loginid = expoverse.login.loginid
         WHERE expoverse.option_answers.option_id = #{option_id}
     </select>
 
@@ -70,12 +72,12 @@
     </select>
 
     <select id="getOptionAnswer" resultType="java.lang.Integer">
-        SELECT option_id FROM expoverse.option_answers WHERE loginid = #{loginid}
+        SELECT option_id FROM expoverse.option_answers WHERE surveyid = #{surveyid}
     </select>
 
     <select id="getFilledForOneQues" parameterType="com.example.admin.entity.Survey.QuesFill"
             resultType="java.lang.String">
-        SELECT filltext FROM expoverse.ques_fill WHERE ques_id = #{ques_id} and loginid = #{loginid}
+        SELECT filltext FROM expoverse.ques_fill WHERE ques_id = #{ques_id} and surveyid = #{surveyid}
     </select>
 
     <select id="getallQuesFill" resultType="com.example.admin.entity.Survey.QuesFill">
@@ -86,6 +88,7 @@
         ORDER BY expoverse.survey_user.trigger_timestamp
         DESC
     </select>
+
 
 </mapper>
 

@@ -188,7 +188,9 @@ public class UserServiceImpl implements UserService {
                 username_english=convertToPinyin(username_english);
             }
             // int loginid = userMapper.getlogin(res).get(0);
-            return new Login(loginid, userid, username, username_english);
+            // 暂时不要单独做英文名字,直接一个名字就好了
+            // return new Login(loginid, userid, username, username_english);
+            return new Login(loginid, userid, username, username);
         }
         else if (currentTimestamp<timestampStart){
             return new Login(-1,currentTimestamp); // 验证码的访问时间还没到
@@ -231,7 +233,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void updateUser(User user) {
-            userMapper.update(user);
+        userMapper.update(user);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.example.admin.entity.Survey;
 import com.example.admin.entity.User.User;
-import com.example.admin.entity.Survey.SurveyInfo;
-import com.example.admin.entity.Survey.SingleQuestionByUser;
 
 import java.util.ArrayList;
 import java.util.List;

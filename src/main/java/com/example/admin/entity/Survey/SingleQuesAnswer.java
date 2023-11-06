@@ -1,7 +1,5 @@
 package com.example.admin.entity.Survey;
 
-import com.example.admin.entity.Survey.SingleOptionSelect;
-
 import java.util.List;
 
 // 针对某一道问题的一次回答

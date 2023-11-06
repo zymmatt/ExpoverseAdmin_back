@@ -50,13 +50,14 @@ public class SurveyServiceImpl implements SurveyService{
     public void createSurvey(SingleSurvey singleSurvey) {
         // 插入用户填写了一张问卷的基本信息,包括用户id,提交时间,作答时间,
         surveyMapper.insertSurveyUser(singleSurvey);
+        int surveyid = singleSurvey.getSurveyid();
         int loginid = singleSurvey.getLoginid();
         for (SingleQuesAnswer question: singleSurvey.getQuestions()){
             // 问题的填空回答插入
             //System.out.println(question.getAnswer().length());
             if (question.filled()){
                 //System.out.println("answer:"+question.getAnswer()+"__end");
-                QuesFill ques_fill = new QuesFill(question.getQues_id(), loginid, question.getAnswer());
+                QuesFill ques_fill = new QuesFill(question.getQues_id(), loginid, question.getAnswer(), surveyid);
                 surveyMapper.insertQuesFill(ques_fill);
             }
             // 一个一个选项的插入
@@ -64,7 +65,7 @@ public class SurveyServiceImpl implements SurveyService{
                 //System.out.println(question.getOption().size());
                 for (SingleOptionSelect option: question.getOption()){
                     if (option.isSelected()){
-                        SurveyOption surveyOption = new SurveyOption(loginid, option.getOption_id());
+                        SurveyOption surveyOption = new SurveyOption(loginid, option.getOption_id(),surveyid);
                         surveyMapper.insertSurveyOption(surveyOption);
                     }
                 }
@@ -203,6 +204,7 @@ public class SurveyServiceImpl implements SurveyService{
         List<Question> questions = surveyMapper.getQuestions();
         List<Option> options = surveyMapper.getOptions();
         // Map<Integer, String> quesid_text = new HashMap<>();//问题id查中文
+        // excel第一行每一列都有一個問題
         for (Question question:questions){
             // quesid_text.put(question.getQues_id(), question.getQues_content());
             headerRow.createCell(headerRownum).setCellValue(question.getQues_content());
@@ -218,11 +220,12 @@ public class SurveyServiceImpl implements SurveyService{
         for (SurveyInfo surveyInfo:surveyInfos){
             int loginid = surveyInfo.getloginid();
             int userid = surveyInfo.getUserid();
+            int surveyid = surveyInfo.getSurveyid();
             User tempuser = userMapper.findById(userid);
             if (tempuser != null){
                 ExcelSingleLine templine = new ExcelSingleLine(tempuser, surveyInfo);
                 //这张问卷中所有被勾选的选项
-                List<Integer> OptionAnswers = surveyMapper.getOptionAnswer(loginid);
+                List<Integer> OptionAnswers = surveyMapper.getOptionAnswer(surveyid);
                 System.out.println(OptionAnswers);
                 //列出所有问题,以及每一个问题下的被勾选的回答选项
                 Map<Integer, HashSet<Integer>> ques_option = new HashMap<>();
@@ -236,9 +239,9 @@ public class SurveyServiceImpl implements SurveyService{
                 for (Question question:questions) {
                     int ques_id = question.getQues_id();
                     SingleQuestionByUser singleQuestionByUser = new SingleQuestionByUser(ques_id,loginid,userid,
-                                                                tempuser.getName(),ques_option.get(ques_id));
+                            tempuser.getName(),ques_option.get(ques_id));
                     if (question.getQues_type().contains("fill")){ //补充填空题内容
-                        String filltext = surveyMapper.getFilledForOneQues(new QuesFill(ques_id,loginid,""));
+                        String filltext = surveyMapper.getFilledForOneQues(new QuesFill(ques_id,loginid,"",surveyid));
                         singleQuestionByUser.setFilled(filltext);
                     }
                     templine.addquestion(singleQuestionByUser);
@@ -250,7 +253,7 @@ public class SurveyServiceImpl implements SurveyService{
         int dataRowNum = 1;
         for (ExcelSingleLine templine:excelSingleLineList){
             Row dataRow = sheet.createRow(dataRowNum);
-            dataRow.createCell(0).setCellValue(templine.getSurveyInfo().getloginid()); //问卷ID
+            dataRow.createCell(0).setCellValue(templine.getSurveyInfo().getSurveyid()); //问卷ID
             dataRow.createCell(1).setCellValue(datetime.timestamp2str(templine.getSurveyInfo().getTrigger_timestamp())); //开始时间
             dataRow.createCell(2).setCellValue(templine.getSurveyInfo().getDuration_sec()); //答卷时长
             dataRow.createCell(3).setCellValue(templine.getUser().getmail()); //名称
@@ -275,7 +278,7 @@ public class SurveyServiceImpl implements SurveyService{
         }
 
         // 添加更多单元格和数据
-        String rawFileName = "问卷调查结果.xlsx";
+        String rawFileName = "問卷調查結果.xlsx";
         byte[] bytes = blobstorage.workbookToByteArray(workbook);
         BlobContainerClient containerClient = blobstorage.getclient();
         BlobClient blobClient = containerClient.getBlobClient(rawFileName);
