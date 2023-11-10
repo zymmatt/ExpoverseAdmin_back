@@ -7,18 +7,21 @@ public class QuesFill {
     private String filltext;
     private Long trigger_timestamp; // 这个问题的回答时间戳,在部分统计中会用到
 
+    public QuesFill(){}
+
     public QuesFill(int ques_id, int loginid, String filltext, int surveyid){
-        this.surveyid = surveyid;
         this.ques_id = ques_id;
         this.loginid = loginid;
         this.filltext = filltext;
+        this.surveyid = surveyid;
     }
 
-    public QuesFill(int ques_id, int loginid, String filltext, Long trigger_timestamp){
+    public QuesFill(int ques_id, int loginid, String filltext, Long trigger_timestamp, int surveyid){
         this.ques_id = ques_id;
         this.loginid = loginid;
         this.filltext = filltext;
         this.trigger_timestamp = trigger_timestamp;
+        this.surveyid = surveyid;
     }
 
     public int getSurveyid() {
@@ -37,6 +40,14 @@ public class QuesFill {
         this.ques_id = ques_id;
     }
 
+    public String getFilltext() {
+        return filltext;
+    }
+
+    public void setFilltext(String filltext) {
+        this.filltext = filltext;
+    }
+
     public int getLoginid() {
         return loginid;
     }
@@ -53,12 +64,6 @@ public class QuesFill {
         this.trigger_timestamp = trigger_timestamp;
     }
 
-    public String getFilltext() {
-        return filltext;
-    }
 
-    public void setFilltext(String filltext) {
-        this.filltext = filltext;
-    }
 
 }

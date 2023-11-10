@@ -271,52 +271,20 @@ public class ResourceServiceImpl implements ResourceService{
         return String.format("https://%s.blob.core.windows.net/%s/%s?%s",
                 accountName,containerName,name,gettempSAS());
     }
-    /*
+
     @Override
     @Transactional
-    public void updateExhbMovie(MovieUpdate movieUpdate) throws IOException {
-        String exhbid = movieUpdate.getExhbid();
-        List<UploadMovie> uploadMovies = movieUpdate.getUploadMovielist();
-        List<URL> urlList = new ArrayList<>();
-        int file_no = 1;
-        for (UploadMovie uploadMovie:uploadMovies){
-            if(uploadMovie.getsrc().startsWith("data:")){
-                //上传的新图片需要传进azure blob storage数据库中
-                String base64Image = uploadMovie.getsrc();
-                String imagename = uploadMovie.getName();
-                String outputPath = String.format("%s.jpg",imagename);
-                BlobContainerClient containerClient = blobstorage.getclient();
-                BlobClient blobClient = containerClient.getBlobClient(outputPath);
-
-                String base64Data = base64Image.substring(base64Image.indexOf(',') + 1);
-                base64Data = base64Data.replaceAll("\r|\n", "");
-                base64Data = base64Data.trim();
-                // 将Base64数据解码为字节数组
-                byte[] imageBytes = Base64.getDecoder().decode(base64Data);
-                // 将字节数组转换为二进制
-                //InputStream inputStream = file.getInputStream();
-                blobClient.upload(BinaryData.fromBytes(imageBytes));
-                System.out.println("上传了新图片"+outputPath);
-                String accountName = blobstorage.accountName();
-                String containerName = blobstorage.containerName();
-                String tempsrc = String.format("https://%s.blob.core.windows.net/%s/%s",
-                        accountName,containerName,outputPath);
-                // https://expoverseazureblobdb.blob.core.windows.net/test-ctn1/121glj390n980.jpg
-                urlList.add(new URL(tempsrc,"image",prodid,file_no));
-            }
-            else{
-                System.out.println(uploadDM.getsrc());
-                urlList.add(new URL(uploadDM.getName(),"image", prodid, file_no));
-            }
-            file_no+=1;
+    public void deleteExhbMovie(String exhbid){
+        BlobContainerClient containerClient = blobstorage.getclient();
+        List<ExhbMovie> exhbMovies = resourceMapper.getExhbMovieURLbyExhbid(exhbid);
+        if (exhbMovies.size()>0){
+            String oldurl = exhbMovies.get(0).getUrl();
+            String oldname = string_proc.extractFileName(oldurl);
+            BlobClient oldClient = containerClient.getBlobClient(oldname);
+            oldClient.deleteIfExists();// 删除旧的视频
         }
-        resourceMapper.deleteurlbyprodid(prodid);
-        for (URL url:urlList){
-            resourceMapper.inserturlbyprodid(url);
-        }
+        resourceMapper.deleteurlbyexhbmovie(exhbid);
     }
-    */
-
 
     @Override
     @Transactional
@@ -343,6 +311,20 @@ public class ResourceServiceImpl implements ResourceService{
         resourceMapper.inserturlbyprodmovie(url);
         return String.format("https://%s.blob.core.windows.net/%s/%s?%s",
                 accountName,containerName,name,gettempSAS());
+    }
+
+    @Override
+    @Transactional
+    public void deleteProdMovie(String prodid){
+        BlobContainerClient containerClient = blobstorage.getclient();
+        List<ProdMovie> prodMovies = resourceMapper.getProdMovieURLbyProdid(prodid);
+        if (prodMovies.size()>0){
+            String oldurl = prodMovies.get(0).getUrl();
+            String oldname = string_proc.extractFileName(oldurl);
+            BlobClient oldClient = containerClient.getBlobClient(oldname);
+            oldClient.deleteIfExists(); // 删除旧的视频
+        }
+        resourceMapper.deleteurlbyprodmovie(prodid);
     }
 
     @Override

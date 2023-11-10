@@ -147,9 +147,10 @@ public class SurveyServiceImpl implements SurveyService{
         for (QuesFill quesFill:quesFillList){
             int ques_id = quesFill.getQues_id();
             int loginid = quesFill.getLoginid();
+            int surveyid = quesFill.getSurveyid();
             String filltext = quesFill.getFilltext();
             Long trigger_timestamp = quesFill.getTrigger_timestamp();
-            quesid2fill.get(ques_id).add(new QuesFill(ques_id,loginid,filltext,trigger_timestamp));
+            quesid2fill.get(ques_id).add(new QuesFill(ques_id,loginid,filltext,trigger_timestamp,surveyid));
         }
         for (int ques_id:quesid2fill.keySet()){
             String ques_content = quesid2content.get(ques_id);

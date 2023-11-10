@@ -70,11 +70,17 @@ public class ResourceControllerorig {
     // 管理员平台 更新展区影片
     @RequestMapping(value="/updateExhbMovie", method= RequestMethod.POST)
     public ResponseObject updateExhbMovie(@RequestParam("file") MultipartFile file,
-                                  @RequestParam("exhbid") String exhbid,
-                                  @RequestParam("name") String name) throws IOException {
+                                          @RequestParam("exhbid") String exhbid,
+                                          @RequestParam("name") String name) throws IOException {
         return ResponseObject.success(resourceService.updateExhbMovie(file, exhbid, name));
     }
 
+    // 管理员平台 删除展区影片
+    @RequestMapping(value="/deleteExhbMovie", method= RequestMethod.DELETE)
+    public ResponseObject deleteExhbMovie(String exhbid) {
+        resourceService.deleteExhbMovie(exhbid);
+        return ResponseObject.success("删除展区影片成功");
+    }
 
     // 管理员平台 更新产品影片
     @RequestMapping(value="/updateProdMovie", method= RequestMethod.POST)
@@ -82,6 +88,13 @@ public class ResourceControllerorig {
                                           @RequestParam("prodid") String prodid,
                                           @RequestParam("name") String name) throws IOException {
         return ResponseObject.success(resourceService.updateProdMovie(file, prodid, name));
+    }
+
+    // 管理员平台 删除展品影片
+    @RequestMapping(value="/deleteProdMovie", method= RequestMethod.DELETE)
+    public ResponseObject deleteProdMovie(String prodid) {
+        resourceService.deleteProdMovie(prodid);
+        return ResponseObject.success("删除展品影片成功");
     }
 
     // 管理员平台 上传DM

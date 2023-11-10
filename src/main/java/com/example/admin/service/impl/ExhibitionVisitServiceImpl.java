@@ -333,20 +333,24 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         // 保证展区的排列顺序
         for (Exhibition exhibition: exhibitionList) {
             String exhbid = exhibition.getExhibition_id();
-            if (exhb2proddict.get(exhbid).size()==0){ // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
-                sheet.addMergedRegion(new CellRangeAddress(0, 1, exhbcol, exhbcol));
-                headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
-                sheet.addMergedRegion(new CellRangeAddress(3, 4, exhbcol, exhbcol));
-                userheaderRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
-                List<ExhibitionVisit> exhbvisits = exhibitionVisitMapper.getexhbvisitbyexhbid(exhbid);
-                long totalDuration = statistics.exhbvisitTimeStat(exhbvisits);
-                //totaldataRow.createCell(prodcol).setCellValue((int) (totalDuration/60));
-                totaldataRow.createCell(prodcol).setCellValue(totalDuration);
-                exhbid2col.put(exhbid,exhbcol);
-                //总计的展品数据的第几列比用户的展品数据的第几列一样
-                exhbcol+=1;
-                prodcol+=1;
-            } else if (exhb2proddict.get(exhbid).size()==1){ // 个别展区只有一个展品
+            //if (exhb2proddict.get(exhbid).size()==0){
+            // 首先对每一个展区统计展区的访问时长
+            sheet.addMergedRegion(new CellRangeAddress(0, 1, exhbcol, exhbcol));
+            headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
+            sheet.addMergedRegion(new CellRangeAddress(3, 4, exhbcol, exhbcol));
+            userheaderRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
+            List<ExhibitionVisit> exhbvisits = exhibitionVisitMapper.getexhbvisitbyexhbid(exhbid);
+            long totalDuration = statistics.exhbvisitTimeStat(exhbvisits);
+            //totaldataRow.createCell(prodcol).setCellValue((int) (totalDuration/60));
+            totaldataRow.createCell(prodcol).setCellValue(totalDuration);
+            exhbid2col.put(exhbid,exhbcol);
+            //总计的展品数据的第几列比用户的展品数据的第几列一样
+            exhbcol+=1;
+            prodcol+=1;
+            //}
+
+            //else if (exhb2proddict.get(exhbid).size()==1){ // 个别展区只有一个展品
+            if (exhb2proddict.get(exhbid).size()==1){
                 String prodid = exhb2proddict.get(exhbid).get(0);
                 headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
                 userheaderRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
@@ -364,7 +368,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                 //总计的展品数据的第几列比用户的展品数据的第几列一样
                 exhbcol+=1;
                 prodcol+=1;
-            } else {
+            } else if (exhb2proddict.get(exhbid).size()>1){
                 sheet.addMergedRegion(new CellRangeAddress(0, 0,
                         exhbcol, exhbcol+exhb2proddict.get(exhbid).size()-1));
                 headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
@@ -405,19 +409,25 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             if (login.getAlive_timestamp() != null){
                 totalseconds = login.getAlive_timestamp()-login.getTrigger_timestamp();
             }
+            // 在登录时间极短的情况下相减结果会小于0
+            if (totalseconds<=0){
+                totalseconds = 1L;
+            }
             // 访问时长 分钟
             // tempRow.createCell(3).setCellValue((int) (totalseconds/60));
             tempRow.createCell(3).setCellValue(totalseconds);
             // 所有展品下的访问时长
             for (String exhbid : exhb2proddict.keySet()) {
-                if (exhb2proddict.get(exhbid).size()==0) { // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
-                    int tempcell = exhbid2col.get(exhbid);
-                    List<ExhibitionVisit> exhbvisits = loginid2exhbvisit.get(loginid).get(exhbid);
-                    long totalDuration = statistics.exhbvisitTimeStat(exhbvisits);
-                    tempRow.createCell(tempcell).setCellValue(totalDuration);
-                    //tempRow.createCell(tempcell).setCellValue((int) (totalDuration/60));
+                //if (exhb2proddict.get(exhbid).size()==0) {
+                // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
+                int exhbtempcell = exhbid2col.get(exhbid);
+                List<ExhibitionVisit> exhbvisits = loginid2exhbvisit.get(loginid).get(exhbid);
+                long totalDuration = statistics.exhbvisitTimeStat(exhbvisits);
+                tempRow.createCell(exhbtempcell).setCellValue(totalDuration);
+                //tempRow.createCell(tempcell).setCellValue((int) (totalDuration/60));
 
-                } else {
+                //}
+                if (exhb2proddict.get(exhbid).size()>0) {
                     for (int tempi=0; tempi<exhb2proddict.get(exhbid).size(); tempi++){
                         String prodid = exhb2proddict.get(exhbid).get(tempi);
                         int tempcell = prodid2col.get(prodid);
@@ -521,6 +531,10 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             if (starttime!= null && endtime != null) {
                 tempduration = endtime-starttime;
             }
+            // 在登录时间极短的情况下相减结果会小于0
+            if (tempduration<=0) {
+                tempduration = 1L;
+            }
             total_duration+=tempduration;
         }
         for (User user:userList){
@@ -613,19 +627,21 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
         // for (String exhbid : exhb2proddict.keySet()) {
         for (Exhibition exhibition: exhibitionList) {
             String exhbid = exhibition.getExhibition_id();
-            if (exhb2proddict.get(exhbid).size()==0){ // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
-                sheet.addMergedRegion(new CellRangeAddress(0, 1, exhbcol, exhbcol));
-                headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
-                sheet.addMergedRegion(new CellRangeAddress(3, 4, exhbcol, exhbcol));
-                userheaderRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
-                List<ExhibitionVisit> exhbvisits = exhibitionVisitMapper.getexhbvisitbyexhbid(exhbid);
-                int totalNum = statistics.exhbvisitNumStat(exhbvisits);
-                totaldataRow.createCell(prodcol).setCellValue(totalNum);
-                exhbid2col.put(exhbid,exhbcol);
-                //总计的展品数据的第几列比用户的展品数据的第几列一样
-                exhbcol+=1;
-                prodcol+=1;
-            } else if (exhb2proddict.get(exhbid).size()==1){ // 个别展区只有一个展品
+            // if (exhb2proddict.get(exhbid).size()==0){
+            // 每一个展区都要统计展区的访问时长
+            sheet.addMergedRegion(new CellRangeAddress(0, 1, exhbcol, exhbcol));
+            headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
+            sheet.addMergedRegion(new CellRangeAddress(3, 4, exhbcol, exhbcol));
+            userheaderRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
+            List<ExhibitionVisit> exhbvisits = exhibitionVisitMapper.getexhbvisitbyexhbid(exhbid);
+            int totalNum = statistics.exhbvisitNumStat(exhbvisits);
+            totaldataRow.createCell(prodcol).setCellValue(totalNum);
+            exhbid2col.put(exhbid,exhbcol);
+            //总计的展品数据的第几列比用户的展品数据的第几列一样
+            exhbcol+=1;
+            prodcol+=1;
+            // } else
+            if (exhb2proddict.get(exhbid).size()==1){ // 个别展区只有一个展品
                 String prodid = exhb2proddict.get(exhbid).get(0);
                 headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
                 userheaderRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
@@ -643,7 +659,7 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
                 //总计的展品数据的第几列比用户的展品数据的第几列一样
                 exhbcol+=1;
                 prodcol+=1;
-            } else {
+            } else if (exhb2proddict.get(exhbid).size()>1){
                 sheet.addMergedRegion(new CellRangeAddress(0, 0,
                         exhbcol, exhbcol+exhb2proddict.get(exhbid).size()-1));
                 headerRow.createCell(exhbcol).setCellValue(exhb2name.get(exhbid));
@@ -684,6 +700,10 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             if (login.getAlive_timestamp() != null){
                 totalseconds = login.getAlive_timestamp()-login.getTrigger_timestamp();
             }
+            // 在登录时间极短的情况下相减结果会小于0
+            if (totalseconds<=0){
+                totalseconds = 1L;
+            }
             // 访问时长 分钟
             // float tempminute = (float) (totalseconds/60);
             // tempRow.createCell(3).setCellValue(Math.round(tempminute * 100.0) / 100.0);
@@ -691,12 +711,14 @@ public class ExhibitionVisitServiceImpl implements ExhibitionVisitService{
             tempRow.createCell(3).setCellValue(totalseconds);
             // 所有展品下的访问时长
             for (String exhbid : exhb2proddict.keySet()) {
-                if (exhb2proddict.get(exhbid).size()==0) { // 荣誉墙和专利墙都是没有产品的,此时直接统计展区的访问时长
-                    int tempcell = exhbid2col.get(exhbid);
-                    List<ExhibitionVisit> exhbvisits = loginid2exhbvisit.get(loginid).get(exhbid);
-                    int totalNum = statistics.exhbvisitNumStat(exhbvisits);
-                    tempRow.createCell(tempcell).setCellValue(totalNum);
-                } else {
+                // if (exhb2proddict.get(exhbid).size()==0) {
+                // 每一个展区都要统计展区的访问时长
+                int exhbtempcell = exhbid2col.get(exhbid);
+                List<ExhibitionVisit> exhbvisits = loginid2exhbvisit.get(loginid).get(exhbid);
+                int totalNum = statistics.exhbvisitNumStat(exhbvisits);
+                tempRow.createCell(exhbtempcell).setCellValue(totalNum);
+                //} else
+                if(exhb2proddict.get(exhbid).size()>0){
                     for (int tempi=0; tempi<exhb2proddict.get(exhbid).size(); tempi++){
                         String prodid = exhb2proddict.get(exhbid).get(tempi);
                         int tempcell = prodid2col.get(prodid);

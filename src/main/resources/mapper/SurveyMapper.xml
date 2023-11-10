@@ -81,10 +81,11 @@
     </select>
 
     <select id="getallQuesFill" resultType="com.example.admin.entity.Survey.QuesFill">
-        SELECT expoverse.ques_fill.ques_id,expoverse.ques_fill.loginid,
-        expoverse.ques_fill.filltext,expoverse.survey_user.trigger_timestamp
+        SELECT expoverse.ques_fill.ques_id as ques_id,
+        expoverse.ques_fill.loginid as loginid, expoverse.ques_fill.surveyid as surveyid,
+        expoverse.ques_fill.filltext as filltext, expoverse.survey_user.trigger_timestamp as trigger_timestamp
         FROM expoverse.ques_fill JOIN expoverse.survey_user
-        ON expoverse.ques_fill.loginid = expoverse.survey_user.loginid
+        ON expoverse.ques_fill.surveyid = expoverse.survey_user.surveyid
         ORDER BY expoverse.survey_user.trigger_timestamp
         DESC
     </select>
