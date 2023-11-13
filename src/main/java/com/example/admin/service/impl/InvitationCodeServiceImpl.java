@@ -14,6 +14,7 @@ import java.time.LocalTime;
 import java.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import com.example.admin.utils.string_proc;
 
 @Service
 public class InvitationCodeServiceImpl implements InvitationCodeService{
@@ -30,12 +31,14 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
         do {
             uuid = UUID.randomUUID().toString().substring(0, 8);
             List<InvitationCode>codes = invitationCodeMapper.findCodebyId(uuid);
-            if (codes.size()==0) {
+            // 不能和已有的重复而且至少要包含两个字母
+            if (codes.size()==0 && string_proc.containsAtLeastTwoLetters(uuid)) {
                 isUnique = true;
             }
         } while (!isUnique);
         return uuid;
     }
+
 
     //  获得两个日期之间的日期, 全是字符串格式
     public static List<String> getDatesBetween(LocalDate startDate, LocalDate endDate) {

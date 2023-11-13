@@ -13,4 +13,19 @@ public class string_proc {
             return url;
         }
     }
+
+    public static boolean containsAtLeastTwoLetters(String input) {
+        int letterCount = 0;
+        for (char c : input.toCharArray()) {
+            if (Character.isLetter(c)) {
+                letterCount++;
+                if (letterCount >= 2) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
 }

@@ -1,6 +1,13 @@
 元宇宙管理者后台
 
 表字段设计
+admin
+管理员表
+CREATE TABLE admin (
+    id INT PRIMARY KEY,
+    name VARCHAR(45)
+);
+
 
 user
 用户表
@@ -15,15 +22,17 @@ user
 
 
 	//visit_date  参观日期
+
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    company VARCHAR(255),
-    job VARCHAR(255),
-    mail VARCHAR(255),
+    name VARCHAR(60),
+    company VARCHAR(90),
+    job VARCHAR(30),
+    mail VARCHAR(60),
     phone VARCHAR(20),
     approval_date DATE,
-    approver_id INT
+    approver_id VARCHAR(60),
+    secret_key VARCHAR(36)
 );
 
 
@@ -55,8 +64,8 @@ CREATE TABLE expoverse.invitation_codes (
 	file_id		文件id		key
 	file_url     url地址
 	file_type	文件类型    image/vedio
-	product_id  产品 id         
-	file_no	在产品中的序号	
+	product_id  产品 id
+	file_no	在产品中的序号
     download 是否需要下载 TF
 
 
@@ -71,15 +80,36 @@ CREATE TABLE `expoverse`.`url` (
 
 
 展区文件视频的url表
-CREATE TABLE `expoverse`.`url_exhb` (
-  `file_id` INT NOT NULL AUTO_INCREMENT,
-  `file_url` VARCHAR(60) NULL,
-  `file_type` VARCHAR(20) NULL,
-  `exhibition_id` VARCHAR(45) NULL,
-  `file_no` INT NULL,
-  `download` TINYINT NULL,
-  PRIMARY KEY (`file_id`));
+CREATE TABLE expoverse.url_exhbmovie (
+  file_id INT NOT NULL AUTO_INCREMENT,
+  file_url VARCHAR(120) NULL,
+  file_type VARCHAR(20) NULL,
+  exhibition_id VARCHAR(45) NULL,
+  file_no INT NULL,
+  download TINYINT NULL,
+  PRIMARY KEY (file_id));
 
+
+产品文件视频的url表
+CREATE TABLE expoverse.url_productmovie (
+  file_id INT NOT NULL AUTO_INCREMENT,
+  file_url VARCHAR(120) NULL,
+  file_type VARCHAR(20) NULL,
+  product_id VARCHAR(45) NULL,
+  file_no INT NULL,
+  download TINYINT NULL,
+  PRIMARY KEY (file_id));
+
+
+产品DM图片的url表
+CREATE TABLE expoverse.url_dm(
+  file_id INT NOT NULL AUTO_INCREMENT,
+  file_url VARCHAR(120) NULL,
+  file_type VARCHAR(20) NULL,
+  product_id VARCHAR(45) NULL,
+  file_no INT NULL,
+  download TINYINT NULL,
+  PRIMARY KEY (file_id));
 
 
 产品和展区的从属表
@@ -88,11 +118,12 @@ CREATE TABLE `expoverse`.`url_exhb` (
 	exhibition_id  属于的展区   string
 
 
-CREATE TABLE `expoverse`.`product` (
-  `product_id` VARCHAR(25) NOT NULL,
-  `product_name` VARCHAR(50) NULL,
-  `exhibition_id` VARCHAR(50) NULL,
-  PRIMARY KEY (`product_id`));
+CREATE TABLE expoverse.product (
+  product_id VARCHAR(25) NOT NULL,
+  product_name VARCHAR(50) NULL,
+  exhibition_id VARCHAR(50) NULL,
+  number INT,
+  PRIMARY KEY (product_id));
 
 
 
@@ -104,12 +135,13 @@ CREATE TABLE `expoverse`.`product` (
 
 
 
-CREATE TABLE `expoverse`.`exhibition` (
-  `exhibition_id` VARCHAR(20) NOT NULL,
-  `verse_id` VARCHAR(20) NULL,
-  `name` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
-  PRIMARY KEY (`exhibition_id`));
+CREATE TABLE expoverse.exhibition (
+  exhibition_id VARCHAR(20) NOT NULL,
+  verse_id VARCHAR(20) NULL,
+  name VARCHAR(45) NULL,
+  description VARCHAR(45) NULL,
+  number INT,
+  PRIMARY KEY (exhibition_id));
 
 
 访客参观展区记录
