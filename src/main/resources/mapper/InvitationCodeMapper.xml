@@ -45,4 +45,8 @@
         ON t.userid=maxt.userid and t.id=maxt.id;
     </select>
 
+    <delete id="deleteInvitationCode">
+        DELETE FROM expoverse.invitation_codes WHERE invitation_code_id = #{code}
+    </delete>
+
 </mapper>

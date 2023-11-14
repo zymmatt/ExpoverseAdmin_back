@@ -10,4 +10,5 @@ public interface InvitationCodeMapper {
     List<InvitationCode> getLatestCodeForEach();
     List<InvitationCode> findCodebyId(String codeId);
     List<InvitationCode> getAllInvitation();
+    void deleteInvitationCode(String code);
 }

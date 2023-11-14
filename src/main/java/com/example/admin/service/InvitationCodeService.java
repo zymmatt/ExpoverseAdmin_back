@@ -9,6 +9,6 @@ public interface InvitationCodeService {
     List<scheduled_invitation> getScheduledHour();
     List<InvitationCode> getAllInvitation();
     void createInvitation(InvitationCode invitation);
-
+    void deleteInvitationCode(String code);
 }
 

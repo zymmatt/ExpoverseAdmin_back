@@ -227,7 +227,6 @@ public class SurveyServiceImpl implements SurveyService{
                 ExcelSingleLine templine = new ExcelSingleLine(tempuser, surveyInfo);
                 //这张问卷中所有被勾选的选项
                 List<Integer> OptionAnswers = surveyMapper.getOptionAnswer(surveyid);
-                System.out.println(OptionAnswers);
                 //列出所有问题,以及每一个问题下的被勾选的回答选项
                 Map<Integer, HashSet<Integer>> ques_option = new HashMap<>();
                 for (Question question:questions){
@@ -235,7 +234,10 @@ public class SurveyServiceImpl implements SurveyService{
                 }
                 for (Integer optionid:OptionAnswers){
                     // 选项id找到问题id,再加入到这个问题id下被勾选的选项回答
-                    ques_option.get(option_quesid.get(optionid)).add(optionid);
+                    if (option_quesid.containsKey(optionid)) {
+                        // 勾选的optionid在数据库中未必存在
+                        ques_option.get(option_quesid.get(optionid)).add(optionid);
+                    }
                 }
                 for (Question question:questions) {
                     int ques_id = question.getQues_id();

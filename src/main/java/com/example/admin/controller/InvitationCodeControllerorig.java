@@ -47,7 +47,12 @@ public class InvitationCodeControllerorig {
         return ResponseObject.success(invitationCodeService.getAllInvitation());
     }
 
-
+    // 管理员后台  删除邀请记录
+    @RequestMapping(value="/deleteInvitationCode", method= RequestMethod.DELETE)
+    public ResponseObject deleteInvitationCode(String code) {
+        invitationCodeService.deleteInvitationCode(code);
+        return ResponseObject.success("删除邀请记录成功");
+    }
 
 
 }

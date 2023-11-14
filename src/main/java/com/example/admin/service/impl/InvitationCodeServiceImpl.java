@@ -173,6 +173,12 @@ public class InvitationCodeServiceImpl implements InvitationCodeService{
     public List<InvitationCode> getAllInvitation() {
         return invitationCodeMapper.getAllInvitation();
     }
+
+    @Override
+    @Transactional
+    public void deleteInvitationCode(String code){
+        invitationCodeMapper.deleteInvitationCode(code);
+    }
 }
 
 
