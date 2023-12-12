@@ -90,6 +90,12 @@
         DESC
     </select>
 
-
+    <!-- 获取某个用户最后填写的一张问卷id -->
+    <select id="getlatestsurveytimestamp" parameterType="int" resultType="com.example.admin.entity.Survey.SurveyInfo">
+        SELECT surveyid,loginid,userid,duration_sec,trigger_timestamp FROM expoverse.survey_user
+        WHERE userid = #{userid}
+        ORDER BY trigger_timestamp DESC
+        LIMIT 1
+    </select>
 </mapper>
 

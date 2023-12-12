@@ -36,5 +36,7 @@ public interface SurveyMapper {
     List<QuesFill> getallQuesFill();
     // 获取某一张调查问卷某一道题目的填写内容
     String getFilledForOneQues(QuesFill quesFill);
+    // 获取某个用户最后填写的一张问卷的触发时间
+    SurveyInfo getlatestsurveytimestamp(int userid);
 }
 

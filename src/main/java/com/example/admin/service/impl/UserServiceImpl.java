@@ -2,9 +2,11 @@
 package com.example.admin.service.impl;
 
 import com.example.admin.entity.User.*;
+import com.example.admin.entity.Survey.SurveyInfo;
 import com.example.admin.mapper.InvitationCodeMapper;
 import com.example.admin.service.UserService;
 import com.example.admin.mapper.UserMapper;
+import com.example.admin.mapper.SurveyMapper;
 import com.alibaba.fastjson2.JSON;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +26,7 @@ import java.util.*;
 
 import static com.example.admin.utils.pinyin.containsChinese;
 import static com.example.admin.utils.pinyin.convertToPinyin;
+import static com.example.admin.utils.datetime.timestampafter7days;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -31,7 +34,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private InvitationCodeMapper invitationCodeMapper;
-
+    @Autowired
+    private SurveyMapper surveyMapper;
     @Override
     @Transactional
     public List<User> findAll() {
@@ -190,7 +194,16 @@ public class UserServiceImpl implements UserService {
             // int loginid = userMapper.getlogin(res).get(0);
             // 暂时不要单独做英文名字,直接一个名字就好了
             // return new Login(loginid, userid, username, username_english);
-            return new Login(loginid, userid, username, username);
+            // 判断是否一周内填写过调查问卷
+            SurveyInfo latestsurvey = surveyMapper.getlatestsurveytimestamp(userid);
+            boolean filledsurveyin7days = false;
+            if (latestsurvey != null) {
+                long timestampafter7day = timestampafter7days(latestsurvey.getTrigger_timestamp());
+                if (timestampafter7day > currentTimestamp) {
+                    filledsurveyin7days = true;
+                }
+            }
+            return new Login(loginid, userid, username, username, filledsurveyin7days);
         }
         else if (currentTimestamp<timestampStart){
             return new Login(-1,currentTimestamp); // 验证码的访问时间还没到

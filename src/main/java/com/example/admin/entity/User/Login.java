@@ -7,6 +7,7 @@ public class Login {
     private int loginid; // 登录ID
     private Long trigger_timestamp; // 登录的时间戳
     private Long alive_timestamp; // 心跳时间戳, 用于监控存活时长
+    private boolean filledsurvey; // 是否在一周内填写了调查问卷
 
     public void setUserid(int userid) {
         this.userid = userid;
@@ -38,12 +39,21 @@ public class Login {
         this.alive_timestamp = trigger_timestamp+10; //登录时假定最少呆了10秒
     }
 
-    public Login(int loginid, int userid,
-                 String username, String username_english){
+    public Login(int loginid, int userid, String username,
+                 String username_english){
         this.userid = userid;
         this.loginid = loginid;
         this.username = username;
         this.username_english = username_english;
+    }
+
+    public Login(int loginid, int userid, String username,
+                 String username_english, boolean filledsurvey){
+        this.userid = userid;
+        this.loginid = loginid;
+        this.username = username;
+        this.username_english = username_english;
+        this.filledsurvey = filledsurvey;
     }
 
     public void setTrigger_timestamp(Long trigger_timestamp) {
@@ -78,6 +88,14 @@ public class Login {
         this.alive_timestamp = alive_timestamp;
     }
 
+    public boolean isFilledsurvey() {
+        return filledsurvey;
+    }
+
+    public void setFilledsurvey(boolean filledsurvey) {
+        this.filledsurvey = filledsurvey;
+    }
+
     @Override
     public String toString() {
         return "Login{" +
@@ -87,6 +105,7 @@ public class Login {
                 ", loginid=" + loginid +
                 ", trigger_timestamp=" + trigger_timestamp +
                 ", alive_timestamp=" + alive_timestamp +
+                ", filledsurvey=" + filledsurvey +
                 '}';
     }
 }

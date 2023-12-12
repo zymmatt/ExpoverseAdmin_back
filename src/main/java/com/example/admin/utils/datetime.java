@@ -1,5 +1,6 @@
 package com.example.admin.utils;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -20,8 +21,12 @@ public class datetime {
         return dateTime.toString();
     }
 
-
-
-
+    public static long timestampafter7days(int timestamp){
+        // 把一个时间戳延后7天,用于判断一周内是否有填写过调查问卷
+        Instant initialInstant = Instant.ofEpochSecond(timestamp);
+        Duration duration = Duration.ofDays(7);
+        Instant newInstant = initialInstant.plus(duration);
+        return newInstant.getEpochSecond();
+    }
 
 }
