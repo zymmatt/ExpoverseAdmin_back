@@ -13,6 +13,15 @@ public class User {
     private String approver_id;   //审批人iD
     private String secret_key; // UUID
     private String endDT; //邀请码过期的时候
+    private long last_login;
+
+    public long getLast_login() {
+        return last_login;
+    }
+
+    public void setLast_login(long last_login) {
+        this.last_login = last_login;
+    }
 
     public int getId() {
         return id;

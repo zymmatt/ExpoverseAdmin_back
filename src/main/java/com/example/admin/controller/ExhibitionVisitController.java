@@ -1,19 +1,21 @@
 package com.example.admin.controller;
 
-import com.example.admin.entity.Visit.*;
+import com.example.admin.entity.Response.ResponseObject;
+import com.example.admin.entity.Visit.PostExhbVisit;
+import com.example.admin.entity.Visit.PostProdVisit;
 import com.example.admin.service.ExhibitionVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import com.example.admin.entity.Response.ResponseObject;
 
 @RestController
-@RequestMapping("/api/iecadmin/exhibitionVisit")
+@RequestMapping("/exhibitionVisit")
 public class ExhibitionVisitController {
     @Autowired
     private ExhibitionVisitService exhibitionVisitService;

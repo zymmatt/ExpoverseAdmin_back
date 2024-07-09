@@ -23,4 +23,10 @@ public interface UserMapper {
     int getUserLatestloginid(int userid);
     List<Login> getUserVisitbyDate(Long startDate, Long endDate);
     List<User> getNewUserbyDate(String startday, String endday);
+
+    void setLastLogin(int userid, long currentTimestamp);
+
+    List<User> getSurvived();
+
+    void setdelete(int userid);
 }

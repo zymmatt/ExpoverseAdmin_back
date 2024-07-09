@@ -15,6 +15,7 @@
         <result column="phone" property="phone"/>
         <result column="approval_date" property="approval_date"/>
         <result column="approver_id" property="approver_id"/>
+        <result column="last_login" property="last_login"/>
         <!-- 其他字段 -->
     </resultMap>
 
@@ -32,7 +33,9 @@
     resultType="com.example.admin.entity.User.User" -->
     <select id="findAll"  resultMap="UserResultMap">
         SELECT id,name,company,job,mail,phone,DATE_FORMAT(approval_date, '%Y-%m-%d') AS approval_date,approver_id
-        from expoverse.user ORDER BY id DESC;
+        FROM expoverse.user
+        WHERE deleted = 0
+        ORDER BY id DESC;
     </select>
 
     <!-- 一页20行查询用户 -->
@@ -134,5 +137,24 @@
         ORDER BY approval_date
         ASC;
     </select>
+
+    <update id="setLastLogin">
+        UPDATE expoverse.user
+        SET last_login = #{currentTimestamp}
+        WHERE id = #{userid}
+    </update>
+
+    <select id="getSurvived"  resultMap="UserResultMap">
+        SELECT id, last_login
+        FROM expoverse.user
+        WHERE deleted = 0
+        ORDER BY id DESC;
+    </select>
+
+    <update id="setdelete">
+        UPDATE expoverse.user
+        SET deleted=1
+        WHERE id = #{userid}
+    </update>
 
 </mapper>

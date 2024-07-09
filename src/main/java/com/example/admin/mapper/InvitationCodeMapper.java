@@ -11,4 +11,7 @@ public interface InvitationCodeMapper {
     List<InvitationCode> findCodebyId(String codeId);
     List<InvitationCode> getAllInvitation();
     void deleteInvitationCode(String code);
+    void setLastLogin(int id, long currentTimestamp);
+
+    void setdelete(int userid);
 }

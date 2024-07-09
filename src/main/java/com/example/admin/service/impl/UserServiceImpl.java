@@ -30,12 +30,16 @@ import static com.example.admin.utils.datetime.timestampafter7days;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserMapper userMapper;
+
     @Autowired
     private InvitationCodeMapper invitationCodeMapper;
+
     @Autowired
     private SurveyMapper surveyMapper;
+
     @Override
     @Transactional
     public List<User> findAll() {
@@ -184,6 +188,8 @@ public class UserServiceImpl implements UserService {
             int userid = invitation.getuserid();
             Login res = new Login(userid,currentTimestamp);
             userMapper.insertlogin(res);
+            userMapper.setLastLogin(userid, currentTimestamp); // 更新用户的最后登录时间
+            invitationCodeMapper.setLastLogin(invitation.getId(), currentTimestamp); // 更新邀请码的最后登录时间
             int loginid = res.getLoginid();
             // System.out.println(loginid);
             String username = userMapper.findNamebyId(userid);

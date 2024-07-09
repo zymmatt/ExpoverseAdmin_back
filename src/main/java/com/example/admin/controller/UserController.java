@@ -2,19 +2,21 @@
 package com.example.admin.controller;
 
 import com.example.admin.entity.Response.ResponseObject;
-import com.example.admin.entity.User.*;
+import com.example.admin.entity.User.Login;
+import com.example.admin.entity.User.User;
 import com.example.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @RestController
-@RequestMapping("/api/iecadmin/users")
+@RequestMapping("/users")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -55,7 +57,13 @@ public class UserController {
         return ResponseObject.success(newloginid,String.format("更新loginid: %s 心跳记录",newloginid));
     }
 
-    // 管理员平台获取所有用户
+    // 应用端登录时请求语言资料
+    @RequestMapping(value="/language", method = RequestMethod.GET)
+    public String getLanguage() throws IOException {
+        return userService.getLanguage();
+    }
+
+    // 管理员平台获取所有用户(60天以上没有登录的不显示)
     @RequestMapping(value="/findAll", method= RequestMethod.GET)
     public ResponseObject findAll() {
         return ResponseObject.success(userService.findAll());
@@ -97,13 +105,13 @@ public class UserController {
     @RequestMapping(value="/getNewUserbyDate", method= RequestMethod.GET)
     public ResponseObject getNewUserbyDate(String startDate, String endDate){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        // System.out.println(startDate);
-        /// System.out.println(endDate);
+        //System.out.println(startDate);
+        //System.out.println(endDate);
         String startday = sdf.format(new Date(1000*Long.parseLong(startDate)));
         String endday = sdf.format(new Date(1000*Long.parseLong(endDate)));
-        // System.out.println("line111");
-        // System.out.println(startday);
-        // System.out.println(endday);
+        //System.out.println("line111");
+        //System.out.println(startday);
+        //System.out.println(endday);
         // endday = endday+86400; // 终止日要加24小时,包含进当天
         return ResponseObject.success(userService.getNewUserbyDate(startday, endday));
 
@@ -129,6 +137,5 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseObject.success("成功删除新用户");
     }
-
 
 }

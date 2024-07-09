@@ -17,7 +17,9 @@
         <result column="end_date" property="endDate"/>
         <result column="start_time" property="startTime"/>
         <result column="name" property="username"/>
+        <result column="userid" property="userid"/>
         <result column="approver_id" property="approver_id"/>
+        <result column="last_login" property="last_login"/>
     </resultMap>
 
     <select id="findCodebyId" resultMap="codeIdMap">
@@ -27,9 +29,10 @@
     <select id="getAllInvitation" resultMap="codeIdMap">
         SELECT expoverse.invitation_codes.invitation_code_id,expoverse.invitation_codes.start_date,
         expoverse.invitation_codes.end_date, expoverse.invitation_codes.start_time, expoverse.user.name,
-        expoverse.invitation_codes.approver_id
+        expoverse.invitation_codes.approver_id, expoverse.invitation_codes.last_login
         FROM expoverse.invitation_codes JOIN expoverse.user
         ON expoverse.invitation_codes.userid = expoverse.user.id
+        WHERE expoverse.invitation_codes.deleted = 0
         ORDER BY expoverse.invitation_codes.id
         DESC
     </select>
@@ -48,5 +51,18 @@
     <delete id="deleteInvitationCode">
         DELETE FROM expoverse.invitation_codes WHERE invitation_code_id = #{code}
     </delete>
+
+    <update id="setLastLogin">
+        UPDATE expoverse.invitation_codes
+        SET last_login = #{currentTimestamp}
+        WHERE id = #{id}
+    </update>
+
+    <update id="setdelete">
+        UPDATE expoverse.invitation_codes
+        SET deleted = 1
+        WHERE userid = #{userid}
+    </update>
+
 
 </mapper>

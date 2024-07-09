@@ -25,6 +25,10 @@ public class InvitationCode {
 
     private String approver_id;
 
+    private long last_login;
+
+    private String last_login_str;
+
     public void setCodeId(){
         this.codeId=UUID.randomUUID().toString();
     } // 自动生成UUID作为邀请码ID
@@ -87,6 +91,22 @@ public class InvitationCode {
 
     public int getId() {
         return id;
+    }
+
+    public void setLast_login(long last_login) {
+        this.last_login = last_login;
+    }
+
+    public long getLast_login() {
+        return last_login;
+    }
+
+    public String getLast_login_str() {
+        return last_login_str;
+    }
+
+    public void setLast_login_str(String last_login_str) {
+        this.last_login_str = last_login_str;
     }
 
     // Override equals, hashCode, and toString methods if necessary...
